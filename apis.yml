@@ -1,0 +1,57 @@
+name: Workday Business Processes API
+description: APIs for managing and executing business processes within Workday, including initiating, monitoring, and completing various workflow processes.
+image: https://www.workday.com/content/dam/web/images/logos/workday-logo.svg
+url: https://www.workday.com
+created: '2024'
+modified: '2024'
+apis:
+- name: Workday Business Process API
+  description: API for initiating, managing, and monitoring business processes in Workday, including approvals, onboarding, and other workflow operations.
+  image: https://www.workday.com/content/dam/web/images/logos/workday-logo.svg
+  humanURL: https://www.workday.com/en-us/products/financial-management/business-process.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - Business Processes
+  - Workflows
+  - Approvals
+  - HCM
+  - Finance
+  properties:
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
+  - type: OpenAPI
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Business_Process_Service/v41.1/Business_Process_Service.yaml
+  - type: Authentication
+    url: https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-authentication.html
+  - type: SDKs
+    url: https://github.com/Workday
+  - type: Rate Limits
+    url: https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-rate-limits.html
+  - type: Webhooks
+    url: https://doc.workday.com/admin-guide/en-us/workday-integrations/integration-concepts/workday-webhooks.html
+  - type: Changelog
+    url: https://community.workday.com/api-release-notes
+  - type: Status
+    url: https://status.workday.com
+  - type: Support
+    url: https://community.workday.com
+  contact:
+  - type: Support
+    url: https://www.workday.com/en-us/company/customer-support.html
+common:
+- type: Portal
+  url: https://community.workday.com
+- type: Getting Started
+  url: https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/getting-started-with-workday-web-services.html
+- type: API Standards
+  url: https://doc.workday.com/admin-guide/en-us/workday-rest-api/workday-rest-api-overview.html
+- type: Privacy Policy
+  url: https://www.workday.com/en-us/privacy.html
+- type: Terms of Service
+  url: https://www.workday.com/en-us/terms-of-service.html
+- type: Security
+  url: https://www.workday.com/en-us/why-workday/our-technology/security.html
+maintainers:
+- name: Workday
+  email: support@workday.com
+  url: https://www.workday.com

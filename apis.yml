@@ -1,5 +1,5 @@
 aid: workday-business-processes
-name: Workday Business Processes API
+name: Workday Business Processes
 description: APIs for managing and executing business processes within Workday, including initiating, monitoring, and completing various workflow processes.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: >-

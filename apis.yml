@@ -1,9 +1,12 @@
+aid: workday-business-processes
 name: Workday Business Processes API
 description: APIs for managing and executing business processes within Workday, including initiating, monitoring, and completing various workflow processes.
-image: https://www.workday.com/content/dam/web/images/logos/workday-logo.svg
-url: https://www.workday.com
-created: '2024'
-modified: '2024'
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 apis:
 - name: Workday Business Process API
   description: API for initiating, managing, and monitoring business processes in Workday, including approvals, onboarding, and other workflow operations.
@@ -52,6 +55,5 @@ common:
 - type: Security
   url: https://www.workday.com/en-us/why-workday/our-technology/security.html
 maintainers:
-- name: Workday
-  email: support@workday.com
-  url: https://www.workday.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com

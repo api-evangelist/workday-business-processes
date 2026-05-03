@@ -1,0 +1,11 @@
+{
+  "definitionId": "BPD-HIRE-001",
+  "transactionId": "TXN-EMP-NEW-050",
+  "initiatorId": "EMP-00100",
+  "processData": {
+    "employeeId": "EMP-NEW-050",
+    "positionId": "POS-TECH-042",
+    "startDate": "2026-05-15",
+    "managerId": "EMP-00100"
+  }
+}

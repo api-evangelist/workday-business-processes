@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/json-structure/workday-business-processes-inbox-item-structure.json",
+  "title": "Inbox Item",
+  "description": "A business process inbox item requiring user action",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Unique inbox item identifier",
+      "type": "string"
+    },
+    "processInstanceId": {
+      "description": "Associated process instance identifier",
+      "type": "string"
+    },
+    "subject": {
+      "description": "Inbox item subject line",
+      "type": "string"
+    },
+    "assignedTo": {
+      "description": "User assigned to handle this item",
+      "type": "string"
+    },
+    "status": {
+      "description": "Item status",
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "IN_PROGRESS",
+        "COMPLETE",
+        "DELEGATED"
+      ]
+    },
+    "dueDate": {
+      "description": "Item due date",
+      "type": "date"
+    },
+    "createdDate": {
+      "description": "Item creation timestamp",
+      "type": "datetime"
+    },
+    "completedDate": {
+      "description": "Item completion timestamp",
+      "type": "datetime"
+    },
+    "actionTaken": {
+      "description": "Action taken on the item",
+      "type": "string",
+      "enum": [
+        "APPROVED",
+        "DENIED",
+        "DELEGATED",
+        "RETRACTED"
+      ]
+    },
+    "priority": {
+      "description": "Item priority",
+      "type": "string",
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "processInstanceId",
+    "subject",
+    "assignedTo",
+    "status"
+  ]
+}

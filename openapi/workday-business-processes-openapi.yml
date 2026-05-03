@@ -1,0 +1,949 @@
+openapi: 3.0.3
+info:
+  title: Workday Business Process API
+  description: >-
+    The Workday Business Process API provides RESTful access to business process
+    management capabilities including initiating workflows, managing approvals,
+    tracking process instances, retrieving process definitions, and handling
+    inbox items. The API enables organizations to programmatically trigger
+    Workday business processes, monitor their status, and integrate workflow
+    automation with external systems.
+  version: 'v41.1'
+  contact:
+    name: Workday Developer Support
+    url: https://community.workday.com/
+  x-generated-from: documentation
+servers:
+  - url: https://{tenant}.workday.com/api/businessProcess/v1
+    description: Workday tenant REST API endpoint
+    variables:
+      tenant:
+        default: wd2-impl-services1
+        description: Your Workday tenant hostname
+
+security:
+  - oauth2: []
+
+tags:
+  - name: Business Process Definitions
+    description: Retrieve and manage business process type definitions
+  - name: Process Instances
+    description: Manage running business process instances
+  - name: Approvals
+    description: Manage approval steps and approval chains
+  - name: Inbox Items
+    description: Manage user inbox items requiring action
+  - name: Process Events
+    description: Manage business process events and triggers
+  - name: Delegations
+    description: Manage business process task delegations
+
+paths:
+  /businessProcessDefinitions:
+    get:
+      operationId: listBusinessProcessDefinitions
+      summary: Workday List Business Process Definitions
+      description: Retrieves a collection of business process type definitions available in the Workday tenant.
+      tags:
+        - Business Process Definitions
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+        - name: processType
+          in: query
+          description: Filter by business process type
+          schema:
+            type: string
+          example: HireEmployee
+      responses:
+        '200':
+          description: A list of business process definitions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessProcessDefinitionsResponse'
+              examples:
+                ListBusinessProcessDefinitions200Example:
+                  summary: Default listBusinessProcessDefinitions 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 45
+                    data:
+                      - id: BPD-HIRE-001
+                        name: Hire Employee
+                        type: HireEmployee
+                        status: ACTIVE
+                        version: 2
+                        description: Business process for hiring new employees
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /businessProcessDefinitions/{definitionId}:
+    get:
+      operationId: getBusinessProcessDefinition
+      summary: Workday Get Business Process Definition
+      description: Retrieves a specific business process type definition by its identifier.
+      tags:
+        - Business Process Definitions
+      parameters:
+        - name: definitionId
+          in: path
+          required: true
+          description: Business process definition identifier
+          schema:
+            type: string
+          example: BPD-HIRE-001
+      responses:
+        '200':
+          description: A business process definition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessProcessDefinition'
+              examples:
+                GetBusinessProcessDefinition200Example:
+                  summary: Default getBusinessProcessDefinition 200 response
+                  x-microcks-default: true
+                  value:
+                    id: BPD-HIRE-001
+                    name: Hire Employee
+                    type: HireEmployee
+                    status: ACTIVE
+                    version: 2
+                    description: Business process for hiring new employees
+                    steps:
+                      - stepId: STEP-001
+                        stepType: APPROVAL
+                        assignedGroup: HR Managers
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: URI_PARTS
+        dispatcherRules: definitionId
+
+  /processInstances:
+    get:
+      operationId: listProcessInstances
+      summary: Workday List Process Instances
+      description: Retrieves a collection of business process instances with status and progress information.
+      tags:
+        - Process Instances
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+        - name: status
+          in: query
+          description: Filter by process status
+          schema:
+            type: string
+          example: IN_PROGRESS
+        - name: processType
+          in: query
+          description: Filter by business process type
+          schema:
+            type: string
+          example: HireEmployee
+        - name: initiatorId
+          in: query
+          description: Filter by process initiator ID
+          schema:
+            type: string
+          example: EMP-12345
+      responses:
+        '200':
+          description: A list of process instances
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessInstancesResponse'
+              examples:
+                ListProcessInstances200Example:
+                  summary: Default listProcessInstances 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 28
+                    data:
+                      - id: PI-2026-001
+                        definitionId: BPD-HIRE-001
+                        processType: HireEmployee
+                        status: IN_PROGRESS
+                        initiatorId: EMP-00100
+                        startDate: '2026-04-15T09:00:00Z'
+                        currentStep: Background Check
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+    post:
+      operationId: initiateProcess
+      summary: Workday Initiate Process
+      description: Initiates a new business process instance.
+      tags:
+        - Process Instances
+      requestBody:
+        description: Business process initiation request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitiateProcessRequest'
+            examples:
+              InitiateProcessExample:
+                summary: Initiate a hire employee process
+                x-microcks-default: true
+                value:
+                  definitionId: BPD-HIRE-001
+                  transactionId: TXN-EMP-NEW-001
+                  initiatorId: EMP-00100
+                  processData:
+                    employeeId: EMP-NEW-001
+                    positionId: POS-TECH-042
+                    startDate: '2026-05-15'
+      responses:
+        '201':
+          description: Process instance created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessInstance'
+              examples:
+                InitiateProcess201Example:
+                  summary: Default initiateProcess 201 response
+                  x-microcks-default: true
+                  value:
+                    id: PI-2026-050
+                    definitionId: BPD-HIRE-001
+                    processType: HireEmployee
+                    status: INITIATED
+                    initiatorId: EMP-00100
+                    startDate: '2026-05-01T10:00:00Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /processInstances/{instanceId}:
+    get:
+      operationId: getProcessInstance
+      summary: Workday Get Process Instance
+      description: Retrieves a specific business process instance by its identifier.
+      tags:
+        - Process Instances
+      parameters:
+        - name: instanceId
+          in: path
+          required: true
+          description: Process instance identifier
+          schema:
+            type: string
+          example: PI-2026-001
+      responses:
+        '200':
+          description: A process instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessInstance'
+              examples:
+                GetProcessInstance200Example:
+                  summary: Default getProcessInstance 200 response
+                  x-microcks-default: true
+                  value:
+                    id: PI-2026-001
+                    definitionId: BPD-HIRE-001
+                    processType: HireEmployee
+                    status: IN_PROGRESS
+                    initiatorId: EMP-00100
+                    startDate: '2026-04-15T09:00:00Z'
+                    currentStep: Background Check
+                    completionPercent: 65
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: URI_PARTS
+        dispatcherRules: instanceId
+
+  /processInstances/{instanceId}/cancel:
+    post:
+      operationId: cancelProcessInstance
+      summary: Workday Cancel Process Instance
+      description: Cancels a running business process instance.
+      tags:
+        - Process Instances
+      parameters:
+        - name: instanceId
+          in: path
+          required: true
+          description: Process instance identifier
+          schema:
+            type: string
+          example: PI-2026-001
+      requestBody:
+        description: Cancellation details
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: Reason for cancellation
+              required: [reason]
+            examples:
+              CancelProcessExample:
+                summary: Cancel process request
+                x-microcks-default: true
+                value:
+                  reason: Position filled by internal candidate
+      responses:
+        '200':
+          description: Process cancelled successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessInstance'
+              examples:
+                CancelProcessInstance200Example:
+                  summary: Default cancelProcessInstance 200 response
+                  x-microcks-default: true
+                  value:
+                    id: PI-2026-001
+                    status: CANCELLED
+                    cancelReason: Position filled by internal candidate
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: URI_PARTS
+        dispatcherRules: instanceId
+
+  /inboxItems:
+    get:
+      operationId: listInboxItems
+      summary: Workday List Inbox Items
+      description: Retrieves a collection of inbox items requiring user action for business processes.
+      tags:
+        - Inbox Items
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of records to return
+          schema:
+            type: integer
+            default: 100
+          example: 100
+        - name: offset
+          in: query
+          description: Number of records to skip
+          schema:
+            type: integer
+            default: 0
+          example: 0
+        - name: workerId
+          in: query
+          description: Filter inbox items by worker ID
+          schema:
+            type: string
+          example: EMP-12345
+        - name: status
+          in: query
+          description: Filter by item status (PENDING, COMPLETE)
+          schema:
+            type: string
+          example: PENDING
+      responses:
+        '200':
+          description: A list of inbox items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InboxItemsResponse'
+              examples:
+                ListInboxItems200Example:
+                  summary: Default listInboxItems 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 7
+                    data:
+                      - id: INB-001
+                        processInstanceId: PI-2026-001
+                        subject: Approve Hire - Software Engineer
+                        assignedTo: EMP-00200
+                        status: PENDING
+                        dueDate: '2026-05-10'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /inboxItems/{itemId}/approve:
+    post:
+      operationId: approveInboxItem
+      summary: Workday Approve Inbox Item
+      description: Approves an inbox item to advance a business process.
+      tags:
+        - Approvals
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          description: Inbox item identifier
+          schema:
+            type: string
+          example: INB-001
+      requestBody:
+        description: Approval details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApprovalRequest'
+            examples:
+              ApproveInboxItemExample:
+                summary: Approve inbox item request
+                x-microcks-default: true
+                value:
+                  comment: Candidate meets all requirements. Approved to proceed.
+                  approverId: EMP-00200
+      responses:
+        '200':
+          description: Inbox item approved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InboxItem'
+              examples:
+                ApproveInboxItem200Example:
+                  summary: Default approveInboxItem 200 response
+                  x-microcks-default: true
+                  value:
+                    id: INB-001
+                    status: COMPLETE
+                    actionTaken: APPROVED
+                    completedDate: '2026-05-05T14:30:00Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: URI_PARTS
+        dispatcherRules: itemId
+
+  /inboxItems/{itemId}/deny:
+    post:
+      operationId: denyInboxItem
+      summary: Workday Deny Inbox Item
+      description: Denies an inbox item to reject a business process step.
+      tags:
+        - Approvals
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          description: Inbox item identifier
+          schema:
+            type: string
+          example: INB-002
+      requestBody:
+        description: Denial details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DenialRequest'
+            examples:
+              DenyInboxItemExample:
+                summary: Deny inbox item request
+                x-microcks-default: true
+                value:
+                  comment: Budget allocation not approved for this quarter.
+                  denierId: EMP-00200
+      responses:
+        '200':
+          description: Inbox item denied successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InboxItem'
+              examples:
+                DenyInboxItem200Example:
+                  summary: Default denyInboxItem 200 response
+                  x-microcks-default: true
+                  value:
+                    id: INB-002
+                    status: COMPLETE
+                    actionTaken: DENIED
+                    completedDate: '2026-05-05T15:00:00Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: URI_PARTS
+        dispatcherRules: itemId
+
+  /processInstances/{instanceId}/steps:
+    get:
+      operationId: listProcessSteps
+      summary: Workday List Process Steps
+      description: Retrieves the steps for a specific business process instance including completion status.
+      tags:
+        - Process Instances
+      parameters:
+        - name: instanceId
+          in: path
+          required: true
+          description: Process instance identifier
+          schema:
+            type: string
+          example: PI-2026-001
+      responses:
+        '200':
+          description: A list of process steps
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessStepsResponse'
+              examples:
+                ListProcessSteps200Example:
+                  summary: Default listProcessSteps 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 8
+                    data:
+                      - stepId: STEP-001
+                        stepName: Manager Approval
+                        stepType: APPROVAL
+                        status: COMPLETE
+                        assignedTo: EMP-00100
+                        completedDate: '2026-04-16T10:00:00Z'
+                      - stepId: STEP-002
+                        stepName: Background Check
+                        stepType: ACTION
+                        status: IN_PROGRESS
+                        assignedTo: HR-TEAM
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: URI_PARTS
+        dispatcherRules: instanceId
+
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            businessProcess: Access to Workday Business Process API
+
+  schemas:
+    BusinessProcessDefinition:
+      title: Business Process Definition
+      description: A Workday business process type definition with steps and configuration
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique definition identifier
+        name:
+          type: string
+          description: Business process name
+        type:
+          type: string
+          description: Business process type identifier
+        status:
+          type: string
+          enum: [ACTIVE, INACTIVE, DRAFT]
+          description: Definition status
+        version:
+          type: integer
+          description: Definition version number
+        description:
+          type: string
+          description: Process description
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessStepDefinition'
+          description: Process step definitions
+      required: [id, name, type, status]
+
+    ProcessStepDefinition:
+      title: Process Step Definition
+      description: A step definition within a business process
+      type: object
+      properties:
+        stepId:
+          type: string
+          description: Step identifier
+        stepType:
+          type: string
+          enum: [APPROVAL, ACTION, NOTIFICATION, CONDITION, INTEGRATION]
+          description: Type of process step
+        assignedGroup:
+          type: string
+          description: Group or role assigned to this step
+        description:
+          type: string
+          description: Step description
+        order:
+          type: integer
+          description: Step execution order
+      required: [stepId, stepType]
+
+    BusinessProcessDefinitionsResponse:
+      title: Business Process Definitions Response
+      description: Paginated response containing a list of business process definitions
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of definitions
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessProcessDefinition'
+      required: [total, data]
+
+    ProcessInstance:
+      title: Process Instance
+      description: A running or completed business process instance
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique process instance identifier
+        definitionId:
+          type: string
+          description: Business process definition identifier
+        processType:
+          type: string
+          description: Business process type
+        status:
+          type: string
+          enum: [INITIATED, IN_PROGRESS, PENDING_ACTION, COMPLETE, CANCELLED, ERROR]
+          description: Current process status
+        initiatorId:
+          type: string
+          description: ID of the user who initiated the process
+        transactionId:
+          type: string
+          description: Associated transaction or worker ID
+        startDate:
+          type: string
+          format: date-time
+          description: Process start timestamp
+        endDate:
+          type: string
+          format: date-time
+          description: Process completion timestamp
+        currentStep:
+          type: string
+          description: Name of the current active step
+        completionPercent:
+          type: integer
+          description: Percentage of steps completed
+        cancelReason:
+          type: string
+          description: Reason for cancellation (if cancelled)
+      required: [id, definitionId, processType, status, initiatorId]
+
+    ProcessInstancesResponse:
+      title: Process Instances Response
+      description: Paginated response containing a list of process instances
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of instances
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessInstance'
+      required: [total, data]
+
+    InitiateProcessRequest:
+      title: Initiate Process Request
+      description: Request to initiate a new business process instance
+      type: object
+      properties:
+        definitionId:
+          type: string
+          description: Business process definition to initiate
+        transactionId:
+          type: string
+          description: Associated transaction or subject worker ID
+        initiatorId:
+          type: string
+          description: ID of the user initiating the process
+        processData:
+          type: object
+          description: Additional process-specific data fields
+          additionalProperties: true
+      required: [definitionId, initiatorId]
+
+    ProcessStep:
+      title: Process Step
+      description: A step within a running business process instance
+      type: object
+      properties:
+        stepId:
+          type: string
+          description: Step identifier
+        stepName:
+          type: string
+          description: Step display name
+        stepType:
+          type: string
+          enum: [APPROVAL, ACTION, NOTIFICATION, CONDITION, INTEGRATION]
+          description: Type of process step
+        status:
+          type: string
+          enum: [PENDING, IN_PROGRESS, COMPLETE, SKIPPED, ERROR]
+          description: Step status
+        assignedTo:
+          type: string
+          description: User or group assigned to this step
+        dueDate:
+          type: string
+          format: date
+          description: Step due date
+        completedDate:
+          type: string
+          format: date-time
+          description: Step completion timestamp
+        completedBy:
+          type: string
+          description: User who completed the step
+      required: [stepId, stepName, stepType, status]
+
+    ProcessStepsResponse:
+      title: Process Steps Response
+      description: Paginated response containing a list of process steps
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of steps
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessStep'
+      required: [total, data]
+
+    InboxItem:
+      title: Inbox Item
+      description: A business process inbox item requiring user action
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique inbox item identifier
+        processInstanceId:
+          type: string
+          description: Associated process instance identifier
+        subject:
+          type: string
+          description: Inbox item subject line
+        assignedTo:
+          type: string
+          description: User assigned to handle this item
+        status:
+          type: string
+          enum: [PENDING, IN_PROGRESS, COMPLETE, DELEGATED]
+          description: Item status
+        dueDate:
+          type: string
+          format: date
+          description: Item due date
+        createdDate:
+          type: string
+          format: date-time
+          description: Item creation timestamp
+        completedDate:
+          type: string
+          format: date-time
+          description: Item completion timestamp
+        actionTaken:
+          type: string
+          enum: [APPROVED, DENIED, DELEGATED, RETRACTED]
+          description: Action taken on the item
+        priority:
+          type: string
+          enum: [HIGH, MEDIUM, LOW]
+          description: Item priority
+      required: [id, processInstanceId, subject, assignedTo, status]
+
+    InboxItemsResponse:
+      title: Inbox Items Response
+      description: Paginated response containing a list of inbox items
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of inbox items
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/InboxItem'
+      required: [total, data]
+
+    ApprovalRequest:
+      title: Approval Request
+      description: Request to approve an inbox item
+      type: object
+      properties:
+        comment:
+          type: string
+          description: Approval comment
+        approverId:
+          type: string
+          description: ID of the approving user
+      required: [approverId]
+
+    DenialRequest:
+      title: Denial Request
+      description: Request to deny an inbox item
+      type: object
+      properties:
+        comment:
+          type: string
+          description: Denial reason or comment
+        denierId:
+          type: string
+          description: ID of the denying user
+      required: [denierId, comment]
+
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required: [error, message]
+
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
+
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: BAD_REQUEST
+            message: Invalid request body

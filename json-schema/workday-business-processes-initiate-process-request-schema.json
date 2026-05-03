@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/json-schema/workday-business-processes-initiate-process-request-schema.json",
+  "title": "Initiate Process Request",
+  "description": "Request to initiate a new business process instance",
+  "type": "object",
+  "properties": {
+    "definitionId": {
+      "type": "string",
+      "description": "Business process definition to initiate"
+    },
+    "transactionId": {
+      "type": "string",
+      "description": "Associated transaction or subject worker ID"
+    },
+    "initiatorId": {
+      "type": "string",
+      "description": "ID of the user initiating the process"
+    },
+    "processData": {
+      "type": "object",
+      "description": "Additional process-specific data fields"
+    }
+  },
+  "required": [
+    "definitionId",
+    "initiatorId"
+  ]
+}

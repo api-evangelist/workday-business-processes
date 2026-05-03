@@ -1,0 +1,10 @@
+{
+  "id": "INB-001",
+  "processInstanceId": "PI-2026-001",
+  "subject": "Approve Hire - Software Engineer II - Jane Smith",
+  "assignedTo": "EMP-00200",
+  "status": "PENDING",
+  "dueDate": "2026-05-10",
+  "createdDate": "2026-05-01T08:00:00Z",
+  "priority": "MEDIUM"
+}

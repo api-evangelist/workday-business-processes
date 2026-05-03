@@ -1,0 +1,241 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Workday"
+  description: "Unified vocabulary mapping operational (OpenAPI) and capability (Naftiko) dimensions for the Workday Business Process API"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  apis:
+    - name: Workday Business Process API
+      namespace: workday-business-processes
+      version: v41.1
+      baseUrl: https://{tenant}.workday.com/api/businessProcess/v1
+      status: active
+
+  resources:
+    - name: business-process-definitions
+      api: workday-business-processes
+      actions: [list, get]
+      description: Business process type definitions with steps and configuration
+    - name: process-instances
+      api: workday-business-processes
+      actions: [list, get, create, cancel]
+      description: Running or completed business process instances with status tracking
+    - name: process-steps
+      api: workday-business-processes
+      actions: [list]
+      description: Steps within a business process instance with completion status
+    - name: inbox-items
+      api: workday-business-processes
+      actions: [list, approve, deny]
+      description: Inbox items requiring user action to advance business processes
+    - name: approvals
+      api: workday-business-processes
+      actions: [approve, deny]
+      description: Approval actions on inbox items in business processes
+
+  actions:
+    - name: list
+      httpMethod: GET
+      pattern: read
+      description: Retrieve a paginated collection
+    - name: get
+      httpMethod: GET
+      pattern: read
+      description: Retrieve a single resource by identifier
+    - name: create
+      httpMethod: POST
+      pattern: write
+      description: Create a new resource (initiate a process)
+    - name: cancel
+      httpMethod: POST
+      pattern: destructive
+      description: Cancel a running process instance
+    - name: approve
+      httpMethod: POST
+      pattern: write
+      description: Approve an inbox item to advance the workflow
+    - name: deny
+      httpMethod: POST
+      pattern: write
+      description: Deny an inbox item to reject the workflow step
+
+  schemas:
+    workflow:
+      - name: BusinessProcessDefinition
+        description: Business process type definition with step definitions and configuration
+      - name: ProcessInstance
+        description: Running or completed business process with status and step tracking
+      - name: InitiateProcessRequest
+        description: Request to start a new business process instance
+      - name: ProcessStep
+        description: A step within a process instance with assignment and completion details
+      - name: InboxItem
+        description: Inbox item requiring user action to advance the business process
+      - name: ApprovalRequest
+        description: Request to approve an inbox item with comment and approver ID
+      - name: DenialRequest
+        description: Request to deny an inbox item with reason and denier ID
+
+  parameters:
+    pagination:
+      - name: limit
+        type: integer
+        description: Maximum number of records to return
+      - name: offset
+        type: integer
+        description: Number of records to skip for pagination
+    identifiers:
+      - name: definitionId
+        type: string
+        description: Business process definition identifier
+      - name: instanceId
+        type: string
+        description: Process instance identifier
+      - name: itemId
+        type: string
+        description: Inbox item identifier
+    filtering:
+      - name: status
+        type: string
+        description: Filter by process or item status
+      - name: processType
+        type: string
+        description: Filter by business process type
+      - name: initiatorId
+        type: string
+        description: Filter by process initiator ID
+      - name: workerId
+        type: string
+        description: Filter inbox items by worker ID
+
+  enums:
+    definition-statuses:
+      - ACTIVE
+      - INACTIVE
+      - DRAFT
+    instance-statuses:
+      - INITIATED
+      - IN_PROGRESS
+      - PENDING_ACTION
+      - COMPLETE
+      - CANCELLED
+      - ERROR
+    step-types:
+      - APPROVAL
+      - ACTION
+      - NOTIFICATION
+      - CONDITION
+      - INTEGRATION
+    step-statuses:
+      - PENDING
+      - IN_PROGRESS
+      - COMPLETE
+      - SKIPPED
+      - ERROR
+    inbox-statuses:
+      - PENDING
+      - IN_PROGRESS
+      - COMPLETE
+      - DELEGATED
+    actions-taken:
+      - APPROVED
+      - DENIED
+      - DELEGATED
+      - RETRACTED
+
+  authentication:
+    schemes:
+      - name: OAuth2 Client Credentials
+        type: oauth2
+        description: OAuth2 client credentials flow for server-to-server authentication with Workday tenant
+        apis: [Workday Business Process API]
+
+capability:
+  workflows:
+    - name: Workflow Management
+      file: capabilities/workflow-management.yaml
+      description: Unified workflow for managers and HR teams managing Workday business processes, approvals, and inbox items
+      apisUsed: [Workday Business Process API]
+      toolCount: 10
+      personas: [Manager, HR Business Partner, System Administrator]
+      domains: [Process Definitions, Process Instances, Inbox Items, Approvals]
+
+  personas:
+    - id: manager
+      name: Manager
+      description: Approves or denies business process requests in their inbox and monitors team workflows
+      workflows: [Workflow Management]
+    - id: hr-business-partner
+      name: HR Business Partner
+      description: Initiates HR business processes such as hire, termination, and compensation changes
+      workflows: [Workflow Management]
+    - id: system-administrator
+      name: System Administrator
+      description: Manages business process definitions and monitors process health across the organization
+      workflows: [Workflow Management]
+    - id: integration-developer
+      name: Integration Developer
+      description: Integrates external systems with Workday business processes via API
+      workflows: [Workflow Management]
+
+  domains:
+    - name: Process Definitions
+      description: Business process type definitions and step configurations
+      resources: [business-process-definitions]
+    - name: Process Instances
+      description: Running and completed business process instance management
+      resources: [process-instances, process-steps]
+    - name: Inbox Items
+      description: User inbox item management and action processing
+      resources: [inbox-items]
+    - name: Approvals
+      description: Approval and denial operations on business process inbox items
+      resources: [approvals]
+
+  namespaces:
+    consumed:
+      - name: workday-business-processes
+        baseUri: https://{tenant}.workday.com/api/businessProcess/v1
+        description: Workday Business Process API
+    exposed-rest:
+      - name: workday-workflow-management-api
+        port: 8080
+      - name: workday-business-processes-api
+        port: 8100
+    exposed-mcp:
+      - name: workday-workflow-management-mcp
+        port: 9080
+      - name: workday-business-processes-mcp
+        port: 9100
+
+  binds:
+    - name: WORKDAY_CLIENT_ID
+      description: Workday OAuth2 client ID for authentication
+      workflows: [Workflow Management]
+    - name: WORKDAY_CLIENT_SECRET
+      description: Workday OAuth2 client secret for authentication
+      workflows: [Workflow Management]
+    - name: WORKDAY_TENANT
+      description: Workday tenant hostname
+      workflows: [Workflow Management]
+
+crossReference:
+  - resource: business-process-definitions
+    operations: [listBusinessProcessDefinitions, getBusinessProcessDefinition]
+    workflows: [Workflow Management]
+    personas: [HR Business Partner, System Administrator, Integration Developer]
+  - resource: process-instances
+    operations: [listProcessInstances, getProcessInstance, initiateProcess, cancelProcessInstance]
+    workflows: [Workflow Management]
+    personas: [HR Business Partner, System Administrator, Integration Developer]
+  - resource: process-steps
+    operations: [listProcessSteps]
+    workflows: [Workflow Management]
+    personas: [Manager, HR Business Partner, System Administrator]
+  - resource: inbox-items
+    operations: [listInboxItems, approveInboxItem, denyInboxItem]
+    workflows: [Workflow Management]
+    personas: [Manager, HR Business Partner]

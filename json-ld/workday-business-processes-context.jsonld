@@ -1,0 +1,91 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "wdbp": "https://community.workday.com/sites/default/files/file-hosting/productionapi/Business_Process_Service/v41.1/schema/",
+
+    "BusinessProcessDefinition": "wdbp:BusinessProcessDefinition",
+    "ProcessInstance": "wdbp:ProcessInstance",
+    "InitiateProcessRequest": "wdbp:InitiateProcessRequest",
+    "ProcessStep": "wdbp:ProcessStep",
+    "InboxItem": "wdbp:InboxItem",
+    "ApprovalRequest": "wdbp:ApprovalRequest",
+    "DenialRequest": "wdbp:DenialRequest",
+
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "status": "wdbp:status",
+    "type": "schema:additionalType",
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:integer"
+    },
+
+    "steps": {
+      "@id": "wdbp:steps",
+      "@container": "@list"
+    },
+    "stepId": "schema:identifier",
+    "stepName": "schema:name",
+    "stepType": "wdbp:stepType",
+    "assignedGroup": "schema:memberOf",
+    "assignedTo": "schema:assignee",
+    "order": {
+      "@id": "schema:position",
+      "@type": "xsd:integer"
+    },
+
+    "definitionId": "wdbp:definitionId",
+    "processType": "wdbp:processType",
+    "initiatorId": "wdbp:initiatorId",
+    "transactionId": "schema:identifier",
+    "processData": "wdbp:processData",
+    "currentStep": "wdbp:currentStep",
+    "cancelReason": "wdbp:cancelReason",
+    "completionPercent": {
+      "@id": "wdbp:completionPercent",
+      "@type": "xsd:integer"
+    },
+
+    "startDate": {
+      "@id": "schema:startDate",
+      "@type": "xsd:dateTime"
+    },
+    "endDate": {
+      "@id": "schema:endDate",
+      "@type": "xsd:dateTime"
+    },
+    "dueDate": {
+      "@id": "schema:expires",
+      "@type": "xsd:date"
+    },
+    "createdDate": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "completedDate": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+
+    "processInstanceId": "wdbp:processInstanceId",
+    "subject": "schema:name",
+    "actionTaken": "wdbp:actionTaken",
+    "priority": "wdbp:priority",
+
+    "comment": "schema:comment",
+    "approverId": "wdbp:approverId",
+    "denierId": "wdbp:denierId",
+
+    "total": {
+      "@id": "wdbp:total",
+      "@type": "xsd:integer"
+    },
+    "data": {
+      "@id": "wdbp:data",
+      "@container": "@list"
+    }
+  }
+}

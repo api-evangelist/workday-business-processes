@@ -1,0 +1,11 @@
+{
+  "id": "PI-2026-001",
+  "definitionId": "BPD-HIRE-001",
+  "processType": "HireEmployee",
+  "status": "IN_PROGRESS",
+  "initiatorId": "EMP-00100",
+  "transactionId": "TXN-EMP-NEW-042",
+  "startDate": "2026-04-15T09:00:00Z",
+  "currentStep": "Background Check",
+  "completionPercent": 65
+}

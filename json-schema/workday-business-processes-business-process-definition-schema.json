@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/json-schema/workday-business-processes-business-process-definition-schema.json",
+  "title": "Business Process Definition",
+  "description": "A Workday business process type definition with steps and configuration",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique definition identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Business process name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Business process type identifier"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "DRAFT"
+      ],
+      "description": "Definition status"
+    },
+    "version": {
+      "type": "integer",
+      "description": "Definition version number"
+    },
+    "description": {
+      "type": "string",
+      "description": "Process description"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "type",
+    "status"
+  ]
+}

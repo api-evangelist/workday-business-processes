@@ -1,0 +1,9 @@
+{
+  "stepId": "STEP-001",
+  "stepName": "Manager Approval",
+  "stepType": "APPROVAL",
+  "status": "COMPLETE",
+  "assignedTo": "EMP-00100",
+  "completedDate": "2026-04-16T10:00:00Z",
+  "completedBy": "EMP-00100"
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/json-structure/workday-business-processes-process-step-structure.json",
+  "title": "Process Step",
+  "description": "A step within a running business process instance",
+  "type": "object",
+  "properties": {
+    "stepId": {
+      "description": "Step identifier",
+      "type": "string"
+    },
+    "stepName": {
+      "description": "Step display name",
+      "type": "string"
+    },
+    "stepType": {
+      "description": "Type of process step",
+      "type": "string",
+      "enum": [
+        "APPROVAL",
+        "ACTION",
+        "NOTIFICATION",
+        "CONDITION",
+        "INTEGRATION"
+      ]
+    },
+    "status": {
+      "description": "Step status",
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "IN_PROGRESS",
+        "COMPLETE",
+        "SKIPPED",
+        "ERROR"
+      ]
+    },
+    "assignedTo": {
+      "description": "User or group assigned to this step",
+      "type": "string"
+    },
+    "dueDate": {
+      "description": "Step due date",
+      "type": "date"
+    },
+    "completedDate": {
+      "description": "Step completion timestamp",
+      "type": "datetime"
+    },
+    "completedBy": {
+      "description": "User who completed the step",
+      "type": "string"
+    }
+  },
+  "required": [
+    "stepId",
+    "stepName",
+    "stepType",
+    "status"
+  ]
+}

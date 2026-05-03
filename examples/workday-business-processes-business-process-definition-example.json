@@ -1,0 +1,28 @@
+{
+  "id": "BPD-HIRE-001",
+  "name": "Hire Employee",
+  "type": "HireEmployee",
+  "status": "ACTIVE",
+  "version": 2,
+  "description": "Business process for hiring new employees including manager approval and background check",
+  "steps": [
+    {
+      "stepId": "STEP-001",
+      "stepType": "APPROVAL",
+      "assignedGroup": "HR Managers",
+      "order": 1
+    },
+    {
+      "stepId": "STEP-002",
+      "stepType": "ACTION",
+      "assignedGroup": "Background Check Team",
+      "order": 2
+    },
+    {
+      "stepId": "STEP-003",
+      "stepType": "NOTIFICATION",
+      "assignedGroup": "IT Provisioning",
+      "order": 3
+    }
+  ]
+}

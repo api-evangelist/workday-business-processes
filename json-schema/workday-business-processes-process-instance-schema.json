@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/json-schema/workday-business-processes-process-instance-schema.json",
+  "title": "Process Instance",
+  "description": "A running or completed business process instance",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique process instance identifier"
+    },
+    "definitionId": {
+      "type": "string",
+      "description": "Business process definition identifier"
+    },
+    "processType": {
+      "type": "string",
+      "description": "Business process type"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "INITIATED",
+        "IN_PROGRESS",
+        "PENDING_ACTION",
+        "COMPLETE",
+        "CANCELLED",
+        "ERROR"
+      ],
+      "description": "Current process status"
+    },
+    "initiatorId": {
+      "type": "string",
+      "description": "ID of the user who initiated the process"
+    },
+    "transactionId": {
+      "type": "string",
+      "description": "Associated transaction or worker ID"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Process start timestamp"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Process completion timestamp"
+    },
+    "currentStep": {
+      "type": "string",
+      "description": "Name of the current active step"
+    },
+    "completionPercent": {
+      "type": "integer",
+      "description": "Percentage of steps completed"
+    },
+    "cancelReason": {
+      "type": "string",
+      "description": "Reason for cancellation"
+    }
+  },
+  "required": [
+    "id",
+    "definitionId",
+    "processType",
+    "status",
+    "initiatorId"
+  ]
+}

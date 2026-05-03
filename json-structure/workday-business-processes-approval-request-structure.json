@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/json-structure/workday-business-processes-approval-request-structure.json",
+  "title": "Approval Request",
+  "description": "Request to approve an inbox item in a business process",
+  "type": "object",
+  "properties": {
+    "comment": {
+      "description": "Approval comment",
+      "type": "string"
+    },
+    "approverId": {
+      "description": "ID of the approving user",
+      "type": "string"
+    }
+  },
+  "required": [
+    "approverId"
+  ]
+}

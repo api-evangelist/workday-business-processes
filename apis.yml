@@ -5,7 +5,7 @@ image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: >-
   https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-03-16'
+modified: '2026-05-03'
 specificationVersion: '0.19'
 apis:
   - name: Workday Business Process API
@@ -38,6 +38,46 @@ apis:
         url: https://status.workday.com
       - type: Support
         url: https://community.workday.com
+      - type: OpenAPI
+        url: openapi/workday-business-processes-openapi.yml
+      - type: JSONSchema
+        url: json-schema/workday-business-processes-business-process-definition-schema.json
+      - type: JSONSchema
+        url: json-schema/workday-business-processes-process-instance-schema.json
+      - type: JSONSchema
+        url: json-schema/workday-business-processes-initiate-process-request-schema.json
+      - type: JSONSchema
+        url: json-schema/workday-business-processes-process-step-schema.json
+      - type: JSONSchema
+        url: json-schema/workday-business-processes-inbox-item-schema.json
+      - type: JSONSchema
+        url: json-schema/workday-business-processes-approval-request-schema.json
+      - type: JSONSchema
+        url: json-schema/workday-business-processes-denial-request-schema.json
+      - type: JSONStructure
+        url: json-structure/workday-business-processes-business-process-definition-structure.json
+      - type: JSONStructure
+        url: json-structure/workday-business-processes-process-instance-structure.json
+      - type: JSONStructure
+        url: json-structure/workday-business-processes-initiate-process-request-structure.json
+      - type: JSONStructure
+        url: json-structure/workday-business-processes-process-step-structure.json
+      - type: JSONStructure
+        url: json-structure/workday-business-processes-inbox-item-structure.json
+      - type: JSONStructure
+        url: json-structure/workday-business-processes-approval-request-structure.json
+      - type: JSONStructure
+        url: json-structure/workday-business-processes-denial-request-structure.json
+      - type: JSONLd
+        url: json-ld/workday-business-processes-context.jsonld
+      - type: SpectralRules
+        url: rules/workday-business-processes-spectral-rules.yml
+      - type: NaftikoCapability - Workflow Management
+        url: capabilities/workflow-management.yaml
+      - type: NaftikoCapability - Business Processes (Shared)
+        url: capabilities/shared/business-processes.yaml
+      - type: Vocabulary
+        url: vocabulary/workday-business-processes-vocabulary.yml
     contact:
       - type: Support
         url: https://www.workday.com/en-us/company/customer-support.html
@@ -54,6 +94,16 @@ common:
     url: https://www.workday.com/en-us/terms-of-service.html
   - type: Security
     url: https://www.workday.com/en-us/why-workday/our-technology/security.html
+  - type: JSON-LD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: NaftikoCapability - Workflow Management
+    url: capabilities/workflow-management.yaml
+  - type: NaftikoCapability - Business Processes (Shared)
+    url: capabilities/shared/business-processes.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

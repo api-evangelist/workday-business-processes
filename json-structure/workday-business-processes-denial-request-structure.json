@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/json-structure/workday-business-processes-denial-request-structure.json",
+  "title": "Denial Request",
+  "description": "Request to deny an inbox item in a business process",
+  "type": "object",
+  "properties": {
+    "comment": {
+      "description": "Denial reason or comment",
+      "type": "string"
+    },
+    "denierId": {
+      "description": "ID of the denying user",
+      "type": "string"
+    }
+  },
+  "required": [
+    "denierId",
+    "comment"
+  ]
+}

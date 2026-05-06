@@ -1,209 +1,205 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Workday Workflow Management"
-  description: "Unified capability for managers and HR teams managing Workday business processes including initiating workflows, processing approvals, managing inbox items, and monitoring process status."
+  label: Workday Workflow Management
+  description: Unified capability for managers and HR teams managing Workday business processes including initiating workflows,
+    processing approvals, managing inbox items, and monitoring process status.
   tags:
-    - Approvals
-    - Business Processes
-    - Enterprise
-    - HCM
-    - Workflows
-    - Workday
-  created: "2026-05-03"
-  modified: "2026-05-03"
-
+  - Approvals
+  - Business Processes
+  - Enterprise
+  - HCM
+  - Workflows
+  - Workday
+  created: '2026-05-03'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      WORKDAY_CLIENT_ID: WORKDAY_CLIENT_ID
-      WORKDAY_CLIENT_SECRET: WORKDAY_CLIENT_SECRET
-      WORKDAY_TENANT: WORKDAY_TENANT
-
+- namespace: env
+  keys:
+    WORKDAY_CLIENT_ID: WORKDAY_CLIENT_ID
+    WORKDAY_CLIENT_SECRET: WORKDAY_CLIENT_SECRET
+    WORKDAY_TENANT: WORKDAY_TENANT
 capability:
   consumes:
-    - import: workday-business-processes
-      location: ./shared/business-processes.yaml
-
+  - openapi: workday-business-processes
+    location: ../../openapi/workday-business-processes-openapi.yml
   exposes:
-    - type: rest
-      port: 8080
-      namespace: workday-workflow-management-api
-      description: "Unified REST API for Workday Workflow Management."
-      resources:
-        - path: /v1/process-definitions
-          name: process-definitions
-          description: "Business process definitions"
-          operations:
-            - method: GET
-              name: list-process-definitions
-              description: "List process definitions"
-              call: "workday-business-processes.list-business-process-definitions"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/process-instances
-          name: process-instances
-          description: "Process instances"
-          operations:
-            - method: GET
-              name: list-process-instances
-              description: "List process instances"
-              call: "workday-business-processes.list-process-instances"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: initiate-process
-              description: "Start a new process"
-              call: "workday-business-processes.initiate-process"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/process-instances/{instanceId}
-          name: process-instance-by-id
-          operations:
-            - method: GET
-              name: get-process-instance
-              description: "Get a process instance"
-              call: "workday-business-processes.get-process-instance"
-              with:
-                instanceId: "rest.instanceId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/inbox-items
-          name: inbox-items
-          description: "Inbox items"
-          operations:
-            - method: GET
-              name: list-inbox-items
-              description: "List inbox items"
-              call: "workday-business-processes.list-inbox-items"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/inbox-items/{itemId}/approve
-          name: inbox-item-approve
-          operations:
-            - method: POST
-              name: approve-inbox-item
-              description: "Approve inbox item"
-              call: "workday-business-processes.approve-inbox-item"
-              with:
-                itemId: "rest.itemId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/inbox-items/{itemId}/deny
-          name: inbox-item-deny
-          operations:
-            - method: POST
-              name: deny-inbox-item
-              description: "Deny inbox item"
-              call: "workday-business-processes.deny-inbox-item"
-              with:
-                itemId: "rest.itemId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9080
-      namespace: workday-workflow-management-mcp
-      transport: http
-      description: "MCP server for AI-assisted Workday Workflow Management, business process automation, and approval workflows."
-      tools:
-        - name: list-process-definitions
-          description: "List Workday business process type definitions available for initiation"
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "workday-business-processes.list-business-process-definitions"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-process-definition
-          description: "Get a specific Workday business process definition with step details"
-          hints:
-            readOnly: true
-          call: "workday-business-processes.get-business-process-definition"
-          with:
-            definitionId: "tools.definitionId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-process-instances
-          description: "List Workday business process instances with status and progress tracking"
-          hints:
-            readOnly: true
-          call: "workday-business-processes.list-process-instances"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: initiate-process
-          description: "Initiate a new Workday business process for hire, termination, or other workflow"
-          hints:
-            readOnly: false
-          call: "workday-business-processes.initiate-process"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-process-instance
-          description: "Get the current status, steps, and progress of a business process instance"
-          hints:
-            readOnly: true
-          call: "workday-business-processes.get-process-instance"
-          with:
-            instanceId: "tools.instanceId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-process-steps
-          description: "List all steps in a business process instance with completion status"
-          hints:
-            readOnly: true
-          call: "workday-business-processes.list-process-steps"
-          with:
-            instanceId: "tools.instanceId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: cancel-process-instance
-          description: "Cancel a running business process instance with a reason"
-          hints:
-            readOnly: false
-          call: "workday-business-processes.cancelProcessInstance"
-          with:
-            instanceId: "tools.instanceId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-inbox-items
-          description: "List Workday inbox items pending action for a user or worker"
-          hints:
-            readOnly: true
-          call: "workday-business-processes.list-inbox-items"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: approve-inbox-item
-          description: "Approve a Workday business process inbox item to advance the workflow"
-          hints:
-            readOnly: false
-          call: "workday-business-processes.approve-inbox-item"
-          with:
-            itemId: "tools.itemId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: deny-inbox-item
-          description: "Deny a Workday business process inbox item to reject the workflow step"
-          hints:
-            readOnly: false
-          call: "workday-business-processes.deny-inbox-item"
-          with:
-            itemId: "tools.itemId"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: workday-workflow-management-api
+    description: Unified REST API for Workday Workflow Management.
+    resources:
+    - path: /v1/process-definitions
+      name: process-definitions
+      description: Business process definitions
+      operations:
+      - method: GET
+        name: list-process-definitions
+        description: List process definitions
+        call: workday-business-processes.list-business-process-definitions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/process-instances
+      name: process-instances
+      description: Process instances
+      operations:
+      - method: GET
+        name: list-process-instances
+        description: List process instances
+        call: workday-business-processes.list-process-instances
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: initiate-process
+        description: Start a new process
+        call: workday-business-processes.initiate-process
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/process-instances/{instanceId}
+      name: process-instance-by-id
+      operations:
+      - method: GET
+        name: get-process-instance
+        description: Get a process instance
+        call: workday-business-processes.get-process-instance
+        with:
+          instanceId: rest.instanceId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/inbox-items
+      name: inbox-items
+      description: Inbox items
+      operations:
+      - method: GET
+        name: list-inbox-items
+        description: List inbox items
+        call: workday-business-processes.list-inbox-items
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/inbox-items/{itemId}/approve
+      name: inbox-item-approve
+      operations:
+      - method: POST
+        name: approve-inbox-item
+        description: Approve inbox item
+        call: workday-business-processes.approve-inbox-item
+        with:
+          itemId: rest.itemId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/inbox-items/{itemId}/deny
+      name: inbox-item-deny
+      operations:
+      - method: POST
+        name: deny-inbox-item
+        description: Deny inbox item
+        call: workday-business-processes.deny-inbox-item
+        with:
+          itemId: rest.itemId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9080
+    namespace: workday-workflow-management-mcp
+    transport: http
+    description: MCP server for AI-assisted Workday Workflow Management, business process automation, and approval workflows.
+    tools:
+    - name: list-process-definitions
+      description: List Workday business process type definitions available for initiation
+      hints:
+        readOnly: true
+        openWorld: true
+      call: workday-business-processes.list-business-process-definitions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-process-definition
+      description: Get a specific Workday business process definition with step details
+      hints:
+        readOnly: true
+      call: workday-business-processes.get-business-process-definition
+      with:
+        definitionId: tools.definitionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-process-instances
+      description: List Workday business process instances with status and progress tracking
+      hints:
+        readOnly: true
+      call: workday-business-processes.list-process-instances
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: initiate-process
+      description: Initiate a new Workday business process for hire, termination, or other workflow
+      hints:
+        readOnly: false
+      call: workday-business-processes.initiate-process
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-process-instance
+      description: Get the current status, steps, and progress of a business process instance
+      hints:
+        readOnly: true
+      call: workday-business-processes.get-process-instance
+      with:
+        instanceId: tools.instanceId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-process-steps
+      description: List all steps in a business process instance with completion status
+      hints:
+        readOnly: true
+      call: workday-business-processes.list-process-steps
+      with:
+        instanceId: tools.instanceId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancel-process-instance
+      description: Cancel a running business process instance with a reason
+      hints:
+        readOnly: false
+      call: workday-business-processes.cancelProcessInstance
+      with:
+        instanceId: tools.instanceId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-inbox-items
+      description: List Workday inbox items pending action for a user or worker
+      hints:
+        readOnly: true
+      call: workday-business-processes.list-inbox-items
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: approve-inbox-item
+      description: Approve a Workday business process inbox item to advance the workflow
+      hints:
+        readOnly: false
+      call: workday-business-processes.approve-inbox-item
+      with:
+        itemId: tools.itemId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deny-inbox-item
+      description: Deny a Workday business process inbox item to reject the workflow step
+      hints:
+        readOnly: false
+      call: workday-business-processes.deny-inbox-item
+      with:
+        itemId: tools.itemId
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -28,13 +28,13 @@ apis:
         url: https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-authentication.html
       - type: SDKs
         url: https://github.com/Workday
-      - type: Rate Limits
+      - type: RateLimits
         url: https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-rate-limits.html
       - type: Webhooks
         url: https://doc.workday.com/admin-guide/en-us/workday-integrations/integration-concepts/workday-webhooks.html
-      - type: Changelog
+      - type: ChangeLog
         url: https://community.workday.com/api-release-notes
-      - type: Status
+      - type: StatusPage
         url: https://status.workday.com
       - type: Support
         url: https://community.workday.com
@@ -68,7 +68,7 @@ apis:
         url: json-structure/workday-business-processes-approval-request-structure.json
       - type: JSONStructure
         url: json-structure/workday-business-processes-denial-request-structure.json
-      - type: JSONLd
+      - type: JSONLD
         url: json-ld/workday-business-processes-context.jsonld
       - type: SpectralRules
         url: rules/workday-business-processes-spectral-rules.yml
@@ -84,17 +84,17 @@ apis:
 common:
   - type: Portal
     url: https://community.workday.com
-  - type: Getting Started
+  - type: GettingStarted
     url: https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/getting-started-with-workday-web-services.html
   - type: API Standards
     url: https://doc.workday.com/admin-guide/en-us/workday-rest-api/workday-rest-api-overview.html
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.workday.com/en-us/privacy.html
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.workday.com/en-us/terms-of-service.html
   - type: Security
     url: https://www.workday.com/en-us/why-workday/our-technology/security.html
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/workday-business-processes-context.jsonld
   - type: SpectralRules
     url: rules/workday-business-processes-spectral-rules.yml

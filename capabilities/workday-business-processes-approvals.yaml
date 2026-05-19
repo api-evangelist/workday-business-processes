@@ -1,0 +1,136 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Business Process API — Approvals
+  description: 'Workday Business Process API — Approvals. 2 operations. Lead operation: Workday Approve Inbox Item. Self-contained
+    Naftiko capability covering one Workday Business Processes business surface.'
+  tags:
+  - Workday Business Processes
+  - Approvals
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_BUSINESS_PROCESSES_API_KEY: WORKDAY_BUSINESS_PROCESSES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: workday-business-processes-approvals
+    baseUri: https://{tenant}.workday.com/api/businessProcess/v1
+    description: Workday Business Process API — Approvals business capability. Self-contained, no shared references.
+    resources:
+    - name: inboxItems-itemId-approve
+      path: /inboxItems/{itemId}/approve
+      operations:
+      - name: approveinboxitem
+        method: POST
+        description: Workday Approve Inbox Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: itemId
+          in: path
+          type: string
+          description: Inbox item identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: inboxItems-itemId-deny
+      path: /inboxItems/{itemId}/deny
+      operations:
+      - name: denyinboxitem
+        method: POST
+        description: Workday Deny Inbox Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: itemId
+          in: path
+          type: string
+          description: Inbox item identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_BUSINESS_PROCESSES_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: workday-business-processes-approvals-rest
+    port: 8080
+    description: REST adapter for Workday Business Process API — Approvals. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/inboxitems/{itemid}/approve
+      name: inboxitems-itemid-approve
+      description: REST surface for inboxItems-itemId-approve.
+      operations:
+      - method: POST
+        name: approveinboxitem
+        description: Workday Approve Inbox Item
+        call: workday-business-processes-approvals.approveinboxitem
+        with:
+          itemId: rest.itemId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/inboxitems/{itemid}/deny
+      name: inboxitems-itemid-deny
+      description: REST surface for inboxItems-itemId-deny.
+      operations:
+      - method: POST
+        name: denyinboxitem
+        description: Workday Deny Inbox Item
+        call: workday-business-processes-approvals.denyinboxitem
+        with:
+          itemId: rest.itemId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: workday-business-processes-approvals-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Business Process API — Approvals. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: workday-approve-inbox-item
+      description: Workday Approve Inbox Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: workday-business-processes-approvals.approveinboxitem
+      with:
+        itemId: tools.itemId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: workday-deny-inbox-item
+      description: Workday Deny Inbox Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: workday-business-processes-approvals.denyinboxitem
+      with:
+        itemId: tools.itemId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

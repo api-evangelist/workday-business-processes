@@ -1,0 +1,97 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Workday Business Process API — Inbox Items
+  description: 'Workday Business Process API — Inbox Items. 1 operations. Lead operation: Workday List Inbox Items. Self-contained
+    Naftiko capability covering one Workday Business Processes business surface.'
+  tags:
+  - Workday Business Processes
+  - Inbox Items
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    WORKDAY_BUSINESS_PROCESSES_API_KEY: WORKDAY_BUSINESS_PROCESSES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: workday-business-processes-inbox-items
+    baseUri: https://{tenant}.workday.com/api/businessProcess/v1
+    description: Workday Business Process API — Inbox Items business capability. Self-contained, no shared references.
+    resources:
+    - name: inboxItems
+      path: /inboxItems
+      operations:
+      - name: listinboxitems
+        method: GET
+        description: Workday List Inbox Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of records to return
+        - name: offset
+          in: query
+          type: integer
+          description: Number of records to skip
+        - name: workerId
+          in: query
+          type: string
+          description: Filter inbox items by worker ID
+        - name: status
+          in: query
+          type: string
+          description: Filter by item status (PENDING, COMPLETE)
+    authentication:
+      type: bearer
+      token: '{{env.WORKDAY_BUSINESS_PROCESSES_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: workday-business-processes-inbox-items-rest
+    port: 8080
+    description: REST adapter for Workday Business Process API — Inbox Items. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/inboxitems
+      name: inboxitems
+      description: REST surface for inboxItems.
+      operations:
+      - method: GET
+        name: listinboxitems
+        description: Workday List Inbox Items
+        call: workday-business-processes-inbox-items.listinboxitems
+        with:
+          limit: rest.limit
+          offset: rest.offset
+          workerId: rest.workerId
+          status: rest.status
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: workday-business-processes-inbox-items-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Workday Business Process API — Inbox Items. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: workday-list-inbox-items
+      description: Workday List Inbox Items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: workday-business-processes-inbox-items.listinboxitems
+      with:
+        limit: tools.limit
+        offset: tools.offset
+        workerId: tools.workerId
+        status: tools.status
+      outputParameters:
+      - type: object
+        mapping: $.

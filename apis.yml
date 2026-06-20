@@ -3,7 +3,7 @@ name: Workday Business Processes
 description: >-
   APIs for managing and executing business processes within Workday, including initiating, monitoring, and completing
   various workflow processes.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-05-19'

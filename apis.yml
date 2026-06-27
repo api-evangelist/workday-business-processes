@@ -76,9 +76,9 @@ apis:
         url: json-ld/workday-business-processes-context.jsonld
       - type: SpectralRules
         url: rules/workday-business-processes-spectral-rules.yml
-      - type: NaftikoCapability - Workflow Management
+      - type: X-NaftikoCapability-WorkflowManagement
         url: capabilities/workflow-management.yaml
-      - type: NaftikoCapability - Business Processes (Shared)
+      - type: X-NaftikoCapability-BusinessProcessesShared
         url: capabilities/shared/business-processes.yaml
       - type: Vocabulary
         url: vocabulary/workday-business-processes-vocabulary.yml
@@ -103,9 +103,9 @@ common:
     url: json-ld/workday-business-processes-context.jsonld
   - type: SpectralRules
     url: rules/workday-business-processes-spectral-rules.yml
-  - type: NaftikoCapability - Workflow Management
+  - type: X-NaftikoCapability-WorkflowManagement
     url: capabilities/workflow-management.yaml
-  - type: NaftikoCapability - Business Processes (Shared)
+  - type: X-NaftikoCapability-BusinessProcessesShared
     url: capabilities/shared/business-processes.yaml
   - type: Vocabulary
     url: vocabulary/workday-business-processes-vocabulary.yml

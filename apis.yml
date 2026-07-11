@@ -86,6 +86,10 @@ apis:
       - type: Support
         url: https://www.workday.com/en-us/company/customer-support.html
 common:
+  - type: TrustCenter
+    url: security/workday-business-processes-trust-center.yml
+  - type: DomainSecurity
+    url: security/workday-business-processes-domain-security.yml
   - type: Authentication
     url: authentication/workday-business-processes-authentication.yml
   - type: OAuthScopes

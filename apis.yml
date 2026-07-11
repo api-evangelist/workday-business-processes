@@ -86,6 +86,10 @@ apis:
       - type: Support
         url: https://www.workday.com/en-us/company/customer-support.html
 common:
+  - type: Authentication
+    url: authentication/workday-business-processes-authentication.yml
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
   - type: Portal
     url: https://community.workday.com
   - type: GettingStarted

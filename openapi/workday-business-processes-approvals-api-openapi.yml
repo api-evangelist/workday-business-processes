@@ -1,0 +1,287 @@
+openapi: 3.0.3
+info:
+  title: Workday Business Process Approvals API
+  description: The Workday Business Process API provides RESTful access to business process management capabilities including initiating workflows, managing approvals, tracking process instances, retrieving process definitions, and handling inbox items. The API enables organizations to programmatically trigger Workday business processes, monitor their status, and integrate workflow automation with external systems.
+  version: v41.1
+  contact:
+    name: Workday Developer Support
+    url: https://community.workday.com/
+  x-generated-from: documentation
+servers:
+- url: https://{tenant}.workday.com/api/businessProcess/v1
+  description: Workday tenant REST API endpoint
+  variables:
+    tenant:
+      default: wd2-impl-services1
+      description: Your Workday tenant hostname
+security:
+- oauth2: []
+tags:
+- name: Approvals
+  description: Manage approval steps and approval chains
+paths:
+  /inboxItems/{itemId}/approve:
+    post:
+      operationId: approveInboxItem
+      summary: Workday Approve Inbox Item
+      description: Approves an inbox item to advance a business process.
+      tags:
+      - Approvals
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        description: Inbox item identifier
+        schema:
+          type: string
+        example: INB-001
+      requestBody:
+        description: Approval details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApprovalRequest'
+            examples:
+              ApproveInboxItemExample:
+                summary: Approve inbox item request
+                x-microcks-default: true
+                value:
+                  comment: Candidate meets all requirements. Approved to proceed.
+                  approverId: EMP-00200
+      responses:
+        '200':
+          description: Inbox item approved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InboxItem'
+              examples:
+                ApproveInboxItem200Example:
+                  summary: Default approveInboxItem 200 response
+                  x-microcks-default: true
+                  value:
+                    id: INB-001
+                    status: COMPLETE
+                    actionTaken: APPROVED
+                    completedDate: '2026-05-05T14:30:00Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: URI_PARTS
+        dispatcherRules: itemId
+  /inboxItems/{itemId}/deny:
+    post:
+      operationId: denyInboxItem
+      summary: Workday Deny Inbox Item
+      description: Denies an inbox item to reject a business process step.
+      tags:
+      - Approvals
+      parameters:
+      - name: itemId
+        in: path
+        required: true
+        description: Inbox item identifier
+        schema:
+          type: string
+        example: INB-002
+      requestBody:
+        description: Denial details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DenialRequest'
+            examples:
+              DenyInboxItemExample:
+                summary: Deny inbox item request
+                x-microcks-default: true
+                value:
+                  comment: Budget allocation not approved for this quarter.
+                  denierId: EMP-00200
+      responses:
+        '200':
+          description: Inbox item denied successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InboxItem'
+              examples:
+                DenyInboxItem200Example:
+                  summary: Default denyInboxItem 200 response
+                  x-microcks-default: true
+                  value:
+                    id: INB-002
+                    status: COMPLETE
+                    actionTaken: DENIED
+                    completedDate: '2026-05-05T15:00:00Z'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: URI_PARTS
+        dispatcherRules: itemId
+components:
+  schemas:
+    DenialRequest:
+      title: Denial Request
+      description: Request to deny an inbox item
+      type: object
+      properties:
+        comment:
+          type: string
+          description: Denial reason or comment
+        denierId:
+          type: string
+          description: ID of the denying user
+      required:
+      - denierId
+      - comment
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required:
+      - error
+      - message
+    InboxItem:
+      title: Inbox Item
+      description: A business process inbox item requiring user action
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique inbox item identifier
+        processInstanceId:
+          type: string
+          description: Associated process instance identifier
+        subject:
+          type: string
+          description: Inbox item subject line
+        assignedTo:
+          type: string
+          description: User assigned to handle this item
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETE
+          - DELEGATED
+          description: Item status
+        dueDate:
+          type: string
+          format: date
+          description: Item due date
+        createdDate:
+          type: string
+          format: date-time
+          description: Item creation timestamp
+        completedDate:
+          type: string
+          format: date-time
+          description: Item completion timestamp
+        actionTaken:
+          type: string
+          enum:
+          - APPROVED
+          - DENIED
+          - DELEGATED
+          - RETRACTED
+          description: Action taken on the item
+        priority:
+          type: string
+          enum:
+          - HIGH
+          - MEDIUM
+          - LOW
+          description: Item priority
+      required:
+      - id
+      - processInstanceId
+      - subject
+      - assignedTo
+      - status
+    ApprovalRequest:
+      title: Approval Request
+      description: Request to approve an inbox item
+      type: object
+      properties:
+        comment:
+          type: string
+          description: Approval comment
+        approverId:
+          type: string
+          description: ID of the approving user
+      required:
+      - approverId
+  responses:
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: BAD_REQUEST
+            message: Invalid request body
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            businessProcess: Access to Workday Business Process API

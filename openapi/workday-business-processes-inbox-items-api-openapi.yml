@@ -1,0 +1,204 @@
+openapi: 3.0.3
+info:
+  title: Workday Business Process Approvals Inbox Items API
+  description: The Workday Business Process API provides RESTful access to business process management capabilities including initiating workflows, managing approvals, tracking process instances, retrieving process definitions, and handling inbox items. The API enables organizations to programmatically trigger Workday business processes, monitor their status, and integrate workflow automation with external systems.
+  version: v41.1
+  contact:
+    name: Workday Developer Support
+    url: https://community.workday.com/
+  x-generated-from: documentation
+servers:
+- url: https://{tenant}.workday.com/api/businessProcess/v1
+  description: Workday tenant REST API endpoint
+  variables:
+    tenant:
+      default: wd2-impl-services1
+      description: Your Workday tenant hostname
+security:
+- oauth2: []
+tags:
+- name: Inbox Items
+  description: Manage user inbox items requiring action
+paths:
+  /inboxItems:
+    get:
+      operationId: listInboxItems
+      summary: Workday List Inbox Items
+      description: Retrieves a collection of inbox items requiring user action for business processes.
+      tags:
+      - Inbox Items
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of records to return
+        schema:
+          type: integer
+          default: 100
+        example: 100
+      - name: offset
+        in: query
+        description: Number of records to skip
+        schema:
+          type: integer
+          default: 0
+        example: 0
+      - name: workerId
+        in: query
+        description: Filter inbox items by worker ID
+        schema:
+          type: string
+        example: EMP-12345
+      - name: status
+        in: query
+        description: Filter by item status (PENDING, COMPLETE)
+        schema:
+          type: string
+        example: PENDING
+      responses:
+        '200':
+          description: A list of inbox items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InboxItemsResponse'
+              examples:
+                ListInboxItems200Example:
+                  summary: Default listInboxItems 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 7
+                    data:
+                    - id: INB-001
+                      processInstanceId: PI-2026-001
+                      subject: Approve Hire - Software Engineer
+                      assignedTo: EMP-00200
+                      status: PENDING
+                      dueDate: '2026-05-10'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+  schemas:
+    InboxItem:
+      title: Inbox Item
+      description: A business process inbox item requiring user action
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique inbox item identifier
+        processInstanceId:
+          type: string
+          description: Associated process instance identifier
+        subject:
+          type: string
+          description: Inbox item subject line
+        assignedTo:
+          type: string
+          description: User assigned to handle this item
+        status:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETE
+          - DELEGATED
+          description: Item status
+        dueDate:
+          type: string
+          format: date
+          description: Item due date
+        createdDate:
+          type: string
+          format: date-time
+          description: Item creation timestamp
+        completedDate:
+          type: string
+          format: date-time
+          description: Item completion timestamp
+        actionTaken:
+          type: string
+          enum:
+          - APPROVED
+          - DENIED
+          - DELEGATED
+          - RETRACTED
+          description: Action taken on the item
+        priority:
+          type: string
+          enum:
+          - HIGH
+          - MEDIUM
+          - LOW
+          description: Item priority
+      required:
+      - id
+      - processInstanceId
+      - subject
+      - assignedTo
+      - status
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required:
+      - error
+      - message
+    InboxItemsResponse:
+      title: Inbox Items Response
+      description: Paginated response containing a list of inbox items
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of inbox items
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/InboxItem'
+      required:
+      - total
+      - data
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+          scopes:
+            businessProcess: Access to Workday Business Process API

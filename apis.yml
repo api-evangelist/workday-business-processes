@@ -3,89 +3,296 @@ name: Workday Business Processes
 description: >-
   APIs for managing and executing business processes within Workday, including initiating, monitoring, and completing
   various workflow processes.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/workday-business-processes.png
 url: https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - name: Workday Business Process API
-    description: >-
-      API for initiating, managing, and monitoring business processes in Workday, including approvals, onboarding, and
-      other workflow operations.
-    image: https://www.workday.com/content/dam/web/images/logos/workday-logo.svg
-    humanURL: https://www.workday.com/en-us/products/financial-management/business-process.html
-    baseURL: https://wd2-impl-services1.workday.com/ccx/service
-    tags:
-      - Approvals
-      - Business Processes
-      - Finance
-      - HCM
-      - Workflows
-    properties:
-      - type: Documentation
-        url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
-      - type: OpenAPI
-        url: >-
-          https://community.workday.com/sites/default/files/file-hosting/productionapi/Business_Process_Service/v41.1/Business_Process_Service.yaml
-      - type: Authentication
-        url: https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-authentication.html
-      - type: SDKs
-        url: https://github.com/Workday
-      - type: RateLimits
-        url: https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-rate-limits.html
-      - type: Webhooks
-        url: https://doc.workday.com/admin-guide/en-us/workday-integrations/integration-concepts/workday-webhooks.html
-      - type: ChangeLog
-        url: https://community.workday.com/api-release-notes
-      - type: StatusPage
-        url: https://status.workday.com
-      - type: Support
-        url: https://community.workday.com
-      - type: OpenAPI
-        url: openapi/workday-business-processes-openapi.yml
-      - type: JSONSchema
-        url: json-schema/workday-business-processes-business-process-definition-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-business-processes-process-instance-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-business-processes-initiate-process-request-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-business-processes-process-step-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-business-processes-inbox-item-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-business-processes-approval-request-schema.json
-      - type: JSONSchema
-        url: json-schema/workday-business-processes-denial-request-schema.json
-      - type: JSONStructure
-        url: json-structure/workday-business-processes-business-process-definition-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-business-processes-process-instance-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-business-processes-initiate-process-request-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-business-processes-process-step-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-business-processes-inbox-item-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-business-processes-approval-request-structure.json
-      - type: JSONStructure
-        url: json-structure/workday-business-processes-denial-request-structure.json
-      - type: JSONLD
-        url: json-ld/workday-business-processes-context.jsonld
-      - type: SpectralRules
-        url: rules/workday-business-processes-spectral-rules.yml
-      - type: X-NaftikoCapability-WorkflowManagement
-        url: capabilities/workflow-management.yaml
-      - type: X-NaftikoCapability-BusinessProcessesShared
-        url: capabilities/shared/business-processes.yaml
-      - type: Vocabulary
-        url: vocabulary/workday-business-processes-vocabulary.yml
-    contact:
-      - type: Support
-        url: https://www.workday.com/en-us/company/customer-support.html
+- aid: workday-business-processes:workday-business-processes-approvals-api
+  name: Workday Business Processes Approvals API
+  description: Manage approval steps and approval chains
+  humanURL: https://www.workday.com/en-us/products/financial-management/business-process.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - Approvals
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-approvals-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
+  - type: Authentication
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-authentication.html
+  - type: SDKs
+    url: https://github.com/Workday
+  - type: RateLimits
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-rate-limits.html
+  - type: Webhooks
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/workday-integrations/integration-concepts/workday-webhooks.html
+  - type: ChangeLog
+    url: https://community.workday.com/api-release-notes
+  - type: StatusPage
+    url: https://status.workday.com
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: X-NaftikoCapability-WorkflowManagement
+    url: capabilities/workflow-management.yaml
+  - type: X-NaftikoCapability-BusinessProcessesShared
+    url: capabilities/shared/business-processes.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+- aid: workday-business-processes:workday-business-processes-business-process-definitions-api
+  name: Workday Business Processes Business Process Definitions API
+  description: Retrieve and manage business process type definitions
+  humanURL: https://www.workday.com/en-us/products/financial-management/business-process.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - Business Process Definitions
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-business-process-definitions-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
+  - type: Authentication
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-authentication.html
+  - type: SDKs
+    url: https://github.com/Workday
+  - type: RateLimits
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-rate-limits.html
+  - type: Webhooks
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/workday-integrations/integration-concepts/workday-webhooks.html
+  - type: ChangeLog
+    url: https://community.workday.com/api-release-notes
+  - type: StatusPage
+    url: https://status.workday.com
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: X-NaftikoCapability-WorkflowManagement
+    url: capabilities/workflow-management.yaml
+  - type: X-NaftikoCapability-BusinessProcessesShared
+    url: capabilities/shared/business-processes.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+- aid: workday-business-processes:workday-business-processes-inbox-items-api
+  name: Workday Business Processes Inbox Items API
+  description: Manage user inbox items requiring action
+  humanURL: https://www.workday.com/en-us/products/financial-management/business-process.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - Inbox Items
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-inbox-items-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
+  - type: Authentication
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-authentication.html
+  - type: SDKs
+    url: https://github.com/Workday
+  - type: RateLimits
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-rate-limits.html
+  - type: Webhooks
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/workday-integrations/integration-concepts/workday-webhooks.html
+  - type: ChangeLog
+    url: https://community.workday.com/api-release-notes
+  - type: StatusPage
+    url: https://status.workday.com
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: X-NaftikoCapability-WorkflowManagement
+    url: capabilities/workflow-management.yaml
+  - type: X-NaftikoCapability-BusinessProcessesShared
+    url: capabilities/shared/business-processes.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+- aid: workday-business-processes:workday-business-processes-process-instances-api
+  name: Workday Business Processes Process Instances API
+  description: Manage running business process instances
+  humanURL: https://www.workday.com/en-us/products/financial-management/business-process.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - Process Instances
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-process-instances-api-openapi.yml
+  - type: Documentation
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
+  - type: Authentication
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-authentication.html
+  - type: SDKs
+    url: https://github.com/Workday
+  - type: RateLimits
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-rate-limits.html
+  - type: Webhooks
+    url: >-
+      https://doc.workday.com/admin-guide/en-us/workday-integrations/integration-concepts/workday-webhooks.html
+  - type: ChangeLog
+    url: https://community.workday.com/api-release-notes
+  - type: StatusPage
+    url: https://status.workday.com
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: X-NaftikoCapability-WorkflowManagement
+    url: capabilities/workflow-management.yaml
+  - type: X-NaftikoCapability-BusinessProcessesShared
+    url: capabilities/shared/business-processes.yaml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/workday-business-processes/overview
   - type: AgenticAccess
     url: agentic-access/workday-business-processes-agentic-access.yml
   - type: TrustCenter

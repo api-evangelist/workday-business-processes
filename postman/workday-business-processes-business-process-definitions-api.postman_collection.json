@@ -1,0 +1,519 @@
+{
+  "info": {
+    "_postman_id": "cb545fe3-7926-4972-ab83-a93f5b062776",
+    "name": "Workday Business Process Approvals Business Process Definitions API",
+    "description": "The Workday Business Process API provides RESTful access to business process management capabilities including initiating workflows, managing approvals, tracking process instances, retrieving process definitions, and handling inbox items. The API enables organizations to programmatically trigger Workday business processes, monitor their status, and integrate workflow automation with external systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:55.000Z",
+    "updatedAt": "2026-07-28T03:31:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cb545fe3-7926-4972-ab83-a93f5b062776"
+  },
+  "item": [
+    {
+      "name": "businessProcessDefinitions",
+      "item": [
+        {
+          "name": "{definitionId}",
+          "item": [
+            {
+              "name": "Workday Get Business Process Definition",
+              "id": "e19c9c34-af1a-485e-947c-0e2b472dfb10",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/businessProcessDefinitions/:definitionId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "businessProcessDefinitions",
+                    ":definitionId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "763117b4-ebe2-4db6-8cc1-d645ba06aae4",
+                      "key": "definitionId",
+                      "value": "<string>",
+                      "description": "(Required) Business process definition identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieves a specific business process type definition by its identifier."
+              },
+              "response": [
+                {
+                  "id": "06b363d4-e7a9-4731-b2bf-01cf1508d474",
+                  "name": "A business process definition",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/businessProcessDefinitions/:definitionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "businessProcessDefinitions",
+                        ":definitionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "definitionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"INACTIVE\",\n  \"version\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"steps\": [\n    {\n      \"stepId\": \"<string>\",\n      \"stepType\": \"CONDITION\",\n      \"assignedGroup\": \"<string>\",\n      \"description\": \"<string>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"stepId\": \"<string>\",\n      \"stepType\": \"INTEGRATION\",\n      \"assignedGroup\": \"<string>\",\n      \"description\": \"<string>\",\n      \"order\": \"<integer>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:55.000Z",
+                  "updatedAt": "2026-07-28T03:31:55.000Z",
+                  "uid": "35240-06b363d4-e7a9-4731-b2bf-01cf1508d474"
+                },
+                {
+                  "id": "352df6c9-1acd-4a49-ad32-8e381e2292c9",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/businessProcessDefinitions/:definitionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "businessProcessDefinitions",
+                        ":definitionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "definitionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:55.000Z",
+                  "updatedAt": "2026-07-28T03:31:55.000Z",
+                  "uid": "35240-352df6c9-1acd-4a49-ad32-8e381e2292c9"
+                },
+                {
+                  "id": "910547e4-33cc-4448-9255-57450ce22350",
+                  "name": "Insufficient permissions to access the resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/businessProcessDefinitions/:definitionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "businessProcessDefinitions",
+                        ":definitionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "definitionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:55.000Z",
+                  "updatedAt": "2026-07-28T03:31:55.000Z",
+                  "uid": "35240-910547e4-33cc-4448-9255-57450ce22350"
+                },
+                {
+                  "id": "6ab7f2bb-a2bf-454d-9f0d-42e414941543",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/businessProcessDefinitions/:definitionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "businessProcessDefinitions",
+                        ":definitionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "definitionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:55.000Z",
+                  "updatedAt": "2026-07-28T03:31:55.000Z",
+                  "uid": "35240-6ab7f2bb-a2bf-454d-9f0d-42e414941543"
+                }
+              ],
+              "createdAt": "2026-07-28T03:31:55.000Z",
+              "updatedAt": "2026-07-28T03:31:55.000Z",
+              "uid": "35240-e19c9c34-af1a-485e-947c-0e2b472dfb10"
+            }
+          ],
+          "id": "2b4723e1-5f0f-4905-b3d9-58b78478c9ef",
+          "createdAt": "2026-07-28T03:31:55.000Z",
+          "updatedAt": "2026-07-28T03:31:55.000Z",
+          "uid": "35240-2b4723e1-5f0f-4905-b3d9-58b78478c9ef"
+        },
+        {
+          "name": "Workday List Business Process Definitions",
+          "id": "6ec5c6e9-ba29-4aba-b423-18673e53044b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/businessProcessDefinitions?limit=100&offset=0&processType=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "businessProcessDefinitions"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter by business process type",
+                  "key": "processType",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a collection of business process type definitions available in the Workday tenant."
+          },
+          "response": [
+            {
+              "id": "d7509234-0cd7-4a8e-80ad-56781f3da8c9",
+              "name": "A list of business process definitions",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/businessProcessDefinitions?limit=100&offset=0&processType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "businessProcessDefinitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by business process type",
+                      "key": "processType",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"version\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"steps\": [\n        {\n          \"stepId\": \"<string>\",\n          \"stepType\": \"NOTIFICATION\",\n          \"assignedGroup\": \"<string>\",\n          \"description\": \"<string>\",\n          \"order\": \"<integer>\"\n        },\n        {\n          \"stepId\": \"<string>\",\n          \"stepType\": \"INTEGRATION\",\n          \"assignedGroup\": \"<string>\",\n          \"description\": \"<string>\",\n          \"order\": \"<integer>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"INACTIVE\",\n      \"version\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"steps\": [\n        {\n          \"stepId\": \"<string>\",\n          \"stepType\": \"INTEGRATION\",\n          \"assignedGroup\": \"<string>\",\n          \"description\": \"<string>\",\n          \"order\": \"<integer>\"\n        },\n        {\n          \"stepId\": \"<string>\",\n          \"stepType\": \"APPROVAL\",\n          \"assignedGroup\": \"<string>\",\n          \"description\": \"<string>\",\n          \"order\": \"<integer>\"\n        }\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:55.000Z",
+              "updatedAt": "2026-07-28T03:31:55.000Z",
+              "uid": "35240-d7509234-0cd7-4a8e-80ad-56781f3da8c9"
+            },
+            {
+              "id": "0a11d79b-f10f-4e77-a5d1-ec1014ca72d9",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/businessProcessDefinitions?limit=100&offset=0&processType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "businessProcessDefinitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by business process type",
+                      "key": "processType",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:55.000Z",
+              "updatedAt": "2026-07-28T03:31:55.000Z",
+              "uid": "35240-0a11d79b-f10f-4e77-a5d1-ec1014ca72d9"
+            },
+            {
+              "id": "cbd90760-ed4a-45ad-a83d-ff3df071ea10",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/businessProcessDefinitions?limit=100&offset=0&processType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "businessProcessDefinitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by business process type",
+                      "key": "processType",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:55.000Z",
+              "updatedAt": "2026-07-28T03:31:55.000Z",
+              "uid": "35240-cbd90760-ed4a-45ad-a83d-ff3df071ea10"
+            }
+          ],
+          "createdAt": "2026-07-28T03:31:55.000Z",
+          "updatedAt": "2026-07-28T03:31:55.000Z",
+          "uid": "35240-6ec5c6e9-ba29-4aba-b423-18673e53044b"
+        }
+      ],
+      "id": "218e5bb9-6e3a-475c-8931-ee8ef505760b",
+      "createdAt": "2026-07-28T03:31:55.000Z",
+      "updatedAt": "2026-07-28T03:31:55.000Z",
+      "uid": "35240-218e5bb9-6e3a-475c-8931-ee8ef505760b"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "businessProcess",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/businessProcess/v1"
+    }
+  ]
+}

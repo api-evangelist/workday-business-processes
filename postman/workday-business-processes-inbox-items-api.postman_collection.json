@@ -1,0 +1,298 @@
+{
+  "info": {
+    "_postman_id": "f1d4d5d9-04cb-46a9-967c-e7b3a3a269aa",
+    "name": "Workday Business Process Approvals Inbox Items API",
+    "description": "The Workday Business Process API provides RESTful access to business process management capabilities including initiating workflows, managing approvals, tracking process instances, retrieving process definitions, and handling inbox items. The API enables organizations to programmatically trigger Workday business processes, monitor their status, and integrate workflow automation with external systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:56.000Z",
+    "updatedAt": "2026-07-28T03:31:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f1d4d5d9-04cb-46a9-967c-e7b3a3a269aa"
+  },
+  "item": [
+    {
+      "name": "inboxItems",
+      "item": [
+        {
+          "name": "Workday List Inbox Items",
+          "id": "5ed0f9cf-b9bc-4420-b53e-3ae39a6739ba",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/inboxItems?limit=100&offset=0&workerId=<string>&status=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "inboxItems"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter inbox items by worker ID",
+                  "key": "workerId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by item status (PENDING, COMPLETE)",
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a collection of inbox items requiring user action for business processes."
+          },
+          "response": [
+            {
+              "id": "dc0c225d-ea03-4280-bb34-2d0174b8a820",
+              "name": "A list of inbox items",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/inboxItems?limit=100&offset=0&workerId=<string>&status=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inboxItems"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter inbox items by worker ID",
+                      "key": "workerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by item status (PENDING, COMPLETE)",
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"processInstanceId\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"assignedTo\": \"<string>\",\n      \"status\": \"COMPLETE\",\n      \"dueDate\": \"<date>\",\n      \"createdDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"actionTaken\": \"APPROVED\",\n      \"priority\": \"LOW\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"processInstanceId\": \"<string>\",\n      \"subject\": \"<string>\",\n      \"assignedTo\": \"<string>\",\n      \"status\": \"COMPLETE\",\n      \"dueDate\": \"<date>\",\n      \"createdDate\": \"<dateTime>\",\n      \"completedDate\": \"<dateTime>\",\n      \"actionTaken\": \"RETRACTED\",\n      \"priority\": \"HIGH\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:56.000Z",
+              "updatedAt": "2026-07-28T03:31:56.000Z",
+              "uid": "35240-dc0c225d-ea03-4280-bb34-2d0174b8a820"
+            },
+            {
+              "id": "1e8c2944-889a-4fa6-95b7-baaaa41ca979",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/inboxItems?limit=100&offset=0&workerId=<string>&status=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inboxItems"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter inbox items by worker ID",
+                      "key": "workerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by item status (PENDING, COMPLETE)",
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:56.000Z",
+              "updatedAt": "2026-07-28T03:31:56.000Z",
+              "uid": "35240-1e8c2944-889a-4fa6-95b7-baaaa41ca979"
+            },
+            {
+              "id": "d0bd1721-597a-4091-9b08-f4926dd3604a",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/inboxItems?limit=100&offset=0&workerId=<string>&status=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "inboxItems"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter inbox items by worker ID",
+                      "key": "workerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by item status (PENDING, COMPLETE)",
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:56.000Z",
+              "updatedAt": "2026-07-28T03:31:56.000Z",
+              "uid": "35240-d0bd1721-597a-4091-9b08-f4926dd3604a"
+            }
+          ],
+          "createdAt": "2026-07-28T03:31:56.000Z",
+          "updatedAt": "2026-07-28T03:31:56.000Z",
+          "uid": "35240-5ed0f9cf-b9bc-4420-b53e-3ae39a6739ba"
+        }
+      ],
+      "id": "65926b2f-e320-4f45-a596-f8db9e78460b",
+      "createdAt": "2026-07-28T03:31:56.000Z",
+      "updatedAt": "2026-07-28T03:31:56.000Z",
+      "uid": "35240-65926b2f-e320-4f45-a596-f8db9e78460b"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "businessProcess",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/businessProcess/v1"
+    }
+  ]
+}

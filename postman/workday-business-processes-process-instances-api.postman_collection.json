@@ -1,0 +1,1453 @@
+{
+  "info": {
+    "_postman_id": "2e621a0c-ac49-4754-bd13-8b9e1ad0f98c",
+    "name": "Workday Business Process Approvals Process Instances API",
+    "description": "The Workday Business Process API provides RESTful access to business process management capabilities including initiating workflows, managing approvals, tracking process instances, retrieving process definitions, and handling inbox items. The API enables organizations to programmatically trigger Workday business processes, monitor their status, and integrate workflow automation with external systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:57.000Z",
+    "updatedAt": "2026-07-28T03:31:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2e621a0c-ac49-4754-bd13-8b9e1ad0f98c"
+  },
+  "item": [
+    {
+      "name": "processInstances",
+      "item": [
+        {
+          "name": "{instanceId}",
+          "item": [
+            {
+              "name": "cancel",
+              "item": [
+                {
+                  "name": "Workday Cancel Process Instance",
+                  "id": "8975294e-20f7-4f09-b410-1337c33945c6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reason\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/processInstances/:instanceId/cancel",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "processInstances",
+                        ":instanceId",
+                        "cancel"
+                      ],
+                      "variable": [
+                        {
+                          "id": "65e0c443-a702-440c-b245-5db4eff30e88",
+                          "key": "instanceId",
+                          "value": "<string>",
+                          "description": "(Required) Process instance identifier"
+                        }
+                      ]
+                    },
+                    "description": "Cancels a running business process instance."
+                  },
+                  "response": [
+                    {
+                      "id": "1495ad50-2380-4447-bb23-89399c34b773",
+                      "name": "Process cancelled successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/processInstances/:instanceId/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "processInstances",
+                            ":instanceId",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "instanceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"definitionId\": \"<string>\",\n  \"processType\": \"<string>\",\n  \"status\": \"CANCELLED\",\n  \"initiatorId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"endDate\": \"<dateTime>\",\n  \"currentStep\": \"<string>\",\n  \"completionPercent\": \"<integer>\",\n  \"cancelReason\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:31:57.000Z",
+                      "updatedAt": "2026-07-28T03:31:57.000Z",
+                      "uid": "35240-1495ad50-2380-4447-bb23-89399c34b773"
+                    },
+                    {
+                      "id": "94f6642d-4bc9-41a2-b601-cbab04d34a81",
+                      "name": "Invalid request parameters or body",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/processInstances/:instanceId/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "processInstances",
+                            ":instanceId",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "instanceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:57.000Z",
+                      "updatedAt": "2026-07-28T03:31:57.000Z",
+                      "uid": "35240-94f6642d-4bc9-41a2-b601-cbab04d34a81"
+                    },
+                    {
+                      "id": "bd4f3e72-5f89-4a76-bc28-e2f507514a12",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/processInstances/:instanceId/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "processInstances",
+                            ":instanceId",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "instanceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:57.000Z",
+                      "updatedAt": "2026-07-28T03:31:57.000Z",
+                      "uid": "35240-bd4f3e72-5f89-4a76-bc28-e2f507514a12"
+                    },
+                    {
+                      "id": "f00244a0-5771-41da-acc3-ecb6ad70def1",
+                      "name": "Insufficient permissions to access the resource",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/processInstances/:instanceId/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "processInstances",
+                            ":instanceId",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "instanceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:57.000Z",
+                      "updatedAt": "2026-07-28T03:31:57.000Z",
+                      "uid": "35240-f00244a0-5771-41da-acc3-ecb6ad70def1"
+                    },
+                    {
+                      "id": "17cfbe2a-f1ea-492a-ad17-bad261ad949c",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/processInstances/:instanceId/cancel",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "processInstances",
+                            ":instanceId",
+                            "cancel"
+                          ],
+                          "variable": [
+                            {
+                              "key": "instanceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:57.000Z",
+                      "updatedAt": "2026-07-28T03:31:57.000Z",
+                      "uid": "35240-17cfbe2a-f1ea-492a-ad17-bad261ad949c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:31:57.000Z",
+                  "updatedAt": "2026-07-28T03:31:57.000Z",
+                  "uid": "35240-8975294e-20f7-4f09-b410-1337c33945c6"
+                }
+              ],
+              "id": "d74e5836-16e6-4404-a90d-462c1e5e0f93",
+              "createdAt": "2026-07-28T03:31:57.000Z",
+              "updatedAt": "2026-07-28T03:31:57.000Z",
+              "uid": "35240-d74e5836-16e6-4404-a90d-462c1e5e0f93"
+            },
+            {
+              "name": "steps",
+              "item": [
+                {
+                  "name": "Workday List Process Steps",
+                  "id": "bcc49935-8b90-42ab-9194-2f17bc54395e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/processInstances/:instanceId/steps",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "processInstances",
+                        ":instanceId",
+                        "steps"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0399015f-7c75-4d0f-be84-e84a4f26d2dd",
+                          "key": "instanceId",
+                          "value": "<string>",
+                          "description": "(Required) Process instance identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the steps for a specific business process instance including completion status."
+                  },
+                  "response": [
+                    {
+                      "id": "f883a756-918c-4a19-b12a-026a74a2d7bb",
+                      "name": "A list of process steps",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/processInstances/:instanceId/steps",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "processInstances",
+                            ":instanceId",
+                            "steps"
+                          ],
+                          "variable": [
+                            {
+                              "key": "instanceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"stepId\": \"<string>\",\n      \"stepName\": \"<string>\",\n      \"stepType\": \"APPROVAL\",\n      \"status\": \"SKIPPED\",\n      \"assignedTo\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"completedDate\": \"<dateTime>\",\n      \"completedBy\": \"<string>\"\n    },\n    {\n      \"stepId\": \"<string>\",\n      \"stepName\": \"<string>\",\n      \"stepType\": \"ACTION\",\n      \"status\": \"SKIPPED\",\n      \"assignedTo\": \"<string>\",\n      \"dueDate\": \"<date>\",\n      \"completedDate\": \"<dateTime>\",\n      \"completedBy\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:57.000Z",
+                      "updatedAt": "2026-07-28T03:31:57.000Z",
+                      "uid": "35240-f883a756-918c-4a19-b12a-026a74a2d7bb"
+                    },
+                    {
+                      "id": "74dd40d0-3833-468c-b9d4-116df65fbb32",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/processInstances/:instanceId/steps",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "processInstances",
+                            ":instanceId",
+                            "steps"
+                          ],
+                          "variable": [
+                            {
+                              "key": "instanceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:57.000Z",
+                      "updatedAt": "2026-07-28T03:31:57.000Z",
+                      "uid": "35240-74dd40d0-3833-468c-b9d4-116df65fbb32"
+                    },
+                    {
+                      "id": "2999d4cb-4d39-4390-9feb-a6a9d7ce40ed",
+                      "name": "Insufficient permissions to access the resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/processInstances/:instanceId/steps",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "processInstances",
+                            ":instanceId",
+                            "steps"
+                          ],
+                          "variable": [
+                            {
+                              "key": "instanceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:57.000Z",
+                      "updatedAt": "2026-07-28T03:31:57.000Z",
+                      "uid": "35240-2999d4cb-4d39-4390-9feb-a6a9d7ce40ed"
+                    },
+                    {
+                      "id": "774f6faf-88a4-45aa-825f-452d70bbcee5",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/processInstances/:instanceId/steps",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "processInstances",
+                            ":instanceId",
+                            "steps"
+                          ],
+                          "variable": [
+                            {
+                              "key": "instanceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:57.000Z",
+                      "updatedAt": "2026-07-28T03:31:57.000Z",
+                      "uid": "35240-774f6faf-88a4-45aa-825f-452d70bbcee5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:31:57.000Z",
+                  "updatedAt": "2026-07-28T03:31:57.000Z",
+                  "uid": "35240-bcc49935-8b90-42ab-9194-2f17bc54395e"
+                }
+              ],
+              "id": "63c17b06-f040-41f7-8088-99ebb58ec396",
+              "createdAt": "2026-07-28T03:31:57.000Z",
+              "updatedAt": "2026-07-28T03:31:57.000Z",
+              "uid": "35240-63c17b06-f040-41f7-8088-99ebb58ec396"
+            },
+            {
+              "name": "Workday Get Process Instance",
+              "id": "a1a0ffc1-4dc2-430b-b5dc-bb7098ed0125",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/processInstances/:instanceId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "processInstances",
+                    ":instanceId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a4aafa44-40d4-47d6-adb7-7f7523bf1019",
+                      "key": "instanceId",
+                      "value": "<string>",
+                      "description": "(Required) Process instance identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieves a specific business process instance by its identifier."
+              },
+              "response": [
+                {
+                  "id": "6a469d1f-6475-4617-aff5-440fcc55a6de",
+                  "name": "A process instance",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/processInstances/:instanceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "processInstances",
+                        ":instanceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "instanceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"definitionId\": \"<string>\",\n  \"processType\": \"<string>\",\n  \"status\": \"CANCELLED\",\n  \"initiatorId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"endDate\": \"<dateTime>\",\n  \"currentStep\": \"<string>\",\n  \"completionPercent\": \"<integer>\",\n  \"cancelReason\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:31:57.000Z",
+                  "updatedAt": "2026-07-28T03:31:57.000Z",
+                  "uid": "35240-6a469d1f-6475-4617-aff5-440fcc55a6de"
+                },
+                {
+                  "id": "111fb3c2-acf8-4a1a-9dcc-625c235e2568",
+                  "name": "Authentication credentials are missing or invalid",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/processInstances/:instanceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "processInstances",
+                        ":instanceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "instanceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:57.000Z",
+                  "updatedAt": "2026-07-28T03:31:57.000Z",
+                  "uid": "35240-111fb3c2-acf8-4a1a-9dcc-625c235e2568"
+                },
+                {
+                  "id": "b51ab6a6-6c1f-4121-8038-7fa4e5e82183",
+                  "name": "Insufficient permissions to access the resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/processInstances/:instanceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "processInstances",
+                        ":instanceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "instanceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:57.000Z",
+                  "updatedAt": "2026-07-28T03:31:57.000Z",
+                  "uid": "35240-b51ab6a6-6c1f-4121-8038-7fa4e5e82183"
+                },
+                {
+                  "id": "39f73191-c736-486d-b410-9a99084dc0d3",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/processInstances/:instanceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "processInstances",
+                        ":instanceId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "instanceId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T03:31:57.000Z",
+                  "updatedAt": "2026-07-28T03:31:57.000Z",
+                  "uid": "35240-39f73191-c736-486d-b410-9a99084dc0d3"
+                }
+              ],
+              "createdAt": "2026-07-28T03:31:57.000Z",
+              "updatedAt": "2026-07-28T03:31:57.000Z",
+              "uid": "35240-a1a0ffc1-4dc2-430b-b5dc-bb7098ed0125"
+            }
+          ],
+          "id": "bd49b35a-d5b3-4a87-becc-e91d53bf3d21",
+          "createdAt": "2026-07-28T03:31:57.000Z",
+          "updatedAt": "2026-07-28T03:31:57.000Z",
+          "uid": "35240-bd49b35a-d5b3-4a87-becc-e91d53bf3d21"
+        },
+        {
+          "name": "Workday List Process Instances",
+          "id": "6c7e9837-d5aa-48ae-9c05-083f41be5b45",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/processInstances?limit=100&offset=0&status=<string>&processType=<string>&initiatorId=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "processInstances"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "description": "Number of records to skip",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "Filter by process status",
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by business process type",
+                  "key": "processType",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by process initiator ID",
+                  "key": "initiatorId",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a collection of business process instances with status and progress information."
+          },
+          "response": [
+            {
+              "id": "78c2019f-7cc6-444a-9cce-a050fa73ef13",
+              "name": "A list of process instances",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/processInstances?limit=100&offset=0&status=<string>&processType=<string>&initiatorId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "processInstances"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by process status",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by business process type",
+                      "key": "processType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by process initiator ID",
+                      "key": "initiatorId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total\": \"<integer>\",\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"definitionId\": \"<string>\",\n      \"processType\": \"<string>\",\n      \"status\": \"PENDING_ACTION\",\n      \"initiatorId\": \"<string>\",\n      \"transactionId\": \"<string>\",\n      \"startDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"currentStep\": \"<string>\",\n      \"completionPercent\": \"<integer>\",\n      \"cancelReason\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"definitionId\": \"<string>\",\n      \"processType\": \"<string>\",\n      \"status\": \"PENDING_ACTION\",\n      \"initiatorId\": \"<string>\",\n      \"transactionId\": \"<string>\",\n      \"startDate\": \"<dateTime>\",\n      \"endDate\": \"<dateTime>\",\n      \"currentStep\": \"<string>\",\n      \"completionPercent\": \"<integer>\",\n      \"cancelReason\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:57.000Z",
+              "updatedAt": "2026-07-28T03:31:57.000Z",
+              "uid": "35240-78c2019f-7cc6-444a-9cce-a050fa73ef13"
+            },
+            {
+              "id": "f7d53a45-ee01-4cce-82c9-f8355fd1cb96",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/processInstances?limit=100&offset=0&status=<string>&processType=<string>&initiatorId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "processInstances"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by process status",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by business process type",
+                      "key": "processType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by process initiator ID",
+                      "key": "initiatorId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:57.000Z",
+              "updatedAt": "2026-07-28T03:31:57.000Z",
+              "uid": "35240-f7d53a45-ee01-4cce-82c9-f8355fd1cb96"
+            },
+            {
+              "id": "cd840c04-00ab-4ed2-8f73-d618f8639324",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/processInstances?limit=100&offset=0&status=<string>&processType=<string>&initiatorId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "processInstances"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Number of records to skip",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by process status",
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by business process type",
+                      "key": "processType",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by process initiator ID",
+                      "key": "initiatorId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:57.000Z",
+              "updatedAt": "2026-07-28T03:31:57.000Z",
+              "uid": "35240-cd840c04-00ab-4ed2-8f73-d618f8639324"
+            }
+          ],
+          "createdAt": "2026-07-28T03:31:57.000Z",
+          "updatedAt": "2026-07-28T03:31:57.000Z",
+          "uid": "35240-6c7e9837-d5aa-48ae-9c05-083f41be5b45"
+        },
+        {
+          "name": "Workday Initiate Process",
+          "id": "25e0ce24-f1f6-4122-9ee4-7c5848e56b09",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"definitionId\": \"<string>\",\n  \"initiatorId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"processData\": {\n    \"magna_9b0\": \"ut proident\",\n    \"eud\": -63715835,\n    \"anim_da\": \"consectetur incididunt do eiusmod voluptate\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/processInstances",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "processInstances"
+              ]
+            },
+            "description": "Initiates a new business process instance."
+          },
+          "response": [
+            {
+              "id": "8b26d7f4-c45b-4192-93f0-4efdd9bf8e70",
+              "name": "Process instance created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"definitionId\": \"<string>\",\n  \"initiatorId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"processData\": {\n    \"magna_9b0\": \"ut proident\",\n    \"eud\": -63715835,\n    \"anim_da\": \"consectetur incididunt do eiusmod voluptate\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/processInstances",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "processInstances"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"definitionId\": \"<string>\",\n  \"processType\": \"<string>\",\n  \"status\": \"CANCELLED\",\n  \"initiatorId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"endDate\": \"<dateTime>\",\n  \"currentStep\": \"<string>\",\n  \"completionPercent\": \"<integer>\",\n  \"cancelReason\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:31:57.000Z",
+              "updatedAt": "2026-07-28T03:31:57.000Z",
+              "uid": "35240-8b26d7f4-c45b-4192-93f0-4efdd9bf8e70"
+            },
+            {
+              "id": "4446ffe3-79f7-44a9-8f78-88b592c8bc7b",
+              "name": "Invalid request parameters or body",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"definitionId\": \"<string>\",\n  \"initiatorId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"processData\": {\n    \"magna_9b0\": \"ut proident\",\n    \"eud\": -63715835,\n    \"anim_da\": \"consectetur incididunt do eiusmod voluptate\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/processInstances",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "processInstances"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:57.000Z",
+              "updatedAt": "2026-07-28T03:31:57.000Z",
+              "uid": "35240-4446ffe3-79f7-44a9-8f78-88b592c8bc7b"
+            },
+            {
+              "id": "03850d1c-9b37-41ba-a39e-0250ad1d16bf",
+              "name": "Authentication credentials are missing or invalid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"definitionId\": \"<string>\",\n  \"initiatorId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"processData\": {\n    \"magna_9b0\": \"ut proident\",\n    \"eud\": -63715835,\n    \"anim_da\": \"consectetur incididunt do eiusmod voluptate\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/processInstances",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "processInstances"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:57.000Z",
+              "updatedAt": "2026-07-28T03:31:57.000Z",
+              "uid": "35240-03850d1c-9b37-41ba-a39e-0250ad1d16bf"
+            },
+            {
+              "id": "03c1bc87-57b3-4d47-be78-6f72fec82c8d",
+              "name": "Insufficient permissions to access the resource",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"definitionId\": \"<string>\",\n  \"initiatorId\": \"<string>\",\n  \"transactionId\": \"<string>\",\n  \"processData\": {\n    \"magna_9b0\": \"ut proident\",\n    \"eud\": -63715835,\n    \"anim_da\": \"consectetur incididunt do eiusmod voluptate\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/processInstances",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "processInstances"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T03:31:57.000Z",
+              "updatedAt": "2026-07-28T03:31:57.000Z",
+              "uid": "35240-03c1bc87-57b3-4d47-be78-6f72fec82c8d"
+            }
+          ],
+          "createdAt": "2026-07-28T03:31:57.000Z",
+          "updatedAt": "2026-07-28T03:31:57.000Z",
+          "uid": "35240-25e0ce24-f1f6-4122-9ee4-7c5848e56b09"
+        }
+      ],
+      "id": "adc79587-b007-43ec-9a33-d3d228b88db8",
+      "createdAt": "2026-07-28T03:31:57.000Z",
+      "updatedAt": "2026-07-28T03:31:57.000Z",
+      "uid": "35240-adc79587-b007-43ec-9a33-d3d228b88db8"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "businessProcess",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/businessProcess/v1"
+    }
+  ]
+}

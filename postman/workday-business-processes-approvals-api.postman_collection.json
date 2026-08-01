@@ -1,0 +1,820 @@
+{
+  "info": {
+    "_postman_id": "91fab185-e41b-4d55-befa-f0a926c0fbf0",
+    "name": "Workday Business Process Approvals API",
+    "description": "The Workday Business Process API provides RESTful access to business process management capabilities including initiating workflows, managing approvals, tracking process instances, retrieving process definitions, and handling inbox items. The API enables organizations to programmatically trigger Workday business processes, monitor their status, and integrate workflow automation with external systems.\n\nContact Support:\n Name: Workday Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:31:54.000Z",
+    "updatedAt": "2026-07-28T03:31:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-91fab185-e41b-4d55-befa-f0a926c0fbf0"
+  },
+  "item": [
+    {
+      "name": "inboxItems",
+      "item": [
+        {
+          "name": "{itemId}",
+          "item": [
+            {
+              "name": "approve",
+              "item": [
+                {
+                  "name": "Workday Approve Inbox Item",
+                  "id": "040be779-dfae-4609-9cc3-12c7ce3f7cb7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"approverId\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/inboxItems/:itemId/approve",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "inboxItems",
+                        ":itemId",
+                        "approve"
+                      ],
+                      "variable": [
+                        {
+                          "id": "cde3c5d4-b652-4924-a4ea-a927dcabb07a",
+                          "key": "itemId",
+                          "value": "<string>",
+                          "description": "(Required) Inbox item identifier"
+                        }
+                      ]
+                    },
+                    "description": "Approves an inbox item to advance a business process."
+                  },
+                  "response": [
+                    {
+                      "id": "a1ca435a-4c1e-4352-894a-c0433be27278",
+                      "name": "Inbox item approved successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"approverId\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/inboxItems/:itemId/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "inboxItems",
+                            ":itemId",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"assignedTo\": \"<string>\",\n  \"status\": \"COMPLETE\",\n  \"dueDate\": \"<date>\",\n  \"createdDate\": \"<dateTime>\",\n  \"completedDate\": \"<dateTime>\",\n  \"actionTaken\": \"RETRACTED\",\n  \"priority\": \"LOW\"\n}",
+                      "createdAt": "2026-07-28T03:31:55.000Z",
+                      "updatedAt": "2026-07-28T03:31:55.000Z",
+                      "uid": "35240-a1ca435a-4c1e-4352-894a-c0433be27278"
+                    },
+                    {
+                      "id": "342a47d7-ea17-447d-b294-6161f2a0af5d",
+                      "name": "Invalid request parameters or body",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"approverId\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/inboxItems/:itemId/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "inboxItems",
+                            ":itemId",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:55.000Z",
+                      "updatedAt": "2026-07-28T03:31:55.000Z",
+                      "uid": "35240-342a47d7-ea17-447d-b294-6161f2a0af5d"
+                    },
+                    {
+                      "id": "ce3a1746-08ed-48cc-9aa6-dbce0c99b10f",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"approverId\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/inboxItems/:itemId/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "inboxItems",
+                            ":itemId",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:55.000Z",
+                      "updatedAt": "2026-07-28T03:31:55.000Z",
+                      "uid": "35240-ce3a1746-08ed-48cc-9aa6-dbce0c99b10f"
+                    },
+                    {
+                      "id": "d332d3ce-fdbf-4a85-9622-8ac7265d6801",
+                      "name": "Insufficient permissions to access the resource",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"approverId\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/inboxItems/:itemId/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "inboxItems",
+                            ":itemId",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:55.000Z",
+                      "updatedAt": "2026-07-28T03:31:55.000Z",
+                      "uid": "35240-d332d3ce-fdbf-4a85-9622-8ac7265d6801"
+                    },
+                    {
+                      "id": "025582f5-3f93-4b92-b76e-b8e8cc973783",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"approverId\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/inboxItems/:itemId/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "inboxItems",
+                            ":itemId",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:55.000Z",
+                      "updatedAt": "2026-07-28T03:31:55.000Z",
+                      "uid": "35240-025582f5-3f93-4b92-b76e-b8e8cc973783"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:31:54.000Z",
+                  "updatedAt": "2026-07-28T03:31:54.000Z",
+                  "uid": "35240-040be779-dfae-4609-9cc3-12c7ce3f7cb7"
+                }
+              ],
+              "id": "ef12a38c-58b2-47d4-b12d-d1b203e597d7",
+              "createdAt": "2026-07-28T03:31:54.000Z",
+              "updatedAt": "2026-07-28T03:31:54.000Z",
+              "uid": "35240-ef12a38c-58b2-47d4-b12d-d1b203e597d7"
+            },
+            {
+              "name": "deny",
+              "item": [
+                {
+                  "name": "Workday Deny Inbox Item",
+                  "id": "c5d1f367-463c-436c-b7e4-c2d37785c170",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"denierId\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/inboxItems/:itemId/deny",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "inboxItems",
+                        ":itemId",
+                        "deny"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2b219b76-2a72-48c7-90e8-21863d3081fa",
+                          "key": "itemId",
+                          "value": "<string>",
+                          "description": "(Required) Inbox item identifier"
+                        }
+                      ]
+                    },
+                    "description": "Denies an inbox item to reject a business process step."
+                  },
+                  "response": [
+                    {
+                      "id": "bda1d629-007f-4de2-b059-d8df45ca6d3a",
+                      "name": "Inbox item denied successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"denierId\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/inboxItems/:itemId/deny",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "inboxItems",
+                            ":itemId",
+                            "deny"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"processInstanceId\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"assignedTo\": \"<string>\",\n  \"status\": \"COMPLETE\",\n  \"dueDate\": \"<date>\",\n  \"createdDate\": \"<dateTime>\",\n  \"completedDate\": \"<dateTime>\",\n  \"actionTaken\": \"RETRACTED\",\n  \"priority\": \"LOW\"\n}",
+                      "createdAt": "2026-07-28T03:31:55.000Z",
+                      "updatedAt": "2026-07-28T03:31:55.000Z",
+                      "uid": "35240-bda1d629-007f-4de2-b059-d8df45ca6d3a"
+                    },
+                    {
+                      "id": "e376f7a2-ce17-473c-9ff0-44cb6edb44a6",
+                      "name": "Invalid request parameters or body",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"denierId\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/inboxItems/:itemId/deny",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "inboxItems",
+                            ":itemId",
+                            "deny"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:55.000Z",
+                      "updatedAt": "2026-07-28T03:31:55.000Z",
+                      "uid": "35240-e376f7a2-ce17-473c-9ff0-44cb6edb44a6"
+                    },
+                    {
+                      "id": "bb0c0f12-e720-4388-88a3-15c2ebacdde3",
+                      "name": "Authentication credentials are missing or invalid",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"denierId\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/inboxItems/:itemId/deny",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "inboxItems",
+                            ":itemId",
+                            "deny"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:55.000Z",
+                      "updatedAt": "2026-07-28T03:31:55.000Z",
+                      "uid": "35240-bb0c0f12-e720-4388-88a3-15c2ebacdde3"
+                    },
+                    {
+                      "id": "3578d237-7ed6-49ed-b804-4848054da18e",
+                      "name": "Insufficient permissions to access the resource",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"denierId\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/inboxItems/:itemId/deny",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "inboxItems",
+                            ":itemId",
+                            "deny"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:55.000Z",
+                      "updatedAt": "2026-07-28T03:31:55.000Z",
+                      "uid": "35240-3578d237-7ed6-49ed-b804-4848054da18e"
+                    },
+                    {
+                      "id": "cf8a35ad-422d-4528-99de-3d1dfa5ba145",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"denierId\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/inboxItems/:itemId/deny",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "inboxItems",
+                            ":itemId",
+                            "deny"
+                          ],
+                          "variable": [
+                            {
+                              "key": "itemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"details\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T03:31:55.000Z",
+                      "updatedAt": "2026-07-28T03:31:55.000Z",
+                      "uid": "35240-cf8a35ad-422d-4528-99de-3d1dfa5ba145"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:31:54.000Z",
+                  "updatedAt": "2026-07-28T03:31:54.000Z",
+                  "uid": "35240-c5d1f367-463c-436c-b7e4-c2d37785c170"
+                }
+              ],
+              "id": "864d61db-8cfc-4195-be7a-987bf344bb88",
+              "createdAt": "2026-07-28T03:31:54.000Z",
+              "updatedAt": "2026-07-28T03:31:54.000Z",
+              "uid": "35240-864d61db-8cfc-4195-be7a-987bf344bb88"
+            }
+          ],
+          "id": "caa4dc6f-27ec-4bf9-b0a8-c83289add801",
+          "createdAt": "2026-07-28T03:31:54.000Z",
+          "updatedAt": "2026-07-28T03:31:54.000Z",
+          "uid": "35240-caa4dc6f-27ec-4bf9-b0a8-c83289add801"
+        }
+      ],
+      "id": "5340edcb-1b14-43e4-a85f-ea7ad55c4b46",
+      "createdAt": "2026-07-28T03:31:54.000Z",
+      "updatedAt": "2026-07-28T03:31:54.000Z",
+      "uid": "35240-5340edcb-1b14-43e4-a85f-ea7ad55c4b46"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "businessProcess",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "tenant",
+      "value": "wd2-impl-services1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{tenant}}.workday.com/api/businessProcess/v1"
+    }
+  ]
+}

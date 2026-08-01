@@ -1,0 +1,20 @@
+{
+  "provider": "workday-business-processes",
+  "sources": [
+    "workday-business-processes-approvals-api-openapi.yml",
+    "workday-business-processes-business-process-definitions-api-openapi.yml",
+    "workday-business-processes-inbox-items-api-openapi.yml",
+    "workday-business-processes-process-instances-api-openapi.yml"
+  ],
+  "outputs": [
+    "workday-business-processes-approvals-api-openapi.yml",
+    "workday-business-processes-business-process-definitions-api-openapi.yml",
+    "workday-business-processes-inbox-items-api-openapi.yml",
+    "workday-business-processes-process-instances-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

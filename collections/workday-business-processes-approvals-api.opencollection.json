@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Business Process Approvals API",
+    "version": "v41.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Approvals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday Approve Inbox Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.workday.com/api/businessProcess/v1/inboxItems/:itemId/approve",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "INB-001",
+                "type": "path",
+                "description": "Inbox item identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approves an inbox item to advance a business process."
+        },
+        {
+          "info": {
+            "name": "Workday Deny Inbox Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.workday.com/api/businessProcess/v1/inboxItems/:itemId/deny",
+            "params": [
+              {
+                "name": "itemId",
+                "value": "INB-002",
+                "type": "path",
+                "description": "Inbox item identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Denies an inbox item to reject a business process step."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Business Process Approvals Business Process Definitions API",
+    "version": "v41.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Business Process Definitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday List Business Process Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/businessProcess/v1/businessProcessDefinitions",
+            "params": [
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "processType",
+                "value": "HireEmployee",
+                "type": "query",
+                "description": "Filter by business process type"
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of business process type definitions available in the Workday tenant."
+        },
+        {
+          "info": {
+            "name": "Workday Get Business Process Definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/businessProcess/v1/businessProcessDefinitions/:definitionId",
+            "params": [
+              {
+                "name": "definitionId",
+                "value": "BPD-HIRE-001",
+                "type": "path",
+                "description": "Business process definition identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific business process type definition by its identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

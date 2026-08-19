@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Workday Business Process Approvals Process Instances API",
+    "version": "v41.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.workday.com/ccx/oauth2/{tenant}/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Process Instances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workday List Process Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/businessProcess/v1/processInstances",
+            "params": [
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Number of records to skip"
+              },
+              {
+                "name": "status",
+                "value": "IN_PROGRESS",
+                "type": "query",
+                "description": "Filter by process status"
+              },
+              {
+                "name": "processType",
+                "value": "HireEmployee",
+                "type": "query",
+                "description": "Filter by business process type"
+              },
+              {
+                "name": "initiatorId",
+                "value": "EMP-12345",
+                "type": "query",
+                "description": "Filter by process initiator ID"
+              }
+            ]
+          },
+          "docs": "Retrieves a collection of business process instances with status and progress information."
+        },
+        {
+          "info": {
+            "name": "Workday Initiate Process",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.workday.com/api/businessProcess/v1/processInstances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a new business process instance."
+        },
+        {
+          "info": {
+            "name": "Workday Get Process Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/businessProcess/v1/processInstances/:instanceId",
+            "params": [
+              {
+                "name": "instanceId",
+                "value": "PI-2026-001",
+                "type": "path",
+                "description": "Process instance identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific business process instance by its identifier."
+        },
+        {
+          "info": {
+            "name": "Workday Cancel Process Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.workday.com/api/businessProcess/v1/processInstances/:instanceId/cancel",
+            "params": [
+              {
+                "name": "instanceId",
+                "value": "PI-2026-001",
+                "type": "path",
+                "description": "Process instance identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels a running business process instance."
+        },
+        {
+          "info": {
+            "name": "Workday List Process Steps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.workday.com/api/businessProcess/v1/processInstances/:instanceId/steps",
+            "params": [
+              {
+                "name": "instanceId",
+                "value": "PI-2026-001",
+                "type": "path",
+                "description": "Process instance identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves the steps for a specific business process instance including completion status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

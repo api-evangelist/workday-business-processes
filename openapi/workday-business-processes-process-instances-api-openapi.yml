@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Workday Business Process Approvals Process Instances API
   description: The Workday Business Process API provides RESTful access to business process management capabilities including initiating workflows, managing approvals, tracking process instances, retrieving process definitions, and handling inbox items. The API enables organizations to programmatically trigger Workday business processes, monitor their status, and integrate workflow automation with external systems.
@@ -297,28 +297,74 @@ paths:
         dispatcher: URI_PARTS
         dispatcherRules: instanceId
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: BAD_REQUEST
+            message: Invalid request body
   schemas:
-    InitiateProcessRequest:
-      title: Initiate Process Request
-      description: Request to initiate a new business process instance
+    ProcessInstancesResponse:
+      title: Process Instances Response
+      description: Paginated response containing a list of process instances
       type: object
       properties:
-        definitionId:
-          type: string
-          description: Business process definition to initiate
-        transactionId:
-          type: string
-          description: Associated transaction or subject worker ID
-        initiatorId:
-          type: string
-          description: ID of the user initiating the process
-        processData:
-          type: object
-          description: Additional process-specific data fields
-          additionalProperties: true
+        total:
+          type: integer
+          description: Total number of instances
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessInstance'
       required:
-      - definitionId
-      - initiatorId
+      - total
+      - data
+    ProcessStepsResponse:
+      title: Process Steps Response
+      description: Paginated response containing a list of process steps
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of steps
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessStep'
+      required:
+      - total
+      - data
     ProcessInstance:
       title: Process Instance
       description: A running or completed business process instance
@@ -372,40 +418,6 @@ components:
       - processType
       - status
       - initiatorId
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
-      required:
-      - error
-      - message
-    ProcessStepsResponse:
-      title: Process Steps Response
-      description: Paginated response containing a list of process steps
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of steps
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProcessStep'
-      required:
-      - total
-      - data
     ProcessStep:
       title: Process Step
       description: A step within a running business process instance
@@ -454,58 +466,46 @@ components:
       - stepName
       - stepType
       - status
-    ProcessInstancesResponse:
-      title: Process Instances Response
-      description: Paginated response containing a list of process instances
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
       type: object
       properties:
-        total:
-          type: integer
-          description: Total number of instances
-        data:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
           type: array
           items:
-            $ref: '#/components/schemas/ProcessInstance'
+            type: string
+          description: Additional error details
       required:
-      - total
-      - data
-  responses:
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: NOT_FOUND
-            message: The requested resource does not exist
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: BAD_REQUEST
-            message: Invalid request body
+      - error
+      - message
+    InitiateProcessRequest:
+      title: Initiate Process Request
+      description: Request to initiate a new business process instance
+      type: object
+      properties:
+        definitionId:
+          type: string
+          description: Business process definition to initiate
+        transactionId:
+          type: string
+          description: Associated transaction or subject worker ID
+        initiatorId:
+          type: string
+          description: ID of the user initiating the process
+        processData:
+          type: object
+          description: Additional process-specific data fields
+          additionalProperties: true
+      required:
+      - definitionId
+      - initiatorId
   securitySchemes:
     oauth2:
       type: oauth2

@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Workday Business Process Approvals API
   description: The Workday Business Process API provides RESTful access to business process management capabilities including initiating workflows, managing approvals, tracking process instances, retrieving process definitions, and handling inbox items. The API enables organizations to programmatically trigger Workday business processes, monitor their status, and integrate workflow automation with external systems.
@@ -135,40 +135,44 @@ paths:
         dispatcher: URI_PARTS
         dispatcherRules: itemId
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: BAD_REQUEST
+            message: Invalid request body
   schemas:
-    DenialRequest:
-      title: Denial Request
-      description: Request to deny an inbox item
-      type: object
-      properties:
-        comment:
-          type: string
-          description: Denial reason or comment
-        denierId:
-          type: string
-          description: ID of the denying user
-      required:
-      - denierId
-      - comment
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
-      required:
-      - error
-      - message
     InboxItem:
       title: Inbox Item
       description: A business process inbox item requiring user action
@@ -227,6 +231,39 @@ components:
       - subject
       - assignedTo
       - status
+    DenialRequest:
+      title: Denial Request
+      description: Request to deny an inbox item
+      type: object
+      properties:
+        comment:
+          type: string
+          description: Denial reason or comment
+        denierId:
+          type: string
+          description: ID of the denying user
+      required:
+      - denierId
+      - comment
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required:
+      - error
+      - message
     ApprovalRequest:
       title: Approval Request
       description: Request to approve an inbox item
@@ -240,43 +277,6 @@ components:
           description: ID of the approving user
       required:
       - approverId
-  responses:
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: NOT_FOUND
-            message: The requested resource does not exist
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: BAD_REQUEST
-            message: Invalid request body
   securitySchemes:
     oauth2:
       type: oauth2

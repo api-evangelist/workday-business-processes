@@ -15,6 +15,12 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "workday-business-processes-approvals-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "workday-business-processes-business-process-definitions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "workday-business-processes-inbox-items-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "workday-business-processes-process-instances-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

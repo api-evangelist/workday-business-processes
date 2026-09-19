@@ -1,8 +1,12 @@
 aid: workday-business-processes
 name: Workday Business Processes
-description: >-
-  APIs for managing and executing business processes within Workday, including initiating, monitoring, and completing
-  various workflow processes.
+description: 'Workday Business Processes is the workflow engine at the centre of Workday HCM and Financial Management: every
+  hire, job change, expense report, requisition and payment runs as a business process event routed through configured approval,
+  to-do and questionnaire steps. Workday exposes it as a first-party REST service, businessProcess v1, which reads business
+  process types, events and event steps and performs the real actions on them — approve, deny, send back, reassign, cancel
+  and rescind — alongside a Custom Business Process Config v1 service for authoring custom process types and event task definitions,
+  business-process operations inside the Integrations SOAP service, and business process query fields in the Workday Graph
+  API.'
 deliveryModel:
   model: saas
   open_source: false
@@ -31,36 +35,35 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/workday-business-processes.png
 url: https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-05-19'
+modified: '2026-09-17'
 specificationVersion: '0.23'
 apis:
 - aid: workday-business-processes:workday-business-processes-approvals-api
   name: Workday Business Processes Approvals API
   description: Manage approval steps and approval chains
-  humanURL: https://www.workday.com/en-us/products/financial-management/business-process.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  humanURL: https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
   tags:
   - Approvals
   properties:
   - type: OpenAPI
-    url: openapi/workday-business-processes-approvals-api-openapi.yml
+    url: openapi/workday-business-processes-business-process-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted, Workday REST directory)
+    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_20260905_oas3.json
   - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
+    url: https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    name: Workday REST Services Directory
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
   - type: Authentication
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-authentication.html
-  - type: SDKs
-    url: https://github.com/Workday
+    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
   - type: RateLimits
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-rate-limits.html
-  - type: Webhooks
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-integrations/integration-concepts/workday-webhooks.html
+    name: Integrations, EIB, and Web Service Limits
+    url: https://developer.workday.com/doc/dan1370797408285.md
   - type: ChangeLog
-    url: https://community.workday.com/api-release-notes
-  - type: StatusPage
-    url: https://status.workday.com
+    name: businessProcess v1 change log (machine-readable)
+    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
   - type: Support
     url: https://community.workday.com
   - type: JSONSchema
@@ -100,30 +103,29 @@ apis:
 - aid: workday-business-processes:workday-business-processes-business-process-definitions-api
   name: Workday Business Processes Business Process Definitions API
   description: Retrieve and manage business process type definitions
-  humanURL: https://www.workday.com/en-us/products/financial-management/business-process.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  humanURL: https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
   tags:
   - Business Process Definitions
   properties:
   - type: OpenAPI
-    url: openapi/workday-business-processes-business-process-definitions-api-openapi.yml
+    url: openapi/workday-business-processes-business-process-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted, Workday REST directory)
+    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_20260905_oas3.json
   - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
+    url: https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: APIReference
+    name: Workday REST Services Directory
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
   - type: Authentication
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-authentication.html
-  - type: SDKs
-    url: https://github.com/Workday
+    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
   - type: RateLimits
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-rate-limits.html
-  - type: Webhooks
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-integrations/integration-concepts/workday-webhooks.html
+    name: Integrations, EIB, and Web Service Limits
+    url: https://developer.workday.com/doc/dan1370797408285.md
   - type: ChangeLog
-    url: https://community.workday.com/api-release-notes
-  - type: StatusPage
-    url: https://status.workday.com
+    name: businessProcess v1 change log (machine-readable)
+    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
   - type: Support
     url: https://community.workday.com
   - type: JSONSchema
@@ -163,30 +165,29 @@ apis:
 - aid: workday-business-processes:workday-business-processes-inbox-items-api
   name: Workday Business Processes Inbox Items API
   description: Manage user inbox items requiring action
-  humanURL: https://www.workday.com/en-us/products/financial-management/business-process.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  humanURL: https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
   tags:
   - Inbox Items
   properties:
   - type: OpenAPI
-    url: openapi/workday-business-processes-inbox-items-api-openapi.yml
+    url: openapi/workday-business-processes-business-process-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted, Workday REST directory)
+    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_20260905_oas3.json
   - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
+    url: https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    name: Workday REST Services Directory
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
   - type: Authentication
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-authentication.html
-  - type: SDKs
-    url: https://github.com/Workday
+    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
   - type: RateLimits
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-rate-limits.html
-  - type: Webhooks
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-integrations/integration-concepts/workday-webhooks.html
+    name: Integrations, EIB, and Web Service Limits
+    url: https://developer.workday.com/doc/dan1370797408285.md
   - type: ChangeLog
-    url: https://community.workday.com/api-release-notes
-  - type: StatusPage
-    url: https://status.workday.com
+    name: businessProcess v1 change log (machine-readable)
+    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
   - type: Support
     url: https://community.workday.com
   - type: JSONSchema
@@ -226,30 +227,29 @@ apis:
 - aid: workday-business-processes:workday-business-processes-process-instances-api
   name: Workday Business Processes Process Instances API
   description: Manage running business process instances
-  humanURL: https://www.workday.com/en-us/products/financial-management/business-process.html
-  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  humanURL: https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
   tags:
   - Process Instances
   properties:
   - type: OpenAPI
-    url: openapi/workday-business-processes-process-instances-api-openapi.yml
+    url: openapi/workday-business-processes-business-process-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted, Workday REST directory)
+    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_20260905_oas3.json
   - type: Documentation
-    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
+    url: https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: APIReference
+    name: Workday REST Services Directory
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
   - type: Authentication
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-authentication.html
-  - type: SDKs
-    url: https://github.com/Workday
+    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
   - type: RateLimits
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-rate-limits.html
-  - type: Webhooks
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-integrations/integration-concepts/workday-webhooks.html
+    name: Integrations, EIB, and Web Service Limits
+    url: https://developer.workday.com/doc/dan1370797408285.md
   - type: ChangeLog
-    url: https://community.workday.com/api-release-notes
-  - type: StatusPage
-    url: https://status.workday.com
+    name: businessProcess v1 change log (machine-readable)
+    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
   - type: Support
     url: https://community.workday.com
   - type: JSONSchema
@@ -286,40 +286,194 @@ apis:
     url: rules/workday-business-processes-spectral-rules.yml
   - type: Vocabulary
     url: vocabulary/workday-business-processes-vocabulary.yml
-common:
-  - type: Website
-    url: https://www.workday.com/
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/workday-business-processes/overview
-  - type: AgenticAccess
-    url: agentic-access/workday-business-processes-agentic-access.yml
-  - type: TrustCenter
-    url: security/workday-business-processes-trust-center.yml
-  - type: DomainSecurity
-    url: security/workday-business-processes-domain-security.yml
+- aid: workday-business-processes:workday-business-processes-custom-business-process-config-api
+  name: Workday Custom Business Process Config API
+  description: Create, read, update and delete custom business process types and their event task definitions.
+  humanURL: https://developer.workday.com/doc/ifu1517426622016.md
+  baseURL: https://api.workday.com/customBusinessProcessConfig/v1
+  tags:
+  - Custom Business Processes
+  - Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-custom-business-process-config-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted, Workday REST directory)
+    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/customBusinessProcessConfig_v1_swagger.json
+  - type: Documentation
+    name: Use the REST API to Create Custom Business Process Types
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: APIReference
+    name: Workday REST Services Directory
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
   - type: Authentication
-    url: authentication/workday-business-processes-authentication.yml
+    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
   - type: OAuthScopes
     url: scopes/workday-business-processes-scopes.yml
-  - type: Portal
+  - type: Support
     url: https://community.workday.com
-  - type: GettingStarted
-    url: >-
-      https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/getting-started-with-workday-web-services.html
-  - type: API Standards
-    url: https://doc.workday.com/admin-guide/en-us/workday-rest-api/workday-rest-api-overview.html
-  - type: PrivacyPolicy
-    url: https://www.workday.com/en-us/privacy.html
-  - type: TermsOfService
-    url: https://www.workday.com/en-us/terms-of-service.html
-  - type: Security
-    url: https://www.workday.com/en-us/why-workday/our-technology/security.html
-  - type: JSONLD
-    url: json-ld/workday-business-processes-context.jsonld
-  - type: SpectralRules
-    url: rules/workday-business-processes-spectral-rules.yml
-  - type: Vocabulary
-    url: vocabulary/workday-business-processes-vocabulary.yml
+- aid: workday-business-processes:workday-business-processes-integrations-soap-service
+  name: Workday Integrations SOAP Service (business process operations)
+  description: The Workday Web Services Integrations service, v47.0. Carries the eight SOAP business process operations —
+    Approve, Cancel, Deny, Rescind and Send Back a business process, Reassign a business process step, and Get/Put business
+    process delegations, which have no REST equivalent.
+  humanURL: https://community.workday.com/sites/default/files/file-hosting/productionapi/Integrations/v47.0/Integrations.html
+  baseURL: https://wd2-impl-services1.workday.com/ccx/service
+  tags:
+  - SOAP
+  - Integration
+  - Delegation
+  - Business Processes
+  tags_raw:
+  - SOAP
+  - Integrations
+  - Delegations
+  - Business Processes
+  properties:
+  - type: WSDL
+    url: wsdl/workday-business-processes-integrations-v47.0.wsdl
+  - type: WSDL
+    name: WSDL (provider-hosted, v47.0)
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Integrations/v47.0/Integrations.wsdl
+  - type: Documentation
+    name: Workday SOAP APIs
+    url: https://developer.workday.com/doc/GUID-43742c5c-4caf-436f-bdd5-94330d32288c-enHYPHENus.md
+  - type: APIReference
+    name: Workday Web Services Production API Directory
+    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
+  - type: Authentication
+    name: SOAP API Authentication and Security
+    url: https://developer.workday.com/doc/GUID-4c354bdb-06cd-461d-a632-ea8303beaedb-enHYPHENus.md
+  - type: Support
+    url: https://community.workday.com
+common:
+- type: Website
+  url: https://www.workday.com/
+- type: DeveloperPortal
+  url: https://developer.workday.com/
+- type: Portal
+  url: https://community.workday.com
+- type: Documentation
+  name: Business Process REST APIs
+  url: https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+- type: APIReference
+  name: Workday REST Services Directory
+  url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+- type: GettingStarted
+  name: Create Your API Client
+  url: https://developer.workday.com/doc/zwx1518028675482.md
+- type: Support
+  url: https://community.workday.com
+- type: HelpCenter
+  name: Workday Developer Forum
+  url: https://forum.developer.workday.com/
+- type: Blog
+  url: https://blog.workday.com/en-us/homepage.html
+- type: GitHubOrganization
+  url: https://github.com/Workday
+- type: SignUp
+  name: Workday Developer Site sign in / registration
+  url: https://developer.workday.com/login
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/workday-business-processes/overview
+- type: TermsOfService
+  name: Workday Site Terms
+  url: https://www.workday.com/en-us/legal/site-terms.html
+- type: PrivacyPolicy
+  url: https://www.workday.com/en-us/privacy.html
+- type: Compliance
+  name: Workday compliance certifications
+  url: https://www.workday.com/en-us/why-workday/trust/compliance.html
+- type: TrustCenter
+  url: security/workday-business-processes-trust-center.yml
+- type: DomainSecurity
+  url: security/workday-business-processes-domain-security.yml
+- type: StatusPage
+  name: Workday service status (customer sign-in required)
+  url: https://status.workday.com
+- type: ChangeLog
+  url: changelog/workday-business-processes-changelog.yml
+- type: Lifecycle
+  url: lifecycle/workday-business-processes-lifecycle.yml
+- type: Authentication
+  url: authentication/workday-business-processes-authentication.yml
+- type: OAuthScopes
+  url: scopes/workday-business-processes-scopes.yml
+- type: Conventions
+  url: conventions/workday-business-processes-conventions.yml
+- type: ErrorCatalog
+  url: errors/workday-business-processes-problem-types.yml
+- type: Conformance
+  url: conformance/workday-business-processes-conformance.yml
+- type: DataModel
+  url: data-model/workday-business-processes-data-model.yml
+- type: RateLimits
+  url: rate-limits/workday-business-processes-rate-limits.yml
+- type: Plans
+  url: plans/workday-business-processes-plans-pricing.yml
+- type: Packages
+  url: packages/workday-business-processes-packages.yml
+- type: SDKs
+  url: packages/workday-business-processes-packages.yml
+- type: CLI
+  url: cli/workday-business-processes-cli.yml
+- type: Components
+  url: components/workday-business-processes-components.yml
+- type: Sandbox
+  url: sandbox/workday-business-processes-sandbox.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: ToolCrosswalk
+  url: mcp/workday-business-processes-tool-crosswalk.yml
+- type: AgenticAccess
+  url: agentic-access/workday-business-processes-agentic-access.yml
+- type: LLMsTxt
+  url: llms/workday-business-processes-llms.txt
+- type: WSDL
+  url: wsdl/workday-business-processes-integrations-v47.0.wsdl
+- type: Overlay
+  name: businessProcess v1 overlay
+  url: overlays/workday-business-processes-business-process-overlay.yaml
+- type: Overlay
+  name: customBusinessProcessConfig v1 overlay
+  url: overlays/workday-business-processes-custom-business-process-config-overlay.yaml
+- type: JSONLD
+  url: json-ld/workday-business-processes-context.jsonld
+- type: SpectralRules
+  url: rules/workday-business-processes-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/workday-business-processes-vocabulary.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+tags:
+- Business Processes
+- Workflows
+- Approvals
+- Human Resources
+- Enterprise
+- Software-as-a-Service
+- HCM
+- Financial Management
+- Process Automation
+- Event Steps
+- SOAP
+- GraphQL
+tags_raw:
+- Business Processes
+- Workflow
+- Approvals
+- Human Resources
+- Enterprise
+- SaaS
+- HCM
+- Financial Management
+- Process Automation
+- Event Steps
+- SOAP
+- GraphQL
+x-enrichment:
+  date: '2026-09-17'
+  status: enriched
+  artifacts_added: 26
+  pass: local-v3

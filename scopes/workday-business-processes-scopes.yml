@@ -1,16 +1,172 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/workday-business-processes-openapi.yml
+generated: '2026-09-17'
+method: searched
+source: openapi/_original/workday-business-processes-business-process-v1-openapi.json + openapi/_original/workday-business-processes-custom-business-process-config-v1-openapi.json
+docs: https://developer.workday.com/doc/zwx1518028675482.md
+docs_note: Workday REST authorization is TWO-LAYERED and neither layer alone is enough. (1) OAuth scopes are selected when an API
+  client is registered in the Developer Site Console; Workday calls them "scopes" but they are FUNCTIONAL AREAS, not the fine-grained
+  read:x/write:x scopes most APIs publish, and the scope a given endpoint needs is stated in the endpoint description in the REST
+  API Explorer rather than in a scopes reference page. (2) The tenant business process security policy still governs whether the
+  authenticated security group may take the action. An agent holding a valid token can still be refused by policy.
 schemes:
-- name: oauth2
-  source: openapi/workday-business-processes-openapi.yml
+- name: OAuth2
+  source: openapi/workday-business-processes-business-process-openapi.yml
+  type: oauth2
   flows:
-  - flow: clientCredentials
-    tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
+  - flow: implicit
+    authorizationUrl: https://{tenantAuthorizationHostname}/authorize
+    note: published as the literal <tenantAuthorizationHostname>; per-tenant
+  declared_scopes: 0
+  note: The businessProcess v1 spec declares an EMPTY scopes map. The real scope requirement is in each operation description —
+    captured in operation_scopes[] below.
+- name: oAuth2
+  source: openapi/workday-business-processes-custom-business-process-config-openapi.yml
+  type: oauth2
+  description: Register an API Client
+  flows:
+  - flow: implicit
+    authorizationUrl: https://auth.api.workday.com/v1/authorize
+  declared_scopes: 2
+documented_flows:
+- flow: authorizationCode
+  docs: https://developer.workday.com/doc/jzx1537909761291.md
+- flow: clientCredentials
+  docs: https://developer.workday.com/doc/axp1537909839739.md
+- flow: refreshToken
+  docs: https://developer.workday.com/doc/cqa1553122177664.md
 scopes:
-- scope: businessProcess
-  description: Access to Workday Business Process API
+- scope: read
+  description: read custom business process types
   flows:
-  - clientCredentials
+  - implicit
   sources:
-  - openapi/workday-business-processes-openapi.yml
+  - openapi/workday-business-processes-custom-business-process-config-openapi.yml
+- scope: write
+  description: modify custom business process types
+  flows:
+  - implicit
+  sources:
+  - openapi/workday-business-processes-custom-business-process-config-openapi.yml
+functional_area_scopes:
+- Adaptive Planning for Financial Plans
+- Adaptive Planning for the Workforce
+- Benefits
+- Tenant Non-Configurable
+operation_scopes:
+- operation: GET /types
+  functional_areas:
+  - Tenant Non-Configurable
+- operation: GET /types/{ID}
+  functional_areas:
+  - Tenant Non-Configurable
+- operation: GET /types/{ID}/attachmentCategories
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: GET /eventSteps
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: POST /eventSteps/{ID}/questionnaire
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: POST /eventSteps/{ID}/reassign
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: POST /eventSteps/{ID}/deny
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: GET /eventSteps/{ID}
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: POST /eventSteps/{ID}/toDo
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: POST /eventSteps/{ID}/approve
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: POST /eventSteps/{ID}/sendBack
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: GET /events
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: GET /events/{ID}/remainingSteps
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: POST /events/{ID}/rescind
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: GET /events/{ID}/comments
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: GET /events/{ID}
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: GET /events/{ID}/inProgressSteps
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: POST /events/{ID}/cancel
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: GET /events/{ID}/attachments
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+- operation: GET /events/{ID}/completedSteps
+  functional_areas:
+  - Adaptive Planning for Financial Plans
+  - Adaptive Planning for the Workforce
+  - Benefits
+  - Tenant Non-Configurable
+gap:
+  scopes_reference_page: false
+  note: Workday publishes no scopes/permissions reference page for REST. The only machine-readable statement of scope per operation
+    is the "Scope:" line embedded in each operation description, extracted above.

@@ -1,0 +1,303 @@
+generated: '2026-09-17'
+method: derived
+source: openapi/ + developer.workday.com published GraphQL schema
+summary: 'Workday projects business-process data through three non-identical surfaces: the REST businessProcess v1 service
+  (21 ops, actions + reads), the Workday Graph API (read-only reporting fields), and the Integrations SOAP service (8 business-process
+  operations). No MCP server exists, so the crosswalk binds DERIVED candidate tools to real REST operations and records the
+  GraphQL/SOAP-only capabilities that REST does not carry.'
+surfaces:
+  openapi:
+  - file: openapi/workday-business-processes-business-process-openapi.yml
+    operations: 21
+    gated: false
+  - file: openapi/workday-business-processes-custom-business-process-config-openapi.yml
+    operations: 11
+    gated: false
+  graphql:
+    endpoint: https://{tenantHostname}/graphql/v1
+    schema: https://developer.workday.com/bundles/graphql-changelog/public/static/schema/schema.txt
+    introspection: gated — requires a tenant OAuth token; Workday publishes the full SDL anonymously instead (HTTP 200, 3.5
+      MB)
+  soap:
+    wsdl: wsdl/workday-business-processes-integrations-v47.0.wsdl
+    service: Integrations v47.0
+    gated: false
+  mcp:
+    url: null
+    gated: null
+    note: no MCP server published
+crosswalk:
+- tool: list_types
+  category: types
+  rest:
+  - GET /types
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: get_types
+  category: types
+  rest:
+  - GET /types/{ID}
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: get_types_attachment_categories
+  category: types
+  rest:
+  - GET /types/{ID}/attachmentCategories
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: list_event_steps
+  category: event-steps
+  rest:
+  - GET /eventSteps
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: post_event_steps_questionnaire
+  category: event-steps
+  rest:
+  - POST /eventSteps/{ID}/questionnaire
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: post_event_steps_reassign
+  category: event-steps
+  rest:
+  - POST /eventSteps/{ID}/reassign
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: post_event_steps_deny
+  category: event-steps
+  rest:
+  - POST /eventSteps/{ID}/deny
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: get_event_steps
+  category: event-steps
+  rest:
+  - GET /eventSteps/{ID}
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: post_event_steps_to_do
+  category: event-steps
+  rest:
+  - POST /eventSteps/{ID}/toDo
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: post_event_steps_approve
+  category: event-steps
+  rest:
+  - POST /eventSteps/{ID}/approve
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: post_event_steps_send_back
+  category: event-steps
+  rest:
+  - POST /eventSteps/{ID}/sendBack
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: list_events
+  category: events
+  rest:
+  - GET /events
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: get_events_remaining_steps
+  category: events
+  rest:
+  - GET /events/{ID}/remainingSteps
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: post_events_rescind
+  category: events
+  rest:
+  - POST /events/{ID}/rescind
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: get_events_comments
+  category: events
+  rest:
+  - GET /events/{ID}/comments
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: get_events
+  category: events
+  rest:
+  - GET /events/{ID}
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: get_events_in_progress_steps
+  category: events
+  rest:
+  - GET /events/{ID}/inProgressSteps
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: post_events_cancel
+  category: events
+  rest:
+  - POST /events/{ID}/cancel
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: get_events_attachments
+  category: events
+  rest:
+  - GET /events/{ID}/attachments
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: get_events_completed_steps
+  category: events
+  rest:
+  - GET /events/{ID}/completedSteps
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: list_values_send_back_to
+  category: prompt-values
+  rest:
+  - GET /values/sendBack/to/
+  binding: rest
+  confidence: high
+  note: backing operation has NO operationId in the published spec; bound by method+path
+- tool: post_types
+  category: custom-bp-config
+  rest:
+  - create
+  binding: rest
+  confidence: high
+  note: null
+- tool: list_types
+  category: custom-bp-config
+  rest:
+  - get
+  binding: rest
+  confidence: high
+  note: null
+- tool: get_types
+  category: custom-bp-config
+  rest:
+  - view
+  binding: rest
+  confidence: high
+  note: null
+- tool: update_types
+  category: custom-bp-config
+  rest:
+  - update
+  binding: rest
+  confidence: high
+  note: null
+- tool: delete_types
+  category: custom-bp-config
+  rest:
+  - delete
+  binding: rest
+  confidence: high
+  note: null
+- tool: post_event_task_definitions
+  category: custom-bp-config
+  rest:
+  - createEventTaskDefinition
+  binding: rest
+  confidence: high
+  note: null
+- tool: list_event_task_definitions
+  category: custom-bp-config
+  rest:
+  - getEventTaskDefinition
+  binding: rest
+  confidence: high
+  note: null
+- tool: get_event_task_definitions
+  category: custom-bp-config
+  rest:
+  - viewEventTaskDefinition
+  binding: rest
+  confidence: high
+  note: null
+- tool: update_event_task_definitions
+  category: custom-bp-config
+  rest:
+  - updateEventTaskDefinition
+  binding: rest
+  confidence: high
+  note: null
+- tool: patch_event_task_definitions
+  category: custom-bp-config
+  rest:
+  - patchEventTaskDefinition
+  binding: rest
+  confidence: high
+  note: null
+- tool: delete_event_task_definitions
+  category: custom-bp-config
+  rest:
+  - deleteEventTaskDefinition
+  binding: rest
+  confidence: high
+  note: null
+graphql_only:
+- field: businessProcessDefinition
+  reason: Reporting query over business process DEFINITIONS and their policies. REST /types returns process TYPES, not configured
+    definitions — there is no REST equivalent.
+- field: workerBusinessProcess
+  reason: Worker-scoped business process collection; REST has no worker-rooted business-process query.
+- field: actionEvent
+  reason: Business process transaction/action event reporting with completedDate filters; REST /events has no date-range reporting
+    filter of this shape.
+- field: eventRecord
+  reason: Generic event record reporting collection; no REST projection.
+soap_only:
+- operation: Get_Business_Process_Delegations
+  reason: Delegation read. No REST endpoint exposes business process delegations.
+- operation: Put_Business_Process_Delegation
+  reason: Delegation write. REST cannot create or change a delegation.
+rest_only:
+- capability: Attachment categories for a business process type
+  rest:
+  - GET /types/{ID}/attachmentCategories
+- capability: Questionnaire and To Do step submission
+  rest:
+  - POST /eventSteps/{ID}/questionnaire
+  - POST /eventSteps/{ID}/toDo
+- capability: Send-back target prompt values
+  rest:
+  - GET /values/sendBack/to/
+- capability: Custom business process type and event-task-definition CRUD
+  rest:
+  - create
+  - get
+  - view
+  - update
+  - delete
+  - createEventTaskDefinition
+  - getEventTaskDefinition
+  - viewEventTaskDefinition
+  - updateEventTaskDefinition
+  - patchEventTaskDefinition
+  - deleteEventTaskDefinition
+coverage:
+  tools_named: 32
+  tools_bound: 32
+  mcp_only: 0
+  graphql_only: 4
+  soap_only: 2
+  rest_ops_total: 32
+  rest_ops_with_tool: 32
+  note: Every derived tool binds to a real published operation. 21 of 32 REST operations have NO operationId in the provider
+    spec, which is why 21 rows bind by method+path.

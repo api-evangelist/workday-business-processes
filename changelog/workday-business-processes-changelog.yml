@@ -1,0 +1,150 @@
+generated: '2026-09-17'
+method: searched
+source: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+docs: https://developer.workday.com/doc/GUID-9fb15b62-550a-47ad-b113-27743dcc761f-enHYPHENus.md
+format: Workday publishes the change log as an OpenAPI 3.0.1 document whose TAGS are release dates (MM/DD/YYYY) and whose operations
+  describe the diff — an unusual but genuinely machine-readable shape.
+raw_file: changelog/workday-business-processes-business-process-v1-changelog.json
+scheme:
+  style: uri-path major version
+  current: v1
+  note: The businessProcess service has never left v1; Workday versions REST services independently (staffing is v7, person v4). The
+    SOAP side versions per release (v47.0 current).
+release_count: 20
+first_recorded: '2021-03-15'
+latest_release: '2026-08-17'
+entries:
+- date: '2026-08-17'
+  changes: 17
+  kinds:
+    Modified this existing endpoint: 17
+  breaking: false
+  highlights:
+  - 'Modified this existing endpoint: GET /eventSteps/{ID}'
+  - 'Modified this existing endpoint: GET /events/{ID}'
+  - 'Modified this existing endpoint: GET /events/{ID}/attachments'
+  - 'Modified this existing endpoint: GET /events/{ID}/comments'
+  - 'Modified this existing endpoint: GET /events/{ID}/completedSteps'
+  - 'Modified this existing endpoint: GET /events/{ID}/inProgressSteps'
+- date: '2026-06-30'
+  changes: 20
+  kinds:
+    Description has been changed: 20
+  breaking: false
+  highlights:
+  - 'Description has been changed: GET /eventSteps'
+  - 'Description has been changed: GET /eventSteps/{ID}'
+  - 'Description has been changed: GET /events'
+  - 'Description has been changed: GET /events/{ID}'
+  - 'Description has been changed: GET /events/{ID}/attachments'
+  - 'Description has been changed: GET /events/{ID}/comments'
+- date: '2026-06-15'
+  changes: 21
+  kinds:
+    Description has been changed: 21
+  breaking: false
+  highlights:
+  - 'Description has been changed: GET /eventSteps'
+  - 'Description has been changed: GET /eventSteps/{ID}'
+  - 'Description has been changed: GET /events'
+  - 'Description has been changed: GET /events/{ID}'
+  - 'Description has been changed: GET /events/{ID}/attachments'
+  - 'Description has been changed: GET /events/{ID}/comments'
+- date: '2026-06-08'
+  changes: 2
+  kinds:
+    Description has been changed: 2
+  breaking: false
+  highlights:
+  - 'Description has been changed: GET /eventSteps'
+  - 'Description has been changed: POST /eventSteps/{ID}/approve'
+- date: '2026-03-18'
+  changes: 18
+  kinds:
+    Added new operation: 1
+    Description has been changed: 17
+  breaking: false
+  highlights:
+  - 'Added new operation: POST /eventSteps/{ID}/reassign'
+  - 'Description has been changed: GET /eventSteps'
+  - 'Description has been changed: GET /eventSteps/{ID}'
+  - 'Description has been changed: GET /events'
+  - 'Description has been changed: GET /events/{ID}'
+  - 'Description has been changed: GET /events/{ID}/attachments'
+- date: '2025-12-15'
+  changes: 19
+  kinds:
+    Parameters have been modified.: 19
+  breaking: false
+  highlights:
+  - 'Parameters have been modified.: GET /eventSteps'
+  - 'Parameters have been modified.: GET /eventSteps/{ID}'
+  - 'Parameters have been modified.: GET /events'
+  - 'Parameters have been modified.: GET /events/{ID}'
+  - 'Parameters have been modified.: GET /events/{ID}/attachments'
+  - 'Parameters have been modified.: GET /events/{ID}/comments'
+- date: '2025-12-06'
+  changes: 1
+  kinds:
+    Description has been changed: 1
+  breaking: false
+  highlights:
+  - 'Description has been changed: GET /values/sendBack/to/'
+- date: '2025-05-17'
+  changes: 1
+  kinds:
+    Added new operation: 1
+  breaking: false
+  highlights:
+  - 'Added new operation: POST /events/{ID}/rescind'
+- date: '2024-09-28'
+  changes: 1
+  kinds:
+    Added new operation: 1
+  breaking: false
+  highlights:
+  - 'Added new operation: POST /events/{ID}/cancel'
+- date: '2024-06-15'
+  changes: 17
+  kinds:
+    Modified this existing endpoint: 17
+  breaking: false
+  highlights:
+  - 'Modified this existing endpoint: GET /eventSteps'
+  - 'Modified this existing endpoint: GET /eventSteps/{ID}'
+  - 'Modified this existing endpoint: GET /events'
+  - 'Modified this existing endpoint: GET /events/{ID}'
+  - 'Modified this existing endpoint: GET /events/{ID}/attachments'
+  - 'Modified this existing endpoint: GET /events/{ID}/comments'
+- date: '2023-07-15'
+  changes: 4
+  kinds:
+    Modified this existing endpoint: 3
+    Security has been changed: 1
+  breaking: false
+  highlights:
+  - 'Modified this existing endpoint: GET /events/{ID}/attachments'
+  - 'Modified this existing endpoint: GET /types/{ID}/attachmentCategories'
+  - 'Modified this existing endpoint: POST /eventSteps/{ID}/sendBack'
+  - 'Security has been changed: GET /events/{ID}/comments'
+- date: '2023-04-24'
+  changes: 1
+  kinds:
+    Added new operation: 1
+  breaking: false
+  highlights:
+  - 'Added new operation: POST /eventSteps/{ID}/questionnaire'
+- date: '2023-04-01'
+  changes: 1
+  kinds:
+    Modified this existing endpoint: 1
+  breaking: false
+  highlights:
+  - 'Modified this existing endpoint: POST /eventSteps/{ID}/toDo'
+- date: '2023-03-11'
+  changes: 1
+  kinds:
+    Added new operation: 1
+  breaking: false
+  highlights:
+  - 'Added new operation: POST /eventSteps/{ID}/toDo'

@@ -1,0 +1,27 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Workday Business Processes (business-process)
+  version: 1.0.0
+extends: openapi/workday-business-processes-business-process-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-harvested: '2026-09-17'
+    x-apievangelist-source: https://developer.workday.com/
+    x-apievangelist-provenance: "searched \u2014 fetched verbatim from the Workday developer site REST directory"
+- target: $.servers[0]
+  update:
+    url: https://{tenantHostname}/businessProcess/v1
+    description: Workday tenant REST API host (API Gateway)
+    variables:
+      tenantHostname:
+        default: wd2-impl-services1.workday.com
+        description: Your Workday tenant API hostname
+  x-reason: the published spec writes the host as the literal <tenantHostname>, which is not a valid OpenAPI server variable
+- target: $.components.securitySchemes.OAuth2.flows.implicit
+  update:
+    authorizationUrl: https://{tenantAuthorizationHostname}/authorize
+  x-reason: same angle-bracket placeholder normalisation on the OAuth authorization URL
+- target: $.info
+  update:
+    x-apievangelist-gap-operationids: the published document declares no operationId on any of its 21 operations

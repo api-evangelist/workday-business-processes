@@ -1,0 +1,224 @@
+generated: '2026-09-17'
+method: derived
+status: candidate
+source: openapi/workday-business-processes-business-process-openapi.yml + openapi/workday-business-processes-custom-business-process-config-openapi.yml
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: oauth
+  verified: searched
+  note: Workday ships NO first-party MCP server for the Business Process API, remote or stdio. Searched developer.workday.com/llms.txt
+    (the provider's own curated index — no MCP entry), the Workday GitHub org, and npm. github.com/Workday/WorkdayDeveloperAgentForClaude
+    exists and was pushed 2026-09-17, but has no readable default-branch content (raw README/.mcp.json/plugin.json all
+    404), so nothing about it can be verified. The npm package `workday-mcp` (0.6.5, 2026-09-15) is community-authored
+    — npm metadata names github.com/chrischall/workday-mcp, not Workday. Everything below is a DERIVED candidate from
+    the real published OpenAPI; no endpoint is asserted.
+server:
+  name: workday-business-process
+  transport: null
+  url: null
+auth_context:
+  scheme: oauth2
+  authorization_url: https://auth.api.workday.com/v1/authorize
+  scopes:
+  - read
+  - write
+  note: Scopes read/write are declared in the customBusinessProcessConfig spec. The businessProcess v1 spec declares
+    an OAuth2 implicit scheme with an EMPTY scopes map and a templated <tenantAuthorizationHostname> authorization URL,
+    so per-tenant registration is required.
+tool_count: 32
+tools:
+- name: list_types
+  description: Retrieves all business process types.
+  method: GET
+  path: /types
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /types
+  operation_id: null
+- name: get_types
+  description: Retrieves a business process type.
+  method: GET
+  path: /types/{ID}
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /types/{ID}
+  operation_id: null
+- name: get_types_attachment_categories
+  description: Retrieves attachment categories for a business process type.
+  method: GET
+  path: /types/{ID}/attachmentCategories
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /types/{ID}/attachmentCategories
+  operation_id: null
+- name: list_event_steps
+  description: Retrieves business process event steps.
+  method: GET
+  path: /eventSteps
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /eventSteps
+  operation_id: null
+- name: post_event_steps_questionnaire
+  description: Post an action for a Complete Questionnaire step in a business process.
+  method: POST
+  path: /eventSteps/{ID}/questionnaire
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /eventSteps/{ID}/questionnaire
+  operation_id: null
+- name: post_event_steps_reassign
+  description: Reassigns the specified business process event step.
+  method: POST
+  path: /eventSteps/{ID}/reassign
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /eventSteps/{ID}/reassign
+  operation_id: null
+- name: post_event_steps_deny
+  description: Denies a business process event step.
+  method: POST
+  path: /eventSteps/{ID}/deny
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /eventSteps/{ID}/deny
+  operation_id: null
+- name: get_event_steps
+  description: Retrieves a business process event step.
+  method: GET
+  path: /eventSteps/{ID}
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /eventSteps/{ID}
+  operation_id: null
+- name: post_event_steps_to_do
+  description: Post an action for a To Do step in a business process.
+  method: POST
+  path: /eventSteps/{ID}/toDo
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /eventSteps/{ID}/toDo
+  operation_id: null
+- name: post_event_steps_approve
+  description: Approves a business process event step.
+  method: POST
+  path: /eventSteps/{ID}/approve
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /eventSteps/{ID}/approve
+  operation_id: null
+- name: post_event_steps_send_back
+  description: Sends back a business process event step.
+  method: POST
+  path: /eventSteps/{ID}/sendBack
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /eventSteps/{ID}/sendBack
+  operation_id: null
+- name: list_events
+  description: Retrieves business process events.
+  method: GET
+  path: /events
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /events
+  operation_id: null
+- name: get_events_remaining_steps
+  description: Retrieves remaining steps for a business process event.
+  method: GET
+  path: /events/{ID}/remainingSteps
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /events/{ID}/remainingSteps
+  operation_id: null
+- name: post_events_rescind
+  description: Rescinds a business process event.
+  method: POST
+  path: /events/{ID}/rescind
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /events/{ID}/rescind
+  operation_id: null
+- name: get_events_comments
+  description: Retrieves comments for a business process event.
+  method: GET
+  path: /events/{ID}/comments
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /events/{ID}/comments
+  operation_id: null
+- name: get_events
+  description: Retrieves a business process event.
+  method: GET
+  path: /events/{ID}
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /events/{ID}
+  operation_id: null
+- name: get_events_in_progress_steps
+  description: Retrieves in progress steps for a business process event.
+  method: GET
+  path: /events/{ID}/inProgressSteps
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /events/{ID}/inProgressSteps
+  operation_id: null
+- name: post_events_cancel
+  description: Cancels a business process event.
+  method: POST
+  path: /events/{ID}/cancel
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /events/{ID}/cancel
+  operation_id: null
+- name: get_events_attachments
+  description: Retrieves attachments for a business process event.
+  method: GET
+  path: /events/{ID}/attachments
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /events/{ID}/attachments
+  operation_id: null
+- name: get_events_completed_steps
+  description: Retrieves completed steps for a business process event.
+  method: GET
+  path: /events/{ID}/completedSteps
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /events/{ID}/completedSteps
+  operation_id: null
+- name: list_values_send_back_to
+  description: Retrieves instances that can be used as values for other endpoint parameters in this service.
+  method: GET
+  path: /values/sendBack/to/
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /values/sendBack/to/
+  operation_id: null
+- name: post_types
+  description: Creates a new custom business process type, including initiating actions.
+  method: POST
+  path: /types
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#create
+  operation_id: create
+- name: list_types
+  description: Returns summary of all custom business process types
+  method: GET
+  path: /types
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#get
+  operation_id: get
+- name: get_types
+  description: Returns a custom business process type
+  method: GET
+  path: /types/{id}
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#view
+  operation_id: view
+- name: update_types
+  description: Updates a custom business process type
+  method: PUT
+  path: /types/{id}
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#update
+  operation_id: update
+- name: delete_types
+  description: Deletes a custom business process type
+  method: DELETE
+  path: /types/{id}
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#delete
+  operation_id: delete
+- name: post_event_task_definitions
+  description: Creates a new event task definition.
+  method: POST
+  path: /eventTaskDefinitions
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#createEventTaskDefinition
+  operation_id: createEventTaskDefinition
+- name: list_event_task_definitions
+  description: Returns summary of all event task definitions
+  method: GET
+  path: /eventTaskDefinitions
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#getEventTaskDefinition
+  operation_id: getEventTaskDefinition
+- name: get_event_task_definitions
+  description: Returns a event task definition
+  method: GET
+  path: /eventTaskDefinitions/{id}
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#viewEventTaskDefinition
+  operation_id: viewEventTaskDefinition
+- name: update_event_task_definitions
+  description: Updates a event task definition.
+  method: PUT
+  path: /eventTaskDefinitions/{id}
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#updateEventTaskDefinition
+  operation_id: updateEventTaskDefinition
+- name: patch_event_task_definitions
+  description: Updates a event task definition.
+  method: PATCH
+  path: /eventTaskDefinitions/{id}
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#patchEventTaskDefinition
+  operation_id: patchEventTaskDefinition
+- name: delete_event_task_definitions
+  description: Deletes a event task definition
+  method: DELETE
+  path: /eventTaskDefinitions/{id}
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#deleteEventTaskDefinition
+  operation_id: deleteEventTaskDefinition

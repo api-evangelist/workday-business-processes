@@ -1,17 +1,48 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/workday-business-processes-openapi.yml
+generated: '2026-09-17'
+method: searched
+source: openapi/workday-business-processes-business-process-openapi.yml, openapi/workday-business-processes-custom-business-process-config-openapi.yml
 summary:
   types:
   - oauth2
   oauth2_flows:
+  - implicit
+  documented_flows:
+  - authorizationCode
   - clientCredentials
+  - refreshToken
+  gateway: Workday Cloud Platform API Gateway — every REST call authenticates and routes through it
 schemes:
-- name: oauth2
+- name: OAuth2
   type: oauth2
   flows:
-  - flow: clientCredentials
-    tokenUrl: https://{tenant}.workday.com/ccx/oauth2/{tenant}/token
-    scopes: 1
+  - flow: implicit
+    authorizationUrl: https://{tenantAuthorizationHostname}/authorize
+    scopes: 0
   sources:
-  - openapi/workday-business-processes-openapi.yml
+  - openapi/workday-business-processes-business-process-openapi.yml
+  - openapi/workday-business-processes-custom-business-process-config-openapi.yml
+docs: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+docs_additional:
+- title: Create Your API Client
+  url: https://developer.workday.com/doc/zwx1518028675482.md
+- title: 'Reference: OAuth2 Authorization Code'
+  url: https://developer.workday.com/doc/jzx1537909761291.md
+- title: 'Reference: OAuth2 Client Credentials'
+  url: https://developer.workday.com/doc/axp1537909839739.md
+- title: Request a New Access Token with a Refresh Token
+  url: https://developer.workday.com/doc/cqa1553122177664.md
+- title: SOAP API Authentication and Security
+  url: https://developer.workday.com/doc/GUID-4c354bdb-06cd-461d-a632-ea8303beaedb-enHYPHENus.md
+notes: The published specs declare only an implicit flow, which is NOT what Workday tells integrators to use. The docs document
+  Authorization Code and Client Credentials as the supported flows for a registered API client, plus refresh-token renewal. Registration
+  is per tenant in the Developer Site Console and a client must be separately allowlisted onto each non-development tenant by a
+  Company Administrator. The SOAP side (wsdl/) authenticates differently again — WS-Security UsernameToken or X.509, with an Integration
+  System User, not OAuth. There is no OIDC discovery document and no RFC 8414 metadata on any Workday host (84 well-known probes
+  on 2026-09-17, all 404), so a client cannot discover the endpoints programmatically; they are tenant-specific and read from the
+  docs or the Console.
+soap_auth:
+  mechanisms:
+  - WS-Security UsernameToken
+  - X.509 certificate
+  principal: Integration System User (ISU)
+  docs: https://developer.workday.com/doc/GUID-4c354bdb-06cd-461d-a632-ea8303beaedb-enHYPHENus.md

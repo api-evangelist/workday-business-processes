@@ -1,17 +1,53 @@
-generated: '2026-07-11'
+generated: '2026-09-17'
 method: searched
 probe: true
-source: https://security.workday.com/
-url: https://security.workday.com/
+source: https://compliance.workday.com/
+url: https://compliance.workday.com/
+verified: '2026-09-17'
+http_status: 200
+title: Workday Trust Center (powered by Conveyor)
+also:
+  - url: https://www.workday.com/en-us/why-workday/trust/compliance.html
+    http_status: 200
+    role: Workday's own compliance page — the certification list in prose
+  - url: https://www.workday.com/en-us/why-workday/trust/overview.html
+    http_status: 200
+    role: trust hub
+  - url: https://www.workday.com/en-us/why-workday/trust/privacy.html
+    http_status: 200
 certifications:
-- SOC 2
-- ISO 27001
-- FedRAMP
-- GDPR
+  - SOC 1
+  - SOC 2
+  - ISO 27001
+  - ISO 22301
+  - CSA STAR
+  - FedRAMP
+  - IRAP
+  - HITRUST
+  - HIPAA
+  - GDPR
+  - C5
 evidence:
-- source: https://security.workday.com/
-  keywords:
-  - soc 2
-  - iso 27001
-  - fedramp
-  - gdpr
+  - source: https://compliance.workday.com/
+    keywords: [soc 1, soc 2, iso 27001, iso 22301, csa star, fedramp, irap, hitrust, hipaa, gdpr, c5, trust center]
+    note: Conveyor-hosted trust portal, branded "Workday Trust Center", offering certification download on request.
+  - source: https://www.workday.com/en-us/why-workday/trust/compliance.html
+    keywords: [soc 1, soc 2, iso 27001, fedramp, irap, csa star, hipaa, gdpr, c5]
+excluded_source:
+  url: https://security.workday.com/
+  reason: >-
+    An earlier automated probe recorded security.workday.com as the trust center. It returns HTTP 200
+    on a Workday-controlled subdomain, but the page is a 2 KB Lovable-built microsite (og:image on
+    lovable.app, twitter:site @Lovable) that only restates four certifications and links onward. It is
+    not the authoritative trust surface, so this file points at compliance.workday.com instead.
+vulnerability_disclosure:
+  published: false
+  checked: '2026-09-17'
+  note: >-
+    No verified vulnerability disclosure program. /.well-known/security.txt returns 404 on every
+    Workday host (see well-known/); no /responsible-disclosure, /vulnerability-disclosure or
+    /security policy page resolves on workday.com; hackerone.com/workday returns 200 but is an
+    UNCLAIMED HackerOne directory stub (its own meta description is the generic "documents any known
+    process for reporting a security vulnerability" boilerplate, marked spec-external-claimed) with no
+    program policy behind it. No Security or VulnerabilityDisclosure pointer is emitted — that would
+    assert a disclosure channel this company does not publish.

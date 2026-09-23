@@ -1,0 +1,117 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  https://github.com/Workday + registry.npmjs.org + pypi.org — searched npm, PyPI, Maven Central,
+  NuGet, pkg.go.dev, RubyGems, Packagist and crates.io for a first-party client library for the
+  Workday Business Process REST API (developer.workday.com /businessProcess/v1).
+summary: >-
+  Workday publishes first-party packages, but NONE of them wraps the Business Process REST API.
+  The @workday/* npm scope is the Canvas design system (UI components, see components/); the
+  first-party API clients on github.com/Workday cover Prism Analytics and Reports-as-a-Service
+  only, and neither is published to PyPI. Consumers of /businessProcess/v1 call the REST endpoints
+  directly (or the Integrations SOAP service, see wsdl/). Third-party packages named "workday" on
+  npm and PyPI are NOT Workday-authored and are recorded below as such so they are not mistaken
+  for official SDKs.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@workday/canvas-kit-react"
+    url: https://www.npmjs.com/package/@workday/canvas-kit-react
+    install: npm install @workday/canvas-kit-react
+    official: true
+    version: 16.1.1
+    published: '2026-09-15'
+    covers_business_process_api: false
+    note: >-
+      Workday Canvas Kit — the company's React UI component library. First-party and actively
+      released, but a design system, not an API client. Catalogued in components/.
+  - language: javascript
+    registry: npm
+    name: "@workday/canvas-kit-css"
+    url: https://www.npmjs.com/package/@workday/canvas-kit-css
+    install: npm install @workday/canvas-kit-css
+    official: true
+    version: 16.1.1
+    published: '2026-09-15'
+    covers_business_process_api: false
+  - language: javascript
+    registry: npm
+    name: "@workday/canvas-tokens-web"
+    url: https://www.npmjs.com/package/@workday/canvas-tokens-web
+    install: npm install @workday/canvas-tokens-web
+    official: true
+    version: 4.5.0
+    published: '2026-09-11'
+    covers_business_process_api: false
+  - language: javascript
+    registry: npm
+    name: "@workday/canvas-system-icons-web"
+    url: https://www.npmjs.com/package/@workday/canvas-system-icons-web
+    install: npm install @workday/canvas-system-icons-web
+    official: true
+    version: 5.1.0
+    published: '2026-08-26'
+    covers_business_process_api: false
+  - language: python
+    registry: null
+    name: prism-python
+    url: https://github.com/Workday/prism-python
+    install: pip install git+https://github.com/Workday/prism-python.git
+    official: true
+    version: null
+    published: null
+    covers_business_process_api: false
+    note: >-
+      First-party Python client for the Workday Prism Analytics API, distributed from the Workday
+      GitHub org only. Checked pypi.org/pypi/prism-python/json on 2026-09-17 — HTTP 404, the
+      package is not on PyPI, so there is no registry metadata endpoint to read a version or a
+      release date from. Honest gap, not a guess.
+  - language: python
+    registry: null
+    name: raas-python
+    url: https://github.com/Workday/raas-python
+    install: pip install git+https://github.com/Workday/raas-python.git
+    official: true
+    version: null
+    published: null
+    covers_business_process_api: false
+    note: >-
+      First-party Python client for Workday Reports-as-a-Service. GitHub-only; not on PyPI
+      (the PyPI project named `raas` is an unrelated APIMatic-generated rewards SDK).
+  - language: java
+    registry: null
+    name: ldq-jdbc-driver
+    url: https://github.com/Workday/ldq-jdbc-driver
+    official: true
+    version: null
+    published: null
+    covers_business_process_api: false
+    note: First-party JDBC driver for Workday data query; source-only, no Maven Central coordinates found.
+not_first_party:
+  - registry: npm
+    name: workday-mcp
+    url: https://www.npmjs.com/package/workday-mcp
+    version: 0.6.5
+    published: '2026-09-15'
+    official: false
+    note: >-
+      Community MCP server. npm metadata names the author as "Claude Code" and the repository as
+      github.com/chrischall/workday-mcp — NOT Workday. Recorded so it is never credited to Workday.
+  - registry: npm
+    name: "@mindstone/mcp-server-workday"
+    url: https://www.npmjs.com/package/@mindstone/mcp-server-workday
+    version: 0.3.1
+    published: '2026-08-09'
+    official: false
+  - registry: pypi
+    name: workday
+    url: https://pypi.org/project/workday/
+    version: 0.4.0
+    official: false
+    note: Authored by Anthony Shaw (github.com/tonybaloney/workday), not Workday Inc.
+sdk_gap:
+  api: Workday Business Process REST API v1
+  first_party_sdk: false
+  statement: >-
+    No first-party SDK, in any language, wraps /businessProcess/v1. This is a real ergonomics gap
+    for a 21-operation production service, recorded rather than papered over.

@@ -1,0 +1,44 @@
+generated: '2026-09-17'
+method: searched
+source: https://www.npmjs.com/org/workday + https://github.com/Workday/canvas-kit
+summary: >-
+  Workday ships a substantial first-party client-side component surface — the Canvas design system —
+  but none of it is business-process specific. Recorded because it is real, official, actively
+  released, and is what a developer building on top of Workday actually renders with.
+families:
+  - name: Workday Canvas Kit
+    kind: react-component-library
+    official: true
+    repo: https://github.com/Workday/canvas-kit
+    docs: https://workday.github.io/canvas-kit/
+    loaders:
+      - {registry: npm, name: "@workday/canvas-kit-react", version: 16.1.1, published: '2026-09-15'}
+      - {registry: npm, name: "@workday/canvas-kit-css", version: 16.1.1, published: '2026-09-15'}
+      - {registry: npm, name: "@workday/canvas-kit-codemod", version: 16.1.1, published: '2026-09-15'}
+  - name: Canvas Tokens
+    kind: design-tokens
+    official: true
+    repo: https://github.com/Workday/canvas-tokens
+    loaders:
+      - {registry: npm, name: "@workday/canvas-tokens-web", version: 4.5.0, published: '2026-09-11'}
+  - name: Canvas Icons
+    kind: icon-library
+    official: true
+    loaders:
+      - {registry: npm, name: "@workday/canvas-system-icons-web", version: 5.1.0, published: '2026-08-26'}
+      - {registry: npm, name: "@workday/canvas-expressive-icons-web", version: 1.1.0, published: '2026-06-04'}
+      - {registry: npm, name: "@workday/canvas-accent-icons-web", version: 3.0.17, published: '2025-06-06'}
+  - name: Workday Extend presentation components
+    kind: hosted-app-surface
+    official: true
+    docs: https://developer.workday.com/doc/mdz1560960621927.md
+    note: >-
+      Extend apps render business-process steps and pages inside Workday itself, driven by the
+      Presentation Model Definition. Not an npm package — a tenant-hosted app surface. The
+      "Business Object and Business Process APIs in Presentation Components" reference is the
+      business-process-relevant entry point.
+    loaders: []
+embedded_business_process_widget: false
+embedded_note: >-
+  There is no drop-in "approve this Workday task" web component for a third-party page. Business
+  process interaction outside Workday means calling /businessProcess/v1 directly.

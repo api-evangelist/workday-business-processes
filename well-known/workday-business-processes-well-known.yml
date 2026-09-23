@@ -1,0 +1,129 @@
+generated: '2026-09-17'
+method: probed
+source: live HTTPS probe of the named /.well-known/ path list on every host this record knows
+hit_count: 0
+summary: >-
+  Zero real discovery documents. Seven hosts probed, twelve named paths each (84 probes). Two
+  distinct failure modes, both recorded rather than promoted into credit: workday.com / www.workday.com /
+  community.workday.com / api.workday.com / auth.api.workday.com / doc.workday.com return honest 404s;
+  developer.workday.com is a single-page-app catch-all that answers HTTP 200 with the same 4,927-byte
+  HTML shell for EVERY path, including the negative control that cannot exist. No WellKnown and no
+  SecurityTxt pointer is emitted from this file.
+hosts:
+  - host: https://workday.com
+    soft_404_control: passed
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/apis.json, status: 404}
+      - {path: /apis.json, status: 404}
+      - {path: /.well-known/aauth-resource.json, status: 404}
+      - {path: /.well-known/wbp-negative-control-7f3ab91c.json, status: 404, note: negative control}
+  - host: https://www.workday.com
+    soft_404_control: passed
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/apis.json, status: 404}
+      - {path: /apis.json, status: 404}
+      - {path: /.well-known/aauth-resource.json, status: 404}
+      - {path: /.well-known/wbp-negative-control-7f3ab91c.json, status: 404, note: negative control}
+  - host: https://developer.workday.com
+    soft_404_control: failed
+    path_echo_control: failed
+    note: >-
+      Catch-all SPA. Every path returns HTTP 200 with an identical 4,927-byte HTML shell, including
+      /.well-known/wbp-negative-control-7f3ab91c.json. Per the pipeline rule, every 200 on this host is
+      discarded; nothing was saved and no document row carries a file. The host DOES serve real
+      machine-readable content, but at named paths outside /.well-known/ — /llms.txt and
+      /bundles/rest-directory-ui/public/static/*.
+    documents:
+      - {path: /.well-known/security.txt, status: 200, hit: false, note: HTML SPA shell, not a document}
+      - {path: /.well-known/openid-configuration, status: 200, hit: false, note: HTML SPA shell}
+      - {path: /.well-known/oauth-authorization-server, status: 200, hit: false, note: HTML SPA shell}
+      - {path: /.well-known/oauth-protected-resource, status: 200, hit: false, note: HTML SPA shell}
+      - {path: /.well-known/api-catalog, status: 200, hit: false, note: HTML SPA shell}
+      - {path: /.well-known/ai-plugin.json, status: 200, hit: false, note: HTML SPA shell}
+      - {path: /.well-known/agent-card.json, status: 200, hit: false, note: HTML SPA shell}
+      - {path: /.well-known/agent.json, status: 200, hit: false, note: HTML SPA shell}
+      - {path: /.well-known/apis.json, status: 200, hit: false, note: HTML SPA shell}
+      - {path: /apis.json, status: 200, hit: false, note: HTML SPA shell}
+      - {path: /.well-known/aauth-resource.json, status: 200, hit: false, note: HTML SPA shell}
+      - {path: /.well-known/wbp-negative-control-7f3ab91c.json, status: 200, hit: false, note: negative control returned 200 — every hit on this host is discarded}
+  - host: https://community.workday.com
+    soft_404_control: passed
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/apis.json, status: 404}
+      - {path: /apis.json, status: 404}
+      - {path: /.well-known/aauth-resource.json, status: 404}
+      - {path: /.well-known/wbp-negative-control-7f3ab91c.json, status: 404, note: negative control}
+  - host: https://api.workday.com
+    soft_404_control: passed
+    note: API Gateway host named in the customBusinessProcessConfig servers[] block. Returns a 21-byte JSON 404 body for every path.
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/apis.json, status: 404}
+      - {path: /apis.json, status: 404}
+      - {path: /.well-known/aauth-resource.json, status: 404}
+      - {path: /.well-known/wbp-negative-control-7f3ab91c.json, status: 404, note: negative control}
+  - host: https://auth.api.workday.com
+    soft_404_control: passed
+    note: >-
+      The OAuth authorization host the customBusinessProcessConfig spec declares
+      (https://auth.api.workday.com/v1/authorize). It serves NO RFC 8414 / OIDC discovery document —
+      a notable absence for a production OAuth surface.
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/apis.json, status: 404}
+      - {path: /apis.json, status: 404}
+      - {path: /.well-known/aauth-resource.json, status: 404}
+      - {path: /.well-known/wbp-negative-control-7f3ab91c.json, status: 404, note: negative control}
+  - host: https://doc.workday.com
+    soft_404_control: passed
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/apis.json, status: 404}
+      - {path: /apis.json, status: 404}
+      - {path: /.well-known/aauth-resource.json, status: 404}
+      - {path: /.well-known/wbp-negative-control-7f3ab91c.json, status: 404, note: negative control}

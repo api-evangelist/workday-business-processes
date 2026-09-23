@@ -1,0 +1,275 @@
+generated: '2026-09-17'
+method: derived
+source: openapi/_original/*.json (Workday-published businessProcess v1 + customBusinessProcessConfig v1)
+format: workday-error-envelope
+rfc9457: false
+envelope:
+  note: Workday REST errors are NOT application/problem+json. The businessProcess v1 spec returns application/json with the
+    ErrorModelReference schema; there is no `type` URI and no RFC 9457 registry.
+  schema: '#/components/schemas/ErrorModelReference'
+docs: https://developer.workday.com/doc/hug1399941147933.md
+docs_note: 'Reference: Workday Web Services Error Messages — the SOAP-side error reference; Workday publishes no REST error-code
+  registry for /businessProcess/v1.'
+problems:
+- status: 400
+  code: '400'
+  title: Invalid request. (https://community.workday.com/rest/error-messages)
+  media_types:
+  - application/json
+  schema: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /types
+- status: 401
+  code: '401'
+  title: 'Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)'
+  media_types:
+  - application/json
+  schema: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /types
+- status: 403
+  code: '403'
+  title: User has insufficient permissions. (https://community.workday.com/rest/error-messages)
+  media_types:
+  - application/json
+  schema: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /types
+- status: 404
+  code: '404'
+  title: Resource not found. (https://community.workday.com/rest/error-messages)
+  media_types:
+  - application/json
+  schema: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /types
+- status: null
+  code: default
+  title: An error occurred.
+  media_types:
+  - application/json
+  schema: '#/components/schemas/ERROR_MODEL_REFERENCE'
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#GET /types
+- status: 400
+  code: '400'
+  title: "Invalid request. (https://community.workday.com/rest/error-messages)\n| Severity | Error Code | Validation Message\
+    \ |\n --- | --- | --- |\n| Critical | A212 | This event step isn't awaiting your action |\n| Critical | A1584 | Specify\
+    \ a questionnaire response. |\n| Critical | A1585 | Specify a complete questionnaire. |\n| Critical | A1649 | You can’t\
+    \ skip this step if you provide a questionnaire response. |\n| Critical | A1650 | Specify Submit, Save for Later or Skip.\
+    \ This step type doesn't support other actions. |\n| Critical | A1651 | This step is required. |\n| Critical | A1754 |\
+    \ You have submitted more than one answer for a single select multiple choice question. |\n| Critical | A1755 | You have\
+    \ selected an invalid answer choice. |\n| Critical | A1757 | This questionnaire is now closed. You can no longer submit\
+    \ new responses or change your existing responses. |\n| Critical | A1758 | You cannot submit answers to branching questions\
+    \ without answers for parent questions. |\n| Critical | A1759 | All answers you submit must match the expected format\
+    \ for that question type. |\n| Critical | A1760 | This questionnaire was submitted already. You can’t submit it again.\
+    \ |\n| Critical | A1761 | All answered questions must be questions from the associated questionnaire. |\n| Critical |\
+    \ A1762 | Attach an answer. There's no uploaded file. |\n| Critical | A1763 | This questionnaire has already been skipped.\
+    \ You can’t submit it again. |\n| Critical | A1764 | You must answer all required questions. |\n| Critical | A1765 | You\
+    \ have submitted more multiple choice answers than is allowed for a question. |"
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /eventSteps/{ID}/questionnaire
+- status: 400
+  code: '400'
+  title: "Invalid request. (https://community.workday.com/rest/error-messages)\n| Severity | Error Code | Validation Message\
+    \ |\n --- | --- | --- |\n| Critical | A2822 | Specify a comment. |\n| Critical | A3055 | You can't remove and add the\
+    \ same person to the business process step. Specify a different person for the reassignment. |\n| Critical | A3056 | Specify\
+    \ at least 1 person to remove or 1 person to add to the business process step. |\n| Critical | A3057 | Specify a valid\
+    \ person to remove from the business process step. You can't remove a person that's not a current awaiting person for\
+    \ the step. |\n| Critical | A3058 | There must be at least 1 awaiting person. |\n| Critical | A3059 | Specify a valid\
+    \ person. You can't reassign the business process step to the current awaiting person. |\n| Critical | A3152 | You don't\
+    \ have security permissions to perform this reassignment. |\n| Critical | A3153 | You can't reassign the event because\
+    \ the event record has a Completed status. |\n| Critical | A3154 | You can't reassign the event. |\n| Critical | A3173\
+    \ | The role you're attempting to reassign to is blocked by routing restrictions. |\n| Critical | A3174 | You can't assign\
+    \ the business process step to a person that doesn't have an active Workday account. |\n| Critical | A3175 | Specify a\
+    \ valid role to reassign the business process step to. The person's role isn't configured or isn't part of a security\
+    \ group on the business process security policy to perform the action. |\n| Critical | A3185 | Specify a valid step type.\
+    \ Reassignment doesn't support this step type. |\n| Critical | A3186 | You can't reassign this business process step.\
+    \ |\n| Critical | A3187 | You can’t reassign the event because eSignature isn’t supported in reassignment. |"
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /eventSteps/{ID}/reassign
+- status: 400
+  code: '400'
+  title: "Invalid request. (https://community.workday.com/rest/error-messages)\n| Severity | Error Code | Validation Message\
+    \ |\n --- | --- | --- |\n| Critical | A181 | A comment is required |\n| Critical | A183 | This event step cannot be denied\
+    \ |\n| Critical | A212 | This event step is not awaiting your action. |\n| Critical | A225 | You are not authorized to\
+    \ deny this event step |\n| Critical | A234 | A step action is required when multiple values are available |"
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /eventSteps/{ID}/deny
+- status: 400
+  code: '400'
+  title: "Invalid request. (https://community.workday.com/rest/error-messages)\n| Severity | Error Code | Validation Message\
+    \ |\n --- | --- | --- |\n| Critical | A212 | This event step isn't awaiting your action |\n| Critical | A1572 | Specify\
+    \ a To Do step. |\n| Critical | A1573 | You can't comment on this business process type. |\n| Critical | A1574 | Specify\
+    \ Submit or Save for Later. This step type doesn't support other actions. |"
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /eventSteps/{ID}/toDo
+- status: 400
+  code: '400'
+  title: "Invalid request. (https://community.workday.com/rest/error-messages)\n| Severity | Error Code | Validation Message\
+    \ |\n --- | --- | --- |\n| Critical | A181 | Specify a comment. |\n| Critical | A190 | This event step type cannot be\
+    \ approved |\n| Critical | A212 | This event step is not awaiting your action. |\n| Critical | A1573 | You can't comment\
+    \ on this business process type. |"
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /eventSteps/{ID}/approve
+- status: 400
+  code: '400'
+  title: "Invalid request. (https://community.workday.com/rest/error-messages)\n| Severity | Error Code | Validation Message\
+    \ |\n --- | --- | --- |\n| Critical | A202 | The step you are sending back to isn't supported for this business process.\
+    \ |\n| Critical | A212 | This event step isn't awaiting your action |\n| Critical | A227 | The step you are sending back\
+    \ from isn't supported for this business process. |"
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /eventSteps/{ID}/sendBack
+- status: 400
+  code: '400'
+  title: "Invalid request. (https://community.workday.com/rest/error-messages)\n| Severity | Error Code | Validation Message\
+    \ |\n --- | --- | --- |\n| Critical | A181 | You need to specify a comment. |\n| Critical | A219 | You can't rescind this\
+    \ event because the status isn't Successfully Completed. |\n| Critical | A2443 | You currently don't have security access\
+    \ to rescind this event. |\n| Critical | A2444 | You can't rescind this event because this action isn't supported on the\
+    \ business process. |\n| Critical | A2444 | You can't rescind this event because this action isn't supported on this business\
+    \ process: [businessprocesstype] |\n| Critical | A2445 | You can't rescind this event because this action isn't supported\
+    \ on the subprocess. |\n| Critical | A2453 | You can't rescind this event because this event is delegated to someone.\
+    \ |\n| Critical | A2454 | You can't rescind this event because there are subevents still in progress. |\n| Critical |\
+    \ A2988 | [nonRescindableSubprocessValidationMessage] |"
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /events/{ID}/rescind
+- status: 400
+  code: '400'
+  title: "Invalid request. (https://community.workday.com/rest/error-messages)\n| Severity | Error Code | Validation Message\
+    \ |\n --- | --- | --- |\n| Critical | A181 | You need to specify a comment. |\n| Critical | A219 | You can't cancel this\
+    \ business process because the event isn't in progress or in error. |\n| Critical | A2198 | You can't cancel this event\
+    \ because this action isn't supported on the subprocess. |\n| Critical | A2199 | You can't cancel this event because this\
+    \ action isn't supported on the business process. |\n| Critical | A2200 | You can't cancel this event because this action\
+    \ isn't currently supported on the business process. |\n| Critical | A2201 | You currently don't have security access\
+    \ to cancel this event. |"
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-business-process-openapi.yml#POST /events/{ID}/cancel
+- status: 400
+  code: '400'
+  title: 'Possible Validations:
+
+
+    - The name for custom business process type is required and must be unique across all custom business process types.
+
+
+    - The name for initiating actions is required and must be unique within a custom business process type.
+
+
+    - The referenceIdValue must be unique across all custom business process types.
+
+
+    - The referenceIdValue for initiatingActions must be unique across all initiating actions.
+
+
+    - Custom object is not valid for target business object.
+
+
+    - You are not allowed to set more than one initiating allowed action as default.
+
+
+    - The Custom Task cannot be used by more than one initiating allowed action.
+
+
+    - The Event Task Definition is required for the Event Action Task Configuration
+
+
+    - The Event Action is required for the Event Action Task Configuration
+
+    '
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#POST /types
+- status: 404
+  code: '404'
+  title: Not Found.
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#GET /types/{id}
+- status: 400
+  code: '400'
+  title: 'Possible Validations:
+
+
+    -The referenceIdValue must be unique across all custom business process types.
+
+
+    -The name for custom business process type must be unique across all custom business process types.
+
+
+    -Custom object is not valid for target business object.
+
+
+    -Changes to the custom object are not allowed once an event exists for this custom business process.
+
+
+    -Changes to the business object are not allowed once an event exists for this custom business process.
+
+
+    -Changes to the Name are not allowed once an event exists for this custom business process.
+
+
+    -Changes to the ID are not allowed once an event exists for this custom business process.
+
+    '
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#PUT /types/{id}
+- status: 400
+  code: '400'
+  title: 'Possible Validations:
+
+    - The custom business process type cannot be deleted because it has references.
+
+    - You cannot delete a custom business process type that has been used by a business process event.'
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#DELETE /types/{id}
+- status: 400
+  code: '400'
+  title: 'Poossible Validations:
+
+
+    -The name for event task definition is required and must be unique across all event task definitions.
+
+
+    -VPS application is a required field.
+
+
+    -VPS site is a required field.
+
+
+    -The referenceIdValue must be unique across all VPS definitions.
+
+    '
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#POST /eventTaskDefinitions
+- status: 400
+  code: '400'
+  title: 'Possible Validations:
+
+
+    -The name for event task definition is required and must be unique across all event task definitions.
+
+
+    -VPS application is a required field.
+
+
+    -VPS site is a required field.
+
+
+    -The referenceIdValue must be unique across all event task definitions.
+
+    '
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#PUT /eventTaskDefinitions/{id}
+- status: 400
+  code: '400'
+  title: The event task definition cannot be deleted because it has references.
+  media_types: []
+  schema: null
+  source_operation: openapi/workday-business-processes-custom-business-process-config-openapi.yml#DELETE /eventTaskDefinitions/{id}

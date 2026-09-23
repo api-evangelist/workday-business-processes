@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Workday Business Process Approvals Business Process Definitions API
+  title: Workday Business Process Business Process Definitions API
   description: The Workday Business Process API provides RESTful access to business process management capabilities including initiating workflows, managing approvals, tracking process instances, retrieving process definitions, and handling inbox items. The API enables organizations to programmatically trigger Workday business processes, monitor their status, and integrate workflow automation with external systems.
   version: v41.1
   contact:
@@ -123,35 +123,41 @@ paths:
         dispatcher: URI_PARTS
         dispatcherRules: definitionId
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: NOT_FOUND
-            message: The requested resource does not exist
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
   schemas:
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required:
+      - error
+      - message
+    BusinessProcessDefinitionsResponse:
+      title: Business Process Definitions Response
+      description: Paginated response containing a list of business process definitions
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of definitions
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessProcessDefinition'
+      required:
+      - total
+      - data
     ProcessStepDefinition:
       title: Process Step Definition
       description: A step definition within a business process
@@ -181,40 +187,6 @@ components:
       required:
       - stepId
       - stepType
-    BusinessProcessDefinitionsResponse:
-      title: Business Process Definitions Response
-      description: Paginated response containing a list of business process definitions
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of definitions
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BusinessProcessDefinition'
-      required:
-      - total
-      - data
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
-      required:
-      - error
-      - message
     BusinessProcessDefinition:
       title: Business Process Definition
       description: A Workday business process type definition with steps and configuration
@@ -252,6 +224,34 @@ components:
       - name
       - type
       - status
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
   securitySchemes:
     oauth2:
       type: oauth2

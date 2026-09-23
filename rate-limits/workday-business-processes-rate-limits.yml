@@ -3,85 +3,118 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Workday Business Processes
 providerId: workday-business-processes
+generated: '2026-09-17'
+method: searched
+source: https://developer.workday.com/doc/dan1370797408285.md
+docs: https://developer.workday.com/doc/dan1370797408285.md
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-09-17'
+supersedes: >-
+  The 2026-05-04 bulk-sweep scaffold, which asserted free/professional/enterprise tiers with
+  10/100/1000 requests-per-minute and X-RateLimit-* response headers. None of that was ever published
+  by Workday. Replaced here with what the provider's own "Reference: Integrations, EIB, and Web Service
+  Limits" page actually states.
 tags:
   - Rate Limiting
   - Quotas
   - Throttling
-description: Machine-readable rate limit definitions for the Workday Business Processes API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
+description: >-
+  Workday publishes service limits, not per-key rate limits. There is no requests-per-minute number for
+  the Business Process REST API and no rate-limit response headers of any kind. What Workday does
+  publish is a throttling posture (429 on REST, 500 on SOAP), volume ceilings that scale with customer
+  size for extract interfaces, and a set of hard request/response boundaries.
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
+headers_note: >-
+  VERIFIED ABSENT. Workday documents no RateLimit-*, X-RateLimit-* or Retry-After contract, and the
+  published OpenAPI declares no response headers on any operation. An agent gets no runtime budget
+  signal at all — it learns it is throttled only by receiving a 429. This is the single biggest
+  agent-readiness gap on this API.
 responseCodes:
   throttled: 429
   quotaExceeded: 429
-  serviceUnavailable: 503
+  serviceUnavailable: 500
+limit_count: 7
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Workday Business Process API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Workday Business Process API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Workday Business Process API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
+  - name: REST / RaaS throttling under load
+    scope: tenant
+    metric: adaptive
+    limit: null
+    applies: [Business Process REST API v1, Custom Business Process Config v1]
+    response: 429 Too Many Requests
+    note: >-
+      "Workday rejects API requests when other requests overload tenant resources." The threshold is
+      not published and is explicitly adaptive to shared-tenant load, not a fixed per-key quota.
+  - name: SOAP (Workday Web Services) throttling under load
+    scope: tenant
+    metric: adaptive
+    limit: null
+    applies: [Integrations v47.0 SOAP service]
+    response: 500 Internal Service Error
+    note: The 500 can mean "too many requests"; Workday advises retrying after a brief pause.
+  - name: Invalid-request guardrail
+    scope: tenant
+    metric: invalid_requests
+    limit: null
+    response: 429
+    note: >-
+      "When a Workday integration or customer process generates an excessive volume of invalid
+      requests, our system guardrails will temporarily rate-limit that specific traffic with an HTTP
+      429 response." A client that loops on a 4xx will be throttled.
+  - name: API extract requests — under 3,500 workers (ME)
+    scope: tenant
+    metric: requests
+    limit: 75000
+    timeFrame: 24h
+    burst: 15000
+    burst_timeFrame: 60m
+    applies: [Reports-as-a-Service extract interfaces]
+  - name: API extract requests — under 10,000 workers (LE)
+    scope: tenant
+    metric: requests
     limit: 100000
-    timeFrame: month
-    applies:
-      - Workday Business Process API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Workday Business Process API
+    timeFrame: 24h
+    burst: 30000
+    burst_timeFrame: 60m
+  - name: API extract requests — under 100,000 workers (LE)
+    scope: tenant
+    metric: requests
+    limit: 250000
+    timeFrame: 24h
+    burst: 75000
+    burst_timeFrame: 60m
+  - name: API extract requests — more than 100,000 workers
+    scope: tenant
+    metric: requests
+    limit: 350000
+    timeFrame: 24h
+    burst: 100000
+    burst_timeFrame: 60m
+boundaries:
+  - {name: Collection page size, value: 'limit default 20, maximum 100', source: openapi}
+  - {name: Paged-request cache retention, value: 2 hours between paged requests, note: page 1 builds the cache and is slower; do not set a tight HTTP timeout on it}
+  - {name: Attachment / image size, value: 30 MB, applies: [SOAP, REST]}
+  - {name: HTTP header size, value: 16 KB}
+  - {name: Web service response size, value: 1,000,000 instances maximum}
+  - {name: Rich text string size, value: 1,048,576 characters}
+  - {name: Concurrent EIB integrations, value: 5}
+  - {name: Integration HTTP request processing time, value: 6 hours}
+  - {name: Integration event maximum processing time, value: 7 days}
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Back-off strategy
+    description: >-
+      Workday's own recommendation, verbatim in intent: implement an exponential back-off retry
+      mechanism on the process that generates the API requests. No Retry-After value is supplied,
+      so the back-off is entirely client-side guesswork.
+  - name: Enforcement discretion
+    description: >-
+      "Workday may, in its sole discretion, (a) throttle your use of the integration or web service;
+      or (b) suspend your access until usage is brought within the limit." Enforcement is contractual,
+      not a published numeric ceiling.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

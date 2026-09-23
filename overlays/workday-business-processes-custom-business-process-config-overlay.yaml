@@ -1,0 +1,11 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Workday Business Processes (custom-business-process-config)
+  version: 1.0.0
+extends: openapi/workday-business-processes-custom-business-process-config-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-harvested: '2026-09-17'
+    x-apievangelist-source: https://developer.workday.com/
+    x-apievangelist-provenance: "searched \u2014 fetched verbatim from the Workday developer site REST directory"

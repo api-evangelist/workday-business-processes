@@ -1,0 +1,63 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  https://developer.workday.com/bundles/rest-directory-ui/public/static/services_oas3.json
+  + https://developer.workday.com/doc/zwx1518028675482.md
+  + https://developer.workday.com/doc/GUID-37fbee1b-c1c6-4c98-bfbf-e70a5d2b6e4c.md
+summary: >-
+  Workday's test surface is a TENANT, not a sandbox mode. There are no test keys, no test-vs-live key
+  prefixes, no magic identifiers and no fixture tooling — because every call runs against a real
+  provisioned Workday tenant whose data is the customer's own. The separation is environmental:
+  implementation, sandbox, gold and production tenants, each with its own hostname.
+test_vs_live:
+  mechanism: separate tenant hostnames
+  key_prefixes: []
+  modes: []
+  detail: >-
+    An API client is created per tenant in the Developer Site Console and must be explicitly allowed on
+    each non-development tenant it is migrated to — "Only a Company Administrator can add or remove
+    tenants from an API client's allowlist." There is no single credential that flips between test and
+    live; you register the client and then authorise the tenants.
+  docs: https://developer.workday.com/doc/zwx1518028675482.md
+tenant_types:
+  - name: implementation tenant
+    host_pattern: https://wd2-impl-services1.workday.com/...
+    note: The host historically carried in this record's baseURL; an implementation tenant, not a shared sandbox.
+  - name: sandbox tenant
+    note: Customer-provisioned copy used for testing; no public hostname.
+  - name: gold tenant
+    docs: https://developer.workday.com/doc/GUID-37fbee1b-c1c6-4c98-bfbf-e70a5d2b6e4c.md
+  - name: production tenant
+try_it_console:
+  url: https://developer.workday.com/rest-api-explorer
+  available: true
+  business_process_operations_enabled: false
+  evidence: >-
+    services_oas3.json carries a per-operation `tryEnabled` flag. It is TRUE for many Workday services
+    (absenceManagement /balances, for example) and FALSE for all 21 businessProcess v1 operations and
+    all 11 customBusinessProcessConfig v1 operations. The Explorer will render the business process
+    reference but will not execute a request against it.
+  note: >-
+    This is a machine-readable, provider-published statement that there is no interactive try-it path
+    for this API — worth recording precisely because it would otherwise read as an untested assumption.
+test_values:
+  cards: []
+  accounts: []
+  identifiers: []
+  detail: >-
+    None published. Sample requests in the docs use real-shaped Workday IDs from a demo tenant
+    (e.g. event id f4edd719789a10016c7addfdfa1b0000 in the cancel example) — illustrative values, not
+    reserved test identifiers, and they will not resolve in another tenant.
+time_simulation:
+  supported: false
+fixtures_and_triggers:
+  supported: false
+  detail: >-
+    No fixture generator and no event-trigger tooling. To exercise the API you must initiate a real
+    business process in the tenant — via the Workday UI, or via a POST on another service
+    (e.g. POST /workers/{ID}/jobChanges in staffing), which is how the docs say events are created.
+free_developer_access:
+  developer_site_account: true
+  grants: [documentation, REST/Graph/SOAP explorers, published API specifications, App Builder, forum]
+  grants_tenant: false
+  url: https://developer.workday.com/

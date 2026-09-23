@@ -135,44 +135,21 @@ paths:
         dispatcher: URI_PARTS
         dispatcherRules: itemId
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: NOT_FOUND
-            message: The requested resource does not exist
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: BAD_REQUEST
-            message: Invalid request body
   schemas:
+    DenialRequest:
+      title: Denial Request
+      description: Request to deny an inbox item
+      type: object
+      properties:
+        comment:
+          type: string
+          description: Denial reason or comment
+        denierId:
+          type: string
+          description: ID of the denying user
+      required:
+      - denierId
+      - comment
     InboxItem:
       title: Inbox Item
       description: A business process inbox item requiring user action
@@ -231,20 +208,6 @@ components:
       - subject
       - assignedTo
       - status
-    DenialRequest:
-      title: Denial Request
-      description: Request to deny an inbox item
-      type: object
-      properties:
-        comment:
-          type: string
-          description: Denial reason or comment
-        denierId:
-          type: string
-          description: ID of the denying user
-      required:
-      - denierId
-      - comment
     ErrorResponse:
       title: Error Response
       description: Standard error response
@@ -277,6 +240,43 @@ components:
           description: ID of the approving user
       required:
       - approverId
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: BAD_REQUEST
+            message: Invalid request body
   securitySchemes:
     oauth2:
       type: oauth2

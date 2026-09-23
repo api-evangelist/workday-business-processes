@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Workday Business Process Approvals Process Instances API
+  title: Workday Business Process Process Instances API
   description: The Workday Business Process API provides RESTful access to business process management capabilities including initiating workflows, managing approvals, tracking process instances, retrieving process definitions, and handling inbox items. The API enables organizations to programmatically trigger Workday business processes, monitor their status, and integrate workflow automation with external systems.
   version: v41.1
   contact:
@@ -297,127 +297,7 @@ paths:
         dispatcher: URI_PARTS
         dispatcherRules: instanceId
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: NOT_FOUND
-            message: The requested resource does not exist
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: BAD_REQUEST
-            message: Invalid request body
   schemas:
-    ProcessInstancesResponse:
-      title: Process Instances Response
-      description: Paginated response containing a list of process instances
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of instances
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProcessInstance'
-      required:
-      - total
-      - data
-    ProcessStepsResponse:
-      title: Process Steps Response
-      description: Paginated response containing a list of process steps
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of steps
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProcessStep'
-      required:
-      - total
-      - data
-    ProcessInstance:
-      title: Process Instance
-      description: A running or completed business process instance
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique process instance identifier
-        definitionId:
-          type: string
-          description: Business process definition identifier
-        processType:
-          type: string
-          description: Business process type
-        status:
-          type: string
-          enum:
-          - INITIATED
-          - IN_PROGRESS
-          - PENDING_ACTION
-          - COMPLETE
-          - CANCELLED
-          - ERROR
-          description: Current process status
-        initiatorId:
-          type: string
-          description: ID of the user who initiated the process
-        transactionId:
-          type: string
-          description: Associated transaction or worker ID
-        startDate:
-          type: string
-          format: date-time
-          description: Process start timestamp
-        endDate:
-          type: string
-          format: date-time
-          description: Process completion timestamp
-        currentStep:
-          type: string
-          description: Name of the current active step
-        completionPercent:
-          type: integer
-          description: Percentage of steps completed
-        cancelReason:
-          type: string
-          description: Reason for cancellation (if cancelled)
-      required:
-      - id
-      - definitionId
-      - processType
-      - status
-      - initiatorId
     ProcessStep:
       title: Process Step
       description: A step within a running business process instance
@@ -485,6 +365,74 @@ components:
       required:
       - error
       - message
+    ProcessInstancesResponse:
+      title: Process Instances Response
+      description: Paginated response containing a list of process instances
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of instances
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessInstance'
+      required:
+      - total
+      - data
+    ProcessInstance:
+      title: Process Instance
+      description: A running or completed business process instance
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique process instance identifier
+        definitionId:
+          type: string
+          description: Business process definition identifier
+        processType:
+          type: string
+          description: Business process type
+        status:
+          type: string
+          enum:
+          - INITIATED
+          - IN_PROGRESS
+          - PENDING_ACTION
+          - COMPLETE
+          - CANCELLED
+          - ERROR
+          description: Current process status
+        initiatorId:
+          type: string
+          description: ID of the user who initiated the process
+        transactionId:
+          type: string
+          description: Associated transaction or worker ID
+        startDate:
+          type: string
+          format: date-time
+          description: Process start timestamp
+        endDate:
+          type: string
+          format: date-time
+          description: Process completion timestamp
+        currentStep:
+          type: string
+          description: Name of the current active step
+        completionPercent:
+          type: integer
+          description: Percentage of steps completed
+        cancelReason:
+          type: string
+          description: Reason for cancellation (if cancelled)
+      required:
+      - id
+      - definitionId
+      - processType
+      - status
+      - initiatorId
     InitiateProcessRequest:
       title: Initiate Process Request
       description: Request to initiate a new business process instance
@@ -506,6 +454,58 @@ components:
       required:
       - definitionId
       - initiatorId
+    ProcessStepsResponse:
+      title: Process Steps Response
+      description: Paginated response containing a list of process steps
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of steps
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessStep'
+      required:
+      - total
+      - data
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: BAD_REQUEST
+            message: Invalid request body
   securitySchemes:
     oauth2:
       type: oauth2

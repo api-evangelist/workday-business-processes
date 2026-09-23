@@ -1,0 +1,72 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  https://developer.workday.com/bundles/rest-directory-ui/public/static/services_oas3.json
+  + https://developer.workday.com/doc/owp1552934548258.md
+  + https://developer.workday.com/doc/GUID-9fb15b62-550a-47ad-b113-27743dcc761f-enHYPHENus.md
+versioning:
+  scheme: uri-path
+  current: v1
+  rest_pattern: https://{tenantHostname}/{service}/{version}
+  soap_pattern: https://{workdayDomain}/ccx/service/{tenant}/{service}/{version}
+  soap_current: v47.0
+  docs: https://developer.workday.com/doc/owp1552934548258.md
+  note: >-
+    Workday versions each REST service independently — businessProcess is still v1 while staffing is v7
+    and person is v4. SOAP versions move together with the release train (v47.0 current, v40.1 the oldest
+    still listed in the SOAP catalog). SOAP additionally supports MESSAGE versioning: a version inside the
+    request body overrides the version in the endpoint.
+confidence_level:
+  value: Production
+  source: services_oas3.json productionConfidenceLevel[]
+  note: >-
+    Workday publishes a per-service confidence level — Production, Preview, Experimental, Archived.
+    businessProcess v1 is Production. This is a real, machine-readable lifecycle signal most providers
+    do not publish at all.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  archived_versions_published: true
+  archived_versions_url: https://developer.workday.com/bundles/rest-directory-ui/public/static/services_oas3.json
+  note: >-
+    Workday publishes an explicit archivedServices[] list in the REST directory index — 44 archived
+    service versions across the estate (staffing v1-v6, person v1-v3, procurement v1-v4, and so on).
+    businessProcess has NO archived version: v1 is the only version that has ever shipped. But there is
+    no written deprecation POLICY and no RFC 8594 Sunset/Deprecation header support: probed the live
+    spec and docs on 2026-09-17 and found neither. The archive list is the closest thing to a
+    deprecation signal Workday publishes.
+deprecated_operations: []
+change_log:
+  url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  artifact: changelog/workday-business-processes-changelog.yml
+  releases: 20
+  first: '2021-03-15'
+  latest: '2026-08-17'
+status_page:
+  url: https://status.workday.com
+  public: false
+  access: customer-login-required
+  verified: '2026-09-17'
+  evidence: >-
+    HTTP 200, but the body is an Okta sign-in widget titled "Workday Resource Center - Sign In";
+    https://status.workday.com/api/v2/status.json returns the same sign-in page rather than a Statuspage
+    JSON payload. Workday's service status is real but is gated to authenticated customers — there is no
+    anonymous status surface.
+sla:
+  url: https://www.workday.com/en-us/legal/universal-contract-terms-and-conditions/index.html
+  uptime_target: null
+  note: SLA terms are contractual (Universal Contract Terms and Conditions); no public uptime number is published.
+service_limits:
+  url: https://developer.workday.com/doc/dan1370797408285.md
+  artifact: rate-limits/workday-business-processes-rate-limits.yml
+event_surface:
+  webhooks: false
+  asyncapi: false
+  note: >-
+    No outbound webhook contract and no AsyncAPI for business process events. Workday's nearest
+    equivalents are internal: Orchestrate can "Launch Orchestrations on Business Process Status Changes"
+    and the SOAP Integrations service carries Put_Subscription / Get_Subscriptions for transaction-log
+    integration subscriptions. Neither is a published event contract a third party can subscribe to, so
+    no AsyncAPI or Webhooks pointer is emitted. The two doc.workday.com "Workday Webhooks" pointers
+    previously in apis.yml returned HTTP 404 and were removed.

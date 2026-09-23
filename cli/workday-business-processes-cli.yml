@@ -1,0 +1,52 @@
+generated: '2026-09-17'
+method: searched
+source: https://developer.workday.com/doc/GUID-fab8db7c-9305-41d2-8606-64aa81ce2e68-enHYPHENus.md
+docs:
+  reference: https://developer.workday.com/doc/GUID-fab8db7c-9305-41d2-8606-64aa81ce2e68-enHYPHENus.md
+  getting_started: https://developer.workday.com/doc/GUID-9338193c-86c5-43cf-b8d6-5e76b1283d02-enHYPHENus.md
+  downloads: https://developer.workday.com/downloads
+name: Workday Developer CLI (WDCLI)
+binary: wdcli
+official: true
+scope_note: >-
+  WDCLI is Workday's first-party command line tool for the Developer Site — it manages app builds,
+  deploys and tenant sessions. It does NOT wrap the Business Process REST API; there is no
+  `wdcli businessprocess` command surface. It is catalogued here because it is the provider's real
+  CLI and because `wdcli tenant token` is the supported way to obtain a tenant token for calling
+  /businessProcess/v1 by hand.
+install:
+  - platform: macOS (Apple Silicon and Intel)
+    method: signed installer from https://developer.workday.com/downloads
+    verify: wdcli version
+  - platform: Windows
+    method: installer from https://developer.workday.com/downloads
+    docs: https://developer.workday.com/doc/GUID-e9313aa2-6877-4aa4-8cc6-d5f810a9e3cf-enHYPHENus.md
+  - platform: Linux
+    method: installer from https://developer.workday.com/downloads
+    docs: https://developer.workday.com/doc/GUID-94772f74-8d1e-4704-8b16-9491315f1cd1-enHYPHENus.md
+registry_distribution: false
+registry_note: Not published to npm, Homebrew, PyPI or any other package registry — download-page only.
+commands:
+  - group: auth
+    commands: [login, logout]
+    example: wdcli auth:login
+  - group: account
+    commands: [list, switch]
+    example: wdcli account list
+  - group: tenant
+    commands: [list, login, logout, open, token]
+    example: wdcli tenant token
+    note: "`wdcli tenant token` issues the tenant access token used against the Workday REST APIs."
+  - group: app
+    commands: [builds, builds logs, copy, create, deploy, download, info, list, promote, upload, versions]
+    example: wdcli app deploy myAppRefId --tenant-alias example-alias --version 02
+  - group: config
+    commands: [set, show]
+  - group: general
+    commands: [help, version, whoami]
+flows:
+  - name: Authenticate and obtain a tenant token
+    steps: ["wdcli auth:login", "wdcli tenant login", "wdcli tenant token"]
+  - name: Deploy an app version to a tenant
+    steps: ["wdcli app upload", "wdcli app deploy <appRefId> --tenant-alias <alias> --version <n>", "wdcli app builds logs <buildId>"]
+proxy_support: https://developer.workday.com/doc/GUID-9661f391-0337-4639-a8bd-259f55898c87-enHYPHENus.md

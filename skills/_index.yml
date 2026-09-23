@@ -1,0 +1,45 @@
+generated: '2026-09-17'
+method: generated
+source: openapi/_original/*.json — every step is grounded in a real published path, method or operationId
+note: The businessProcess v1 contract declares no operationId on any of its 21 operations, so those skills bind by METHOD
+  + PATH. The customBusinessProcessConfig v1 contract does declare operationIds and that skill uses them by name. Nothing
+  here is invented.
+skills:
+- file: workday-business-processes-approve-or-deny-an-inbox-step.md
+  name: Approve or deny a Workday business process step
+  api: openapi/workday-business-processes-business-process-openapi.yml
+  operations:
+  - GET /eventSteps
+  - GET /eventSteps/{ID}
+  - POST /eventSteps/{ID}/approve
+  - POST /eventSteps/{ID}/deny
+  - POST /eventSteps/{ID}/sendBack
+  - GET /values/sendBack/to/
+- file: workday-business-processes-track-and-reverse-an-event.md
+  name: Track a Workday business process event and cancel or rescind it
+  api: openapi/workday-business-processes-business-process-openapi.yml
+  operations:
+  - GET /events
+  - GET /events/{ID}
+  - GET /events/{ID}/inProgressSteps
+  - GET /events/{ID}/remainingSteps
+  - GET /events/{ID}/completedSteps
+  - GET /events/{ID}/comments
+  - GET /events/{ID}/attachments
+  - POST /events/{ID}/cancel
+  - POST /events/{ID}/rescind
+- file: workday-business-processes-manage-custom-bp-types.md
+  name: Create and manage custom Workday business process types
+  api: openapi/workday-business-processes-custom-business-process-config-openapi.yml
+  operations:
+  - create
+  - get
+  - view
+  - update
+  - delete
+  - createEventTaskDefinition
+  - getEventTaskDefinition
+  - viewEventTaskDefinition
+  - updateEventTaskDefinition
+  - patchEventTaskDefinition
+  - deleteEventTaskDefinition

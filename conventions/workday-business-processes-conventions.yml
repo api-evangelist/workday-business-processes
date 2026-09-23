@@ -1,0 +1,142 @@
+generated: '2026-09-17'
+method: searched
+source: >-
+  openapi/_original/workday-business-processes-business-process-v1-openapi.json
+  + https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  + https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  + https://developer.workday.com/doc/dan1370797408285.md
+authentication:
+  style: oauth2
+  detail: >-
+    OAuth 2.0 only. Every call goes through the Workday Cloud Platform API Gateway, which authenticates
+    and routes to the right tenant. An API client is registered per tenant in the Developer Site Console;
+    scopes are selected at registration from Workday functional areas. See authentication/ and scopes/.
+  artifact: authentication/workday-business-processes-authentication.yml
+identifiers:
+  style: WID
+  detail: >-
+    Every instance is addressed by a Workday ID (WID) — a 32-character hex string, e.g.
+    f4edd719789a10016c7addfdfa1b0000. Referenced instances come back as
+    {id, descriptor, href}: machine id, human label, canonical URL.
+pagination:
+  style: offset
+  params:
+    limit: {default: 20, maximum: 100, type: integer}
+    offset: {default: 0, type: integer, description: zero-based index of the first object}
+  response_fields: [total, data]
+  detail: >-
+    Collection responses are a bare object with `total` (int32) and `data` (array). No cursor, no
+    Link header, no next/prev URLs — a client pages by incrementing offset and comparing against total.
+filtering:
+  detail: >-
+    Business process collections filter on real domain fields rather than a generic query language:
+    businessProcess, status, initiator, eventTarget, worker, stepType, and four date-range pairs
+    (initiatedOnOrAfter/Before, completedOnOrAfter/Before, createdOnOrAfter/Before, dueDateOnOrAfter/Before).
+field_expansion:
+  supported: false
+  detail: No expand/fields/sparse-fieldset parameter is declared anywhere in the published spec.
+metadata:
+  supported: false
+request_tracing:
+  request_id_header: null
+  detail: >-
+    Workday declares no request-id / correlation header in the spec or the docs. The service-limits
+    reference advises callers to set their OWN external integration HTTP headers if they want requests
+    traceable in server logs — the burden is on the client.
+versioning:
+  style: uri-path
+  current: v1
+  artifact: lifecycle/workday-business-processes-lifecycle.yml
+error_envelope:
+  media_type: application/json
+  rfc9457: false
+  detail: >-
+    Not RFC 9457. Errors return application/json with an `error` string; the spec's declared
+    ErrorModelReference component is empty. There is no error `type` URI, no problem registry, and
+    no documented REST error-code list. Every operation declares the same five: 400, 401, 403, 404,
+    default. See errors/workday-business-processes-problem-types.yml.
+rate_limit_signaling:
+  headers: []
+  status_on_exhaustion: 429
+  detail: >-
+    Workday returns 429 Too Many Requests on REST and RaaS, and 500 Internal Service Error on SOAP.
+    It publishes NO RateLimit-* or X-RateLimit-* response headers and no Retry-After contract —
+    the docs instruct clients to implement exponential back-off blind. See rate-limits/.
+  artifact: rate-limits/workday-business-processes-rate-limits.yml
+idempotency:
+  supported: false
+  coverage: none
+  header: null
+  scope: []
+  detail: >-
+    No idempotency mechanism exists. There is no Idempotency-Key header, no client-supplied request
+    key, and no documented replay protection on any of the 11 mutating operations (7 on
+    /eventSteps/*, 3 on /events/*, plus the customBusinessProcessConfig writes). Re-POSTing
+    /events/{ID}/cancel or /eventSteps/{ID}/approve after a timeout is not safe by contract. Recorded
+    as `none`; no Idempotency pointer is emitted for this provider.
+dry_run_mode:
+  supported: false
+  coverage: none
+  detail: No preview, validate-only, or simulate parameter exists on any operation.
+reversibility:
+  grade: documented
+  detail: >-
+    Business processes are unusually well provided for here: reversal is a first-class part of the
+    Workday Business Process Framework, and the REST service exposes it. What the docs do NOT state
+    anywhere is a TIME-bounded window — every window below is a STATE condition or a tenant
+    configuration flag, which is why this grades `documented` rather than `verified`. No time limit
+    is asserted, because Workday does not publish one.
+  operations:
+    - write_surface: business process event, in progress
+      reversal: cancel
+      operation: POST /events/{ID}/cancel
+      window: >-
+        While the event is in progress. The docs describe it as "cancel or immediately end a business
+        process event". No time limit is stated.
+      prerequisite: >-
+        For Extend business processes the definition must have Enable Cancellation set to true;
+        Workday-delivered processes follow their configured business process security policy.
+      docs: https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+    - write_surface: business process event, completed
+      reversal: rescind
+      operation: POST /events/{ID}/rescind
+      window: >-
+        After the event has completed — the docs describe rescind as "rescind or reverse a COMPLETED
+        business process". No time limit is stated.
+      prerequisite: For Extend business processes, Enable Rescind must be set to true.
+      caveat: >-
+        STATED IN THE DOCS AND IMPORTANT: "A Rescind action in Workday Extend only marks the business
+        process event as rescinded. It doesn't roll back any data. To force a rollback, create a custom
+        orchestration that performs the required rollback actions." Rescind is therefore a status
+        reversal, not necessarily a data reversal, on Extend processes.
+      docs: https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+    - write_surface: business process event step, approved or submitted
+      reversal: send back
+      operation: POST /eventSteps/{ID}/sendBack
+      window: >-
+        While the process is in flight, to a prior step. GET /values/sendBack/to/ returns the valid
+        send-back targets — a published prompt-value endpoint, which is the closest thing to a
+        machine-readable statement of the window.
+      docs: https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+    - write_surface: business process event step, awaiting action
+      reversal: deny
+      operation: POST /eventSteps/{ID}/deny
+      window: While the step is awaiting action.
+    - write_surface: business process event step, awaiting action
+      reversal: reassign
+      operation: POST /eventSteps/{ID}/reassign
+      window: While the step is awaiting action. Reassignment moves, rather than undoes, the step.
+    - write_surface: custom business process type / event task definition
+      reversal: delete
+      operation: DELETE /types/{id} and DELETE /eventTaskDefinitions/{id} (customBusinessProcessConfig v1)
+      window: null
+      note: Hard delete. No restore endpoint and no stated retention or undelete window.
+  no_reversal:
+    - POST /eventSteps/{ID}/approve — an approval advances the process; the reversal is a send-back or a rescind of the whole event, not an un-approve.
+    - POST /eventSteps/{ID}/questionnaire and POST /eventSteps/{ID}/toDo — step submissions have no per-step undo.
+cross_links:
+  errors: errors/workday-business-processes-problem-types.yml
+  lifecycle: lifecycle/workday-business-processes-lifecycle.yml
+  authentication: authentication/workday-business-processes-authentication.yml
+  rate_limits: rate-limits/workday-business-processes-rate-limits.yml
+  scopes: scopes/workday-business-processes-scopes.yml

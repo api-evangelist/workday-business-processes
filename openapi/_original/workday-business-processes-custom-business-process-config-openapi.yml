@@ -1,3 +1,5 @@
+# x-archived-from: workday-business-processes-custom-business-process-config-openapi.yml
+# x-archived-on: 2026-09-26
 openapi: 3.0.1
 info:
   description: The public APIs to create and manage custom business process configurations.

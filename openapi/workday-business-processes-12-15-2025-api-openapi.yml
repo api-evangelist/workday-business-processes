@@ -1,0 +1,691 @@
+openapi: 3.2.0
+info:
+  title: Changelog for businessProcess 12/15/2025 API
+  description: The public APIs to access event actions and details
+  version: v1
+servers:
+- url: https://<tenantHostname>/businessProcess/v1
+tags:
+- name: 12/15/2025
+  description: Changes for v2025.50
+paths:
+  2025.50/types:
+    get:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /types'
+      parameters:
+      - name: limit
+        in: query
+        description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      - name: offset
+        in: query
+        description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      operationId: get202550Types
+      x-operation-id-source: derived
+  2025.50/events/{ID}/rescind:
+    post:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: POST /events/{ID}/rescind'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      operationId: post202550EventsByIDRescind
+      x-operation-id-source: derived
+  2025.50/types/{ID}:
+    get:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /types/{ID}'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      operationId: get202550TypesByID
+      x-operation-id-source: derived
+  2025.50/events/{ID}/cancel:
+    post:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: POST /events/{ID}/cancel'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      operationId: post202550EventsByIDCancel
+      x-operation-id-source: derived
+  2025.50/types/{ID}/attachmentCategories:
+    get:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /types/{ID}/attachmentCategories'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      - name: eventTarget
+        in: query
+        description: The Workday ID of the event target that this business process is about. You can use a returned id from an API that returns instances of the event target type. For example, if your event target is a worker, use GET /workers in the Staffing service.
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      - name: limit
+        in: query
+        description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      - name: offset
+        in: query
+        description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      operationId: get202550TypesByIDAttachmentCategories
+      x-operation-id-source: derived
+  2025.50/eventSteps/{ID}/toDo:
+    post:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: POST /eventSteps/{ID}/toDo'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      operationId: post202550EventStepsByIDToDo
+      x-operation-id-source: derived
+  2025.50/events:
+    get:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /events'
+      parameters:
+      - name: completedOnOrAfter
+        in: query
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: string
+          format: date
+          exampleSetFlag: false
+          types:
+          - string
+      - name: completedOnOrBefore
+        in: query
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: string
+          format: date
+          exampleSetFlag: false
+          types:
+          - string
+      - name: initiatedOnOrAfter
+        in: query
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: string
+          format: date
+          exampleSetFlag: false
+          types:
+          - string
+      - name: initiatedOnOrBefore
+        in: query
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: string
+          format: date
+          exampleSetFlag: false
+          types:
+          - string
+      - name: limit
+        in: query
+        description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      - name: offset
+        in: query
+        description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      - name: worker
+        in: query
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      operationId: get202550Events
+      x-operation-id-source: derived
+  2025.50/events/{ID}/attachments:
+    get:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /events/{ID}/attachments'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      - name: limit
+        in: query
+        description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      - name: offset
+        in: query
+        description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      operationId: get202550EventsByIDAttachments
+      x-operation-id-source: derived
+  2025.50/events/{ID}/comments:
+    get:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /events/{ID}/comments'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      - name: limit
+        in: query
+        description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      - name: offset
+        in: query
+        description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      operationId: get202550EventsByIDComments
+      x-operation-id-source: derived
+  2025.50/events/{ID}/inProgressSteps:
+    get:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /events/{ID}/inProgressSteps'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      - name: limit
+        in: query
+        description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      - name: offset
+        in: query
+        description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      operationId: get202550EventsByIDInProgressSteps
+      x-operation-id-source: derived
+  2025.50/eventSteps/{ID}/deny:
+    post:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: POST /eventSteps/{ID}/deny'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      operationId: post202550EventStepsByIDDeny
+      x-operation-id-source: derived
+  2025.50/events/{ID}/remainingSteps:
+    get:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /events/{ID}/remainingSteps'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      - name: limit
+        in: query
+        description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      - name: offset
+        in: query
+        description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      operationId: get202550EventsByIDRemainingSteps
+      x-operation-id-source: derived
+  2025.50/events/{ID}:
+    get:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /events/{ID}'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      operationId: get202550EventsByID
+      x-operation-id-source: derived
+  2025.50/eventSteps/{ID}/approve:
+    post:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: POST /eventSteps/{ID}/approve'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      operationId: post202550EventStepsByIDApprove
+      x-operation-id-source: derived
+  2025.50/eventSteps/{ID}/sendBack:
+    post:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: POST /eventSteps/{ID}/sendBack'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      operationId: post202550EventStepsByIDSendBack
+      x-operation-id-source: derived
+  2025.50/eventSteps:
+    get:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /eventSteps'
+      parameters:
+      - name: createdOnOrAfter
+        in: query
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: string
+          format: date
+          exampleSetFlag: false
+          types:
+          - string
+      - name: createdOnOrBefore
+        in: query
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: string
+          format: date
+          exampleSetFlag: false
+          types:
+          - string
+      - name: dueDateOnOrAfter
+        in: query
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: string
+          format: date
+          exampleSetFlag: false
+          types:
+          - string
+      - name: dueDateOnOrBefore
+        in: query
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: string
+          format: date
+          exampleSetFlag: false
+          types:
+          - string
+      - name: limit
+        in: query
+        description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      - name: offset
+        in: query
+        description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      operationId: get202550EventSteps
+      x-operation-id-source: derived
+  2025.50/events/{ID}/completedSteps:
+    get:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /events/{ID}/completedSteps'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      - name: limit
+        in: query
+        description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      - name: offset
+        in: query
+        description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: integer
+          format: int64
+          exampleSetFlag: false
+          types:
+          - integer
+      operationId: get202550EventsByIDCompletedSteps
+      x-operation-id-source: derived
+  2025.50/eventSteps/{ID}:
+    get:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /eventSteps/{ID}'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      operationId: get202550EventStepsByID
+      x-operation-id-source: derived
+  2025.50/eventSteps/{ID}/questionnaire:
+    post:
+      tags:
+      - 12/15/2025
+      summary: Parameters have been modified
+      description: 'View this Endpoint: POST /eventSteps/{ID}/questionnaire'
+      parameters:
+      - name: ID
+        in: path
+        description: The Workday ID of the resource.
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          type: string
+          exampleSetFlag: false
+          types:
+          - string
+      operationId: post202550EventStepsByIDQuestionnaire
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    OAuth2:
+      type: OAUTH2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

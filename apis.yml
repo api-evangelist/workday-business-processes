@@ -38,286 +38,14 @@ created: '2024-01-01'
 modified: '2026-09-17'
 specificationVersion: '0.23'
 apis:
-- aid: workday-business-processes:workday-business-processes-approvals-api
-  name: Workday Business Processes Approvals API
-  description: Manage approval steps and approval chains
-  humanURL: https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
-  baseURL: https://{tenantHostname}/businessProcess/v1
-  tags:
-  - Approvals
-  properties:
-  - type: OpenAPI
-    url: openapi/workday-business-processes-business-process-openapi.yml
-  - type: OpenAPI
-    name: OpenAPI (provider-hosted, Workday REST directory)
-    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_20260905_oas3.json
-  - type: Documentation
-    url: https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
-  - type: APIReference
-    name: Workday REST Services Directory
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
-  - type: RateLimits
-    name: Integrations, EIB, and Web Service Limits
-    url: https://developer.workday.com/doc/dan1370797408285.md
-  - type: ChangeLog
-    name: businessProcess v1 change log (machine-readable)
-    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
-  - type: Support
-    url: https://community.workday.com
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-business-process-definition-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-process-instance-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-initiate-process-request-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-process-step-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-inbox-item-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-approval-request-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-denial-request-schema.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-business-process-definition-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-process-instance-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-initiate-process-request-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-process-step-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-inbox-item-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-approval-request-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-denial-request-structure.json
-  - type: JSONLD
-    url: json-ld/workday-business-processes-context.jsonld
-  - type: SpectralRules
-    url: rules/workday-business-processes-spectral-rules.yml
-  - type: Vocabulary
-    url: vocabulary/workday-business-processes-vocabulary.yml
-- aid: workday-business-processes:workday-business-processes-business-process-definitions-api
-  name: Workday Business Processes Business Process Definitions API
-  description: Retrieve and manage business process type definitions
-  humanURL: https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
-  baseURL: https://{tenantHostname}/businessProcess/v1
-  tags:
-  - Business Process Definitions
-  properties:
-  - type: OpenAPI
-    url: openapi/workday-business-processes-business-process-openapi.yml
-  - type: OpenAPI
-    name: OpenAPI (provider-hosted, Workday REST directory)
-    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_20260905_oas3.json
-  - type: Documentation
-    url: https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
-  - type: APIReference
-    name: Workday REST Services Directory
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
-  - type: RateLimits
-    name: Integrations, EIB, and Web Service Limits
-    url: https://developer.workday.com/doc/dan1370797408285.md
-  - type: ChangeLog
-    name: businessProcess v1 change log (machine-readable)
-    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
-  - type: Support
-    url: https://community.workday.com
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-business-process-definition-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-process-instance-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-initiate-process-request-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-process-step-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-inbox-item-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-approval-request-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-denial-request-schema.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-business-process-definition-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-process-instance-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-initiate-process-request-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-process-step-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-inbox-item-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-approval-request-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-denial-request-structure.json
-  - type: JSONLD
-    url: json-ld/workday-business-processes-context.jsonld
-  - type: SpectralRules
-    url: rules/workday-business-processes-spectral-rules.yml
-  - type: Vocabulary
-    url: vocabulary/workday-business-processes-vocabulary.yml
-- aid: workday-business-processes:workday-business-processes-inbox-items-api
-  name: Workday Business Processes Inbox Items API
-  description: Manage user inbox items requiring action
-  humanURL: https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
-  baseURL: https://{tenantHostname}/businessProcess/v1
-  tags:
-  - Inbox Items
-  properties:
-  - type: OpenAPI
-    url: openapi/workday-business-processes-business-process-openapi.yml
-  - type: OpenAPI
-    name: OpenAPI (provider-hosted, Workday REST directory)
-    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_20260905_oas3.json
-  - type: Documentation
-    url: https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
-  - type: APIReference
-    name: Workday REST Services Directory
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
-  - type: RateLimits
-    name: Integrations, EIB, and Web Service Limits
-    url: https://developer.workday.com/doc/dan1370797408285.md
-  - type: ChangeLog
-    name: businessProcess v1 change log (machine-readable)
-    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
-  - type: Support
-    url: https://community.workday.com
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-business-process-definition-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-process-instance-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-initiate-process-request-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-process-step-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-inbox-item-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-approval-request-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-denial-request-schema.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-business-process-definition-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-process-instance-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-initiate-process-request-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-process-step-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-inbox-item-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-approval-request-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-denial-request-structure.json
-  - type: JSONLD
-    url: json-ld/workday-business-processes-context.jsonld
-  - type: SpectralRules
-    url: rules/workday-business-processes-spectral-rules.yml
-  - type: Vocabulary
-    url: vocabulary/workday-business-processes-vocabulary.yml
-- aid: workday-business-processes:workday-business-processes-process-instances-api
-  name: Workday Business Processes Process Instances API
-  description: Manage running business process instances
-  humanURL: https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
-  baseURL: https://{tenantHostname}/businessProcess/v1
-  tags:
-  - Process Instances
-  properties:
-  - type: OpenAPI
-    url: openapi/workday-business-processes-business-process-openapi.yml
-  - type: OpenAPI
-    name: OpenAPI (provider-hosted, Workday REST directory)
-    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_20260905_oas3.json
-  - type: Documentation
-    url: https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
-  - type: APIReference
-    name: Workday REST Services Directory
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
-  - type: RateLimits
-    name: Integrations, EIB, and Web Service Limits
-    url: https://developer.workday.com/doc/dan1370797408285.md
-  - type: ChangeLog
-    name: businessProcess v1 change log (machine-readable)
-    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
-  - type: Support
-    url: https://community.workday.com
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-business-process-definition-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-process-instance-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-initiate-process-request-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-process-step-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-inbox-item-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-approval-request-schema.json
-  - type: JSONSchema
-    url: json-schema/workday-business-processes-denial-request-schema.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-business-process-definition-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-process-instance-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-initiate-process-request-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-process-step-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-inbox-item-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-approval-request-structure.json
-  - type: JSONStructure
-    url: json-structure/workday-business-processes-denial-request-structure.json
-  - type: JSONLD
-    url: json-ld/workday-business-processes-context.jsonld
-  - type: SpectralRules
-    url: rules/workday-business-processes-spectral-rules.yml
-  - type: Vocabulary
-    url: vocabulary/workday-business-processes-vocabulary.yml
-- aid: workday-business-processes:workday-business-processes-custom-business-process-config-api
-  name: Workday Custom Business Process Config API
-  description: Create, read, update and delete custom business process types and their event task definitions.
-  humanURL: https://developer.workday.com/doc/ifu1517426622016.md
-  baseURL: https://api.workday.com/customBusinessProcessConfig/v1
-  tags:
-  - Custom Business Processes
-  - Configuration
-  properties:
-  - type: OpenAPI
-    url: openapi/workday-business-processes-custom-business-process-config-openapi.yml
-  - type: OpenAPI
-    name: OpenAPI (provider-hosted, Workday REST directory)
-    url: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/customBusinessProcessConfig_v1_swagger.json
-  - type: Documentation
-    name: Use the REST API to Create Custom Business Process Types
-    url: https://developer.workday.com/doc/jws1518455553089.md
-  - type: APIReference
-    name: Workday REST Services Directory
-    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
-  - type: Authentication
-    url: https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
-  - type: OAuthScopes
-    url: scopes/workday-business-processes-scopes.yml
-  - type: Support
-    url: https://community.workday.com
 - aid: workday-business-processes:workday-business-processes-integrations-soap-service
   name: Workday Integrations SOAP Service (business process operations)
-  description: The Workday Web Services Integrations service, v47.0. Carries the eight SOAP business process operations —
-    Approve, Cancel, Deny, Rescind and Send Back a business process, Reassign a business process step, and Get/Put business
-    process delegations, which have no REST equivalent.
-  humanURL: https://community.workday.com/sites/default/files/file-hosting/productionapi/Integrations/v47.0/Integrations.html
+  description: >-
+    The Workday Web Services Integrations service, v47.0. Carries the eight SOAP business process operations
+    — Approve, Cancel, Deny, Rescind and Send Back a business process, Reassign a business process step,
+    and Get/Put business process delegations, which have no REST equivalent.
+  humanURL: >-
+    https://community.workday.com/sites/default/files/file-hosting/productionapi/Integrations/v47.0/Integrations.html
   baseURL: https://wd2-impl-services1.workday.com/ccx/service
   tags:
   - SOAP
@@ -334,18 +62,2058 @@ apis:
     url: wsdl/workday-business-processes-integrations-v47.0.wsdl
   - type: WSDL
     name: WSDL (provider-hosted, v47.0)
-    url: https://community.workday.com/sites/default/files/file-hosting/productionapi/Integrations/v47.0/Integrations.wsdl
+    url: >-
+      https://community.workday.com/sites/default/files/file-hosting/productionapi/Integrations/v47.0/Integrations.wsdl
   - type: Documentation
     name: Workday SOAP APIs
-    url: https://developer.workday.com/doc/GUID-43742c5c-4caf-436f-bdd5-94330d32288c-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-43742c5c-4caf-436f-bdd5-94330d32288c-enHYPHENus.md
   - type: APIReference
     name: Workday Web Services Production API Directory
     url: https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html
   - type: Authentication
     name: SOAP API Authentication and Security
-    url: https://developer.workday.com/doc/GUID-4c354bdb-06cd-461d-a632-ea8303beaedb-enHYPHENus.md
+    url: >-
+      https://developer.workday.com/doc/GUID-4c354bdb-06cd-461d-a632-ea8303beaedb-enHYPHENus.md
   - type: Support
     url: https://community.workday.com
+- aid: workday-business-processes:workday-business-processes-03-11-2023-api
+  name: Workday Business Processes 03/11/2023 API
+  description: Changes for v2023.10
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 03/11/2023
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-03-11-2023-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-03-15-2021-api
+  name: Workday Business Processes 03/15/2021 API
+  description: Changes for v2021.13
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 03/15/2021
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-03-15-2021-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-03-18-2026-api
+  name: Workday Business Processes 03/18/2026 API
+  description: Changes for v2026.11
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 03/18/2026
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-03-18-2026-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-04-01-2023-api
+  name: Workday Business Processes 04/01/2023 API
+  description: Changes for v2023.13
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 04/01/2023
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-04-01-2023-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-04-02-2022-api
+  name: Workday Business Processes 04/02/2022 API
+  description: Changes for v2022.14
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 04/02/2022
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-04-02-2022-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-04-24-2023-api
+  name: Workday Business Processes 04/24/2023 API
+  description: Changes for v2023.16
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 04/24/2023
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-04-24-2023-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-05-17-2025-api
+  name: Workday Business Processes 05/17/2025 API
+  description: Changes for v2025.20
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 05/17/2025
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-05-17-2025-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-06-08-2026-api
+  name: Workday Business Processes 06/08/2026 API
+  description: Changes for v2026.23
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 06/08/2026
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-06-08-2026-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-06-15-2024-api
+  name: Workday Business Processes 06/15/2024 API
+  description: Changes for v2024.24
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 06/15/2024
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-06-15-2024-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-06-15-2026-api
+  name: Workday Business Processes 06/15/2026 API
+  description: Changes for v2026.24
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 06/15/2026
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-06-15-2026-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-06-30-2026-api
+  name: Workday Business Processes 06/30/2026 API
+  description: Changes for v2026.26
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 06/30/2026
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-06-30-2026-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-07-15-2023-api
+  name: Workday Business Processes 07/15/2023 API
+  description: Changes for v2023.28
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 07/15/2023
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-07-15-2023-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-08-06-2022-api
+  name: Workday Business Processes 08/06/2022 API
+  description: Changes for v2022.32
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 08/06/2022
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-08-06-2022-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-08-17-2026-api
+  name: Workday Business Processes 08/17/2026 API
+  description: Changes for v2026.33
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 08/17/2026
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-08-17-2026-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-09-01-2021-api
+  name: Workday Business Processes 09/01/2021 API
+  description: Changes for v2021.37
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 09/01/2021
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-09-01-2021-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-09-09-2021-api
+  name: Workday Business Processes 09/09/2021 API
+  description: Changes for v2021.38
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 09/09/2021
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-09-09-2021-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-09-19-2022-api
+  name: Workday Business Processes 09/19/2022 API
+  description: Changes for v2022.38
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 09/19/2022
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-09-19-2022-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-09-28-2024-api
+  name: Workday Business Processes 09/28/2024 API
+  description: Changes for v2024.39
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 09/28/2024
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-09-28-2024-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-12-06-2025-api
+  name: Workday Business Processes 12/06/2025 API
+  description: Changes for v2025.49
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 12/06/2025
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-12-06-2025-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-12-15-2025-api
+  name: Workday Business Processes 12/15/2025 API
+  description: Changes for v2025.50
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - 12/15/2025
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-12-15-2025-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-approvals-api
+  name: Workday Business Processes Approvals API
+  description: Manage approval steps and approval chains
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - Approvals
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-approvals-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-business-process-definitions-api
+  name: Workday Business Processes Business Process Definitions API
+  description: Retrieve and manage business process type definitions
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - Business Process Definitions
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-business-process-definitions-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-event-task-definitions-api
+  name: Workday Business Processes Event Task Definitions API
+  description: A collection of Event Task Definitions for custom business process defined in Workday.
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - Event Task Definitions
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-event-task-definitions-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-events-api
+  name: Workday Business Processes Events API
+  description: "Returns a collection of events based on the specified parameters. You must specify either\
+    \ the worker or initiating worker query parameter. If you did not specify the worker nor the initiating\
+    \ worker parameter, this method returns an empty response. \n\nThis operation returns the most recent\
+    \ results first. The results are sorted in descending order of the creation date of the event.\n\n\
+    Secured by the Business Process Security Policy for each event."
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - events
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-events-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-eventsteps-api
+  name: Workday Business Processes Event Steps API
+  description: >-
+    Returns a collection of business process event steps based on the specified parameters. Only event
+    steps that are awaiting action from the processing person are returned.
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - eventSteps
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-eventsteps-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-inbox-items-api
+  name: Workday Business Processes Inbox Items API
+  description: Manage user inbox items requiring action
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - Inbox Items
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-inbox-items-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-process-instances-api
+  name: Workday Business Processes Process Instances API
+  description: Manage running business process instances
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - Process Instances
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-process-instances-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-prompt-values-api
+  name: Workday Business Processes Prompt Values API
+  description: >-
+    Retrieves instances that can be used as values for other endpoint parameters in this service.
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - Prompt Values
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-prompt-values-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
+- aid: workday-business-processes:workday-business-processes-types-api
+  name: Workday Business Processes Types API
+  description: Returns all business process types. Secured by Public Business Processes.
+  humanURL: >-
+    https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  baseURL: https://{tenantHostname}/businessProcess/v1
+  tags:
+  - types
+  properties:
+  - type: OpenAPI
+    url: openapi/workday-business-processes-types-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-94cb4185-fabd-4dd5-b391-6aefe9672e32-enHYPHENus.md
+  - type: APIReference
+    url: https://community.workday.com/sites/default/files/file-hosting/restapi/index.html
+  - type: Authentication
+    url: >-
+      https://developer.workday.com/doc/GUID-6c598444-ce67-40d5-bd95-267ecfe439b8-enHYPHENus.md
+  - type: RateLimits
+    url: https://developer.workday.com/doc/dan1370797408285.md
+  - type: ChangeLog
+    url: >-
+      https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_changeLog.json
+  - type: Support
+    url: https://community.workday.com
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-business-process-definition-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-instance-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-initiate-process-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-process-step-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-inbox-item-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-approval-request-schema.json
+  - type: JSONSchema
+    url: json-schema/workday-business-processes-denial-request-schema.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-business-process-definition-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-instance-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-initiate-process-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-process-step-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-inbox-item-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-approval-request-structure.json
+  - type: JSONStructure
+    url: json-structure/workday-business-processes-denial-request-structure.json
+  - type: JSONLD
+    url: json-ld/workday-business-processes-context.jsonld
+  - type: SpectralRules
+    url: rules/workday-business-processes-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/workday-business-processes-vocabulary.yml
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
+  - type: Documentation
+    url: >-
+      https://developer.workday.com/doc/GUID-0df5cd55-e578-43d3-b58f-ae98825d1df0-enHYPHENus.md
+  - type: Documentation
+    url: https://developer.workday.com/doc/jws1518455553089.md
+  - type: OAuthScopes
+    url: scopes/workday-business-processes-scopes.yml
 common:
 - type: Website
   url: https://www.workday.com/

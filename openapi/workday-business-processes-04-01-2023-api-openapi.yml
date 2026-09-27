@@ -1,0 +1,89 @@
+openapi: 3.2.0
+info:
+  title: Changelog for businessProcess 04/01/2023 API
+  description: The public APIs to access event actions and details
+  version: v1
+servers:
+- url: https://<tenantHostname>/businessProcess/v1
+tags:
+- name: 04/01/2023
+  description: Changes for v2023.13
+paths:
+  2023.13/eventSteps/{ID}/toDo:
+    post:
+      tags:
+      - 04/01/2023
+      summary: Modified this existing endpoint
+      description: '## Summary changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Post an action for a To Do step in a business process.
+
+        |
+
+        Posts a To Do event step with the specified ID. Specify whether to submit the To Do item or save it for later.In the request body, specify at least these required fields: {stepAction}.
+
+        |
+
+
+        ## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Post an action for a To Do step in a business process.
+
+        Specify these required fields in the request body: {stepAction}.
+
+        You can add an optional comment, if enabled at tenant or business process level.
+
+        Valid values for stepAction are:
+
+        { "id": "133d5c88baa64136aab041c1d2e9ed53" } for Submit,
+
+        { "id": "d9e41d34446c11de98360015c5e6daf6" } for Save for Later.
+
+
+        |
+
+        Posts a To Do event step with the specified ID. Specify whether to submit the To Do item or save it for later.In the request body, specify at least these required fields: {stepAction}.
+
+
+        |
+
+
+        View this Endpoint: POST /eventSteps/{ID}/toDo'
+      operationId: post202313EventStepsByIDToDo
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    OAuth2:
+      type: OAUTH2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

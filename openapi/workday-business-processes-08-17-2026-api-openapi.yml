@@ -1,0 +1,494 @@
+openapi: 3.2.0
+info:
+  title: Changelog for businessProcess 08/17/2026 API
+  description: The public APIs to access event actions and details
+  version: v1
+servers:
+- url: https://<tenantHostname>/businessProcess/v1
+tags:
+- name: 08/17/2026
+  description: Changes for v2026.33
+paths:
+  2026.33/types/{ID}:
+    get:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: GET /types/{ID}'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_types'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+          referenceId:
+            summary: Reference ID
+            value: Business_Process_Type=21002
+            valueSetFlag: true
+      operationId: get202633TypesByID
+      x-operation-id-source: derived
+  2026.33/types/{ID}/attachmentCategories:
+    get:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: GET /types/{ID}/attachmentCategories'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_types'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+          referenceId:
+            summary: Reference ID
+            value: Business_Process_Type=21002
+            valueSetFlag: true
+      operationId: get202633TypesByIDAttachmentCategories
+      x-operation-id-source: derived
+  2026.33/events/{ID}/rescind:
+    post:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: POST /events/{ID}/rescind'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_events'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+          referenceId:
+            summary: Reference ID
+            value: Worker_Time_Card_ID=21002
+            valueSetFlag: true
+      operationId: post202633EventsByIDRescind
+      x-operation-id-source: derived
+  2026.33/events/{ID}/cancel:
+    post:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: POST /events/{ID}/cancel'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_events'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+          referenceId:
+            summary: Reference ID
+            value: Worker_Time_Card_ID=21002
+            valueSetFlag: true
+      operationId: post202633EventsByIDCancel
+      x-operation-id-source: derived
+  2026.33/events/{ID}/remainingSteps:
+    get:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: GET /events/{ID}/remainingSteps'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_events'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+          referenceId:
+            summary: Reference ID
+            value: Worker_Time_Card_ID=21002
+            valueSetFlag: true
+      operationId: get202633EventsByIDRemainingSteps
+      x-operation-id-source: derived
+  2026.33/events/{ID}/comments:
+    get:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: GET /events/{ID}/comments'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_events'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+          referenceId:
+            summary: Reference ID
+            value: Worker_Time_Card_ID=21002
+            valueSetFlag: true
+      operationId: get202633EventsByIDComments
+      x-operation-id-source: derived
+  2026.33/events/{ID}:
+    get:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: GET /events/{ID}'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_events'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+          referenceId:
+            summary: Reference ID
+            value: Worker_Time_Card_ID=21002
+            valueSetFlag: true
+      operationId: get202633EventsByID
+      x-operation-id-source: derived
+  2026.33/events/{ID}/inProgressSteps:
+    get:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: GET /events/{ID}/inProgressSteps'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_events'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+          referenceId:
+            summary: Reference ID
+            value: Worker_Time_Card_ID=21002
+            valueSetFlag: true
+      operationId: get202633EventsByIDInProgressSteps
+      x-operation-id-source: derived
+  2026.33/events/{ID}/attachments:
+    get:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: GET /events/{ID}/attachments'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_events'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+          referenceId:
+            summary: Reference ID
+            value: Worker_Time_Card_ID=21002
+            valueSetFlag: true
+      operationId: get202633EventsByIDAttachments
+      x-operation-id-source: derived
+  2026.33/eventSteps/{ID}/reassign:
+    post:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: POST /eventSteps/{ID}/reassign'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_eventSteps'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+      operationId: post202633EventStepsByIDReassign
+      x-operation-id-source: derived
+  2026.33/eventSteps/{ID}/deny:
+    post:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: POST /eventSteps/{ID}/deny'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_eventSteps'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+      operationId: post202633EventStepsByIDDeny
+      x-operation-id-source: derived
+  2026.33/eventSteps/{ID}/toDo:
+    post:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: POST /eventSteps/{ID}/toDo'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_eventSteps'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+      operationId: post202633EventStepsByIDToDo
+      x-operation-id-source: derived
+  2026.33/eventSteps/{ID}/sendBack:
+    post:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: POST /eventSteps/{ID}/sendBack'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_eventSteps'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+      operationId: post202633EventStepsByIDSendBack
+      x-operation-id-source: derived
+  2026.33/eventSteps/{ID}/approve:
+    post:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: POST /eventSteps/{ID}/approve'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_eventSteps'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+      operationId: post202633EventStepsByIDApprove
+      x-operation-id-source: derived
+  2026.33/events/{ID}/completedSteps:
+    get:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: GET /events/{ID}/completedSteps'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_events'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+          referenceId:
+            summary: Reference ID
+            value: Worker_Time_Card_ID=21002
+            valueSetFlag: true
+      operationId: get202633EventsByIDCompletedSteps
+      x-operation-id-source: derived
+  2026.33/eventSteps/{ID}:
+    get:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: GET /eventSteps/{ID}'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_eventSteps'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+      operationId: get202633EventStepsByID
+      x-operation-id-source: derived
+  2026.33/eventSteps/{ID}/questionnaire:
+    post:
+      tags:
+      - 08/17/2026
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: POST /eventSteps/{ID}/questionnaire'
+      parameters:
+      - name: ID
+        in: path
+        description: "<b>Parameter Schema Type changed</b>  \n| Updated Value |  \n| :--- |  \n| None |  \n\n| Previous Value |  \n| :--- |  \n| None |  \n\n"
+        required: true
+        style: SIMPLE
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_eventSteps'
+          exampleSetFlag: false
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+            valueSetFlag: true
+      operationId: post202633EventStepsByIDQuestionnaire
+      x-operation-id-source: derived
+components:
+  schemas:
+    ResourceIdPathValue_types:
+      exampleSetFlag: false
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+        exampleSetFlag: false
+      - $ref: '#/components/schemas/WorkdayReferenceId_types'
+        exampleSetFlag: false
+    WorkdayReferenceId_types:
+      pattern: ^(Business_Process_Type)=\S+$
+      type: string
+      description: 'Workday reference ID (Type=Value). Valid types: Business_Process_Type'
+      example: Business_Process_Type=21002
+      exampleSetFlag: true
+      types:
+      - string
+    ResourceIdPathValue_events:
+      exampleSetFlag: false
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+        exampleSetFlag: false
+      - $ref: '#/components/schemas/WorkdayReferenceId_events'
+        exampleSetFlag: false
+    WorkdayId:
+      pattern: ^[0-9a-f]{32}$
+      type: string
+      description: Workday ID (32-character lowercase hexadecimal string).
+      example: a3f5b554007d20e98360015c5e6daf6
+      exampleSetFlag: true
+      types:
+      - string
+    WorkdayReferenceId_events:
+      pattern: ^(Worker_Time_Card_ID|Payroll_Reporting_Code_Event_ID|Eligibility_Override_Event_ID|Update_Student_Hold_Event_ID|Employee_Severance_Worksheet_Event_ID|Journal_Insights_Feedback_Event_Reference_ID|Proposed_Payroll_Input_Event|Quick_Issue_Reference_ID|Requirement_Effective_Date_Override_Event_ID|Inventory_Par_Location_Change_Event_ID|Request_Leave_of_Absence_ID|External_ID|Proposed_New_Project_Resource_Plan_Detail_Reference_ID|Recall_Reaction_ID|Recall_Response_ID|Spend_Authorization_Mass_Close_ID|Student_Dismissal_Event_ID|Budget_Amendment_ID|Compensation_Review_Event_ID|Change_Order_Reference_ID|Flexible_Payment_And_Deduction_Event_ID|Event_ID|Procurement_Mass_ReOpen_ID|Purchase_Item_Request_Event_ID|Purchase_Item_Maintenance_Event_Id|Requisition_Sourcing_Event_ID|Mass_Change_Requisition_Requester_ID|Invite_Committee_Candidate_Event_ID|Spend_Authorization_ID|Position_Budget_Group_ID|Employee_Review_ID|Recall_ID|Assign_Pay_Group_Event_ID|Customer_Request_ID|Workday_Project_ID|Request_Leave_of_Absence_Case_Number|Backorder_Event_ID|IRL_RPN_Submission_Event_Reference|Medicare_Information_Event_ID|Par_Removal_ID|Procurement_Roll_Forward_ID|Procurement_Document_Mass_Action_ID|Receipt_Adjustment_Number|Student_Hold_Assignment_Override_Event_ID|Absence_Case_ID|Change_Spend_Category_Reference_ID|Purchase_Item_Event_Id|Student_Institutional_Withdrawal_Event_ID|IRS_1099_MISC_Adjustment_ID|Supplier_Invoice_Contract_ID|Background_Process_Instance_ID|Background_Check_ID|Student_Leave_of_Absence_Event_ID|Student_Employment_Eligibility_Event_ID|Receipt_Number|Goods_Delivery_Run_ID|Customer_Request_Reference_ID|Benefits_Billing_Reference_ID|Goods_Delivery_Group_ID|Request_Payroll_Input_Event|Student_Onboarding_Event_Abstract_ID|Assignable_Payroll_ID|Complete_Action_Item_Event_ID|Change_Base_Reference_ID)=\S+$
+      type: string
+      description: 'Workday reference ID (Type=Value). Valid types: Worker_Time_Card_ID, Payroll_Reporting_Code_Event_ID, Eligibility_Override_Event_ID, Update_Student_Hold_Event_ID, Employee_Severance_Worksheet_Event_ID, Journal_Insights_Feedback_Event_Reference_ID, Proposed_Payroll_Input_Event, Quick_Issue_Reference_ID, Requirement_Effective_Date_Override_Event_ID, Inventory_Par_Location_Change_Event_ID, Request_Leave_of_Absence_ID, External_ID, Proposed_New_Project_Resource_Plan_Detail_Reference_ID, Recall_Reaction_ID, Recall_Response_ID, Spend_Authorization_Mass_Close_ID, Student_Dismissal_Event_ID, Budget_Amendment_ID, Compensation_Review_Event_ID, Change_Order_Reference_ID, Flexible_Payment_And_Deduction_Event_ID, Event_ID, Procurement_Mass_ReOpen_ID, Purchase_Item_Request_Event_ID, Purchase_Item_Maintenance_Event_Id, Requisition_Sourcing_Event_ID, Mass_Change_Requisition_Requester_ID, Invite_Committee_Candidate_Event_ID, Spend_Authorization_ID, Position_Budget_Group_ID, Employee_Review_ID, Recall_ID, Assign_Pay_Group_Event_ID, Customer_Request_ID, Workday_Project_ID, Request_Leave_of_Absence_Case_Number, Backorder_Event_ID, IRL_RPN_Submission_Event_Reference, Medicare_Information_Event_ID, Par_Removal_ID, Procurement_Roll_Forward_ID, Procurement_Document_Mass_Action_ID, Receipt_Adjustment_Number, Student_Hold_Assignment_Override_Event_ID, Absence_Case_ID, Change_Spend_Category_Reference_ID, Purchase_Item_Event_Id, Student_Institutional_Withdrawal_Event_ID, IRS_1099_MISC_Adjustment_ID, Supplier_Invoice_Contract_ID, Background_Process_Instance_ID, Background_Check_ID, Student_Leave_of_Absence_Event_ID, Student_Employment_Eligibility_Event_ID, Receipt_Number, Goods_Delivery_Run_ID, Customer_Request_Reference_ID, Benefits_Billing_Reference_ID, Goods_Delivery_Group_ID, Request_Payroll_Input_Event, Student_Onboarding_Event_Abstract_ID, Assignable_Payroll_ID, Complete_Action_Item_Event_ID, Change_Base_Reference_ID'
+      example: Worker_Time_Card_ID=21002
+      exampleSetFlag: true
+      types:
+      - string
+    ResourceIdPathValue_eventSteps:
+      exampleSetFlag: false
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+        exampleSetFlag: false
+  securitySchemes:
+    OAuth2:
+      type: OAUTH2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

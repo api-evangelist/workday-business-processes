@@ -1,0 +1,358 @@
+openapi: 3.2.0
+info:
+  title: Changelog for businessProcess 07/15/2023 API
+  description: The public APIs to access event actions and details
+  version: v1
+servers:
+- url: https://<tenantHostname>/businessProcess/v1
+tags:
+- name: 07/15/2023
+  description: Changes for v2023.28
+paths:
+  2023.28/types/{ID}/attachmentCategories:
+    get:
+      tags:
+      - 07/15/2023
+      summary: Modified this existing endpoint
+      description: '## Security changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Core Navigation, Public Business Processes
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Core Navigation
+
+        |
+
+        None
+
+        |
+
+
+        ## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans
+
+        |
+
+        None
+
+        |
+
+        |
+
+        Adaptive Planning For The Workforce
+
+        |
+
+
+        |
+
+
+        View this Endpoint: GET /types/{ID}/attachmentCategories'
+      operationId: get202328TypesByIDAttachmentCategories
+      x-operation-id-source: derived
+  2023.28/events/{ID}/attachments:
+    get:
+      tags:
+      - 07/15/2023
+      summary: Modified this existing endpoint
+      description: '## Security changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Core Navigation, Public Business Processes
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Core Navigation
+
+        |
+
+        None
+
+        |
+
+
+        ## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans
+
+        |
+
+        None
+
+        |
+
+        |
+
+        Adaptive Planning For The Workforce
+
+        |
+
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}/attachments'
+      operationId: get202328EventsByIDAttachments
+      x-operation-id-source: derived
+  2023.28/events/{ID}/comments:
+    get:
+      tags:
+      - 07/15/2023
+      summary: Security has been changed
+      description: '## Security changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Core Navigation, Public Business Processes
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Public Business Processes
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}/comments'
+      operationId: get202328EventsByIDComments
+      x-operation-id-source: derived
+  2023.28/eventSteps/{ID}/sendBack:
+    post:
+      tags:
+      - 07/15/2023
+      summary: Modified this existing endpoint
+      description: '## Security changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Core Navigation, Public Business Processes
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Core Navigation
+
+        |
+
+        None
+
+        |
+
+
+        ## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans
+
+        |
+
+        None
+
+        |
+
+        |
+
+        Adaptive Planning For The Workforce
+
+        |
+
+
+        |
+
+
+        View this Endpoint: POST /eventSteps/{ID}/sendBack'
+      operationId: post202328EventStepsByIDSendBack
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    OAuth2:
+      type: OAUTH2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

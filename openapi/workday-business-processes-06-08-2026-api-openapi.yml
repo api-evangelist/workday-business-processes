@@ -1,0 +1,105 @@
+openapi: 3.2.0
+info:
+  title: Changelog for businessProcess 06/08/2026 API
+  description: The public APIs to access event actions and details
+  version: v1
+servers:
+- url: https://<tenantHostname>/businessProcess/v1
+tags:
+- name: 06/08/2026
+  description: Changes for v2026.23
+paths:
+  2026.23/eventSteps/{ID}/approve:
+    post:
+      tags:
+      - 06/08/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Approves the business process event step specified by the ID of the originating event step. In the request body, specify this required field: comment.
+
+        Secured by: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Approves the business process event step specified by the ID of the originating event step. In the request body, specify these required fields: id (the event step you are approving), comment.
+
+        Secured by: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+
+        View this Endpoint: POST /eventSteps/{ID}/approve'
+      operationId: post202623EventStepsByIDApprove
+      x-operation-id-source: derived
+  2026.23/eventSteps:
+    get:
+      tags:
+      - 06/08/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves a collection of business process event steps. You can filter the event steps by business process, creation date, due date, and step type. Returned results are secured based on processing person''s view access to the events to which the steps belong. Only event steps from events the processing person has view access to will be included in the collection.
+
+        Secured by: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Retrieves a collection of business process event steps. You can filter the event steps by business process, creation date, due date, and step type.
+
+        Secured by: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+
+        View this Endpoint: GET /eventSteps'
+      operationId: get202623EventSteps
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    OAuth2:
+      type: OAUTH2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

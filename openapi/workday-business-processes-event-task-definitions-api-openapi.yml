@@ -1,0 +1,325 @@
+openapi: 3.2.0
+info:
+  title: Workday Business Processes Event Task Definitions API
+  version: v1
+  x-refined-note:
+  - x-api-evangelist-harvested differs across the merged source definitions and was not carried
+  - x-api-evangelist-source differs across the merged source definitions and was not carried
+  description: 'Operations tagged Event Task Definitions across 2 of this provider''s published API definitions: workday-business-processes-custom-business-process-config-v1-openapi.json, workday-business-processes-custom-business-process-config-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.workday.com/customBusinessProcessConfig/v1
+tags:
+- name: Event Task Definitions
+  description: A collection of Event Task Definitions for custom business process defined in Workday.
+paths:
+  /eventTaskDefinitions:
+    post:
+      tags:
+      - Event Task Definitions
+      description: Creates a new event task definition.
+      operationId: createEventTaskDefinition
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createCustomBusinessProcessEventTaskDetail'
+      responses:
+        '200':
+          description: Creates a new custom event task definition instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customBusinessProcessEventTaskDetail'
+        '400':
+          description: 'Poossible Validations:
+
+
+            -The name for event task definition is required and must be unique across all event task definitions.
+
+
+            -VPS application is a required field.
+
+
+            -VPS site is a required field.
+
+
+            -The referenceIdValue must be unique across all VPS definitions.
+
+            '
+      security:
+      - oAuth2:
+        - write
+        - read
+      summary: Create event task definition
+      x-summary-source: derived
+    get:
+      tags:
+      - Event Task Definitions
+      description: Returns summary of all event task definitions
+      operationId: getEventTaskDefinition
+      responses:
+        '200':
+          description: Returns summary of all event task definitions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/allCustomBusinessProcessEventTaskDetails'
+      security:
+      - oAuth2:
+        - write
+        - read
+      summary: Get event task definition
+      x-summary-source: derived
+    servers:
+    - url: https://api.workday.com/customBusinessProcessConfig/v1
+  /eventTaskDefinitions/{id}:
+    get:
+      tags:
+      - Event Task Definitions
+      description: Returns a event task definition
+      operationId: viewEventTaskDefinition
+      parameters:
+      - name: id
+        in: path
+        description: The Workday Id of the event task definition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns a event task definition for the Id supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customBusinessProcessEventTaskDetail'
+        '404':
+          description: Not Found.
+      security:
+      - oAuth2:
+        - write
+        - read
+      summary: View event task definition
+      x-summary-source: derived
+    put:
+      tags:
+      - Event Task Definitions
+      description: Updates a event task definition.
+      operationId: updateEventTaskDefinition
+      parameters:
+      - name: id
+        in: path
+        description: The Workday Id of the event task definition
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/editCustomBusinessProcessEventTaskDetail'
+        description: Event task definition data to be updated.
+        required: true
+      responses:
+        '200':
+          description: Updates a event task definition for the Id supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customBusinessProcessEventTaskDetail'
+        '400':
+          description: 'Possible Validations:
+
+
+            -The name for event task definition is required and must be unique across all event task definitions.
+
+
+            -VPS application is a required field.
+
+
+            -VPS site is a required field.
+
+
+            -The referenceIdValue must be unique across all event task definitions.
+
+            '
+      security:
+      - oAuth2:
+        - write
+        - read
+      summary: Update event task definition
+      x-summary-source: derived
+    patch:
+      tags:
+      - Event Task Definitions
+      description: Updates a event task definition.
+      operationId: patchEventTaskDefinition
+      parameters:
+      - name: id
+        in: path
+        description: The Workday Id of the event task definition
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patchCustomBusinessProcessEventTaskDetail'
+        description: Event task definition data to be updated.
+        required: true
+      responses:
+        '200':
+          description: Updates a event task definition for the Id supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customBusinessProcessEventTaskDetail'
+        '400':
+          description: 'Possible Validations:
+
+
+            -The name for event task definition is required and must be unique across all event task definitions.
+
+
+            -VPS application is a required field.
+
+
+            -VPS site is a required field.
+
+
+            -The referenceIdValue must be unique across all event task definitions.
+
+            '
+      security:
+      - oAuth2:
+        - write
+        - read
+      summary: Patch event task definition
+      x-summary-source: derived
+    delete:
+      tags:
+      - Event Task Definitions
+      description: Deletes a event task definition
+      operationId: deleteEventTaskDefinition
+      parameters:
+      - name: id
+        in: path
+        description: The Workday Id of the event task definition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deletes a event task definition for the Id supplied
+        '400':
+          description: The event task definition cannot be deleted because it has references.
+        '404':
+          description: Not Found.
+      security:
+      - oAuth2:
+        - write
+        - read
+      summary: Delete event task definition
+      x-summary-source: derived
+    servers:
+    - url: https://api.workday.com/customBusinessProcessConfig/v1
+components:
+  schemas:
+    patchCustomBusinessProcessEventTaskDetail:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        vpsApplication:
+          type: string
+        vpsSite:
+          type: string
+        vpsRoute:
+          type: string
+        referenceIdValue:
+          type: string
+    customBusinessProcessEventTaskDetail:
+      type: object
+      required:
+      - vpsApplication
+      - name
+      - vpsSite
+      properties:
+        id:
+          type: string
+        Event_Task_Definition_ID:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        referenceIdValue:
+          type: string
+        vpsApplication:
+          type: string
+        vpsSite:
+          type: string
+        vpsRoute:
+          type: string
+    editCustomBusinessProcessEventTaskDetail:
+      type: object
+      required:
+      - vpsApplication
+      - name
+      - vpsSite
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        vpsApplication:
+          type: string
+        vpsSite:
+          type: string
+        vpsRoute:
+          type: string
+        referenceIdValue:
+          type: string
+    createCustomBusinessProcessEventTaskDetail:
+      type: object
+      required:
+      - vpsApplication
+      - name
+      - vpsSite
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        vpsApplication:
+          type: string
+        vpsSite:
+          type: string
+        vpsRoute:
+          type: string
+        referenceIdValue:
+          type: string
+    allCustomBusinessProcessEventTaskDetails:
+      type: object
+      properties:
+        total:
+          type: number
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/customBusinessProcessEventTaskDetail'
+  securitySchemes:
+    oAuth2:
+      type: oauth2
+      description: Register an API Client
+      flows:
+        implicit:
+          authorizationUrl: https://auth.api.workday.com/v1/authorize
+          scopes:
+            write: modify custom business process types
+            read: read custom business process types
+x-refined-from:
+- workday-business-processes-custom-business-process-config-v1-openapi.json
+- workday-business-processes-custom-business-process-config-openapi.yml

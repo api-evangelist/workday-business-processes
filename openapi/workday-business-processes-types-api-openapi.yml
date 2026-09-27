@@ -1,0 +1,776 @@
+openapi: 3.2.0
+info:
+  title: Workday Business Processes Types API
+  version: v1
+  x-refined-note:
+  - x-api-evangelist-harvested differs across the merged source definitions and was not carried
+  - x-api-evangelist-source differs across the merged source definitions and was not carried
+  - x-workday-internal-protected-usage-enabled differs across the merged source definitions and was not carried
+  - x-workday-internal-routing differs across the merged source definitions and was not carried
+  - x-workday-internal-service-container-id differs across the merged source definitions and was not carried
+  - x-workday-internal-source differs across the merged source definitions and was not carried
+  description: 'Operations tagged types across 4 of this provider''s published API definitions: workday-business-processes-business-process-v1-openapi.json, workday-business-processes-custom-business-process-config-v1-openapi.json, workday-business-processes-business-process-openapi.yml, workday-business-processes-custom-business-process-config-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://<tenantHostname>/businessProcess/v1
+- url: https://api.workday.com/customBusinessProcessConfig/v1
+- url: https://{tenantHostname}/businessProcess/v1
+  description: Workday tenant REST API host (API Gateway)
+  variables:
+    tenantHostname:
+      default: wd2-impl-services1.workday.com
+      description: Your Workday tenant API hostname, e.g. wd2-impl-services1.workday.com
+tags:
+- name: Types
+  description: Returns all business process types. Secured by Public Business Processes.
+paths:
+  /types:
+    get:
+      tags:
+      - Types
+      summary: Retrieves all business process types
+      description: 'Retrieves a collection of business process types.
+
+
+        Secured By Domain: Public Business Processes
+
+
+        Scope: Tenant Non-Configurable'
+      parameters:
+      - name: limit
+        in: query
+        description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+        schema:
+          type: integer
+          format: int64
+      - name: offset
+        in: query
+        description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful response. A successful response can return no matched data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    format: int32
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/businessProcessTypeView_a06e49cf714e100008435914d7d90105'
+        '400':
+          description: Invalid request. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '401':
+          description: 'Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '403':
+          description: User has insufficient permissions. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '404':
+          description: Resource not found. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        default:
+          description: An error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+      x-workday-internal-try-enabled: 'false'
+      x-workday-operation-id: a06e49cf714e100007fd676f0d2c0101
+      x-workday-secured-by-domains:
+      - Public Business Processes
+      operationId: getTypes
+      x-operation-id-source: derived
+    post:
+      tags:
+      - Types
+      description: Creates a new custom business process type, including initiating actions.
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createCustomBusinessProcessTypeDetail'
+      responses:
+        '200':
+          description: Creates a new custom business process type instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customBusinessProcessTypeDetail'
+        '400':
+          description: 'Possible Validations:
+
+
+            - The name for custom business process type is required and must be unique across all custom business process types.
+
+
+            - The name for initiating actions is required and must be unique within a custom business process type.
+
+
+            - The referenceIdValue must be unique across all custom business process types.
+
+
+            - The referenceIdValue for initiatingActions must be unique across all initiating actions.
+
+
+            - Custom object is not valid for target business object.
+
+
+            - You are not allowed to set more than one initiating allowed action as default.
+
+
+            - The Custom Task cannot be used by more than one initiating allowed action.
+
+
+            - The Event Task Definition is required for the Event Action Task Configuration
+
+
+            - The Event Action is required for the Event Action Task Configuration
+
+            '
+      security:
+      - oAuth2:
+        - write
+        - read
+      summary: Create
+      x-summary-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
+  /types/{ID}:
+    get:
+      tags:
+      - Types
+      summary: Retrieves a business process type
+      description: 'Retrieves the business process type specified by the ID.
+
+
+        Secured By Domain: Public Business Processes
+
+
+        Scope: Tenant Non-Configurable'
+      parameters:
+      - name: ID
+        in: path
+        description: 'The Workday ID of the resource.
+
+
+          Accepts:
+
+          - **Workday ID**: Workday ID (32-character lowercase hexadecimal string).
+
+          - **Reference ID**: Workday reference ID (Type=Value). Valid types: Business_Process_Type'
+        required: true
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_types'
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+          referenceId:
+            summary: Reference ID
+            value: Business_Process_Type=21002
+      responses:
+        '200':
+          description: Successful response. A successful response can return no matched data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/businessProcessTypeDetails_e73cbf40479a100012b92d7f999d0144'
+        '400':
+          description: Invalid request. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '401':
+          description: 'Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '403':
+          description: User has insufficient permissions. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '404':
+          description: Resource not found. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        default:
+          description: An error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+      x-workday-internal-try-enabled: 'false'
+      x-workday-operation-id: a06e49cf714e100007fd676f0d2c0101
+      x-workday-secured-by-domains:
+      - Public Business Processes
+      operationId: getTypesByID
+      x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
+  /types/{ID}/attachmentCategories:
+    get:
+      tags:
+      - Types
+      summary: Retrieves attachment categories for a business process type
+      description: 'Retrieves all attachment categories for the specified business process type that the processing user can select for the specified event. You can filter by event target.
+
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable'
+      parameters:
+      - name: ID
+        in: path
+        description: 'The Workday ID of the resource.
+
+
+          Accepts:
+
+          - **Workday ID**: Workday ID (32-character lowercase hexadecimal string).
+
+          - **Reference ID**: Workday reference ID (Type=Value). Valid types: Business_Process_Type'
+        required: true
+        schema:
+          $ref: '#/components/schemas/ResourceIdPathValue_types'
+        examples:
+          wid:
+            summary: Specific resource WID
+            value: a3f5b554007d20e98360015c5e6daf6
+          referenceId:
+            summary: Reference ID
+            value: Business_Process_Type=21002
+      - name: eventTarget
+        in: query
+        description: The Workday ID of the event target that this business process is about. You can use a returned id from an API that returns instances of the event target type. For example, if your event target is a worker, use GET /workers in the Staffing service.
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: The maximum number of objects in a single response. The default is 20. The maximum is 100.
+        schema:
+          type: integer
+          format: int64
+      - name: offset
+        in: query
+        description: 'The zero-based index of the first object in a response collection. The default is 0. Use offset with the limit parameter to control paging of a response collection. Example: If limit is 5 and offset is 9, the response returns a collection of 5 objects starting with the 10th object.'
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Successful response. A successful response can return no matched data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    format: int32
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/attachmentCategoryView_01bedd7c1f9e10001e09ac8bd50600e8'
+        '400':
+          description: Invalid request. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '401':
+          description: 'Unauthorized: Missing or invalid credentials. (https://community.workday.com/rest/error-messages)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '403':
+          description: User has insufficient permissions. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        '404':
+          description: Resource not found. (https://community.workday.com/rest/error-messages)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VALIDATION_ERROR_MODEL_REFERENCE'
+        default:
+          description: An error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+      x-workday-internal-try-enabled: 'false'
+      x-workday-operation-id: 01bedd7c1f9e10001e0a6dc620fd00ea
+      x-workday-secured-by-domains:
+      - Core Navigation
+      - Public Business Processes
+      operationId: getTypesByIDAttachmentCategories
+      x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
+  /types/{id}:
+    get:
+      tags:
+      - Types
+      description: Returns a custom business process type
+      operationId: view
+      parameters:
+      - name: id
+        in: path
+        description: The Workday Id of the custom business process type
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns a custom business process type for the Id supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customBusinessProcessTypeDetail'
+        '404':
+          description: Not Found.
+      security:
+      - oAuth2:
+        - write
+        - read
+      summary: View
+      x-summary-source: derived
+    put:
+      tags:
+      - Types
+      description: Updates a custom business process type
+      operationId: update
+      parameters:
+      - name: id
+        in: path
+        description: The Workday Id of the custom business process type
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/editCustomBusinessProcessTypeDetail'
+        description: Custom business process type data to be updated.
+        required: true
+      responses:
+        '200':
+          description: Updates a custom business process type for the Id supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customBusinessProcessTypeDetail'
+        '400':
+          description: 'Possible Validations:
+
+
+            -The referenceIdValue must be unique across all custom business process types.
+
+
+            -The name for custom business process type must be unique across all custom business process types.
+
+
+            -Custom object is not valid for target business object.
+
+
+            -Changes to the custom object are not allowed once an event exists for this custom business process.
+
+
+            -Changes to the business object are not allowed once an event exists for this custom business process.
+
+
+            -Changes to the Name are not allowed once an event exists for this custom business process.
+
+
+            -Changes to the ID are not allowed once an event exists for this custom business process.
+
+            '
+      security:
+      - oAuth2:
+        - write
+        - read
+      summary: Update
+      x-summary-source: derived
+    delete:
+      tags:
+      - Types
+      description: Deletes a custom business process type
+      operationId: delete
+      parameters:
+      - name: id
+        in: path
+        description: The Workday Id of the custom business process type
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deletes a custom business process type for the Id supplied
+        '400':
+          description: 'Possible Validations:
+
+            - The custom business process type cannot be deleted because it has references.
+
+            - You cannot delete a custom business process type that has been used by a business process event.'
+        '404':
+          description: Not Found.
+      security:
+      - oAuth2:
+        - write
+        - read
+      summary: Delete
+      x-summary-source: derived
+    servers:
+    - url: https://api.workday.com/customBusinessProcessConfig/v1
+components:
+  schemas:
+    ResourceIdPathValue_types:
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+      - $ref: '#/components/schemas/WorkdayReferenceId_types'
+    WorkdayReferenceId_types:
+      pattern: ^(Business_Process_Type)=\S+$
+      type: string
+      description: 'Workday reference ID (Type=Value). Valid types: Business_Process_Type'
+      example: Business_Process_Type=21002
+    businessProcessTypeView_a06e49cf714e100008435914d7d90105:
+      allOf:
+      - type: object
+        properties:
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: Workday Id or Reference Id of the instance.
+    attachmentCategoryView_01bedd7c1f9e10001e09ac8bd50600e8:
+      allOf:
+      - type: object
+        properties:
+          referenceID:
+            type: string
+            description: The Reference ID to use for lookups within our Workday Web Services. For \~supervisory organizations\~, this is also the 'Organization ID'
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: Workday Id or Reference Id of the instance.
+    businessProcessTypeDetails_e73cbf40479a100012b92d7f999d0144:
+      allOf:
+      - type: object
+        properties:
+          helpText:
+            type: string
+            description: The help text for the initiation step of a business process.
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Rich Text
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: Workday Id or Reference Id of the instance.
+    WorkdayId:
+      pattern: ^[0-9a-f]{32}$
+      type: string
+      description: Workday ID (32-character lowercase hexadecimal string).
+      example: a3f5b554007d20e98360015c5e6daf6
+    VALIDATION_ERROR_MODEL_REFERENCE:
+      allOf:
+      - required:
+        - error
+        type: object
+        properties:
+          error:
+            type: string
+            description: A description of the error
+          errors:
+            type: array
+            description: An array of validation errors
+            items:
+              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+    ERROR_MODEL_REFERENCE:
+      required:
+      - error
+      type: object
+      properties:
+        error:
+          type: string
+          description: A description of the error
+        code:
+          type: string
+          description: The code that corresponds to the error message. Use the error code to drive programmatic error-handling behavior. Don't use error message strings for this purpose because they are subject to change
+        field:
+          type: string
+          description: The field related to the error
+        path:
+          type: string
+          description: The path of the field related to the error
+        severity:
+          type: string
+          description: Severity of the validation (e.g. Critical, Warning).
+        internalMessage:
+          type: string
+          description: Internal message providing additional context for the validation (e.g. representation content validation details).
+    editCustomBusinessProcessTypeDetail:
+      type: object
+      required:
+      - name
+      properties:
+        referenceIdValue:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        inactive:
+          type: boolean
+        customObjectDefinition:
+          $ref: '#/components/schemas/instanceWithId'
+        targetBusinessObject:
+          $ref: '#/components/schemas/instanceWithId'
+    createCustomBusinessProcessTypeDetail:
+      type: object
+      required:
+      - name
+      properties:
+        referenceIdValue:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        inactive:
+          type: boolean
+        eventActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/instanceWithId'
+        eventActionTaskConfig:
+          type: array
+          items:
+            $ref: '#/components/schemas/eventActionEventTaskConfigRequest'
+        initiatingActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/initiatingActionDetailRequest'
+        stepActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/stepActionDetailRequest'
+        customObjectDefinition:
+          $ref: '#/components/schemas/instanceWithId'
+        targetBusinessObject:
+          $ref: '#/components/schemas/instanceWithId'
+    initiatingActionDetailResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        Initiating_Action_ID:
+          type: string
+        referenceIdValue:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        inactive:
+          type: boolean
+        default:
+          type: boolean
+        customTask:
+          $ref: '#/components/schemas/instanceWithIdAndDescriptor'
+    stepActionDetailResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        Step_Action_ID:
+          type: string
+        referenceIdValue:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        inactive:
+          type: boolean
+        eventTaskDefinition:
+          $ref: '#/components/schemas/instanceWithIdAndDescriptor'
+    eventActionWithID:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        Event_Action_Type_ID:
+          type: string
+    eventActionEventTaskConfigResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        eventAction:
+          $ref: '#/components/schemas/eventActionWithID'
+        eventTaskDefinition:
+          $ref: '#/components/schemas/instanceWithIdAndDescriptor'
+    eventActionEventTaskConfigRequest:
+      type: object
+      required:
+      - eventAction
+      - eventTaskDefinition
+      properties:
+        eventAction:
+          $ref: '#/components/schemas/instanceWithId'
+        eventTaskDefinition:
+          $ref: '#/components/schemas/instanceWithId'
+    instanceWithId:
+      type: object
+      properties:
+        id:
+          type: string
+    stepActionDetailRequest:
+      type: object
+      required:
+      - name
+      properties:
+        referenceIdValue:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        inactive:
+          type: boolean
+        eventTaskDefinition:
+          $ref: '#/components/schemas/instanceWithId'
+    customBusinessProcessTypeDetail:
+      type: object
+      required:
+      - name
+      properties:
+        id:
+          type: string
+        Custom_Business_Process_Type_ID:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        inactive:
+          type: boolean
+        referenceIdValue:
+          type: string
+        eventActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/eventActionWithID'
+        eventActionTaskConfig:
+          type: array
+          items:
+            $ref: '#/components/schemas/eventActionEventTaskConfigResponse'
+        initiatingActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/initiatingActionDetailResponse'
+        stepActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/stepActionDetailResponse'
+        customObjectDefinition:
+          $ref: '#/components/schemas/instanceWithIdAndDescriptor'
+        targetBusinessObject:
+          $ref: '#/components/schemas/instanceWithIdAndDescriptor'
+    initiatingActionDetailRequest:
+      type: object
+      required:
+      - name
+      properties:
+        referenceIdValue:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        inactive:
+          type: boolean
+        default:
+          type: boolean
+        customTask:
+          $ref: '#/components/schemas/instanceWithId'
+    instanceWithIdAndDescriptor:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+    allCustomBusinessProcessTypeDetails:
+      type: object
+      properties:
+        total:
+          type: number
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/customBusinessProcessTypeDetail'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}
+    oAuth2:
+      type: oauth2
+      description: Register an API Client
+      flows:
+        implicit:
+          authorizationUrl: https://auth.api.workday.com/v1/authorize
+          scopes:
+            write: modify custom business process types
+            read: read custom business process types
+x-refined-from:
+- workday-business-processes-business-process-v1-openapi.json
+- workday-business-processes-custom-business-process-config-v1-openapi.json
+- workday-business-processes-business-process-openapi.yml
+- workday-business-processes-custom-business-process-config-openapi.yml

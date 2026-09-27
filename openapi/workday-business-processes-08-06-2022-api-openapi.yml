@@ -1,0 +1,739 @@
+openapi: 3.2.0
+info:
+  title: Changelog for businessProcess 08/06/2022 API
+  description: The public APIs to access event actions and details
+  version: v1
+servers:
+- url: https://<tenantHostname>/businessProcess/v1
+tags:
+- name: 08/06/2022
+  description: Changes for v2022.32
+paths:
+  2022.32/types:
+    get:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /types'
+      operationId: get202232Types
+      x-operation-id-source: derived
+  2022.32/types/{ID}:
+    get:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /types/{ID}'
+      operationId: get202232TypesByID
+      x-operation-id-source: derived
+  2022.32/types/{ID}/attachmentCategories:
+    get:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /types/{ID}/attachmentCategories'
+      operationId: get202232TypesByIDAttachmentCategories
+      x-operation-id-source: derived
+  2022.32/events:
+    get:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /events'
+      operationId: get202232Events
+      x-operation-id-source: derived
+  2022.32/events/{ID}/attachments:
+    get:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}/attachments'
+      operationId: get202232EventsByIDAttachments
+      x-operation-id-source: derived
+  2022.32/events/{ID}/comments:
+    get:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}/comments'
+      operationId: get202232EventsByIDComments
+      x-operation-id-source: derived
+  2022.32/events/{ID}/inProgressSteps:
+    get:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}/inProgressSteps'
+      operationId: get202232EventsByIDInProgressSteps
+      x-operation-id-source: derived
+  2022.32/eventSteps/{ID}/deny:
+    post:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: POST /eventSteps/{ID}/deny'
+      operationId: post202232EventStepsByIDDeny
+      x-operation-id-source: derived
+  2022.32/events/{ID}/remainingSteps:
+    get:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}/remainingSteps'
+      operationId: get202232EventsByIDRemainingSteps
+      x-operation-id-source: derived
+  2022.32/events/{ID}:
+    get:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}'
+      operationId: get202232EventsByID
+      x-operation-id-source: derived
+  2022.32/eventSteps/{ID}/approve:
+    post:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: POST /eventSteps/{ID}/approve'
+      operationId: post202232EventStepsByIDApprove
+      x-operation-id-source: derived
+  2022.32/eventSteps/{ID}/sendBack:
+    post:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: POST /eventSteps/{ID}/sendBack'
+      operationId: post202232EventStepsByIDSendBack
+      x-operation-id-source: derived
+  2022.32/eventSteps:
+    get:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /eventSteps'
+      operationId: get202232EventSteps
+      x-operation-id-source: derived
+  2022.32/events/{ID}/completedSteps:
+    get:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}/completedSteps'
+      operationId: get202232EventsByIDCompletedSteps
+      x-operation-id-source: derived
+  2022.32/eventSteps/{ID}:
+    get:
+      tags:
+      - 08/06/2022
+      summary: Scope has been changed
+      description: '## Scope changed
+
+        |
+
+        Updated Value
+
+        |
+
+        | :--- |
+
+        |
+
+        Adaptive Planning For Financial Plans, Adaptive Planning For The Workforce, Tenant Non-Configurable
+
+        |
+
+
+        |
+
+        Added Domains
+
+        |
+
+        Removed Domains
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Tenant Non-Configurable
+
+        |
+
+        None
+
+        |
+
+
+        View this Endpoint: GET /eventSteps/{ID}'
+      operationId: get202232EventStepsByID
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    OAuth2:
+      type: OAUTH2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

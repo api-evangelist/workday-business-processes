@@ -1,0 +1,58 @@
+openapi: 3.2.0
+info:
+  title: Changelog for businessProcess 12/06/2025 API
+  description: The public APIs to access event actions and details
+  version: v1
+servers:
+- url: https://<tenantHostname>/businessProcess/v1
+tags:
+- name: 12/06/2025
+  description: Changes for v2025.49
+paths:
+  2025.49/values/sendBack/to/:
+    get:
+      tags:
+      - 12/06/2025
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves instances that can be used as values for other endpoint parameters in this service.
+
+        Secured by: Public Business Processes
+
+        Scope: Tenant Non-Configurable
+
+
+        |
+
+        Retrieves instances that can be used as values for other endpoint parameters in this service.
+
+
+        |
+
+
+        View this Endpoint: GET /values/sendBack/to/'
+      operationId: get202549ValuesSendBackTo
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    OAuth2:
+      type: OAUTH2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

@@ -1,0 +1,44 @@
+openapi: 3.2.0
+info:
+  title: Changelog for businessProcess 09/09/2021 API
+  description: The public APIs to access event actions and details
+  version: v1
+servers:
+- url: https://<tenantHostname>/businessProcess/v1
+tags:
+- name: 09/09/2021
+  description: Changes for v2021.38
+paths:
+  2021.38/eventSteps:
+    get:
+      tags:
+      - 09/09/2021
+      summary: Parameters have been modified
+      description: 'View this Endpoint: GET /eventSteps'
+      parameters:
+      - name: stepType
+        in: query
+        description: "<b>Parameter Description changed</b>  \n| Updated Value |  \n| :--- |  \n| Retired. We retire this report field because when there are multiple steps on the business process definition that are associated with this event step, this report field doesn't return the step type for each associated step. We recommend that you use the Step Type report field instead. |  \n\n| Previous Value |  \n| :--- |  \n| Returns the type of step being performed by the event record. |  \n\n"
+        required: false
+        style: FORM
+        explode: true
+        schema:
+          type: array
+          exampleSetFlag: false
+          items:
+            type: string
+            exampleSetFlag: false
+            types:
+            - string
+          types:
+          - array
+      operationId: get202138EventSteps
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    OAuth2:
+      type: OAUTH2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

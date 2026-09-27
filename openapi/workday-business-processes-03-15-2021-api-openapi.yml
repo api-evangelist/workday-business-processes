@@ -1,0 +1,50 @@
+openapi: 3.2.0
+info:
+  title: Changelog for businessProcess 03/15/2021 API
+  description: The public APIs to access event actions and details
+  version: v1
+servers:
+- url: https://<tenantHostname>/businessProcess/v1
+tags:
+- name: 03/15/2021
+  description: Changes for v2021.13
+paths:
+  2021.13/events:
+    get:
+      tags:
+      - 03/15/2021
+      summary: Modified this existing endpoint
+      description: 'View this Endpoint: GET /events'
+      parameters:
+      - name: initiatedOnOrAfter
+        in: query
+        description: "<b>Parameter Description changed</b>  \n| Updated Value |  \n| :--- |  \n| The date and time this business process was initiated. |  \n\n| Previous Value |  \n| :--- |  \n| The date and time the business process was initiated. |  \n\n"
+        required: false
+        explode: true
+        schema:
+          type: string
+          format: date
+          exampleSetFlag: false
+          types:
+          - string
+      - name: initiatedOnOrBefore
+        in: query
+        description: "<b>Parameter Description changed</b>  \n| Updated Value |  \n| :--- |  \n| The date and time this business process was initiated. |  \n\n| Previous Value |  \n| :--- |  \n| The date and time the business process was initiated. |  \n\n"
+        required: false
+        explode: true
+        schema:
+          type: string
+          format: date
+          exampleSetFlag: false
+          types:
+          - string
+      operationId: get202113Events
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    OAuth2:
+      type: OAUTH2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

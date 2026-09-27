@@ -1,0 +1,847 @@
+openapi: 3.2.0
+info:
+  title: Changelog for businessProcess 06/30/2026 API
+  description: The public APIs to access event actions and details
+  version: v1
+servers:
+- url: https://<tenantHostname>/businessProcess/v1
+tags:
+- name: 06/30/2026
+  description: Changes for v2026.26
+paths:
+  2026.26/types:
+    get:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves a collection of business process types.
+
+        Secured By Domain: Public Business Processes
+
+        Scope: Tenant Non-Configurable
+
+
+        |
+
+        Retrieves a collection of business process types.
+
+
+        |
+
+
+        View this Endpoint: GET /types'
+      operationId: get202626Types
+      x-operation-id-source: derived
+  2026.26/types/{ID}:
+    get:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves the business process type specified by the ID.
+
+        Secured By Domain: Public Business Processes
+
+        Scope: Tenant Non-Configurable
+
+
+        |
+
+        Retrieves the business process type specified by the ID.
+
+
+        |
+
+
+        View this Endpoint: GET /types/{ID}'
+      operationId: get202626TypesByID
+      x-operation-id-source: derived
+  2026.26/types/{ID}/attachmentCategories:
+    get:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves all attachment categories for the specified business process type that the processing user can select for the specified event. You can filter by event target.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Retrieves all attachment categories for the specified business process type that the processing user can select for the specified event. You can filter by event target.
+
+
+        |
+
+
+        View this Endpoint: GET /types/{ID}/attachmentCategories'
+      operationId: get202626TypesByIDAttachmentCategories
+      x-operation-id-source: derived
+  2026.26/events/{ID}/rescind:
+    post:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Rescinds the business process event specified by the ID. In the request body, specify these required fields: comment.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Rescinds the business process event specified by the ID. In the request body, specify these required fields: comment.
+
+
+        |
+
+
+        View this Endpoint: POST /events/{ID}/rescind'
+      operationId: post202626EventsByIDRescind
+      x-operation-id-source: derived
+  2026.26/events/{ID}/cancel:
+    post:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Cancels the business process event specified by the ID. In the request body, specify these required fields: comment.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Cancels the business process event specified by the ID. In the request body, specify these required fields: comment.
+
+
+        |
+
+
+        View this Endpoint: POST /events/{ID}/cancel'
+      operationId: post202626EventsByIDCancel
+      x-operation-id-source: derived
+  2026.26/eventSteps/{ID}/reassign:
+    post:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Reassigns the business process event step specified by the reference ID of the originating event step.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Reassigns the business process event step specified by the reference ID of the originating event step.
+
+
+        |
+
+
+        View this Endpoint: POST /eventSteps/{ID}/reassign'
+      operationId: post202626EventStepsByIDReassign
+      x-operation-id-source: derived
+  2026.26/eventSteps/{ID}/deny:
+    post:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Denies the business process event step specified by the ID of the originating event step. The processing person must have view access to the event. In the request body, specify these required fields: id (the event step you are denying), stepAction{id} (if there are multiple event steps), comment.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Denies the business process event step specified by the ID of the originating event step. The processing person must have view access to the event. In the request body, specify these required fields: id (the event step you are denying), stepAction{id} (if there are multiple event steps), comment.
+
+
+        |
+
+
+        View this Endpoint: POST /eventSteps/{ID}/deny'
+      operationId: post202626EventStepsByIDDeny
+      x-operation-id-source: derived
+  2026.26/eventSteps/{ID}/approve:
+    post:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Approves the business process event step specified by the ID of the originating event step. In the request body, specify this required field: comment.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Approves the business process event step specified by the ID of the originating event step. In the request body, specify this required field: comment.
+
+
+        |
+
+
+        View this Endpoint: POST /eventSteps/{ID}/approve'
+      operationId: post202626EventStepsByIDApprove
+      x-operation-id-source: derived
+  2026.26/eventSteps/{ID}/toDo:
+    post:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Post an action for a To Do step in a business process.
+
+        Specify these required fields in the request body: {stepAction}.
+
+        You can add an optional comment, if enabled at tenant or business process level.
+
+        Valid values for stepAction are:
+
+        { "id": "133d5c88baa64136aab041c1d2e9ed53" } for Submit,
+
+        { "id": "d9e41d34446c11de98360015c5e6daf6" } for Save for Later.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Post an action for a To Do step in a business process.
+
+        Specify these required fields in the request body: {stepAction}.
+
+        You can add an optional comment, if enabled at tenant or business process level.
+
+        Valid values for stepAction are:
+
+        { "id": "133d5c88baa64136aab041c1d2e9ed53" } for Submit,
+
+        { "id": "d9e41d34446c11de98360015c5e6daf6" } for Save for Later.
+
+
+        |
+
+
+        View this Endpoint: POST /eventSteps/{ID}/toDo'
+      operationId: post202626EventStepsByIDToDo
+      x-operation-id-source: derived
+  2026.26/eventSteps/{ID}/sendBack:
+    post:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Sends back the business process event step specified by the ID of the originating event step. In the request body, specify these required fields: id (the event step you are sending back), reason.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Sends back the business process event step specified by the ID of the originating event step. In the request body, specify these required fields: id (the event step you are sending back), reason.
+
+
+        |
+
+
+        View this Endpoint: POST /eventSteps/{ID}/sendBack'
+      operationId: post202626EventStepsByIDSendBack
+      x-operation-id-source: derived
+  2026.26/events:
+    get:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves a collection of business process events based on the specified parameters. You must specify exactly one worker parameter. If a worker parameter is not specified, returns a blank response.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Retrieves a collection of business process events based on the specified parameters. You must specify exactly one worker parameter. If a worker parameter is not specified, returns a blank response.
+
+
+        |
+
+
+        View this Endpoint: GET /events'
+      operationId: get202626Events
+      x-operation-id-source: derived
+  2026.26/events/{ID}/remainingSteps:
+    get:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves all remaining business process steps for the specified business process event.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Retrieves all remaining business process steps for the specified business process event.
+
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}/remainingSteps'
+      operationId: get202626EventsByIDRemainingSteps
+      x-operation-id-source: derived
+  2026.26/events/{ID}/comments:
+    get:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves comments on the specified business process event.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Retrieves comments on the specified business process event.
+
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}/comments'
+      operationId: get202626EventsByIDComments
+      x-operation-id-source: derived
+  2026.26/events/{ID}:
+    get:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves the business process event with the specified ID.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Retrieves the business process event with the specified ID.
+
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}'
+      operationId: get202626EventsByID
+      x-operation-id-source: derived
+  2026.26/events/{ID}/inProgressSteps:
+    get:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves all business process steps that are currently in progress for the specified business process event.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Retrieves all business process steps that are currently in progress for the specified business process event.
+
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}/inProgressSteps'
+      operationId: get202626EventsByIDInProgressSteps
+      x-operation-id-source: derived
+  2026.26/events/{ID}/attachments:
+    get:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves attachments on the specified business process event that the processing user has permission to view.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Retrieves attachments on the specified business process event that the processing user has permission to view.
+
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}/attachments'
+      operationId: get202626EventsByIDAttachments
+      x-operation-id-source: derived
+  2026.26/eventSteps:
+    get:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves a collection of business process event steps. You can filter the event steps by business process, creation date, due date, and step type. Returned results are secured based on processing person''s view access to the events to which the steps belong. Only event steps from events the processing person has view access to will be included in the collection.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Retrieves a collection of business process event steps. You can filter the event steps by business process, creation date, due date, and step type. Returned results are secured based on processing person''s view access to the events to which the steps belong. Only event steps from events the processing person has view access to will be included in the collection.
+
+
+        |
+
+
+        View this Endpoint: GET /eventSteps'
+      operationId: get202626EventSteps
+      x-operation-id-source: derived
+  2026.26/eventSteps/{ID}:
+    get:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Returns a business process event step. Returned results are secured based on processing person''s view access to the event to which the step belongs. If the processing person does not have view access to the event, when this API is called, they will not be able to retrieve the event step and receive a 404 error.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Returns a business process event step. Returned results are secured based on processing person''s view access to the event to which the step belongs. If the processing person does not have view access to the event, when this API is called, they will not be able to retrieve the event step and receive a 404 error.
+
+
+        |
+
+
+        View this Endpoint: GET /eventSteps/{ID}'
+      operationId: get202626EventStepsByID
+      x-operation-id-source: derived
+  2026.26/events/{ID}/completedSteps:
+    get:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Retrieves all business process steps that are completed for the specified buinesss process event.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Retrieves all business process steps that are completed for the specified buinesss process event.
+
+
+        |
+
+
+        View this Endpoint: GET /events/{ID}/completedSteps'
+      operationId: get202626EventsByIDCompletedSteps
+      x-operation-id-source: derived
+  2026.26/eventSteps/{ID}/questionnaire:
+    post:
+      tags:
+      - 06/30/2026
+      summary: Description has been changed
+      description: '## Description changed
+
+        |
+
+        Updated Value
+
+        |
+
+        Previous Value
+
+        |
+
+        | :--- | :--- |
+
+        |
+
+        Post an action for a Complete Questionnaire step in a business process.
+
+        Specify these required fields in the request body if the intended action is Submit or Save for Later: {stepAction, questionnaireResponse}.
+
+        You can send Save for Later multiple times, but {questionnaireResponse} values will replace the existing questionnaire answers.
+
+        If the intended action is Skip, exclude {questionnaireResponse} from the request body.
+
+        Valid values for stepAction are:
+
+        { "id": "133d5c88baa64136aab041c1d2e9ed53" } for Submit,
+
+        { "id": "d9e41a8c446c11de98360015c5e6daf6" } for Save for Later,
+
+        { "id": "d9e4231a446c11de98360015c5e6daf6" } for Skip.
+
+        Secured By Domain: Core Navigation, Public Business Processes
+
+        Scope: Adaptive Planning for Financial Plans, Adaptive Planning for the Workforce, Benefits, Tenant Non-Configurable
+
+
+        |
+
+        Post an action for a Complete Questionnaire step in a business process.
+
+        Specify these required fields in the request body if the intended action is Submit or Save for Later: {stepAction, questionnaireResponse}.
+
+        You can send Save for Later multiple times, but {questionnaireResponse} values will replace the existing questionnaire answers.
+
+        If the intended action is Skip, exclude {questionnaireResponse} from the request body.
+
+        Valid values for stepAction are:
+
+        { "id": "133d5c88baa64136aab041c1d2e9ed53" } for Submit,
+
+        { "id": "d9e41a8c446c11de98360015c5e6daf6" } for Save for Later,
+
+        { "id": "d9e4231a446c11de98360015c5e6daf6" } for Skip.
+
+
+        |
+
+
+        View this Endpoint: POST /eventSteps/{ID}/questionnaire'
+      operationId: post202626EventStepsByIDQuestionnaire
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    OAuth2:
+      type: OAUTH2
+      flows:
+        implicit:
+          authorizationUrl: https://<tenantAuthorizationHostname>
+          scopes: {}

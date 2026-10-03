@@ -1,11 +1,10 @@
 openapi: 3.2.0
 info:
-  title: Workday Business Processes Event Task Definitions API
+  description: The public APIs to create and manage custom business process configurations.
   version: v1
-  x-refined-note:
-  - x-api-evangelist-harvested differs across the merged source definitions and was not carried
-  - x-api-evangelist-source differs across the merged source definitions and was not carried
-  description: 'Operations tagged Event Task Definitions across 2 of this provider''s published API definitions: workday-business-processes-custom-business-process-config-v1-openapi.json, workday-business-processes-custom-business-process-config-openapi.yml. Each path carries the servers of the definition it was published in.'
+  title: Custom Business Process Config Event Task Definitions API
+  x-api-evangelist-harvested: '2026-09-17'
+  x-api-evangelist-source: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/customBusinessProcessConfig_v1_swagger.json
 servers:
 - url: https://api.workday.com/customBusinessProcessConfig/v1
 tags:
@@ -70,8 +69,6 @@ paths:
         - read
       summary: Get event task definition
       x-summary-source: derived
-    servers:
-    - url: https://api.workday.com/customBusinessProcessConfig/v1
   /eventTaskDefinitions/{id}:
     get:
       tags:
@@ -221,12 +218,14 @@ paths:
         - read
       summary: Delete event task definition
       x-summary-source: derived
-    servers:
-    - url: https://api.workday.com/customBusinessProcessConfig/v1
 components:
   schemas:
-    patchCustomBusinessProcessEventTaskDetail:
+    createCustomBusinessProcessEventTaskDetail:
       type: object
+      required:
+      - vpsApplication
+      - name
+      - vpsSite
       properties:
         name:
           type: string
@@ -263,12 +262,8 @@ components:
           type: string
         vpsRoute:
           type: string
-    editCustomBusinessProcessEventTaskDetail:
+    patchCustomBusinessProcessEventTaskDetail:
       type: object
-      required:
-      - vpsApplication
-      - name
-      - vpsSite
       properties:
         name:
           type: string
@@ -282,7 +277,7 @@ components:
           type: string
         referenceIdValue:
           type: string
-    createCustomBusinessProcessEventTaskDetail:
+    editCustomBusinessProcessEventTaskDetail:
       type: object
       required:
       - vpsApplication
@@ -320,6 +315,3 @@ components:
           scopes:
             write: modify custom business process types
             read: read custom business process types
-x-refined-from:
-- workday-business-processes-custom-business-process-config-v1-openapi.json
-- workday-business-processes-custom-business-process-config-openapi.yml

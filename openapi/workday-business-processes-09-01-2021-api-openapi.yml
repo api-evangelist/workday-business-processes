@@ -1337,45 +1337,35 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    person_a7a41b4d029c10000b46e7abcec61901:
-      description: Comment made by Person
+    comments_a7a41b4d029c10000b1da9c45b7b18f4:
       exampleSetFlag: false
       allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-        exampleSetFlag: false
       - type: object
+        properties:
+          commentDate:
+            type: string
+            description: Gives the moment at which the instance was originally created.
+            format: date
+            extensions:
+              x-workday-type: Date
+            exampleSetFlag: false
+            types:
+            - string
+          person:
+            $ref: '#/components/schemas/person_a7a41b4d029c10000b46e7abcec61901'
+            exampleSetFlag: false
+          comment:
+            type: string
+            description: Comment
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            extensions:
+              x-workday-type: Text
+            exampleSetFlag: true
+            types:
+            - string
         exampleSetFlag: false
         types:
         - object
-    INSTANCE_MODEL_REFERENCE:
-      required:
-      - id
-      type: object
-      properties:
-        id:
-          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
-          type: string
-          description: Workday Id or Reference Id of the instance.
-          exampleSetFlag: false
-          types:
-          - string
-        descriptor:
-          type: string
-          description: The display name of the instance
-          readOnly: true
-          exampleSetFlag: false
-          types:
-          - string
-        href:
-          type: string
-          description: A link to the instance
-          readOnly: true
-          exampleSetFlag: false
-          types:
-          - string
-      exampleSetFlag: false
-      types:
-      - object
     VALIDATION_ERROR_MODEL_REFERENCE:
       exampleSetFlag: false
       allOf:
@@ -1445,35 +1435,45 @@ components:
       exampleSetFlag: false
       types:
       - object
-    comments_a7a41b4d029c10000b1da9c45b7b18f4:
+    person_a7a41b4d029c10000b46e7abcec61901:
+      description: Comment made by Person
       exampleSetFlag: false
       allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+        exampleSetFlag: false
       - type: object
-        properties:
-          commentDate:
-            type: string
-            description: Gives the moment at which the instance was originally created.
-            format: date
-            extensions:
-              x-workday-type: Date
-            exampleSetFlag: false
-            types:
-            - string
-          person:
-            $ref: '#/components/schemas/person_a7a41b4d029c10000b46e7abcec61901'
-            exampleSetFlag: false
-          comment:
-            type: string
-            description: Comment
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            extensions:
-              x-workday-type: Text
-            exampleSetFlag: true
-            types:
-            - string
         exampleSetFlag: false
         types:
         - object
+    INSTANCE_MODEL_REFERENCE:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
+          type: string
+          description: Workday Id or Reference Id of the instance.
+          exampleSetFlag: false
+          types:
+          - string
+        descriptor:
+          type: string
+          description: The display name of the instance
+          readOnly: true
+          exampleSetFlag: false
+          types:
+          - string
+        href:
+          type: string
+          description: A link to the instance
+          readOnly: true
+          exampleSetFlag: false
+          types:
+          - string
+      exampleSetFlag: false
+      types:
+      - object
   securitySchemes:
     OAuth2:
       type: OAUTH2

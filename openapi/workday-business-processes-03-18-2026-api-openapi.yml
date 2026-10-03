@@ -907,6 +907,31 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    VALIDATION_ERROR_MODEL_REFERENCE:
+      exampleSetFlag: false
+      allOf:
+      - required:
+        - error
+        type: object
+        properties:
+          error:
+            type: string
+            description: A description of the error
+            exampleSetFlag: false
+            types:
+            - string
+          errors:
+            type: array
+            description: An array of validation errors
+            exampleSetFlag: false
+            items:
+              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+              exampleSetFlag: false
+            types:
+            - array
+        exampleSetFlag: false
+        types:
+        - object
     businessProcessStepsReassign_bd578ca9ac8010001895bda38db00000:
       exampleSetFlag: false
       allOf:
@@ -971,100 +996,6 @@ components:
         exampleSetFlag: false
         types:
         - object
-    roles_d6a10186b85d1000177ee6105ff50000:
-      exampleSetFlag: false
-      allOf:
-      - type: object
-        properties:
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-            exampleSetFlag: true
-            types:
-            - string
-          id:
-            type: string
-            description: The id for Role Representation
-            exampleSetFlag: false
-            types:
-            - string
-        exampleSetFlag: false
-        types:
-        - object
-    VALIDATION_ERROR_MODEL_REFERENCE:
-      exampleSetFlag: false
-      allOf:
-      - required:
-        - error
-        type: object
-        properties:
-          error:
-            type: string
-            description: A description of the error
-            exampleSetFlag: false
-            types:
-            - string
-          errors:
-            type: array
-            description: An array of validation errors
-            exampleSetFlag: false
-            items:
-              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
-              exampleSetFlag: false
-            types:
-            - array
-        exampleSetFlag: false
-        types:
-        - object
-    addAssignees_d6a10186b85d10001820dee2dce40000:
-      exampleSetFlag: false
-      allOf:
-      - $ref: '#/components/schemas/roles_d6a10186b85d1000177ee6105ff50000'
-        exampleSetFlag: false
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Role Representation
-            exampleSetFlag: false
-            types:
-            - string
-        exampleSetFlag: false
-        types:
-        - object
-    awaitingRoles_d6a10186b85d100015f2f7094b410000:
-      exampleSetFlag: false
-      allOf:
-      - $ref: '#/components/schemas/roles_d6a10186b85d1000177ee6105ff50000'
-        exampleSetFlag: false
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Role
-            exampleSetFlag: false
-            types:
-            - string
-        exampleSetFlag: false
-        types:
-        - object
-    removeAssignees_d6a10186b85d10001786ad45b71c0000:
-      exampleSetFlag: false
-      allOf:
-      - $ref: '#/components/schemas/roles_d6a10186b85d1000177ee6105ff50000'
-        exampleSetFlag: false
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Role Representation
-            exampleSetFlag: false
-            types:
-            - string
-        exampleSetFlag: false
-        types:
-        - object
     ERROR_MODEL_REFERENCE:
       required:
       - error
@@ -1109,6 +1040,75 @@ components:
       exampleSetFlag: false
       types:
       - object
+    addAssignees_d6a10186b85d10001820dee2dce40000:
+      exampleSetFlag: false
+      allOf:
+      - $ref: '#/components/schemas/roles_d6a10186b85d1000177ee6105ff50000'
+        exampleSetFlag: false
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Role Representation
+            exampleSetFlag: false
+            types:
+            - string
+        exampleSetFlag: false
+        types:
+        - object
+    removeAssignees_d6a10186b85d10001786ad45b71c0000:
+      exampleSetFlag: false
+      allOf:
+      - $ref: '#/components/schemas/roles_d6a10186b85d1000177ee6105ff50000'
+        exampleSetFlag: false
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Role Representation
+            exampleSetFlag: false
+            types:
+            - string
+        exampleSetFlag: false
+        types:
+        - object
+    awaitingRoles_d6a10186b85d100015f2f7094b410000:
+      exampleSetFlag: false
+      allOf:
+      - $ref: '#/components/schemas/roles_d6a10186b85d1000177ee6105ff50000'
+        exampleSetFlag: false
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Role
+            exampleSetFlag: false
+            types:
+            - string
+        exampleSetFlag: false
+        types:
+        - object
+    roles_d6a10186b85d1000177ee6105ff50000:
+      exampleSetFlag: false
+      allOf:
+      - type: object
+        properties:
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+            exampleSetFlag: true
+            types:
+            - string
+          id:
+            type: string
+            description: The id for Role Representation
+            exampleSetFlag: false
+            types:
+            - string
+        exampleSetFlag: false
+        types:
+        - object
   securitySchemes:
     OAuth2:
       type: OAUTH2

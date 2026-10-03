@@ -108,6 +108,31 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    VALIDATION_ERROR_MODEL_REFERENCE:
+      exampleSetFlag: false
+      allOf:
+      - required:
+        - error
+        type: object
+        properties:
+          error:
+            type: string
+            description: A description of the error
+            exampleSetFlag: false
+            types:
+            - string
+          errors:
+            type: array
+            description: An array of validation errors
+            exampleSetFlag: false
+            items:
+              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+              exampleSetFlag: false
+            types:
+            - array
+        exampleSetFlag: false
+        types:
+        - object
     ERROR_MODEL_REFERENCE:
       required:
       - error
@@ -152,31 +177,6 @@ components:
       exampleSetFlag: false
       types:
       - object
-    VALIDATION_ERROR_MODEL_REFERENCE:
-      exampleSetFlag: false
-      allOf:
-      - required:
-        - error
-        type: object
-        properties:
-          error:
-            type: string
-            description: A description of the error
-            exampleSetFlag: false
-            types:
-            - string
-          errors:
-            type: array
-            description: An array of validation errors
-            exampleSetFlag: false
-            items:
-              $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
-              exampleSetFlag: false
-            types:
-            - array
-        exampleSetFlag: false
-        types:
-        - object
   securitySchemes:
     OAuth2:
       type: OAUTH2

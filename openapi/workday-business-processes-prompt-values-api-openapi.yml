@@ -1,17 +1,15 @@
 openapi: 3.2.0
 info:
-  title: Workday Business Processes Prompt Values API
+  title: businessProcess Prompt Values API
+  description: The public APIs to access event actions and details
   version: v1
-  x-refined-note:
-  - x-api-evangelist-harvested differs across the merged source definitions and was not carried
-  - x-api-evangelist-source differs across the merged source definitions and was not carried
-  x-workday-internal-protected-usage-enabled: false
-  x-workday-internal-routing: Public
-  x-workday-internal-service-container-id: b6729d1b232d10000cd0f346f6b90004
   x-workday-internal-source: xo
-  description: 'Operations tagged Prompt Values across 2 of this provider''s published API definitions: workday-business-processes-business-process-v1-openapi.json, workday-business-processes-business-process-openapi.yml. Each path carries the servers of the definition it was published in.'
+  x-workday-internal-routing: Public
+  x-workday-internal-protected-usage-enabled: false
+  x-workday-internal-service-container-id: b6729d1b232d10000cd0f346f6b90004
+  x-api-evangelist-harvested: '2026-09-17'
+  x-api-evangelist-source: https://developer.workday.com/bundles/rest-directory-ui/public/static/openApiFiles/businessProcess_v1_20260905_oas3.json
 servers:
-- url: https://<tenantHostname>/businessProcess/v1
 - url: https://{tenantHostname}/businessProcess/v1
   description: Workday tenant REST API host (API Gateway)
   variables:
@@ -92,33 +90,8 @@ paths:
       x-summary-source: derived
       operationId: getValuesSendBackTo
       x-operation-id-source: derived
-    servers:
-    - url: https://<tenantHostname>/businessProcess/v1
 components:
   schemas:
-    ERROR_MODEL_REFERENCE:
-      required:
-      - error
-      type: object
-      properties:
-        error:
-          type: string
-          description: A description of the error
-        code:
-          type: string
-          description: The code that corresponds to the error message. Use the error code to drive programmatic error-handling behavior. Don't use error message strings for this purpose because they are subject to change
-        field:
-          type: string
-          description: The field related to the error
-        path:
-          type: string
-          description: The path of the field related to the error
-        severity:
-          type: string
-          description: Severity of the validation (e.g. Critical, Warning).
-        internalMessage:
-          type: string
-          description: Internal message providing additional context for the validation (e.g. representation content validation details).
     MULTIPLE_INSTANCE_MODEL_REFERENCE:
       type: object
       properties:
@@ -143,6 +116,29 @@ components:
             description: An array of validation errors
             items:
               $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+    ERROR_MODEL_REFERENCE:
+      required:
+      - error
+      type: object
+      properties:
+        error:
+          type: string
+          description: A description of the error
+        code:
+          type: string
+          description: The code that corresponds to the error message. Use the error code to drive programmatic error-handling behavior. Don't use error message strings for this purpose because they are subject to change
+        field:
+          type: string
+          description: The field related to the error
+        path:
+          type: string
+          description: The path of the field related to the error
+        severity:
+          type: string
+          description: Severity of the validation (e.g. Critical, Warning).
+        internalMessage:
+          type: string
+          description: Internal message providing additional context for the validation (e.g. representation content validation details).
     INSTANCE_MODEL_REFERENCE:
       required:
       - id
@@ -165,8 +161,5 @@ components:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: https://<tenantAuthorizationHostname>
+          authorizationUrl: https://{tenantAuthorizationHostname}/authorize
           scopes: {}
-x-refined-from:
-- workday-business-processes-business-process-v1-openapi.json
-- workday-business-processes-business-process-openapi.yml

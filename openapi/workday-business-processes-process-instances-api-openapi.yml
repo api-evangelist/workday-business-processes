@@ -297,43 +297,6 @@ paths:
         dispatcher: URI_PARTS
         dispatcherRules: instanceId
 components:
-  responses:
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: BAD_REQUEST
-            message: Invalid request body
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: NOT_FOUND
-            message: The requested resource does not exist
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
   schemas:
     ProcessInstance:
       title: Process Instance
@@ -388,40 +351,6 @@ components:
       - processType
       - status
       - initiatorId
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
-      required:
-      - error
-      - message
-    ProcessStepsResponse:
-      title: Process Steps Response
-      description: Paginated response containing a list of process steps
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of steps
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProcessStep'
-      required:
-      - total
-      - data
     InitiateProcessRequest:
       title: Initiate Process Request
       description: Request to initiate a new business process instance
@@ -443,21 +372,6 @@ components:
       required:
       - definitionId
       - initiatorId
-    ProcessInstancesResponse:
-      title: Process Instances Response
-      description: Paginated response containing a list of process instances
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of instances
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProcessInstance'
-      required:
-      - total
-      - data
     ProcessStep:
       title: Process Step
       description: A step within a running business process instance
@@ -506,6 +420,92 @@ components:
       - stepName
       - stepType
       - status
+    ProcessInstancesResponse:
+      title: Process Instances Response
+      description: Paginated response containing a list of process instances
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of instances
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessInstance'
+      required:
+      - total
+      - data
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
+      required:
+      - error
+      - message
+    ProcessStepsResponse:
+      title: Process Steps Response
+      description: Paginated response containing a list of process steps
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of steps
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessStep'
+      required:
+      - total
+      - data
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: BAD_REQUEST
+            message: Invalid request body
   securitySchemes:
     oauth2:
       type: oauth2

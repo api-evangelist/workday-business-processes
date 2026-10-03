@@ -2,23 +2,22 @@ openapi: 3.2.0
 info:
   title: Workday Business Processes Types API
   version: v1
+  x-api-evangelist-harvested: '2026-09-17'
   x-refined-note:
-  - x-api-evangelist-harvested differs across the merged source definitions and was not carried
   - x-api-evangelist-source differs across the merged source definitions and was not carried
   - x-workday-internal-protected-usage-enabled differs across the merged source definitions and was not carried
   - x-workday-internal-routing differs across the merged source definitions and was not carried
   - x-workday-internal-service-container-id differs across the merged source definitions and was not carried
   - x-workday-internal-source differs across the merged source definitions and was not carried
-  description: 'Operations tagged types across 4 of this provider''s published API definitions: workday-business-processes-business-process-v1-openapi.json, workday-business-processes-custom-business-process-config-v1-openapi.json, workday-business-processes-business-process-openapi.yml, workday-business-processes-custom-business-process-config-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged types across 2 of this provider''s published API definitions: workday-business-processes-business-process-openapi.yml, workday-business-processes-custom-business-process-config-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://<tenantHostname>/businessProcess/v1
-- url: https://api.workday.com/customBusinessProcessConfig/v1
 - url: https://{tenantHostname}/businessProcess/v1
   description: Workday tenant REST API host (API Gateway)
   variables:
     tenantHostname:
       default: wd2-impl-services1.workday.com
       description: Your Workday tenant API hostname, e.g. wd2-impl-services1.workday.com
+- url: https://api.workday.com/customBusinessProcessConfig/v1
 tags:
 - name: Types
   description: Returns all business process types. Secured by Public Business Processes.
@@ -154,7 +153,12 @@ paths:
       summary: Create
       x-summary-source: derived
     servers:
-    - url: https://<tenantHostname>/businessProcess/v1
+    - url: https://{tenantHostname}/businessProcess/v1
+      description: Workday tenant REST API host (API Gateway)
+      variables:
+        tenantHostname:
+          default: wd2-impl-services1.workday.com
+          description: Your Workday tenant API hostname, e.g. wd2-impl-services1.workday.com
   /types/{ID}:
     get:
       tags:
@@ -232,7 +236,12 @@ paths:
       operationId: getTypesByID
       x-operation-id-source: derived
     servers:
-    - url: https://<tenantHostname>/businessProcess/v1
+    - url: https://{tenantHostname}/businessProcess/v1
+      description: Workday tenant REST API host (API Gateway)
+      variables:
+        tenantHostname:
+          default: wd2-impl-services1.workday.com
+          description: Your Workday tenant API hostname, e.g. wd2-impl-services1.workday.com
   /types/{ID}/attachmentCategories:
     get:
       tags:
@@ -336,7 +345,12 @@ paths:
       operationId: getTypesByIDAttachmentCategories
       x-operation-id-source: derived
     servers:
-    - url: https://<tenantHostname>/businessProcess/v1
+    - url: https://{tenantHostname}/businessProcess/v1
+      description: Workday tenant REST API host (API Gateway)
+      variables:
+        tenantHostname:
+          default: wd2-impl-services1.workday.com
+          description: Your Workday tenant API hostname, e.g. wd2-impl-services1.workday.com
   /types/{id}:
     get:
       tags:
@@ -455,58 +469,6 @@ paths:
     - url: https://api.workday.com/customBusinessProcessConfig/v1
 components:
   schemas:
-    ResourceIdPathValue_types:
-      oneOf:
-      - $ref: '#/components/schemas/WorkdayId'
-      - $ref: '#/components/schemas/WorkdayReferenceId_types'
-    WorkdayReferenceId_types:
-      pattern: ^(Business_Process_Type)=\S+$
-      type: string
-      description: 'Workday reference ID (Type=Value). Valid types: Business_Process_Type'
-      example: Business_Process_Type=21002
-    businessProcessTypeView_a06e49cf714e100008435914d7d90105:
-      allOf:
-      - type: object
-        properties:
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: Workday Id or Reference Id of the instance.
-    attachmentCategoryView_01bedd7c1f9e10001e09ac8bd50600e8:
-      allOf:
-      - type: object
-        properties:
-          referenceID:
-            type: string
-            description: The Reference ID to use for lookups within our Workday Web Services. For \~supervisory organizations\~, this is also the 'Organization ID'
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            x-workday-type: Text
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: Workday Id or Reference Id of the instance.
-    businessProcessTypeDetails_e73cbf40479a100012b92d7f999d0144:
-      allOf:
-      - type: object
-        properties:
-          helpText:
-            type: string
-            description: The help text for the initiation step of a business process.
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            x-workday-type: Rich Text
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: Workday Id or Reference Id of the instance.
     WorkdayId:
       pattern: ^[0-9a-f]{32}$
       type: string
@@ -526,6 +488,17 @@ components:
             description: An array of validation errors
             items:
               $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
+    businessProcessTypeView_a06e49cf714e100008435914d7d90105:
+      allOf:
+      - type: object
+        properties:
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: Workday Id or Reference Id of the instance.
     ERROR_MODEL_REFERENCE:
       required:
       - error
@@ -549,125 +522,47 @@ components:
         internalMessage:
           type: string
           description: Internal message providing additional context for the validation (e.g. representation content validation details).
-    editCustomBusinessProcessTypeDetail:
-      type: object
-      required:
-      - name
-      properties:
-        referenceIdValue:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        inactive:
-          type: boolean
-        customObjectDefinition:
-          $ref: '#/components/schemas/instanceWithId'
-        targetBusinessObject:
-          $ref: '#/components/schemas/instanceWithId'
-    createCustomBusinessProcessTypeDetail:
-      type: object
-      required:
-      - name
-      properties:
-        referenceIdValue:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        inactive:
-          type: boolean
-        eventActions:
-          type: array
-          items:
-            $ref: '#/components/schemas/instanceWithId'
-        eventActionTaskConfig:
-          type: array
-          items:
-            $ref: '#/components/schemas/eventActionEventTaskConfigRequest'
-        initiatingActions:
-          type: array
-          items:
-            $ref: '#/components/schemas/initiatingActionDetailRequest'
-        stepActions:
-          type: array
-          items:
-            $ref: '#/components/schemas/stepActionDetailRequest'
-        customObjectDefinition:
-          $ref: '#/components/schemas/instanceWithId'
-        targetBusinessObject:
-          $ref: '#/components/schemas/instanceWithId'
-    initiatingActionDetailResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        Initiating_Action_ID:
-          type: string
-        referenceIdValue:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        inactive:
-          type: boolean
-        default:
-          type: boolean
-        customTask:
-          $ref: '#/components/schemas/instanceWithIdAndDescriptor'
-    stepActionDetailResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        Step_Action_ID:
-          type: string
-        referenceIdValue:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        inactive:
-          type: boolean
-        eventTaskDefinition:
-          $ref: '#/components/schemas/instanceWithIdAndDescriptor'
-    eventActionWithID:
-      type: object
-      properties:
-        id:
-          type: string
-        descriptor:
-          type: string
-        Event_Action_Type_ID:
-          type: string
-    eventActionEventTaskConfigResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        eventAction:
-          $ref: '#/components/schemas/eventActionWithID'
-        eventTaskDefinition:
-          $ref: '#/components/schemas/instanceWithIdAndDescriptor'
-    eventActionEventTaskConfigRequest:
-      type: object
-      required:
-      - eventAction
-      - eventTaskDefinition
-      properties:
-        eventAction:
-          $ref: '#/components/schemas/instanceWithId'
-        eventTaskDefinition:
-          $ref: '#/components/schemas/instanceWithId'
-    instanceWithId:
-      type: object
-      properties:
-        id:
-          type: string
+    businessProcessTypeDetails_e73cbf40479a100012b92d7f999d0144:
+      allOf:
+      - type: object
+        properties:
+          helpText:
+            type: string
+            description: The help text for the initiation step of a business process.
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Rich Text
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: Workday Id or Reference Id of the instance.
+    ResourceIdPathValue_types:
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+      - $ref: '#/components/schemas/WorkdayReferenceId_types'
+    WorkdayReferenceId_types:
+      pattern: ^(Business_Process_Type)=\S+$
+      type: string
+      description: 'Workday reference ID (Type=Value). Valid types: Business_Process_Type'
+      example: Business_Process_Type=21002
+    attachmentCategoryView_01bedd7c1f9e10001e09ac8bd50600e8:
+      allOf:
+      - type: object
+        properties:
+          referenceID:
+            type: string
+            description: The Reference ID to use for lookups within our Workday Web Services. For \~supervisory organizations\~, this is also the 'Organization ID'
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: Workday Id or Reference Id of the instance.
     stepActionDetailRequest:
       type: object
       required:
@@ -683,6 +578,25 @@ components:
           type: boolean
         eventTaskDefinition:
           $ref: '#/components/schemas/instanceWithId'
+    eventActionEventTaskConfigRequest:
+      type: object
+      required:
+      - eventAction
+      - eventTaskDefinition
+      properties:
+        eventAction:
+          $ref: '#/components/schemas/instanceWithId'
+        eventTaskDefinition:
+          $ref: '#/components/schemas/instanceWithId'
+    eventActionWithID:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
+        Event_Action_Type_ID:
+          type: string
     customBusinessProcessTypeDetail:
       type: object
       required:
@@ -720,6 +634,49 @@ components:
           $ref: '#/components/schemas/instanceWithIdAndDescriptor'
         targetBusinessObject:
           $ref: '#/components/schemas/instanceWithIdAndDescriptor'
+    stepActionDetailResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        Step_Action_ID:
+          type: string
+        referenceIdValue:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        inactive:
+          type: boolean
+        eventTaskDefinition:
+          $ref: '#/components/schemas/instanceWithIdAndDescriptor'
+    initiatingActionDetailResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        Initiating_Action_ID:
+          type: string
+        referenceIdValue:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        inactive:
+          type: boolean
+        default:
+          type: boolean
+        customTask:
+          $ref: '#/components/schemas/instanceWithIdAndDescriptor'
+    instanceWithIdAndDescriptor:
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          type: string
     initiatingActionDetailRequest:
       type: object
       required:
@@ -737,12 +694,27 @@ components:
           type: boolean
         customTask:
           $ref: '#/components/schemas/instanceWithId'
-    instanceWithIdAndDescriptor:
+    editCustomBusinessProcessTypeDetail:
+      type: object
+      required:
+      - name
+      properties:
+        referenceIdValue:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        inactive:
+          type: boolean
+        customObjectDefinition:
+          $ref: '#/components/schemas/instanceWithId'
+        targetBusinessObject:
+          $ref: '#/components/schemas/instanceWithId'
+    instanceWithId:
       type: object
       properties:
         id:
-          type: string
-        descriptor:
           type: string
     allCustomBusinessProcessTypeDetails:
       type: object
@@ -753,12 +725,54 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/customBusinessProcessTypeDetail'
+    createCustomBusinessProcessTypeDetail:
+      type: object
+      required:
+      - name
+      properties:
+        referenceIdValue:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        inactive:
+          type: boolean
+        eventActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/instanceWithId'
+        eventActionTaskConfig:
+          type: array
+          items:
+            $ref: '#/components/schemas/eventActionEventTaskConfigRequest'
+        initiatingActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/initiatingActionDetailRequest'
+        stepActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/stepActionDetailRequest'
+        customObjectDefinition:
+          $ref: '#/components/schemas/instanceWithId'
+        targetBusinessObject:
+          $ref: '#/components/schemas/instanceWithId'
+    eventActionEventTaskConfigResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        eventAction:
+          $ref: '#/components/schemas/eventActionWithID'
+        eventTaskDefinition:
+          $ref: '#/components/schemas/instanceWithIdAndDescriptor'
   securitySchemes:
     OAuth2:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: https://<tenantAuthorizationHostname>
+          authorizationUrl: https://{tenantAuthorizationHostname}/authorize
           scopes: {}
     oAuth2:
       type: oauth2
@@ -770,7 +784,5 @@ components:
             write: modify custom business process types
             read: read custom business process types
 x-refined-from:
-- workday-business-processes-business-process-v1-openapi.json
-- workday-business-processes-custom-business-process-config-v1-openapi.json
 - workday-business-processes-business-process-openapi.yml
 - workday-business-processes-custom-business-process-config-openapi.yml

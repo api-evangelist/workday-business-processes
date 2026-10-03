@@ -136,15 +136,15 @@ paths:
         dispatcherRules: itemId
 components:
   responses:
-    BadRequest:
-      description: Invalid request parameters or body
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
           example:
-            error: BAD_REQUEST
-            message: Invalid request body
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
     NotFound:
       description: The requested resource was not found
       content:
@@ -163,15 +163,15 @@ components:
           example:
             error: FORBIDDEN
             message: You do not have permission to perform this action
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
+    BadRequest:
+      description: Invalid request parameters or body
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
           example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
+            error: BAD_REQUEST
+            message: Invalid request body
   schemas:
     ApprovalRequest:
       title: Approval Request
@@ -186,25 +186,20 @@ components:
           description: ID of the approving user
       required:
       - approverId
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response
+    DenialRequest:
+      title: Denial Request
+      description: Request to deny an inbox item
       type: object
       properties:
-        error:
+        comment:
           type: string
-          description: Error code
-        message:
+          description: Denial reason or comment
+        denierId:
           type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
+          description: ID of the denying user
       required:
-      - error
-      - message
+      - denierId
+      - comment
     InboxItem:
       title: Inbox Item
       description: A business process inbox item requiring user action
@@ -263,20 +258,25 @@ components:
       - subject
       - assignedTo
       - status
-    DenialRequest:
-      title: Denial Request
-      description: Request to deny an inbox item
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
       type: object
       properties:
-        comment:
+        error:
           type: string
-          description: Denial reason or comment
-        denierId:
+          description: Error code
+        message:
           type: string
-          description: ID of the denying user
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
       required:
-      - denierId
-      - comment
+      - error
+      - message
   securitySchemes:
     oauth2:
       type: oauth2

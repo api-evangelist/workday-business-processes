@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Changelog for businessProcess 08/17/2026 API
-  description: The public APIs to access event actions and details
+  title: Workday Business Processes 08/17/2026 API
   version: v1
+  description: 'Operations tagged 08/17/2026 across 2 of this provider''s published API definitions: workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://<tenantHostname>/businessProcess/v1
 tags:
@@ -36,6 +36,8 @@ paths:
             valueSetFlag: true
       operationId: get202633TypesByID
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/types/{ID}/attachmentCategories:
     get:
       tags:
@@ -63,6 +65,8 @@ paths:
             valueSetFlag: true
       operationId: get202633TypesByIDAttachmentCategories
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/events/{ID}/rescind:
     post:
       tags:
@@ -90,6 +94,8 @@ paths:
             valueSetFlag: true
       operationId: post202633EventsByIDRescind
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/events/{ID}/cancel:
     post:
       tags:
@@ -117,6 +123,8 @@ paths:
             valueSetFlag: true
       operationId: post202633EventsByIDCancel
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/events/{ID}/remainingSteps:
     get:
       tags:
@@ -144,6 +152,8 @@ paths:
             valueSetFlag: true
       operationId: get202633EventsByIDRemainingSteps
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/events/{ID}/comments:
     get:
       tags:
@@ -171,6 +181,8 @@ paths:
             valueSetFlag: true
       operationId: get202633EventsByIDComments
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/events/{ID}:
     get:
       tags:
@@ -198,6 +210,8 @@ paths:
             valueSetFlag: true
       operationId: get202633EventsByID
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/events/{ID}/inProgressSteps:
     get:
       tags:
@@ -225,6 +239,8 @@ paths:
             valueSetFlag: true
       operationId: get202633EventsByIDInProgressSteps
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/events/{ID}/attachments:
     get:
       tags:
@@ -252,6 +268,8 @@ paths:
             valueSetFlag: true
       operationId: get202633EventsByIDAttachments
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/eventSteps/{ID}/reassign:
     post:
       tags:
@@ -275,6 +293,8 @@ paths:
             valueSetFlag: true
       operationId: post202633EventStepsByIDReassign
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/eventSteps/{ID}/deny:
     post:
       tags:
@@ -298,6 +318,8 @@ paths:
             valueSetFlag: true
       operationId: post202633EventStepsByIDDeny
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/eventSteps/{ID}/toDo:
     post:
       tags:
@@ -321,6 +343,8 @@ paths:
             valueSetFlag: true
       operationId: post202633EventStepsByIDToDo
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/eventSteps/{ID}/sendBack:
     post:
       tags:
@@ -344,6 +368,8 @@ paths:
             valueSetFlag: true
       operationId: post202633EventStepsByIDSendBack
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/eventSteps/{ID}/approve:
     post:
       tags:
@@ -367,6 +393,8 @@ paths:
             valueSetFlag: true
       operationId: post202633EventStepsByIDApprove
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/events/{ID}/completedSteps:
     get:
       tags:
@@ -394,6 +422,8 @@ paths:
             valueSetFlag: true
       operationId: get202633EventsByIDCompletedSteps
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/eventSteps/{ID}:
     get:
       tags:
@@ -417,6 +447,8 @@ paths:
             valueSetFlag: true
       operationId: get202633EventStepsByID
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2026.33/eventSteps/{ID}/questionnaire:
     post:
       tags:
@@ -440,21 +472,10 @@ paths:
             valueSetFlag: true
       operationId: post202633EventStepsByIDQuestionnaire
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
 components:
   schemas:
-    WorkdayId:
-      pattern: ^[0-9a-f]{32}$
-      type: string
-      description: Workday ID (32-character lowercase hexadecimal string).
-      example: a3f5b554007d20e98360015c5e6daf6
-      exampleSetFlag: true
-      types:
-      - string
-    ResourceIdPathValue_eventSteps:
-      exampleSetFlag: false
-      oneOf:
-      - $ref: '#/components/schemas/WorkdayId'
-        exampleSetFlag: false
     ResourceIdPathValue_types:
       exampleSetFlag: false
       oneOf:
@@ -470,6 +491,11 @@ components:
       exampleSetFlag: true
       types:
       - string
+    ResourceIdPathValue_eventSteps:
+      exampleSetFlag: false
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+        exampleSetFlag: false
     WorkdayReferenceId_types:
       pattern: ^(Business_Process_Type)=\S+$
       type: string
@@ -485,6 +511,14 @@ components:
         exampleSetFlag: false
       - $ref: '#/components/schemas/WorkdayReferenceId_events'
         exampleSetFlag: false
+    WorkdayId:
+      pattern: ^[0-9a-f]{32}$
+      type: string
+      description: Workday ID (32-character lowercase hexadecimal string).
+      example: a3f5b554007d20e98360015c5e6daf6
+      exampleSetFlag: true
+      types:
+      - string
   securitySchemes:
     OAuth2:
       type: OAUTH2
@@ -492,3 +526,6 @@ components:
         implicit:
           authorizationUrl: https://<tenantAuthorizationHostname>
           scopes: {}
+x-refined-from:
+- workday-business-processes-business-process-v1-changelog.json
+- workday-business-processes-business-process-v1-changelog.json

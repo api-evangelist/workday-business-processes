@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Changelog for businessProcess 03/11/2023 API
-  description: The public APIs to access event actions and details
+  title: Workday Business Processes 03/11/2023 API
   version: v1
+  description: 'Operations tagged 03/11/2023 across 2 of this provider''s published API definitions: workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://<tenantHostname>/businessProcess/v1
 tags:
@@ -108,6 +108,8 @@ paths:
         x-codegen-request-body-name: businessProcessEventStepTodo
       operationId: post202310EventStepsByIDToDo
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
 components:
   schemas:
     VALIDATION_ERROR_MODEL_REFERENCE:
@@ -132,6 +134,16 @@ components:
               exampleSetFlag: false
             types:
             - array
+        exampleSetFlag: false
+        types:
+        - object
+    stepAction_122be871d36110000539df507b410000:
+      description: The status of the step
+      exampleSetFlag: false
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+        exampleSetFlag: false
+      - type: object
         exampleSetFlag: false
         types:
         - object
@@ -170,6 +182,35 @@ components:
         exampleSetFlag: false
         types:
         - object
+    INSTANCE_MODEL_REFERENCE:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
+          type: string
+          description: Workday Id or Reference Id of the instance.
+          exampleSetFlag: false
+          types:
+          - string
+        descriptor:
+          type: string
+          description: The display name of the instance
+          readOnly: true
+          exampleSetFlag: false
+          types:
+          - string
+        href:
+          type: string
+          description: A link to the instance
+          readOnly: true
+          exampleSetFlag: false
+          types:
+          - string
+      exampleSetFlag: false
+      types:
+      - object
     ERROR_MODEL_REFERENCE:
       required:
       - error
@@ -214,45 +255,6 @@ components:
       exampleSetFlag: false
       types:
       - object
-    stepAction_122be871d36110000539df507b410000:
-      description: The status of the step
-      exampleSetFlag: false
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-        exampleSetFlag: false
-      - type: object
-        exampleSetFlag: false
-        types:
-        - object
-    INSTANCE_MODEL_REFERENCE:
-      required:
-      - id
-      type: object
-      properties:
-        id:
-          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
-          type: string
-          description: Workday Id or Reference Id of the instance.
-          exampleSetFlag: false
-          types:
-          - string
-        descriptor:
-          type: string
-          description: The display name of the instance
-          readOnly: true
-          exampleSetFlag: false
-          types:
-          - string
-        href:
-          type: string
-          description: A link to the instance
-          readOnly: true
-          exampleSetFlag: false
-          types:
-          - string
-      exampleSetFlag: false
-      types:
-      - object
   securitySchemes:
     OAuth2:
       type: OAUTH2
@@ -260,3 +262,6 @@ components:
         implicit:
           authorizationUrl: https://<tenantAuthorizationHostname>
           scopes: {}
+x-refined-from:
+- workday-business-processes-business-process-v1-changelog.json
+- workday-business-processes-business-process-v1-changelog.json

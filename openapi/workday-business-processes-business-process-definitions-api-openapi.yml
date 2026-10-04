@@ -123,64 +123,7 @@ paths:
         dispatcher: URI_PARTS
         dispatcherRules: definitionId
 components:
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: NOT_FOUND
-            message: The requested resource does not exist
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
   schemas:
-    ProcessStepDefinition:
-      title: Process Step Definition
-      description: A step definition within a business process
-      type: object
-      properties:
-        stepId:
-          type: string
-          description: Step identifier
-        stepType:
-          type: string
-          enum:
-          - APPROVAL
-          - ACTION
-          - NOTIFICATION
-          - CONDITION
-          - INTEGRATION
-          description: Type of process step
-        assignedGroup:
-          type: string
-          description: Group or role assigned to this step
-        description:
-          type: string
-          description: Step description
-        order:
-          type: integer
-          description: Step execution order
-      required:
-      - stepId
-      - stepType
     BusinessProcessDefinition:
       title: Business Process Definition
       description: A Workday business process type definition with steps and configuration
@@ -218,21 +161,6 @@ components:
       - name
       - type
       - status
-    BusinessProcessDefinitionsResponse:
-      title: Business Process Definitions Response
-      description: Paginated response containing a list of business process definitions
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of definitions
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BusinessProcessDefinition'
-      required:
-      - total
-      - data
     ErrorResponse:
       title: Error Response
       description: Standard error response
@@ -252,6 +180,78 @@ components:
       required:
       - error
       - message
+    BusinessProcessDefinitionsResponse:
+      title: Business Process Definitions Response
+      description: Paginated response containing a list of business process definitions
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of definitions
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessProcessDefinition'
+      required:
+      - total
+      - data
+    ProcessStepDefinition:
+      title: Process Step Definition
+      description: A step definition within a business process
+      type: object
+      properties:
+        stepId:
+          type: string
+          description: Step identifier
+        stepType:
+          type: string
+          enum:
+          - APPROVAL
+          - ACTION
+          - NOTIFICATION
+          - CONDITION
+          - INTEGRATION
+          description: Type of process step
+        assignedGroup:
+          type: string
+          description: Group or role assigned to this step
+        description:
+          type: string
+          description: Step description
+        order:
+          type: integer
+          description: Step execution order
+      required:
+      - stepId
+      - stepType
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
   securitySchemes:
     oauth2:
       type: oauth2

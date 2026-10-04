@@ -681,6 +681,11 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    stepEvent_0e248a2147271000163da105718300b7:
+      description: Returns Event for event record.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
     VALIDATION_ERROR_MODEL_REFERENCE:
       allOf:
       - required:
@@ -695,246 +700,6 @@ components:
             description: An array of validation errors
             items:
               $ref: '#/components/schemas/ERROR_MODEL_REFERENCE'
-    questionnaire_29444fc74ae610001adc2a36b8c300b3:
-      description: This CRF returns the instance of Questionnaire that is configured for the Complete Questionnaire Event included in the Event Record. The included instance information includes a descriptor and the WID.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    businessProcessStepsReassign_bd578ca9ac8010001895bda38db00000:
-      allOf:
-      - type: object
-        properties:
-          awaitingRoles:
-            type: array
-            description: The roles that the business event step is awaiting.
-            items:
-              $ref: '#/components/schemas/awaitingRoles_d6a10186b85d100015f2f7094b410000'
-            x-workday-type: Multi-instance
-            x-readOnly: true
-          addAssignees:
-            type: array
-            description: Assignees added to the business process step because of reassignment.
-            items:
-              $ref: '#/components/schemas/addAssignees_d6a10186b85d10001820dee2dce40000'
-            x-workday-type: Multi-instance
-          removeAssignees:
-            type: array
-            description: Assignees removed from the business process step because of reassignment.
-            items:
-              $ref: '#/components/schemas/removeAssignees_d6a10186b85d10001786ad45b71c0000'
-            x-workday-type: Multi-instance
-          comment:
-            type: string
-            description: Comments provided on the business process step because of reassignment.
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            x-workday-type: Text
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: The id for Event Record
-    ResourceIdPathValue_eventSteps:
-      oneOf:
-      - $ref: '#/components/schemas/WorkdayId'
-    questionnaireAnswerCreate_670e7e9e117b1000276a34afc7b207cb:
-      allOf:
-      - type: object
-        properties:
-          questionItem:
-            $ref: '#/components/schemas/questionItem_670e7e9e117b10002790f46f3d9c07d1'
-          questionnaireAttachments:
-            type: array
-            description: Questionnaire Attachments for Questionnaire Response.
-            items:
-              $ref: '#/components/schemas/questionnaireAttachments_69164aa4df9610001e17f32134be5429'
-            x-workday-type: Multi-instance
-          answerNumeric:
-            type: integer
-            description: The answer in a numeric format.
-            format: int32
-            example: 99999999999
-            x-workday-type: Numeric
-          answerMultipleChoices:
-            type: array
-            description: Question Multiple Choice Answers for question answer
-            items:
-              $ref: '#/components/schemas/answerMultipleChoices_670e7e9e117b10002790f474903a07d2'
-            x-workday-type: Multi-instance
-          answerDate:
-            type: string
-            description: The answer in a date format.
-            format: date
-            x-workday-type: Date
-          answerText:
-            type: string
-            description: The text answer for a questionnaire.
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            x-workday-type: Text
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: The id for Questionnaire Answer Representation
-    completeQuestionnaireEventStep_3544fcea2784100018ee4286aeca0000:
-      allOf:
-      - type: object
-        properties:
-          stepAction:
-            $ref: '#/components/schemas/stepAction_0fe15a3bc2e510000a1ff95a59a30000'
-          questionnaireResponse:
-            $ref: '#/components/schemas/questionnaireResponse_3544fcea2784100018ee4320719e0000'
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: The id for Event Record
-    questionnaireAttachments_69164aa4df9610001e17f32134be5429:
-      allOf:
-      - $ref: '#/components/schemas/questionnaireAttachment_cfb1e71e5435100008e52b3f011f0708'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Questionnaire Attachment Representation
-    questionMultipleChoiceAnswerEmptyView_670e7e9e117b100027c36c757fb807d5:
-      allOf:
-      - type: object
-        properties:
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: The id for Question Multiple Choice Answer Representation
-    awaitingPersons_da856647269810000f8afbe0b1160190:
-      allOf:
-      - $ref: '#/components/schemas/awaitingPerson_be45cf559398100006b982ad8c6d000e'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Person
-    stepEvent_429268efcffb10000a1c13ce7e2200b3:
-      description: Returns Event for event record.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    completedByPerson_a7a41b4d029c10000b1f9327976918f9:
-      description: The person that completed the step as Assignee
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    eventStatus_0277c526ae0f1000142f25a5ad5e12cd:
-      description: Returns the Workflow State of the current Action Event
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    roles_d6a10186b85d1000177ee6105ff50000:
-      allOf:
-      - type: object
-        properties:
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: The id for Role Representation
-    status_a7a41b4d029c10000b1f9341d97718fb:
-      description: The status of this business process step.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    businessProcessEventStepTodo_33ae690d779b10001c98021b2aa90000:
-      allOf:
-      - required:
-        - stepAction
-        type: object
-        properties:
-          stepAction:
-            $ref: '#/components/schemas/stepAction_122be871d36110000539df507b410000'
-          comment:
-            type: string
-            description: Last Comment
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            x-workday-type: Text
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: The id for Event Record
-    businessProcessStep_126610e8eaaa10001a6221fd7bb500b2:
-      description: Returns the step being performed by the event record.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    status_7493dc548656100016691f82f04a0448:
-      description: The status of this business process step.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-      x-readOnly: true
-    answerMultipleChoices_670e7e9e117b10002790f474903a07d2:
-      allOf:
-      - $ref: '#/components/schemas/questionMultipleChoiceAnswerEmptyView_670e7e9e117b100027c36c757fb807d5'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Question Multiple Choice Answer Representation
-    awaitingPerson_be45cf559398100006b982ad8c6d000e:
-      allOf:
-      - type: object
-        properties:
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: The id for Person
-    ERROR_MODEL_REFERENCE:
-      required:
-      - error
-      type: object
-      properties:
-        error:
-          type: string
-          description: A description of the error
-        code:
-          type: string
-          description: The code that corresponds to the error message. Use the error code to drive programmatic error-handling behavior. Don't use error message strings for this purpose because they are subject to change
-        field:
-          type: string
-          description: The field related to the error
-        path:
-          type: string
-          description: The path of the field related to the error
-        severity:
-          type: string
-          description: Severity of the validation (e.g. Critical, Warning).
-        internalMessage:
-          type: string
-          description: Internal message providing additional context for the validation (e.g. representation content validation details).
-    businessProcessStep_da856647269810000f8afbbdc74c0186:
-      description: Returns the step being performed by the event record.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    stepAction_122be871d36110000539df507b410000:
-      description: The status of the step
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
     eventStepsView_a7a41b4d029c10000b1f92d3188e18f6:
       allOf:
       - type: object
@@ -1013,44 +778,22 @@ components:
           id:
             type: string
             description: The id for Event Record
-    stepAction_0277c526ae0f100006ec0d3a4fd7128d:
-      description: The status of this business process step.
+    ResourceIdPathValue_eventSteps:
+      oneOf:
+      - $ref: '#/components/schemas/WorkdayId'
+    eventStatus_0277c526ae0f1000142f25a5ad5e12cd:
+      description: Returns the Workflow State of the current Action Event
       allOf:
       - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
-    questionItem_670e7e9e117b10002790f46f3d9c07d1:
-      description: Question Item for Questionnaire Answer. Question item represents the question in a questionnaire.
+    removeAssignees_d6a10186b85d10001786ad45b71c0000:
       allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - $ref: '#/components/schemas/roles_d6a10186b85d1000177ee6105ff50000'
       - type: object
-    stepEvent_0e248a2147271000163da105718300b7:
-      description: Returns Event for event record.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    stepType_da856647269810000f8afbcf5b17018a:
-      description: Returns the type of step being performed by the event record.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    status_da856647269810000f8afbc077fb0187:
-      description: The status of this business process step.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    event_a7a41b4d029c10000b1f9334c61218fa:
-      description: Identifies the business process and allows you to drill into the details and access related actions.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    to_7493dc54865610001e4448dfd4cc0826:
-      description: a set containing no instances
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-      x-workday-populated-by:
-        path: /values/sendBack/to
-        field: id
+        properties:
+          id:
+            type: string
+            description: The id for Role Representation
     questionnaireTarget_b73d92d470c7100012164171eac28426:
       description: 'The questionnaire subject. Example: The candidate for admission to a school. This is a new attribute as of 2021R2, and is currently only supported for Student.'
       allOf:
@@ -1061,27 +804,82 @@ components:
       allOf:
       - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
-    overallProcess_cb97eee93655100009c59d031a5e013b:
-      description: Returns the overall process for this event record. The overall process is the outermost process in a business process.
+    questionnaireAnswerCreate_670e7e9e117b1000276a34afc7b207cb:
       allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
-    businessProcessStepSendBack_7493dc548656100016691f68af730447:
-      allOf:
-      - required:
-        - reason
-        - to
-        type: object
         properties:
-          reason:
+          questionItem:
+            $ref: '#/components/schemas/questionItem_670e7e9e117b10002790f46f3d9c07d1'
+          questionnaireAttachments:
+            type: array
+            description: Questionnaire Attachments for Questionnaire Response.
+            items:
+              $ref: '#/components/schemas/questionnaireAttachments_69164aa4df9610001e17f32134be5429'
+            x-workday-type: Multi-instance
+          answerNumeric:
+            type: integer
+            description: The answer in a numeric format.
+            format: int32
+            example: 99999999999
+            x-workday-type: Numeric
+          answerMultipleChoices:
+            type: array
+            description: Question Multiple Choice Answers for question answer
+            items:
+              $ref: '#/components/schemas/answerMultipleChoices_670e7e9e117b10002790f474903a07d2'
+            x-workday-type: Multi-instance
+          answerDate:
+            type: string
+            description: The answer in a date format.
+            format: date
+            x-workday-type: Date
+          answerText:
+            type: string
+            description: The text answer for a questionnaire.
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: The id for Questionnaire Answer Representation
+    answerMultipleChoices_670e7e9e117b10002790f474903a07d2:
+      allOf:
+      - $ref: '#/components/schemas/questionMultipleChoiceAnswerEmptyView_670e7e9e117b100027c36c757fb807d5'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Question Multiple Choice Answer Representation
+    questionnaireAnswers_670e7e9e117b10002734f5a0c9fd07c7:
+      allOf:
+      - $ref: '#/components/schemas/questionnaireAnswerCreate_670e7e9e117b1000276a34afc7b207cb'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Questionnaire Answer Representation
+    awaitingPersons_da856647269810000f8afbe0b1160190:
+      allOf:
+      - $ref: '#/components/schemas/awaitingPerson_be45cf559398100006b982ad8c6d000e'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Person
+    businessProcessStepsApprove_d3a64cee269d100010ccdf1f3a7a003c:
+      allOf:
+      - type: object
+        properties:
+          comment:
             type: string
             description: Returns user's comment for Event Record.
             example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
             x-workday-type: Text
-          status:
-            $ref: '#/components/schemas/status_7493dc548656100016691f82f04a0448'
-          to:
-            $ref: '#/components/schemas/to_7493dc54865610001e4448dfd4cc0826'
+          eventStatus:
+            $ref: '#/components/schemas/eventStatus_d3a64cee269d100010eef79987c40042'
           descriptor:
             type: string
             description: The display name of the instance
@@ -1119,8 +917,146 @@ components:
           id:
             type: string
             description: The id for Questionnaire Attachment Representation
-    task_da856647269810000f8afbdb394e018e:
+    businessProcessStepSendBack_7493dc548656100016691f68af730447:
+      allOf:
+      - required:
+        - reason
+        - to
+        type: object
+        properties:
+          reason:
+            type: string
+            description: Returns user's comment for Event Record.
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+          status:
+            $ref: '#/components/schemas/status_7493dc548656100016691f82f04a0448'
+          to:
+            $ref: '#/components/schemas/to_7493dc54865610001e4448dfd4cc0826'
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: The id for Event Record
+    awaitingPersons_a7a41b4d029c10000b1f9316fd2018f8:
+      allOf:
+      - $ref: '#/components/schemas/awaitingPerson_be45cf559398100006b982ad8c6d000e'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Person
+    stepEvent_429268efcffb10000a1c13ce7e2200b3:
+      description: Returns Event for event record.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    stepAction_0277c526ae0f100006ec0d3a4fd7128d:
+      description: The status of this business process step.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    businessProcessEventStepTodo_33ae690d779b10001c98021b2aa90000:
+      allOf:
+      - required:
+        - stepAction
+        type: object
+        properties:
+          stepAction:
+            $ref: '#/components/schemas/stepAction_122be871d36110000539df507b410000'
+          comment:
+            type: string
+            description: Last Comment
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: The id for Event Record
+    roles_d6a10186b85d1000177ee6105ff50000:
+      allOf:
+      - type: object
+        properties:
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: The id for Role Representation
+    businessProcess_abe94cbf692f10001401fef6197a023b:
+      description: The business process type of the event that the step is associated with.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    questionnaire_29444fc74ae610001adc2a36b8c300b3:
+      description: This CRF returns the instance of Questionnaire that is configured for the Complete Questionnaire Event included in the Event Record. The included instance information includes a descriptor and the WID.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    stepType_003fc135ee7610000781c691372100fa:
+      description: Returns the type of step being performed by the event record.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    INSTANCE_MODEL_REFERENCE:
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
+          type: string
+          description: Workday Id or Reference Id of the instance.
+        descriptor:
+          type: string
+          description: The display name of the instance
+          readOnly: true
+        href:
+          type: string
+          description: A link to the instance
+          readOnly: true
+    questionMultipleChoiceAnswerEmptyView_670e7e9e117b100027c36c757fb807d5:
+      allOf:
+      - type: object
+        properties:
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: The id for Question Multiple Choice Answer Representation
+    status_da856647269810000f8afbc077fb0187:
+      description: The status of this business process step.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    questionnaireAttachments_69164aa4df9610001e17f32134be5429:
+      allOf:
+      - $ref: '#/components/schemas/questionnaireAttachment_cfb1e71e5435100008e52b3f011f0708'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Questionnaire Attachment Representation
+    stepType_da856647269810000f8afbcf5b17018a:
+      description: Returns the type of step being performed by the event record.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    task_1c5422aa354510000b063cf1297f00fb:
       description: This CRF returns the instance of the task that is configured for the Event Record. The included instance information includes a descriptor and the WID.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    status_a7a41b4d029c10000b1f9341d97718fb:
+      description: The status of this business process step.
       allOf:
       - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
@@ -1129,47 +1065,19 @@ components:
       allOf:
       - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
-    removeAssignees_d6a10186b85d10001786ad45b71c0000:
-      allOf:
-      - $ref: '#/components/schemas/roles_d6a10186b85d1000177ee6105ff50000'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Role Representation
-    awaitingRoles_d6a10186b85d100015f2f7094b410000:
-      allOf:
-      - $ref: '#/components/schemas/roles_d6a10186b85d1000177ee6105ff50000'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Role
     completedByPerson_da856647269810000f8afbed6fd00194:
       description: The person that completed the step as Assignee
       allOf:
       - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
-    businessProcessStepsDeny_0277c526ae0f100006ec0c0cc48a128b:
+    to_7493dc54865610001e4448dfd4cc0826:
+      description: a set containing no instances
       allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
-        properties:
-          comment:
-            type: string
-            description: Returns user's comment for Event Record.
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            x-workday-type: Text
-          eventStatus:
-            $ref: '#/components/schemas/eventStatus_0277c526ae0f1000142f25a5ad5e12cd'
-          stepAction:
-            $ref: '#/components/schemas/stepAction_0277c526ae0f100006ec0d3a4fd7128d'
-          descriptor:
-            type: string
-            description: The display name of the instance
-            example: Lorem ipsum dolor sit ame
-          id:
-            type: string
-            description: The id for Event Record
+      x-workday-populated-by:
+        path: /values/sendBack/to
+        field: id
     eventStepsSummary_da856647269810000f8afbac30ba0183:
       allOf:
       - type: object
@@ -1246,119 +1154,17 @@ components:
           id:
             type: string
             description: The id for Event Record
-    overallProcess_da856647269810000f8afbe3503c0191:
-      description: Returns the overall process for this event record. The overall process is the outermost process in a business process.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    INSTANCE_MODEL_REFERENCE:
-      required:
-      - id
-      type: object
-      properties:
-        id:
-          pattern: ^(([0-9a-f]{32})|(\S+=\S+))$
-          type: string
-          description: Workday Id or Reference Id of the instance.
-        descriptor:
-          type: string
-          description: The display name of the instance
-          readOnly: true
-        href:
-          type: string
-          description: A link to the instance
-          readOnly: true
-    task_1c5422aa354510000b063cf1297f00fb:
-      description: This CRF returns the instance of the task that is configured for the Event Record. The included instance information includes a descriptor and the WID.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    stepType_003fc135ee7610000781c691372100fa:
-      description: Returns the type of step being performed by the event record.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    comments_a7a41b4d029c10000b1da9c45b7b18f4:
-      allOf:
-      - type: object
-        properties:
-          commentDate:
-            type: string
-            description: Gives the moment at which the instance was originally created.
-            format: date
-            x-workday-type: Date
-          person:
-            $ref: '#/components/schemas/person_a7a41b4d029c10000b46e7abcec61901'
-          comment:
-            type: string
-            description: Comment
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            x-workday-type: Text
-    stepAction_0fe15a3bc2e510000a1ff95a59a30000:
-      description: The status of the step
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    WorkdayId:
-      pattern: ^[0-9a-f]{32}$
-      type: string
-      description: Workday ID (32-character lowercase hexadecimal string).
-      example: a3f5b554007d20e98360015c5e6daf6
-    businessProcess_da856647269810000f8afbd85bf8018d:
-      description: The business process type of the event that the step is associated with.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    addAssignees_d6a10186b85d10001820dee2dce40000:
-      allOf:
-      - $ref: '#/components/schemas/roles_d6a10186b85d1000177ee6105ff50000'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Role Representation
-    contentType_cfb1e71e5435100008e52b8894ef0709:
-      description: Content type of the attachment
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    awaitingPersons_a7a41b4d029c10000b1f9316fd2018f8:
-      allOf:
-      - $ref: '#/components/schemas/awaitingPerson_be45cf559398100006b982ad8c6d000e'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Person
-    person_a7a41b4d029c10000b46e7abcec61901:
-      description: Comment made by Person
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
-    questionnaireAnswers_670e7e9e117b10002734f5a0c9fd07c7:
-      allOf:
-      - $ref: '#/components/schemas/questionnaireAnswerCreate_670e7e9e117b1000276a34afc7b207cb'
-      - type: object
-        properties:
-          id:
-            type: string
-            description: The id for Questionnaire Answer Representation
-    businessProcess_abe94cbf692f10001401fef6197a023b:
-      description: The business process type of the event that the step is associated with.
-      allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-      - type: object
     questionnaireResponse_3544fcea2784100018ee4320719e0000:
       description: Questionnaire Response
       allOf:
       - $ref: '#/components/schemas/questionnaireResponseSubmit_177812e3e8b51000163a63c22b7a0000'
       - type: object
-    questionnaireTargetContext_b73d92d470c7100012164155beb48425:
-      description: 'The applicable questionnaire or application for a student. Example: Student Application for Spring 2023. This is a new attribute as of 2021R2, and is currently only supported for Student.'
+    overallProcess_cb97eee93655100009c59d031a5e013b:
+      description: Returns the overall process for this event record. The overall process is the outermost process in a business process.
       allOf:
       - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
       - type: object
-    businessProcessStepsApprove_d3a64cee269d100010ccdf1f3a7a003c:
+    businessProcessStepsDeny_0277c526ae0f100006ec0c0cc48a128b:
       allOf:
       - type: object
         properties:
@@ -1368,7 +1174,126 @@ components:
             example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
             x-workday-type: Text
           eventStatus:
-            $ref: '#/components/schemas/eventStatus_d3a64cee269d100010eef79987c40042'
+            $ref: '#/components/schemas/eventStatus_0277c526ae0f1000142f25a5ad5e12cd'
+          stepAction:
+            $ref: '#/components/schemas/stepAction_0277c526ae0f100006ec0d3a4fd7128d'
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: The id for Event Record
+    businessProcessStep_126610e8eaaa10001a6221fd7bb500b2:
+      description: Returns the step being performed by the event record.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    overallProcess_da856647269810000f8afbe3503c0191:
+      description: Returns the overall process for this event record. The overall process is the outermost process in a business process.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    WorkdayId:
+      pattern: ^[0-9a-f]{32}$
+      type: string
+      description: Workday ID (32-character lowercase hexadecimal string).
+      example: a3f5b554007d20e98360015c5e6daf6
+    addAssignees_d6a10186b85d10001820dee2dce40000:
+      allOf:
+      - $ref: '#/components/schemas/roles_d6a10186b85d1000177ee6105ff50000'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Role Representation
+    ERROR_MODEL_REFERENCE:
+      required:
+      - error
+      type: object
+      properties:
+        error:
+          type: string
+          description: A description of the error
+        code:
+          type: string
+          description: The code that corresponds to the error message. Use the error code to drive programmatic error-handling behavior. Don't use error message strings for this purpose because they are subject to change
+        field:
+          type: string
+          description: The field related to the error
+        path:
+          type: string
+          description: The path of the field related to the error
+        severity:
+          type: string
+          description: Severity of the validation (e.g. Critical, Warning).
+        internalMessage:
+          type: string
+          description: Internal message providing additional context for the validation (e.g. representation content validation details).
+    businessProcessStep_da856647269810000f8afbbdc74c0186:
+      description: Returns the step being performed by the event record.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    event_a7a41b4d029c10000b1f9334c61218fa:
+      description: Identifies the business process and allows you to drill into the details and access related actions.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    task_da856647269810000f8afbdb394e018e:
+      description: This CRF returns the instance of the task that is configured for the Event Record. The included instance information includes a descriptor and the WID.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    completeQuestionnaireEventStep_3544fcea2784100018ee4286aeca0000:
+      allOf:
+      - type: object
+        properties:
+          stepAction:
+            $ref: '#/components/schemas/stepAction_0fe15a3bc2e510000a1ff95a59a30000'
+          questionnaireResponse:
+            $ref: '#/components/schemas/questionnaireResponse_3544fcea2784100018ee4320719e0000'
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: The id for Event Record
+    status_7493dc548656100016691f82f04a0448:
+      description: The status of this business process step.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+      x-readOnly: true
+    businessProcessStepsReassign_bd578ca9ac8010001895bda38db00000:
+      allOf:
+      - type: object
+        properties:
+          awaitingRoles:
+            type: array
+            description: The roles that the business event step is awaiting.
+            items:
+              $ref: '#/components/schemas/awaitingRoles_d6a10186b85d100015f2f7094b410000'
+            x-workday-type: Multi-instance
+            x-readOnly: true
+          addAssignees:
+            type: array
+            description: Assignees added to the business process step because of reassignment.
+            items:
+              $ref: '#/components/schemas/addAssignees_d6a10186b85d10001820dee2dce40000'
+            x-workday-type: Multi-instance
+          removeAssignees:
+            type: array
+            description: Assignees removed from the business process step because of reassignment.
+            items:
+              $ref: '#/components/schemas/removeAssignees_d6a10186b85d10001786ad45b71c0000'
+            x-workday-type: Multi-instance
+          comment:
+            type: string
+            description: Comments provided on the business process step because of reassignment.
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
           descriptor:
             type: string
             description: The display name of the instance
@@ -1397,6 +1322,81 @@ components:
           id:
             type: string
             description: The id for Questionnaire Response Representation
+    contentType_cfb1e71e5435100008e52b8894ef0709:
+      description: Content type of the attachment
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    businessProcess_da856647269810000f8afbd85bf8018d:
+      description: The business process type of the event that the step is associated with.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    completedByPerson_a7a41b4d029c10000b1f9327976918f9:
+      description: The person that completed the step as Assignee
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    stepAction_122be871d36110000539df507b410000:
+      description: The status of the step
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    questionnaireTargetContext_b73d92d470c7100012164155beb48425:
+      description: 'The applicable questionnaire or application for a student. Example: Student Application for Spring 2023. This is a new attribute as of 2021R2, and is currently only supported for Student.'
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    comments_a7a41b4d029c10000b1da9c45b7b18f4:
+      allOf:
+      - type: object
+        properties:
+          commentDate:
+            type: string
+            description: Gives the moment at which the instance was originally created.
+            format: date
+            x-workday-type: Date
+          person:
+            $ref: '#/components/schemas/person_a7a41b4d029c10000b46e7abcec61901'
+          comment:
+            type: string
+            description: Comment
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            x-workday-type: Text
+    stepAction_0fe15a3bc2e510000a1ff95a59a30000:
+      description: The status of the step
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    questionItem_670e7e9e117b10002790f46f3d9c07d1:
+      description: Question Item for Questionnaire Answer. Question item represents the question in a questionnaire.
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    awaitingRoles_d6a10186b85d100015f2f7094b410000:
+      allOf:
+      - $ref: '#/components/schemas/roles_d6a10186b85d1000177ee6105ff50000'
+      - type: object
+        properties:
+          id:
+            type: string
+            description: The id for Role
+    person_a7a41b4d029c10000b46e7abcec61901:
+      description: Comment made by Person
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+      - type: object
+    awaitingPerson_be45cf559398100006b982ad8c6d000e:
+      allOf:
+      - type: object
+        properties:
+          descriptor:
+            type: string
+            description: The display name of the instance
+            example: Lorem ipsum dolor sit ame
+          id:
+            type: string
+            description: The id for Person
   securitySchemes:
     OAuth2:
       type: oauth2

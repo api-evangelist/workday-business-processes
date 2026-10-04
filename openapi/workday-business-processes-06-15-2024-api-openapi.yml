@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Changelog for businessProcess 06/15/2024 API
-  description: The public APIs to access event actions and details
+  title: Workday Business Processes 06/15/2024 API
   version: v1
+  description: 'Operations tagged 06/15/2024 across 2 of this provider''s published API definitions: workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://<tenantHostname>/businessProcess/v1
 tags:
@@ -126,6 +126,8 @@ paths:
         View this Endpoint: GET /types'
       operationId: get202424Types
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/types/{ID}:
     get:
       tags:
@@ -243,6 +245,8 @@ paths:
         View this Endpoint: GET /types/{ID}'
       operationId: get202424TypesByID
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/types/{ID}/attachmentCategories:
     get:
       tags:
@@ -387,6 +391,8 @@ paths:
         View this Endpoint: GET /types/{ID}/attachmentCategories'
       operationId: get202424TypesByIDAttachmentCategories
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/eventSteps/{ID}/toDo:
     post:
       tags:
@@ -551,6 +557,8 @@ paths:
         View this Endpoint: POST /eventSteps/{ID}/toDo'
       operationId: post202424EventStepsByIDToDo
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/events:
     get:
       tags:
@@ -695,6 +703,8 @@ paths:
         View this Endpoint: GET /events'
       operationId: get202424Events
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/events/{ID}/attachments:
     get:
       tags:
@@ -839,6 +849,8 @@ paths:
         View this Endpoint: GET /events/{ID}/attachments'
       operationId: get202424EventsByIDAttachments
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/events/{ID}/comments:
     get:
       tags:
@@ -983,6 +995,8 @@ paths:
         View this Endpoint: GET /events/{ID}/comments'
       operationId: get202424EventsByIDComments
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/events/{ID}/inProgressSteps:
     get:
       tags:
@@ -1127,6 +1141,8 @@ paths:
         View this Endpoint: GET /events/{ID}/inProgressSteps'
       operationId: get202424EventsByIDInProgressSteps
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/eventSteps/{ID}/deny:
     post:
       tags:
@@ -1271,6 +1287,8 @@ paths:
         View this Endpoint: POST /eventSteps/{ID}/deny'
       operationId: post202424EventStepsByIDDeny
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/events/{ID}/remainingSteps:
     get:
       tags:
@@ -1415,6 +1433,8 @@ paths:
         View this Endpoint: GET /events/{ID}/remainingSteps'
       operationId: get202424EventsByIDRemainingSteps
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/events/{ID}:
     get:
       tags:
@@ -1559,6 +1579,8 @@ paths:
         View this Endpoint: GET /events/{ID}'
       operationId: get202424EventsByID
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/eventSteps/{ID}/approve:
     post:
       tags:
@@ -1703,6 +1725,8 @@ paths:
         View this Endpoint: POST /eventSteps/{ID}/approve'
       operationId: post202424EventStepsByIDApprove
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/eventSteps/{ID}/sendBack:
     post:
       tags:
@@ -1847,6 +1871,8 @@ paths:
         View this Endpoint: POST /eventSteps/{ID}/sendBack'
       operationId: post202424EventStepsByIDSendBack
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/eventSteps:
     get:
       tags:
@@ -1991,6 +2017,8 @@ paths:
         View this Endpoint: GET /eventSteps'
       operationId: get202424EventSteps
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/events/{ID}/completedSteps:
     get:
       tags:
@@ -2135,6 +2163,8 @@ paths:
         View this Endpoint: GET /events/{ID}/completedSteps'
       operationId: get202424EventsByIDCompletedSteps
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/eventSteps/{ID}:
     get:
       tags:
@@ -2279,6 +2309,8 @@ paths:
         View this Endpoint: GET /eventSteps/{ID}'
       operationId: get202424EventStepsByID
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2024.24/eventSteps/{ID}/questionnaire:
     post:
       tags:
@@ -2451,6 +2483,8 @@ paths:
         View this Endpoint: POST /eventSteps/{ID}/questionnaire'
       operationId: post202424EventStepsByIDQuestionnaire
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
 components:
   securitySchemes:
     OAuth2:
@@ -2459,3 +2493,6 @@ components:
         implicit:
           authorizationUrl: https://<tenantAuthorizationHostname>
           scopes: {}
+x-refined-from:
+- workday-business-processes-business-process-v1-changelog.json
+- workday-business-processes-business-process-v1-changelog.json

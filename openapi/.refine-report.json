@@ -4,7 +4,8 @@
     "_original/workday-business-processes-business-process-openapi.yml",
     "_original/workday-business-processes-business-process-v1-changelog.json",
     "_original/workday-business-processes-custom-business-process-config-openapi.yml",
-    "_ae-authored/workday-business-processes-openapi.yml"
+    "_ae-authored/workday-business-processes-openapi.yml",
+    "changelog/workday-business-processes-business-process-v1-changelog.json"
   ],
   "outputs": [
     "workday-business-processes-prompt-values-api-openapi.yml",
@@ -37,19 +38,44 @@
     "workday-business-processes-inbox-items-api-openapi.yml",
     "workday-business-processes-process-instances-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "archived changelog/workday-business-processes-business-process-v1-changelog.json"
+  ],
   "errors": [
+    "workday-business-processes-business-process-v1-changelog.json: dangling $ref: #/components/schemas/businessProcessEventStepSubmit_9df63b314485100006ff40401d3e00f0",
     "workday-business-processes-business-process-v1-changelog.json: dangling $ref: #/components/schemas/businessProcessEventStepSubmit_9df63b314485100006ff40401d3e00f0"
   ],
   "warnings": [],
   "notes": [
     "6 archived document(s) dropped as subsets of other archived documents",
     "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "discovered stray spec: changelog/workday-business-processes-business-process-v1-changelog.json",
     "workday-business-processes-business-process-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "workday-business-processes-business-process-v1-changelog.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "workday-business-processes-custom-business-process-config-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "workday-business-processes-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "workday-business-processes-business-process-v1-changelog.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "tag 'types' spans 2 source specs (workday-business-processes-business-process-openapi.yml, workday-business-processes-custom-business-process-config-openapi.yml): per-path servers applied",
+    "tag '03/11/2023' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '03/15/2021' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '03/18/2026' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '04/01/2023' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '04/02/2022' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '04/24/2023' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '05/17/2025' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '06/08/2026' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '06/15/2024' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '06/15/2026' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '06/30/2026' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '07/15/2023' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '08/06/2022' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '08/17/2026' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '09/01/2021' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '09/09/2021' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '09/19/2022' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '09/28/2024' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '12/06/2025' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
+    "tag '12/15/2025' spans 2 source specs (workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json): per-path servers applied",
     "apis.yml register: already-registered"
   ],
   "skipped": [

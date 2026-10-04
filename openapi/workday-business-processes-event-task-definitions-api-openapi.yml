@@ -220,25 +220,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    createCustomBusinessProcessEventTaskDetail:
-      type: object
-      required:
-      - vpsApplication
-      - name
-      - vpsSite
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        vpsApplication:
-          type: string
-        vpsSite:
-          type: string
-        vpsRoute:
-          type: string
-        referenceIdValue:
-          type: string
     customBusinessProcessEventTaskDetail:
       type: object
       required:
@@ -262,8 +243,36 @@ components:
           type: string
         vpsRoute:
           type: string
+    allCustomBusinessProcessEventTaskDetails:
+      type: object
+      properties:
+        total:
+          type: number
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/customBusinessProcessEventTaskDetail'
     patchCustomBusinessProcessEventTaskDetail:
       type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        vpsApplication:
+          type: string
+        vpsSite:
+          type: string
+        vpsRoute:
+          type: string
+        referenceIdValue:
+          type: string
+    createCustomBusinessProcessEventTaskDetail:
+      type: object
+      required:
+      - vpsApplication
+      - name
+      - vpsSite
       properties:
         name:
           type: string
@@ -296,15 +305,6 @@ components:
           type: string
         referenceIdValue:
           type: string
-    allCustomBusinessProcessEventTaskDetails:
-      type: object
-      properties:
-        total:
-          type: number
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/customBusinessProcessEventTaskDetail'
   securitySchemes:
     oAuth2:
       type: oauth2

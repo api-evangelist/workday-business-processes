@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Changelog for businessProcess 04/02/2022 API
-  description: The public APIs to access event actions and details
+  title: Workday Business Processes 04/02/2022 API
   version: v1
+  description: 'Operations tagged 04/02/2022 across 2 of this provider''s published API definitions: workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://<tenantHostname>/businessProcess/v1
 tags:
@@ -106,6 +106,8 @@ paths:
         x-codegen-request-body-name: businessProcessEventStepSubmit
       operationId: post202214EventStepsByIDSubmit
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
 components:
   schemas:
     VALIDATION_ERROR_MODEL_REFERENCE:
@@ -184,3 +186,6 @@ components:
         implicit:
           authorizationUrl: https://<tenantAuthorizationHostname>
           scopes: {}
+x-refined-from:
+- workday-business-processes-business-process-v1-changelog.json
+- workday-business-processes-business-process-v1-changelog.json

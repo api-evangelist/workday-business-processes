@@ -135,43 +135,6 @@ paths:
         dispatcher: URI_PARTS
         dispatcherRules: itemId
 components:
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: UNAUTHORIZED
-            message: Valid authentication credentials are required
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: NOT_FOUND
-            message: The requested resource does not exist
-    Forbidden:
-      description: Insufficient permissions to access the resource
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: FORBIDDEN
-            message: You do not have permission to perform this action
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-          example:
-            error: BAD_REQUEST
-            message: Invalid request body
   schemas:
     ApprovalRequest:
       title: Approval Request
@@ -186,20 +149,25 @@ components:
           description: ID of the approving user
       required:
       - approverId
-    DenialRequest:
-      title: Denial Request
-      description: Request to deny an inbox item
+    ErrorResponse:
+      title: Error Response
+      description: Standard error response
       type: object
       properties:
-        comment:
+        error:
           type: string
-          description: Denial reason or comment
-        denierId:
+          description: Error code
+        message:
           type: string
-          description: ID of the denying user
+          description: Human-readable error message
+        details:
+          type: array
+          items:
+            type: string
+          description: Additional error details
       required:
-      - denierId
-      - comment
+      - error
+      - message
     InboxItem:
       title: Inbox Item
       description: A business process inbox item requiring user action
@@ -258,25 +226,57 @@ components:
       - subject
       - assignedTo
       - status
-    ErrorResponse:
-      title: Error Response
-      description: Standard error response
+    DenialRequest:
+      title: Denial Request
+      description: Request to deny an inbox item
       type: object
       properties:
-        error:
+        comment:
           type: string
-          description: Error code
-        message:
+          description: Denial reason or comment
+        denierId:
           type: string
-          description: Human-readable error message
-        details:
-          type: array
-          items:
-            type: string
-          description: Additional error details
+          description: ID of the denying user
       required:
-      - error
-      - message
+      - denierId
+      - comment
+  responses:
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: BAD_REQUEST
+            message: Invalid request body
+    Unauthorized:
+      description: Authentication credentials are missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: UNAUTHORIZED
+            message: Valid authentication credentials are required
+    Forbidden:
+      description: Insufficient permissions to access the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: FORBIDDEN
+            message: You do not have permission to perform this action
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            error: NOT_FOUND
+            message: The requested resource does not exist
   securitySchemes:
     oauth2:
       type: oauth2

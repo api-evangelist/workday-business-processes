@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Changelog for businessProcess 09/01/2021 API
-  description: The public APIs to access event actions and details
+  title: Workday Business Processes 09/01/2021 API
   version: v1
+  description: 'Operations tagged 09/01/2021 across 2 of this provider''s published API definitions: workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://<tenantHostname>/businessProcess/v1
 tags:
@@ -126,6 +126,8 @@ paths:
               exampleSetFlag: false
       operationId: get202137EventsByIDComments
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/types:
     get:
       tags:
@@ -185,6 +187,8 @@ paths:
         View this Endpoint: GET /types'
       operationId: get202137Types
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/types/{ID}:
     get:
       tags:
@@ -244,6 +248,8 @@ paths:
         View this Endpoint: GET /types/{ID}'
       operationId: get202137TypesByID
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/types/{ID}/attachmentCategories:
     get:
       tags:
@@ -314,6 +320,8 @@ paths:
           - string
       operationId: get202137TypesByIDAttachmentCategories
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/events:
     get:
       tags:
@@ -414,6 +422,8 @@ paths:
         View this Endpoint: GET /events'
       operationId: get202137Events
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/events/{ID}/attachments:
     get:
       tags:
@@ -473,6 +483,8 @@ paths:
         View this Endpoint: GET /events/{ID}/attachments'
       operationId: get202137EventsByIDAttachments
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/events/{ID}/inProgressSteps:
     get:
       tags:
@@ -572,6 +584,8 @@ paths:
         View this Endpoint: GET /events/{ID}/inProgressSteps'
       operationId: get202137EventsByIDInProgressSteps
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/eventSteps/{ID}/deny:
     post:
       tags:
@@ -671,6 +685,8 @@ paths:
         View this Endpoint: POST /eventSteps/{ID}/deny'
       operationId: post202137EventStepsByIDDeny
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/values/sendBack/to/:
     get:
       tags:
@@ -706,6 +722,8 @@ paths:
         View this Endpoint: GET /values/sendBack/to/'
       operationId: get202137ValuesSendBackTo
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/events/{ID}/remainingSteps:
     get:
       tags:
@@ -805,6 +823,8 @@ paths:
         View this Endpoint: GET /events/{ID}/remainingSteps'
       operationId: get202137EventsByIDRemainingSteps
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/events/{ID}:
     get:
       tags:
@@ -905,6 +925,8 @@ paths:
         View this Endpoint: GET /events/{ID}'
       operationId: get202137EventsByID
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/eventSteps/{ID}/approve:
     post:
       tags:
@@ -1004,6 +1026,8 @@ paths:
         View this Endpoint: POST /eventSteps/{ID}/approve'
       operationId: post202137EventStepsByIDApprove
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/eventSteps/{ID}/sendBack:
     post:
       tags:
@@ -1063,6 +1087,8 @@ paths:
         View this Endpoint: POST /eventSteps/{ID}/sendBack'
       operationId: post202137EventStepsByIDSendBack
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/eventSteps:
     get:
       tags:
@@ -1163,6 +1189,8 @@ paths:
         View this Endpoint: GET /eventSteps'
       operationId: get202137EventSteps
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/events/{ID}/completedSteps:
     get:
       tags:
@@ -1262,6 +1290,8 @@ paths:
         View this Endpoint: GET /events/{ID}/completedSteps'
       operationId: get202137EventsByIDCompletedSteps
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2021.37/eventSteps/{ID}:
     get:
       tags:
@@ -1335,37 +1365,10 @@ paths:
         View this Endpoint: GET /eventSteps/{ID}'
       operationId: get202137EventStepsByID
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
 components:
   schemas:
-    comments_a7a41b4d029c10000b1da9c45b7b18f4:
-      exampleSetFlag: false
-      allOf:
-      - type: object
-        properties:
-          commentDate:
-            type: string
-            description: Gives the moment at which the instance was originally created.
-            format: date
-            extensions:
-              x-workday-type: Date
-            exampleSetFlag: false
-            types:
-            - string
-          person:
-            $ref: '#/components/schemas/person_a7a41b4d029c10000b46e7abcec61901'
-            exampleSetFlag: false
-          comment:
-            type: string
-            description: Comment
-            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
-            extensions:
-              x-workday-type: Text
-            exampleSetFlag: true
-            types:
-            - string
-        exampleSetFlag: false
-        types:
-        - object
     VALIDATION_ERROR_MODEL_REFERENCE:
       exampleSetFlag: false
       allOf:
@@ -1435,13 +1438,32 @@ components:
       exampleSetFlag: false
       types:
       - object
-    person_a7a41b4d029c10000b46e7abcec61901:
-      description: Comment made by Person
+    comments_a7a41b4d029c10000b1da9c45b7b18f4:
       exampleSetFlag: false
       allOf:
-      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
-        exampleSetFlag: false
       - type: object
+        properties:
+          commentDate:
+            type: string
+            description: Gives the moment at which the instance was originally created.
+            format: date
+            extensions:
+              x-workday-type: Date
+            exampleSetFlag: false
+            types:
+            - string
+          person:
+            $ref: '#/components/schemas/person_a7a41b4d029c10000b46e7abcec61901'
+            exampleSetFlag: false
+          comment:
+            type: string
+            description: Comment
+            example: Lorem ipsum dolor sit amet, cum choro singulis consectetuer ut, ubique iisque contentiones ex duo. Quo lorem etiam eu.
+            extensions:
+              x-workday-type: Text
+            exampleSetFlag: true
+            types:
+            - string
         exampleSetFlag: false
         types:
         - object
@@ -1474,6 +1496,16 @@ components:
       exampleSetFlag: false
       types:
       - object
+    person_a7a41b4d029c10000b46e7abcec61901:
+      description: Comment made by Person
+      exampleSetFlag: false
+      allOf:
+      - $ref: '#/components/schemas/INSTANCE_MODEL_REFERENCE'
+        exampleSetFlag: false
+      - type: object
+        exampleSetFlag: false
+        types:
+        - object
   securitySchemes:
     OAuth2:
       type: OAUTH2
@@ -1481,3 +1513,6 @@ components:
         implicit:
           authorizationUrl: https://<tenantAuthorizationHostname>
           scopes: {}
+x-refined-from:
+- workday-business-processes-business-process-v1-changelog.json
+- workday-business-processes-business-process-v1-changelog.json

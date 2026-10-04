@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Changelog for businessProcess 07/15/2023 API
-  description: The public APIs to access event actions and details
+  title: Workday Business Processes 07/15/2023 API
   version: v1
+  description: 'Operations tagged 07/15/2023 across 2 of this provider''s published API definitions: workday-business-processes-business-process-v1-changelog.json, workday-business-processes-business-process-v1-changelog.json. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://<tenantHostname>/businessProcess/v1
 tags:
@@ -106,6 +106,8 @@ paths:
         View this Endpoint: GET /types/{ID}/attachmentCategories'
       operationId: get202328TypesByIDAttachmentCategories
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2023.28/events/{ID}/attachments:
     get:
       tags:
@@ -203,6 +205,8 @@ paths:
         View this Endpoint: GET /events/{ID}/attachments'
       operationId: get202328EventsByIDAttachments
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2023.28/events/{ID}/comments:
     get:
       tags:
@@ -251,6 +255,8 @@ paths:
         View this Endpoint: GET /events/{ID}/comments'
       operationId: get202328EventsByIDComments
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
   2023.28/eventSteps/{ID}/sendBack:
     post:
       tags:
@@ -348,6 +354,8 @@ paths:
         View this Endpoint: POST /eventSteps/{ID}/sendBack'
       operationId: post202328EventStepsByIDSendBack
       x-operation-id-source: derived
+    servers:
+    - url: https://<tenantHostname>/businessProcess/v1
 components:
   securitySchemes:
     OAuth2:
@@ -356,3 +364,6 @@ components:
         implicit:
           authorizationUrl: https://<tenantAuthorizationHostname>
           scopes: {}
+x-refined-from:
+- workday-business-processes-business-process-v1-changelog.json
+- workday-business-processes-business-process-v1-changelog.json

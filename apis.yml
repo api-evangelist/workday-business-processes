@@ -1698,6 +1698,8 @@ apis:
     https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
   baseURL: https://{tenantHostname}/businessProcess/v1
   tags:
+  - Event
+  tags_raw:
   - events
   properties:
   - type: OpenAPI
@@ -1770,6 +1772,8 @@ apis:
     https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
   baseURL: https://{tenantHostname}/businessProcess/v1
   tags:
+  - Event Steps
+  tags_raw:
   - eventSteps
   properties:
   - type: OpenAPI
@@ -2051,6 +2055,8 @@ apis:
     https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md
   baseURL: https://{tenantHostname}/businessProcess/v1
   tags:
+  - Types
+  tags_raw:
   - types
   properties:
   - type: OpenAPI

@@ -1,58 +1,37 @@
-generated: '2026-09-17'
+generated: '2026-10-03'
 method: generated
-source: openapi/workday-business-processes-business-process-openapi.yml, openapi/workday-business-processes-custom-business-process-config-openapi.yml
+source: openapi/workday-business-processes-03-11-2023-api-openapi.yml, openapi/workday-business-processes-03-15-2021-api-openapi.yml,
+  openapi/workday-business-processes-03-18-2026-api-openapi.yml, openapi/workday-business-processes-04-01-2023-api-openapi.yml,
+  openapi/workday-business-processes-04-02-2022-api-openapi.yml, openapi/workday-business-processes-04-24-2023-api-openapi.yml,
+  openapi/workday-business-processes-05-17-2025-api-openapi.yml, openapi/workday-business-processes-06-08-2026-api-openapi.yml,
+  openapi/workday-business-processes-06-15-2024-api-openapi.yml, openapi/workday-business-processes-06-15-2026-api-openapi.yml,
+  openapi/workday-business-processes-06-30-2026-api-openapi.yml, openapi/workday-business-processes-07-15-2023-api-openapi.yml,
+  openapi/workday-business-processes-08-06-2022-api-openapi.yml, openapi/workday-business-processes-08-17-2026-api-openapi.yml,
+  openapi/workday-business-processes-09-01-2021-api-openapi.yml, openapi/workday-business-processes-09-09-2021-api-openapi.yml,
+  openapi/workday-business-processes-09-19-2022-api-openapi.yml, openapi/workday-business-processes-09-28-2024-api-openapi.yml,
+  openapi/workday-business-processes-12-06-2025-api-openapi.yml, openapi/workday-business-processes-12-15-2025-api-openapi.yml,
+  openapi/workday-business-processes-approvals-api-openapi.yml, openapi/workday-business-processes-business-process-definitions-api-openapi.yml,
+  openapi/workday-business-processes-event-task-definitions-api-openapi.yml, openapi/workday-business-processes-events-api-openapi.yml,
+  openapi/workday-business-processes-eventsteps-api-openapi.yml, openapi/workday-business-processes-inbox-items-api-openapi.yml,
+  openapi/workday-business-processes-process-instances-api-openapi.yml, openapi/workday-business-processes-prompt-values-api-openapi.yml,
+  openapi/workday-business-processes-types-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 32
+  operations: 201
   by_action_class:
-    connected: 17
-    acting: 15
+    acting: 77
+    connected: 124
   by_consequence:
-    read: 17
-    write: 14
-    physical: 1
+    write: 67
+    read: 124
+    physical: 10
   human_in_the_loop_required: 0
 operations:
-- path: /types
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /types/{ID}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /types/{ID}/attachmentCategories
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /eventSteps
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /eventSteps/{ID}/questionnaire
+- path: 2023.10/eventSteps/{ID}/toDo
   method: post
+  operationId: post202310EventStepsByIDToDo
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -66,38 +45,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /eventSteps/{ID}/reassign
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /eventSteps/{ID}/deny
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /eventSteps/{ID}
+- path: 2021.13/events
   method: get
+  operationId: get202113Events
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -105,8 +55,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /eventSteps/{ID}/toDo
+- path: 2026.11/eventSteps/{ID}/reassign
   method: post
+  operationId: post202611EventStepsByIDReassign
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -120,8 +71,19 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /eventSteps/{ID}/approve
+- path: 2026.11/types/{ID}/attachmentCategories
+  method: get
+  operationId: get202611TypesByIDAttachmentCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.11/events/{ID}/rescind
   method: post
+  operationId: post202611EventsByIDRescind
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -135,8 +97,57 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /eventSteps/{ID}/sendBack
+- path: 2026.11/events/{ID}/cancel
   method: post
+  operationId: post202611EventsByIDCancel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.11/eventSteps/{ID}/deny
+  method: post
+  operationId: post202611EventStepsByIDDeny
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.11/eventSteps/{ID}/toDo
+  method: post
+  operationId: post202611EventStepsByIDToDo
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.11/eventSteps/{ID}/sendBack
+  method: post
+  operationId: post202611EventStepsByIDSendBack
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -152,26 +163,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /events
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /events/{ID}/remainingSteps
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /events/{ID}/rescind
+- path: 2026.11/eventSteps/{ID}/approve
   method: post
+  operationId: post202611EventStepsByIDApprove
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -185,8 +179,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /events/{ID}/comments
+- path: 2026.11/events
   method: get
+  operationId: get202611Events
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -194,8 +189,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /events/{ID}
+- path: 2026.11/events/{ID}/remainingSteps
   method: get
+  operationId: get202611EventsByIDRemainingSteps
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -203,8 +199,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /events/{ID}/inProgressSteps
+- path: 2026.11/events/{ID}/comments
   method: get
+  operationId: get202611EventsByIDComments
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -212,8 +209,69 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /events/{ID}/cancel
+- path: 2026.11/events/{ID}
+  method: get
+  operationId: get202611EventsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.11/events/{ID}/inProgressSteps
+  method: get
+  operationId: get202611EventsByIDInProgressSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.11/events/{ID}/attachments
+  method: get
+  operationId: get202611EventsByIDAttachments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.11/eventSteps
+  method: get
+  operationId: get202611EventSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.11/eventSteps/{ID}
+  method: get
+  operationId: get202611EventStepsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.11/events/{ID}/completedSteps
+  method: get
+  operationId: get202611EventsByIDCompletedSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.11/eventSteps/{ID}/questionnaire
   method: post
+  operationId: post202611EventStepsByIDQuestionnaire
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -227,43 +285,13 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /events/{ID}/attachments
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /events/{ID}/completedSteps
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /values/sendBack/to/
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /types
+- path: 2023.13/eventSteps/{ID}/toDo
   method: post
-  operationId: create
+  operationId: post202313EventStepsByIDToDo
   x-agentic-access:
     action-class: acting
     consequence: write
     subject: required
-    scope:
-    - read
-    - write
     audience: null
     token:
       max-ttl: 900
@@ -273,42 +301,117 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /types
+- path: 2022.14/eventSteps/{ID}/submit
+  method: post
+  operationId: post202214EventStepsByIDSubmit
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2023.16/eventSteps/{ID}/questionnaire
+  method: post
+  operationId: post202316EventStepsByIDQuestionnaire
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2025.20/events/{ID}/rescind
+  method: post
+  operationId: post202520EventsByIDRescind
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.23/eventSteps/{ID}/approve
+  method: post
+  operationId: post202623EventStepsByIDApprove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.23/eventSteps
   method: get
-  operationId: get
+  operationId: get202623EventSteps
   x-agentic-access:
     action-class: connected
     consequence: read
     subject: optional
-    scope:
-    - read
-    - write
     token:
       max-ttl: 3600
     audit: none
-- path: /types/{id}
+- path: 2024.24/types
   method: get
-  operationId: view
+  operationId: get202424Types
   x-agentic-access:
     action-class: connected
     consequence: read
     subject: optional
-    scope:
-    - read
-    - write
     token:
       max-ttl: 3600
     audit: none
-- path: /types/{id}
-  method: put
-  operationId: update
+- path: 2024.24/types/{ID}
+  method: get
+  operationId: get202424TypesByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2024.24/types/{ID}/attachmentCategories
+  method: get
+  operationId: get202424TypesByIDAttachmentCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2024.24/eventSteps/{ID}/toDo
+  method: post
+  operationId: post202424EventStepsByIDToDo
   x-agentic-access:
     action-class: acting
     consequence: write
     subject: required
-    scope:
-    - read
-    - write
     audience: null
     token:
       max-ttl: 900
@@ -318,16 +421,53 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /types/{id}
-  method: delete
-  operationId: delete
+- path: 2024.24/events
+  method: get
+  operationId: get202424Events
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2024.24/events/{ID}/attachments
+  method: get
+  operationId: get202424EventsByIDAttachments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2024.24/events/{ID}/comments
+  method: get
+  operationId: get202424EventsByIDComments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2024.24/events/{ID}/inProgressSteps
+  method: get
+  operationId: get202424EventsByIDInProgressSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2024.24/eventSteps/{ID}/deny
+  method: post
+  operationId: post202424EventStepsByIDDeny
   x-agentic-access:
     action-class: acting
     consequence: write
     subject: required
-    scope:
-    - read
-    - write
     audience: null
     token:
       max-ttl: 900
@@ -337,6 +477,1576 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: 2024.24/events/{ID}/remainingSteps
+  method: get
+  operationId: get202424EventsByIDRemainingSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2024.24/events/{ID}
+  method: get
+  operationId: get202424EventsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2024.24/eventSteps/{ID}/approve
+  method: post
+  operationId: post202424EventStepsByIDApprove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2024.24/eventSteps/{ID}/sendBack
+  method: post
+  operationId: post202424EventStepsByIDSendBack
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2024.24/eventSteps
+  method: get
+  operationId: get202424EventSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2024.24/events/{ID}/completedSteps
+  method: get
+  operationId: get202424EventsByIDCompletedSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2024.24/eventSteps/{ID}
+  method: get
+  operationId: get202424EventStepsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2024.24/eventSteps/{ID}/questionnaire
+  method: post
+  operationId: post202424EventStepsByIDQuestionnaire
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.24/events/{ID}/rescind
+  method: post
+  operationId: post202624EventsByIDRescind
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.24/events/{ID}/cancel
+  method: post
+  operationId: post202624EventsByIDCancel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.24/types
+  method: get
+  operationId: get202624Types
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/types/{ID}
+  method: get
+  operationId: get202624TypesByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/types/{ID}/attachmentCategories
+  method: get
+  operationId: get202624TypesByIDAttachmentCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/eventSteps/{ID}/reassign
+  method: post
+  operationId: post202624EventStepsByIDReassign
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.24/eventSteps/{ID}/deny
+  method: post
+  operationId: post202624EventStepsByIDDeny
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.24/eventSteps/{ID}/approve
+  method: post
+  operationId: post202624EventStepsByIDApprove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.24/eventSteps/{ID}/sendBack
+  method: post
+  operationId: post202624EventStepsByIDSendBack
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.24/eventSteps/{ID}/toDo
+  method: post
+  operationId: post202624EventStepsByIDToDo
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.24/events
+  method: get
+  operationId: get202624Events
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/events/{ID}/remainingSteps
+  method: get
+  operationId: get202624EventsByIDRemainingSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/events/{ID}/comments
+  method: get
+  operationId: get202624EventsByIDComments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/events/{ID}
+  method: get
+  operationId: get202624EventsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/events/{ID}/inProgressSteps
+  method: get
+  operationId: get202624EventsByIDInProgressSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/events/{ID}/attachments
+  method: get
+  operationId: get202624EventsByIDAttachments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/values/sendBack/to/
+  method: get
+  operationId: get202624ValuesSendBackTo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/eventSteps
+  method: get
+  operationId: get202624EventSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/eventSteps/{ID}
+  method: get
+  operationId: get202624EventStepsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/events/{ID}/completedSteps
+  method: get
+  operationId: get202624EventsByIDCompletedSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.24/eventSteps/{ID}/questionnaire
+  method: post
+  operationId: post202624EventStepsByIDQuestionnaire
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.26/types
+  method: get
+  operationId: get202626Types
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/types/{ID}
+  method: get
+  operationId: get202626TypesByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/types/{ID}/attachmentCategories
+  method: get
+  operationId: get202626TypesByIDAttachmentCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/events/{ID}/rescind
+  method: post
+  operationId: post202626EventsByIDRescind
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.26/events/{ID}/cancel
+  method: post
+  operationId: post202626EventsByIDCancel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.26/eventSteps/{ID}/reassign
+  method: post
+  operationId: post202626EventStepsByIDReassign
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.26/eventSteps/{ID}/deny
+  method: post
+  operationId: post202626EventStepsByIDDeny
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.26/eventSteps/{ID}/approve
+  method: post
+  operationId: post202626EventStepsByIDApprove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.26/eventSteps/{ID}/toDo
+  method: post
+  operationId: post202626EventStepsByIDToDo
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.26/eventSteps/{ID}/sendBack
+  method: post
+  operationId: post202626EventStepsByIDSendBack
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.26/events
+  method: get
+  operationId: get202626Events
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/events/{ID}/remainingSteps
+  method: get
+  operationId: get202626EventsByIDRemainingSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/events/{ID}/comments
+  method: get
+  operationId: get202626EventsByIDComments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/events/{ID}
+  method: get
+  operationId: get202626EventsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/events/{ID}/inProgressSteps
+  method: get
+  operationId: get202626EventsByIDInProgressSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/events/{ID}/attachments
+  method: get
+  operationId: get202626EventsByIDAttachments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/eventSteps
+  method: get
+  operationId: get202626EventSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/eventSteps/{ID}
+  method: get
+  operationId: get202626EventStepsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/events/{ID}/completedSteps
+  method: get
+  operationId: get202626EventsByIDCompletedSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.26/eventSteps/{ID}/questionnaire
+  method: post
+  operationId: post202626EventStepsByIDQuestionnaire
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2023.28/types/{ID}/attachmentCategories
+  method: get
+  operationId: get202328TypesByIDAttachmentCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2023.28/events/{ID}/attachments
+  method: get
+  operationId: get202328EventsByIDAttachments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2023.28/events/{ID}/comments
+  method: get
+  operationId: get202328EventsByIDComments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2023.28/eventSteps/{ID}/sendBack
+  method: post
+  operationId: post202328EventStepsByIDSendBack
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2022.32/types
+  method: get
+  operationId: get202232Types
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.32/types/{ID}
+  method: get
+  operationId: get202232TypesByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.32/types/{ID}/attachmentCategories
+  method: get
+  operationId: get202232TypesByIDAttachmentCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.32/events
+  method: get
+  operationId: get202232Events
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.32/events/{ID}/attachments
+  method: get
+  operationId: get202232EventsByIDAttachments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.32/events/{ID}/comments
+  method: get
+  operationId: get202232EventsByIDComments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.32/events/{ID}/inProgressSteps
+  method: get
+  operationId: get202232EventsByIDInProgressSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.32/eventSteps/{ID}/deny
+  method: post
+  operationId: post202232EventStepsByIDDeny
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2022.32/events/{ID}/remainingSteps
+  method: get
+  operationId: get202232EventsByIDRemainingSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.32/events/{ID}
+  method: get
+  operationId: get202232EventsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.32/eventSteps/{ID}/approve
+  method: post
+  operationId: post202232EventStepsByIDApprove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2022.32/eventSteps/{ID}/sendBack
+  method: post
+  operationId: post202232EventStepsByIDSendBack
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2022.32/eventSteps
+  method: get
+  operationId: get202232EventSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.32/events/{ID}/completedSteps
+  method: get
+  operationId: get202232EventsByIDCompletedSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.32/eventSteps/{ID}
+  method: get
+  operationId: get202232EventStepsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.33/types/{ID}
+  method: get
+  operationId: get202633TypesByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.33/types/{ID}/attachmentCategories
+  method: get
+  operationId: get202633TypesByIDAttachmentCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.33/events/{ID}/rescind
+  method: post
+  operationId: post202633EventsByIDRescind
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.33/events/{ID}/cancel
+  method: post
+  operationId: post202633EventsByIDCancel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.33/events/{ID}/remainingSteps
+  method: get
+  operationId: get202633EventsByIDRemainingSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.33/events/{ID}/comments
+  method: get
+  operationId: get202633EventsByIDComments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.33/events/{ID}
+  method: get
+  operationId: get202633EventsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.33/events/{ID}/inProgressSteps
+  method: get
+  operationId: get202633EventsByIDInProgressSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.33/events/{ID}/attachments
+  method: get
+  operationId: get202633EventsByIDAttachments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.33/eventSteps/{ID}/reassign
+  method: post
+  operationId: post202633EventStepsByIDReassign
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.33/eventSteps/{ID}/deny
+  method: post
+  operationId: post202633EventStepsByIDDeny
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.33/eventSteps/{ID}/toDo
+  method: post
+  operationId: post202633EventStepsByIDToDo
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.33/eventSteps/{ID}/sendBack
+  method: post
+  operationId: post202633EventStepsByIDSendBack
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.33/eventSteps/{ID}/approve
+  method: post
+  operationId: post202633EventStepsByIDApprove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2026.33/events/{ID}/completedSteps
+  method: get
+  operationId: get202633EventsByIDCompletedSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.33/eventSteps/{ID}
+  method: get
+  operationId: get202633EventStepsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2026.33/eventSteps/{ID}/questionnaire
+  method: post
+  operationId: post202633EventStepsByIDQuestionnaire
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2021.37/events/{ID}/comments
+  method: get
+  operationId: get202137EventsByIDComments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.37/types
+  method: get
+  operationId: get202137Types
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.37/types/{ID}
+  method: get
+  operationId: get202137TypesByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.37/types/{ID}/attachmentCategories
+  method: get
+  operationId: get202137TypesByIDAttachmentCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.37/events
+  method: get
+  operationId: get202137Events
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.37/events/{ID}/attachments
+  method: get
+  operationId: get202137EventsByIDAttachments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.37/events/{ID}/inProgressSteps
+  method: get
+  operationId: get202137EventsByIDInProgressSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.37/eventSteps/{ID}/deny
+  method: post
+  operationId: post202137EventStepsByIDDeny
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2021.37/values/sendBack/to/
+  method: get
+  operationId: get202137ValuesSendBackTo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.37/events/{ID}/remainingSteps
+  method: get
+  operationId: get202137EventsByIDRemainingSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.37/events/{ID}
+  method: get
+  operationId: get202137EventsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.37/eventSteps/{ID}/approve
+  method: post
+  operationId: post202137EventStepsByIDApprove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2021.37/eventSteps/{ID}/sendBack
+  method: post
+  operationId: post202137EventStepsByIDSendBack
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2021.37/eventSteps
+  method: get
+  operationId: get202137EventSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.37/events/{ID}/completedSteps
+  method: get
+  operationId: get202137EventsByIDCompletedSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.37/eventSteps/{ID}
+  method: get
+  operationId: get202137EventStepsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2021.38/eventSteps
+  method: get
+  operationId: get202138EventSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.38/events
+  method: get
+  operationId: get202238Events
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2022.38/eventSteps
+  method: get
+  operationId: get202238EventSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2024.39/events/{ID}/cancel
+  method: post
+  operationId: post202439EventsByIDCancel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2025.49/values/sendBack/to/
+  method: get
+  operationId: get202549ValuesSendBackTo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/types
+  method: get
+  operationId: get202550Types
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/events/{ID}/rescind
+  method: post
+  operationId: post202550EventsByIDRescind
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2025.50/types/{ID}
+  method: get
+  operationId: get202550TypesByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/events/{ID}/cancel
+  method: post
+  operationId: post202550EventsByIDCancel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2025.50/types/{ID}/attachmentCategories
+  method: get
+  operationId: get202550TypesByIDAttachmentCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/eventSteps/{ID}/toDo
+  method: post
+  operationId: post202550EventStepsByIDToDo
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2025.50/events
+  method: get
+  operationId: get202550Events
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/events/{ID}/attachments
+  method: get
+  operationId: get202550EventsByIDAttachments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/events/{ID}/comments
+  method: get
+  operationId: get202550EventsByIDComments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/events/{ID}/inProgressSteps
+  method: get
+  operationId: get202550EventsByIDInProgressSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/eventSteps/{ID}/deny
+  method: post
+  operationId: post202550EventStepsByIDDeny
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2025.50/events/{ID}/remainingSteps
+  method: get
+  operationId: get202550EventsByIDRemainingSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/events/{ID}
+  method: get
+  operationId: get202550EventsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/eventSteps/{ID}/approve
+  method: post
+  operationId: post202550EventStepsByIDApprove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2025.50/eventSteps/{ID}/sendBack
+  method: post
+  operationId: post202550EventStepsByIDSendBack
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: 2025.50/eventSteps
+  method: get
+  operationId: get202550EventSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/events/{ID}/completedSteps
+  method: get
+  operationId: get202550EventsByIDCompletedSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/eventSteps/{ID}
+  method: get
+  operationId: get202550EventStepsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: 2025.50/eventSteps/{ID}/questionnaire
+  method: post
+  operationId: post202550EventStepsByIDQuestionnaire
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /inboxItems/{itemId}/approve
+  method: post
+  operationId: approveInboxItem
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /inboxItems/{itemId}/deny
+  method: post
+  operationId: denyInboxItem
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /businessProcessDefinitions
+  method: get
+  operationId: listBusinessProcessDefinitions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /businessProcessDefinitions/{definitionId}
+  method: get
+  operationId: getBusinessProcessDefinition
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /eventTaskDefinitions
   method: post
   operationId: createEventTaskDefinition
@@ -423,6 +2133,408 @@ operations:
 - path: /eventTaskDefinitions/{id}
   method: delete
   operationId: deleteEventTaskDefinition
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - read
+    - write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /events
+  method: get
+  operationId: getEvents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /events/{ID}/remainingSteps
+  method: get
+  operationId: getEventsByIDRemainingSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /events/{ID}/rescind
+  method: post
+  operationId: postEventsByIDRescind
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /events/{ID}/comments
+  method: get
+  operationId: getEventsByIDComments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /events/{ID}
+  method: get
+  operationId: getEventsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /events/{ID}/inProgressSteps
+  method: get
+  operationId: getEventsByIDInProgressSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /events/{ID}/cancel
+  method: post
+  operationId: postEventsByIDCancel
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /events/{ID}/attachments
+  method: get
+  operationId: getEventsByIDAttachments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /events/{ID}/completedSteps
+  method: get
+  operationId: getEventsByIDCompletedSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /eventSteps
+  method: get
+  operationId: getEventSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /eventSteps/{ID}/questionnaire
+  method: post
+  operationId: postEventStepsByIDQuestionnaire
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /eventSteps/{ID}/reassign
+  method: post
+  operationId: postEventStepsByIDReassign
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /eventSteps/{ID}/deny
+  method: post
+  operationId: postEventStepsByIDDeny
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /eventSteps/{ID}
+  method: get
+  operationId: getEventStepsByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /eventSteps/{ID}/toDo
+  method: post
+  operationId: postEventStepsByIDToDo
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /eventSteps/{ID}/approve
+  method: post
+  operationId: postEventStepsByIDApprove
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /eventSteps/{ID}/sendBack
+  method: post
+  operationId: postEventStepsByIDSendBack
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /inboxItems
+  method: get
+  operationId: listInboxItems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /processInstances
+  method: get
+  operationId: listProcessInstances
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /processInstances
+  method: post
+  operationId: initiateProcess
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /processInstances/{instanceId}
+  method: get
+  operationId: getProcessInstance
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /processInstances/{instanceId}/cancel
+  method: post
+  operationId: cancelProcessInstance
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /processInstances/{instanceId}/steps
+  method: get
+  operationId: listProcessSteps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /values/sendBack/to/
+  method: get
+  operationId: getValuesSendBackTo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /types
+  method: get
+  operationId: getTypes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /types
+  method: post
+  operationId: create
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - read
+    - write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /types/{ID}
+  method: get
+  operationId: getTypesByID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /types/{ID}/attachmentCategories
+  method: get
+  operationId: getTypesByIDAttachmentCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /types/{id}
+  method: get
+  operationId: view
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - read
+    - write
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /types/{id}
+  method: put
+  operationId: update
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - read
+    - write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /types/{id}
+  method: delete
+  operationId: delete
   x-agentic-access:
     action-class: acting
     consequence: write

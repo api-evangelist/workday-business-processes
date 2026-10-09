@@ -2121,6 +2121,8 @@ apis:
   - type: OAuthScopes
     url: scopes/workday-business-processes-scopes.yml
 common:
+- type: FinOps
+  url: finops/workday-business-processes-finops.yml
 - type: Website
   url: https://www.workday.com/
 - type: DeveloperPortal

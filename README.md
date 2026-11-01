@@ -1,4 +1,4 @@
-# Workday Business Processes (workday-business-processes)
+# Workday Business Processes
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,81 +64,239 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-APIs for managing and executing business processes within Workday, including initiating, monitoring, and completing various workflow processes.
+Workday Business Processes is the workflow engine at the centre of Workday HCM and Financial Management: every hire, job change, expense report, requisition and payment runs as a business process event routed through configured approval, to-do and questionnaire steps. Workday exposes it as a first-party REST service, businessProcess v1, which reads business process types, events and event steps and performs the real actions on them — approve, deny, send back, reassign, cancel and rescind — alongside a Custom Business Process Config v1 service for authoring custom process types and event task definitions, business-process operations inside the Integrations SOAP service, and business process query fields in the Workday Graph API.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/workday-business-processes/refs/heads/main/apis.yml)
+**Areas:** Business Processes · Workflows · Approvals · Human Resources · Enterprise · Software-as-a-Service · HCM · Financial Management · Process Automation · Event Steps · SOAP · GraphQL
 
-## Timestamps
+## Workday Business Processes on APIs.io
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
+Everything profiled for Workday Business Processes is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/workday-business-processes/](https://apis.io/providers/workday-business-processes/)** — or go straight to one of the APIs or properties below.
 
-## APIs
+### APIs (30)
 
-### Workday Business Process API
+- [Workday Integrations SOAP Service (business process operations)](https://apis.io/apis/workday-business-processes/workday-business-processes-integrations-soap-service/) — The Workday Web Services Integrations service, v47.0. Carries the eight SOAP business process operations — Approve, Cancel, Deny, Rescind and Send Back a…
+- [Workday Business Processes 03/11/2023 API](https://apis.io/apis/workday-business-processes/workday-business-processes-03-11-2023-api/) — Changes for v2023.10
+- [Workday Business Processes 03/15/2021 API](https://apis.io/apis/workday-business-processes/workday-business-processes-03-15-2021-api/) — Changes for v2021.13
+- [Workday Business Processes 03/18/2026 API](https://apis.io/apis/workday-business-processes/workday-business-processes-03-18-2026-api/) — Changes for v2026.11
+- [Workday Business Processes 04/01/2023 API](https://apis.io/apis/workday-business-processes/workday-business-processes-04-01-2023-api/) — Changes for v2023.13
+- [Workday Business Processes 04/02/2022 API](https://apis.io/apis/workday-business-processes/workday-business-processes-04-02-2022-api/) — Changes for v2022.14
+- [Workday Business Processes 04/24/2023 API](https://apis.io/apis/workday-business-processes/workday-business-processes-04-24-2023-api/) — Changes for v2023.16
+- [Workday Business Processes 05/17/2025 API](https://apis.io/apis/workday-business-processes/workday-business-processes-05-17-2025-api/) — Changes for v2025.20
+- [Workday Business Processes 06/08/2026 API](https://apis.io/apis/workday-business-processes/workday-business-processes-06-08-2026-api/) — Changes for v2026.23
+- [Workday Business Processes 06/15/2024 API](https://apis.io/apis/workday-business-processes/workday-business-processes-06-15-2024-api/) — Changes for v2024.24
+- [Workday Business Processes 06/15/2026 API](https://apis.io/apis/workday-business-processes/workday-business-processes-06-15-2026-api/) — Changes for v2026.24
+- [Workday Business Processes 06/30/2026 API](https://apis.io/apis/workday-business-processes/workday-business-processes-06-30-2026-api/) — Changes for v2026.26
+- [Workday Business Processes 07/15/2023 API](https://apis.io/apis/workday-business-processes/workday-business-processes-07-15-2023-api/) — Changes for v2023.28
+- [Workday Business Processes 08/06/2022 API](https://apis.io/apis/workday-business-processes/workday-business-processes-08-06-2022-api/) — Changes for v2022.32
+- [Workday Business Processes 08/17/2026 API](https://apis.io/apis/workday-business-processes/workday-business-processes-08-17-2026-api/) — Changes for v2026.33
+- [Workday Business Processes 09/01/2021 API](https://apis.io/apis/workday-business-processes/workday-business-processes-09-01-2021-api/) — Changes for v2021.37
+- [Workday Business Processes 09/09/2021 API](https://apis.io/apis/workday-business-processes/workday-business-processes-09-09-2021-api/) — Changes for v2021.38
+- [Workday Business Processes 09/19/2022 API](https://apis.io/apis/workday-business-processes/workday-business-processes-09-19-2022-api/) — Changes for v2022.38
+- [Workday Business Processes 09/28/2024 API](https://apis.io/apis/workday-business-processes/workday-business-processes-09-28-2024-api/) — Changes for v2024.39
+- [Workday Business Processes 12/06/2025 API](https://apis.io/apis/workday-business-processes/workday-business-processes-12-06-2025-api/) — Changes for v2025.49
+- [Workday Business Processes 12/15/2025 API](https://apis.io/apis/workday-business-processes/workday-business-processes-12-15-2025-api/) — Changes for v2025.50
+- [Workday Business Processes Approvals API](https://apis.io/apis/workday-business-processes/workday-business-processes-approvals-api/) — Manage approval steps and approval chains
+- [Workday Business Processes Business Process Definitions API](https://apis.io/apis/workday-business-processes/workday-business-processes-business-process-definitions-api/) — Retrieve and manage business process type definitions
+- [Workday Business Processes Event Task Definitions API](https://apis.io/apis/workday-business-processes/workday-business-processes-event-task-definitions-api/) — A collection of Event Task Definitions for custom business process defined in Workday.
+- [Workday Business Processes Events API](https://apis.io/apis/workday-business-processes/workday-business-processes-events-api/) — Returns a collection of events based on the specified parameters. You must specify either the worker or initiating worker query parameter. If you did not…
+- [Workday Business Processes Event Steps API](https://apis.io/apis/workday-business-processes/workday-business-processes-eventsteps-api/) — Returns a collection of business process event steps based on the specified parameters. Only event steps that are awaiting action from the processing person…
+- [Workday Business Processes Inbox Items API](https://apis.io/apis/workday-business-processes/workday-business-processes-inbox-items-api/) — Manage user inbox items requiring action
+- [Workday Business Processes Process Instances API](https://apis.io/apis/workday-business-processes/workday-business-processes-process-instances-api/) — Manage running business process instances
+- [Workday Business Processes Prompt Values API](https://apis.io/apis/workday-business-processes/workday-business-processes-prompt-values-api/) — Retrieves instances that can be used as values for other endpoint parameters in this service.
+- [Workday Business Processes Types API](https://apis.io/apis/workday-business-processes/workday-business-processes-types-api/) — Returns all business process types. Secured by Public Business Processes.
 
-API for initiating, managing, and monitoring business processes in Workday, including approvals, onboarding, and other workflow operations.
+### Published properties
 
-- **Human URL:** [https://www.workday.com/en-us/products/financial-management/business-process.html](https://www.workday.com/en-us/products/financial-management/business-process.html)
-- **Base URL:** `https://wd2-impl-services1.workday.com/ccx/service`
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-#### Tags
+#### MCP servers (1)
 
-- Approvals
-- Business Processes
-- Finance
-- HCM
-- Workflows
+Model Context Protocol servers that expose the API to agents.
 
-#### Properties
+- [workday-business-process](https://apis.io/servers/workday-business-processes/workday-business-process/)
 
-- [Documentation](https://community.workday.com/sites/default/files/file-hosting/productionapi/index.html)
-- [OpenAPI](https://community.workday.com/sites/default/files/file-hosting/productionapi/Business_Process_Service/v41.1/Business_Process_Service.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Authentication](https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-authentication.html)
-- [S D Ks](https://github.com/Workday)
-- [Rate Limits](https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/wws-rate-limits.html)
-- [Webhooks](https://doc.workday.com/admin-guide/en-us/workday-integrations/integration-concepts/workday-webhooks.html)
-- [Changelog](https://community.workday.com/api-release-notes)
-- [Status Page](https://status.workday.com)
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Workday Business Processes Agentic Access](https://apis.io/agentic-access/workday-business-processes/workday-business-processes-agentic-access/)
+
+#### JSON Schema (7)
+
+The data models the API reads and writes.
+
+- [Approval Request](https://apis.io/schemas/workday-business-processes/workday-business-processes-approval-request/)
+- [Business Process Definition](https://apis.io/schemas/workday-business-processes/workday-business-processes-business-process-definition/)
+- [Denial Request](https://apis.io/schemas/workday-business-processes/workday-business-processes-denial-request/)
+- [Inbox Item](https://apis.io/schemas/workday-business-processes/workday-business-processes-inbox-item/)
+- [Initiate Process Request](https://apis.io/schemas/workday-business-processes/workday-business-processes-initiate-process-request/)
+- [Process Instance](https://apis.io/schemas/workday-business-processes/workday-business-processes-process-instance/)
+- [Process Step](https://apis.io/schemas/workday-business-processes/workday-business-processes-process-step/)
+
+#### JSON Structure (7)
+
+Data models expressed in JSON Structure.
+
+- [Workday Business Processes Approval Request Structure](https://apis.io/json-structure/workday-business-processes/workday-business-processes-approval-request-structure/)
+- [Workday Business Processes Business Process Definition Structure](https://apis.io/json-structure/workday-business-processes/workday-business-processes-business-process-definition-structure/)
+- [Workday Business Processes Denial Request Structure](https://apis.io/json-structure/workday-business-processes/workday-business-processes-denial-request-structure/)
+- [Workday Business Processes Inbox Item Structure](https://apis.io/json-structure/workday-business-processes/workday-business-processes-inbox-item-structure/)
+- [Workday Business Processes Initiate Process Request Structure](https://apis.io/json-structure/workday-business-processes/workday-business-processes-initiate-process-request-structure/)
+- [Workday Business Processes Process Instance Structure](https://apis.io/json-structure/workday-business-processes/workday-business-processes-process-instance-structure/)
+- [Workday Business Processes Process Step Structure](https://apis.io/json-structure/workday-business-processes/workday-business-processes-process-step-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Workday Business Processes Context](https://apis.io/jsonld/workday-business-processes/workday-business-processes-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Workday Business Processes Vocabulary](https://apis.io/vocabularies/workday-business-processes/workday-business-processes-vocabulary/)
+
+#### Examples (7)
+
+Example requests and responses.
+
+- [Workday Business Processes Approval Request Example](https://apis.io/examples/workday-business-processes/workday-business-processes-approval-request-example/)
+- [Workday Business Processes Business Process Definition Example](https://apis.io/examples/workday-business-processes/workday-business-processes-business-process-definition-example/)
+- [Workday Business Processes Denial Request Example](https://apis.io/examples/workday-business-processes/workday-business-processes-denial-request-example/)
+- [Workday Business Processes Inbox Item Example](https://apis.io/examples/workday-business-processes/workday-business-processes-inbox-item-example/)
+- [Workday Business Processes Initiate Process Request Example](https://apis.io/examples/workday-business-processes/workday-business-processes-initiate-process-request-example/)
+- [Workday Business Processes Process Instance Example](https://apis.io/examples/workday-business-processes/workday-business-processes-process-instance-example/)
+- [Workday Business Processes Process Step Example](https://apis.io/examples/workday-business-processes/workday-business-processes-process-step-example/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Workday Business Process API](https://apis.io/collections/workday-business-processes/open-workday-business-processes/)
+- [Workday Business Process Approvals API](https://apis.io/collections/workday-business-processes/open-workday-business-processes-approvals-api/)
+- [Workday Business Process Approvals Business Process Definitions API](https://apis.io/collections/workday-business-processes/open-workday-business-processes-business-process-definitions-api/)
+- [Workday Business Process Approvals Inbox Items API](https://apis.io/collections/workday-business-processes/open-workday-business-processes-inbox-items-api/)
+- [Workday Business Process Approvals Process Instances API](https://apis.io/collections/workday-business-processes/open-workday-business-processes-process-instances-api/)
+- [Workday Business Process Approvals API](https://apis.io/collections/workday-business-processes/postman-workday-business-processes-approvals-api/)
+- [Workday Business Process Approvals Business Process Definitions API](https://apis.io/collections/workday-business-processes/postman-workday-business-processes-business-process-definitions-api/)
+- [Workday Business Process Approvals Inbox Items API](https://apis.io/collections/workday-business-processes/postman-workday-business-processes-inbox-items-api/)
+- [Workday Business Process Approvals Process Instances API](https://apis.io/collections/workday-business-processes/postman-workday-business-processes-process-instances-api/)
+
+#### Overlays (2)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Workday Business Processes Business Process Overlay](https://apis.io/overlays/workday-business-processes/workday-business-processes-business-process-overlay/)
+- [Workday Business Processes Custom Business Process Config Overlay](https://apis.io/overlays/workday-business-processes/workday-business-processes-custom-business-process-config-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Workday Business Processes — jsonschema rules](https://apis.io/rules/workday-business-processes/workday-business-processes-jsonschema-spectral-rules/)
+- [Workday Business Processes API Rules](https://apis.io/rules/workday-business-processes/workday-business-processes-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Workday Business Processes Authentication](https://apis.io/security/workday-business-processes/workday-business-processes-authentication/)
+- [Workday Business Processes Domain Security](https://apis.io/security/workday-business-processes/workday-business-processes-domain-security/)
+- [Workday Business Processes Trust Center](https://apis.io/security/workday-business-processes/workday-business-processes-trust-center/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Workday Business Processes Scopes](https://apis.io/scopes/workday-business-processes/workday-business-processes-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Workday Business Processes Plans Pricing](https://apis.io/plans/workday-business-processes/workday-business-processes-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Workday Business Processes Rate Limits](https://apis.io/rate-limits/workday-business-processes/workday-business-processes-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Workday Business Processes Finops](https://apis.io/finops/workday-business-processes/workday-business-processes-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.workday.com/)
+- [Documentation](https://developer.workday.com/doc/GUID-e31b535f-7722-4f61-9795-a27ef9d78a86-enHYPHENus.md)
+- [Getting started](https://developer.workday.com/doc/zwx1518028675482.md)
+- [API reference](https://community.workday.com/sites/default/files/file-hosting/restapi/index.html)
+- [Sign up](https://developer.workday.com/login)
 - [Support](https://community.workday.com)
-- [OpenAPI](openapi/workday-business-processes-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/workday-business-processes.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/workday-business-processes.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/workday-business-processes-business-process-definition-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workday-business-processes-process-instance-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workday-business-processes-initiate-process-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workday-business-processes-process-step-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workday-business-processes-inbox-item-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workday-business-processes-approval-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/workday-business-processes-denial-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/workday-business-processes-business-process-definition-structure.json)
-- [JSON Structure](json-structure/workday-business-processes-process-instance-structure.json)
-- [JSON Structure](json-structure/workday-business-processes-initiate-process-request-structure.json)
-- [JSON Structure](json-structure/workday-business-processes-process-step-structure.json)
-- [JSON Structure](json-structure/workday-business-processes-inbox-item-structure.json)
-- [JSON Structure](json-structure/workday-business-processes-approval-request-structure.json)
-- [JSON Structure](json-structure/workday-business-processes-denial-request-structure.json)
-- [JSON-LD](json-ld/workday-business-processes-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/workday-business-processes-spectral-rules.yml)
-- [Naftiko Capability -  Workflow  Management](capabilities/workflow-management.yaml)
-- [Naftiko Capability -  Business  Processes ( Shared)](capabilities/shared/business-processes.yaml)
-- [Vocabulary](vocabulary/workday-business-processes-vocabulary.yml)
+- [Blog](https://blog.workday.com/en-us/homepage.html)
+- [Compliance](https://www.workday.com/en-us/why-workday/trust/compliance.html)
+- [Terms of service](https://www.workday.com/en-us/legal/site-terms.html)
+- [Privacy policy](https://www.workday.com/en-us/privacy.html)
+- [GitHub](https://github.com/Workday)
+- [Status](https://status.workday.com)
 
-## Common Properties
+## API Evangelist rating
 
-- [Portal](https://community.workday.com)
-- [Getting Started](https://doc.workday.com/admin-guide/en-us/workday-web-services/wws-overview/getting-started-with-workday-web-services.html)
-- [A P I  Standards](https://doc.workday.com/admin-guide/en-us/workday-rest-api/workday-rest-api-overview.html)
-- [Privacy Policy](https://www.workday.com/en-us/privacy.html)
-- [Terms of Service](https://www.workday.com/en-us/terms-of-service.html)
-- [Security](https://www.workday.com/en-us/why-workday/our-technology/security.html)
-- [JSON-LD](json-ld/workday-business-processes-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/workday-business-processes-spectral-rules.yml)
-- [Naftiko Capability -  Workflow  Management](capabilities/workflow-management.yaml)
-- [Naftiko Capability -  Business  Processes ( Shared)](capabilities/shared/business-processes.yaml)
-- [Vocabulary](vocabulary/workday-business-processes-vocabulary.yml)
+**Kin Score 62.3** — strong · rubric 0.25.0 · scored 2026-10-23
 
-## Maintainers
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 48.8 |
+| Contract governance | 45.5 |
+| Operational transparency | 68.4 |
+| Developer ergonomics | 72.0 |
+| Access clarity | 50.0 |
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Agent readiness 33.4** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 39.2** — Employment & Payroll
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/workday-business-processes/](https://apis.io/providers/workday-business-processes/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Workday Business Processes: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/workday-business-processes/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).

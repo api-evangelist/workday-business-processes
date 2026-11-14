@@ -5,9 +5,18 @@ artifacts:
   agentic-access/workday-business-processes-agentic-access.yml:
     method: generated
     evidence: declared in the artifact
+  ai-preferences/workday-business-processes-ai-preferences.yml:
+    method: harvested
+    evidence: declared in the artifact
   authentication/workday-business-processes-authentication.yml:
     method: searched
     evidence: declared in the artifact
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
   changelog/workday-business-processes-changelog.yml:
     method: searched
     evidence: declared in the artifact
@@ -44,6 +53,9 @@ artifacts:
   collections/workday-business-processes.postman_collection.json:
     method: derived
     evidence: openapi/workday-business-processes
+  compliance/workday-business-processes-compliance.yml:
+    method: harvested
+    evidence: declared in the artifact
   components/workday-business-processes-components.yml:
     method: searched
     evidence: declared in the artifact
@@ -53,8 +65,14 @@ artifacts:
   conventions/workday-business-processes-conventions.yml:
     method: searched
     evidence: declared in the artifact
+  data-license/workday-business-processes-data-license.yml:
+    method: harvested
+    evidence: declared in the artifact
   data-model/workday-business-processes-data-model.yml:
     method: derived
+    evidence: declared in the artifact
+  eligibility/workday-business-processes-eligibility.yml:
+    method: harvested
     evidence: declared in the artifact
   errors/workday-business-processes-problem-types.yml:
     method: derived
@@ -134,7 +152,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -198,6 +216,9 @@ artifacts:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-11-02T082323.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   lifecycle/workday-business-processes-lifecycle.yml:
@@ -347,6 +368,9 @@ artifacts:
   postman/workday-business-processes-process-instances-api.postman_collection.json:
     method: derived
     evidence: openapi/workday-business-processes-process-instances-api
+  privacy/workday-business-processes-privacy-policy.yml:
+    method: harvested
+    evidence: declared in the artifact
   rate-limits/workday-business-processes-rate-limits.yml:
     method: searched
     evidence: declared in the artifact
@@ -379,6 +403,9 @@ artifacts:
     evidence: declared in the artifact
   skills/workday-business-processes-track-and-reverse-an-event.md:
     method: generated
+    evidence: declared in the artifact
+  terms/workday-business-processes-terms-of-service.yml:
+    method: harvested
     evidence: declared in the artifact
   vocabulary/workday-business-processes-vocabulary.yml:
     method: unknown
